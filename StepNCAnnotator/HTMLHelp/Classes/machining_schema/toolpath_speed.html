@@ -1,0 +1,21 @@
+<HTML><HEAD><TITLE> toolpath_speed </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="toolpath_speed">toolpath_speed </A></H1><P>This is a one-dimensional curve specifying the speed profile as defined by type positive_ratio_measure. If the attribute basiccurve of the toolpath exists, the parameterisation of speed must be the same as basiccurve. Otherwise, speed must be parameterised by the path length of the underlying toolpath, i. e. the first parameter is 0, the last parameter equals the length of the underlying toolpath as defined by type length_measure.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#toolpath_speed">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>speed </TD>
+<TD><A HREF="../machining_schema/b_spline_curve.html#b_spline_curve">b_spline_curve</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY toolpath_speed ;
+ speed : <A HREF="../machining_schema/b_spline_curve.html#b_spline_curve">b_spline_curve</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

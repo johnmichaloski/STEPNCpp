@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> along_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="along_path">along_path </A></H1><P>Approach or lift movement on a general path. This should be used if full control of the tool orientation during approach is required or for other special purposes.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#along_path">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>path </TD>
+<TD><A HREF="../machining_schema/toolpath_list.html#toolpath_list">toolpath_list</A> </TD>
+<TD>Specification of a general path for approach or lift movement. Note that the path is specified in a special co-ordinate system. The origin is the start or end point of the cutting operation, the axes are oriented like the local co-ordinate system of the feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY along_path 
+SUBTYPE  OF (<A HREF="approach_retract_strategy.html">approach_retract_strategy</A> );
+ path : <A HREF="../machining_schema/toolpath_list.html#toolpath_list">toolpath_list</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

@@ -1,0 +1,1454 @@
+
+
+<milling_cutting_tool>
+	<description>
+
+	</description>
+
+	<direction_for_spindle_orientation>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</direction_for_spindle_orientation>
+	<tool_holder_diameter_for_spindle_orientation>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</tool_holder_diameter_for_spindle_orientation>
+</milling_cutting_tool>
+
+<milling_tool_body>
+	<description>
+
+	</description>
+
+	<dimension>
+		<type>milling_tool_dimension</type>
+		<description>
+
+		</description>
+	</dimension>
+	<number_of_teeth>
+		<type>INTEGER </type>
+		<description>
+
+		</description>
+	</number_of_teeth>
+	<hand_of_cut>
+		<type>hand</type>
+		<description>
+
+		</description>
+	</hand_of_cut>
+	<coolant_through_tool>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</coolant_through_tool>
+	<pilot_length>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</pilot_length>
+</milling_tool_body>
+
+<milling_tool_dimension>
+	<description>
+
+	</description>
+
+	<diameter>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</diameter>
+	<tool_top_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</tool_top_angle>
+	<tool_circumference_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</tool_circumference_angle>
+	<cutting_edge_length>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</cutting_edge_length>
+	<edge_radius>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</edge_radius>
+	<edge_center_vertical>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</edge_center_vertical>
+	<edge_center_horizontal>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</edge_center_horizontal>
+</milling_tool_dimension>
+
+
+
+<center_drill>
+	<description>
+
+	</description>
+
+</center_drill>
+
+<countersink>
+	<description>
+
+	</description>
+
+	<countersink_radius>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</countersink_radius>
+</countersink>
+
+<backside_countersink>
+	<description>
+
+	</description>
+
+</backside_countersink>
+
+<drill>
+	<description>
+
+	</description>
+
+</drill>
+
+<twist_drill>
+	<description>
+
+	</description>
+
+</twist_drill>
+
+<tapered_drill>
+	<description>
+
+	</description>
+
+	<taper_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</taper_angle>
+</tapered_drill>
+
+<spade_drill>
+	<description>
+
+	</description>
+
+</spade_drill>
+
+<milling_cutter>
+	<description>
+
+	</description>
+
+</milling_cutter>
+
+<facemill>
+	<description>
+
+	</description>
+
+</facemill>
+
+<endmill>
+	<description>
+
+	</description>
+
+</endmill>
+
+<tapered_endmill>
+	<description>
+
+	</description>
+
+	<taper_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</taper_angle>
+</tapered_endmill>
+
+<ball_endmill>
+	<description>
+
+	</description>
+
+</ball_endmill>
+
+<bullnose_endmill>
+	<description>
+
+	</description>
+
+</bullnose_endmill>
+
+<t_slot_mill>
+	<description>
+
+	</description>
+
+	<cutting_thickness>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</cutting_thickness>
+</t_slot_mill>
+
+<dovetail_mill>
+	<description>
+
+	</description>
+
+	<included_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</included_angle>
+</dovetail_mill>
+
+<woodruff_keyseat_mill>
+	<description>
+
+	</description>
+
+	<cutter_width>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</cutter_width>
+</woodruff_keyseat_mill>
+
+<side_mill>
+	<description>
+
+	</description>
+
+	<cutter_width>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</cutter_width>
+</side_mill>
+
+<thread_mill>
+	<description>
+
+	</description>
+
+</thread_mill>
+
+<tap>
+	<description>
+
+	</description>
+
+</tap>
+
+<tapered_tap>
+	<description>
+
+	</description>
+
+	<taper_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</taper_angle>
+</tapered_tap>
+
+<combined_drill_and_tap>
+	<description>
+
+	</description>
+
+	<drill_length>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</drill_length>
+</combined_drill_and_tap>
+
+<threading_tool>
+	<description>
+
+	</description>
+
+</threading_tool>
+
+<counterbore>
+	<description>
+
+	</description>
+
+</counterbore>
+
+<backside_counterbore>
+	<description>
+
+	</description>
+
+</backside_counterbore>
+
+<reamer>
+	<description>
+
+	</description>
+
+</reamer>
+
+<tapered_reamer>
+	<description>
+
+	</description>
+
+	<taper_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</taper_angle>
+</tapered_reamer>
+
+<combined_drill_and_reamer>
+	<description>
+
+	</description>
+
+	<drill_length>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</drill_length>
+</combined_drill_and_reamer>
+
+<boring_tool>
+	<description>
+
+	</description>
+
+</boring_tool>
+
+<user_defined_tool>
+	<description>
+
+	</description>
+
+	<identifier>
+		<type>label</type>
+		<description>
+
+		</description>
+	</identifier>
+</user_defined_tool>
+
+<exchange_pallet>
+	<description>
+
+	</description>
+
+</exchange_pallet>
+
+<index_pallet>
+	<description>
+
+	</description>
+
+	<its_index>
+		<type>INTEGER </type>
+		<description>
+
+		</description>
+	</its_index>
+</index_pallet>
+
+<index_table>
+	<description>
+
+	</description>
+
+	<its_index>
+		<type>INTEGER </type>
+		<description>
+
+		</description>
+	</its_index>
+</index_table>
+
+<load_tool>
+	<description>
+
+	</description>
+
+	<its_tool>
+		<type>machining_tool</type>
+		<description>
+
+		</description>
+	</its_tool>
+</load_tool>
+
+<unload_tool>
+	<description>
+
+	</description>
+
+	<its_tool>
+		<type>machining_tool</type>
+		<description>
+
+		</description>
+	</its_tool>
+</unload_tool>
+
+<tool_direction_for_milling>
+	<description>
+
+	</description>
+
+</tool_direction_for_milling>
+
+<three_axes_tilted_tool>
+	<description>
+
+	</description>
+
+	<tool_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</tool_direction>
+</three_axes_tilted_tool>
+
+<five_axes_var_tilt_yaw>
+	<description>
+
+	</description>
+
+</five_axes_var_tilt_yaw>
+
+<five_axes_const_tilt_yaw>
+	<description>
+
+	</description>
+
+	<tilt_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</tilt_angle>
+	<yaw_angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</yaw_angle>
+</five_axes_const_tilt_yaw>
+
+<milling_machining_operation>
+	<description>
+
+	</description>
+
+	<overcut_length>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</overcut_length>
+</milling_machining_operation>
+
+<milling_technology>
+	<description>
+
+	</description>
+
+	<cutspeed>
+		<type>speed_measure</type>
+		<description>
+
+		</description>
+	</cutspeed>
+	<spindle>
+		<type>rot_speed_measure</type>
+		<description>
+
+		</description>
+	</spindle>
+	<feedrate_per_tooth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</feedrate_per_tooth>
+	<synchronize_spindle_with_feed>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</synchronize_spindle_with_feed>
+	<inhibit_feedrate_override>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</inhibit_feedrate_override>
+	<inhibit_spindle_override>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</inhibit_spindle_override>
+	<its_adaptive_control>
+		<type>adaptive_control</type>
+		<description>
+
+		</description>
+	</its_adaptive_control>
+</milling_technology>
+
+<adaptive_control>
+	<description>
+
+	</description>
+
+</adaptive_control>
+
+<milling_machine_functions>
+	<description>
+
+	</description>
+
+	<coolant>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</coolant>
+	<coolant_pressure>
+		<type>pressure_measure</type>
+		<description>
+
+		</description>
+	</coolant_pressure>
+	<mist>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</mist>
+	<through_spindle_coolant>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</through_spindle_coolant>
+	<through_pressure>
+		<type>pressure_measure</type>
+		<description>
+
+		</description>
+	</through_pressure>
+	<axis_clamping>
+		<type>LIST [ 0 : ? ] OF identifier </type>
+		<description>
+
+		</description>
+	</axis_clamping>
+	<chip_removal>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</chip_removal>
+	<oriented_spindle_stop>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</oriented_spindle_stop>
+	<its_process_model>
+		<type>process_model_list</type>
+		<description>
+
+		</description>
+	</its_process_model>
+	<other_functions>
+		<type>SET [ 0 : ? ] OF property_parameter </type>
+		<description>
+
+		</description>
+	</other_functions>
+</milling_machine_functions>
+
+<process_model_list>
+	<description>
+
+	</description>
+
+	<its_list>
+		<type>LIST [ 1 : ? ] OF process_model </type>
+		<description>
+
+		</description>
+	</its_list>
+</process_model_list>
+
+<process_model>
+	<description>
+
+	</description>
+
+	<ini_data_file>
+		<type>label</type>
+		<description>
+
+		</description>
+	</ini_data_file>
+	<its_type>
+		<type>label</type>
+		<description>
+
+		</description>
+	</its_type>
+</process_model>
+
+<milling_type_operation>
+	<description>
+
+	</description>
+
+	<approach>
+		<type>approach_retract_strategy</type>
+		<description>
+
+		</description>
+	</approach>
+	<retract>
+		<type>approach_retract_strategy</type>
+		<description>
+
+		</description>
+	</retract>
+</milling_type_operation>
+
+<approach_retract_strategy>
+	<description>
+
+	</description>
+
+	<tool_orientation>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</tool_orientation>
+</approach_retract_strategy>
+
+<plunge_strategy>
+	<description>
+
+	</description>
+
+</plunge_strategy>
+
+<plunge_toolaxis>
+	<description>
+
+	</description>
+
+</plunge_toolaxis>
+
+<plunge_ramp>
+	<description>
+
+	</description>
+
+	<angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</angle>
+</plunge_ramp>
+
+<plunge_helix>
+	<description>
+
+	</description>
+
+	<radius>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</radius>
+	<angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</angle>
+</plunge_helix>
+
+<plunge_zigzag>
+	<description>
+
+	</description>
+
+	<angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</angle>
+	<width>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</width>
+</plunge_zigzag>
+
+<air_strategy>
+	<description>
+
+	</description>
+
+</air_strategy>
+
+<ap_retract_angle>
+	<description>
+
+	</description>
+
+	<angle>
+		<type>plane_angle_measure</type>
+		<description>
+
+		</description>
+	</angle>
+	<travel_length>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</travel_length>
+</ap_retract_angle>
+
+<ap_retract_tangent>
+	<description>
+
+	</description>
+
+	<radius>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</radius>
+</ap_retract_tangent>
+
+<along_path>
+	<description>
+
+	</description>
+
+	<path>
+		<type>toolpath_list</type>
+		<description>
+
+		</description>
+	</path>
+</along_path>
+
+<freeform_operation>
+	<description>
+
+	</description>
+
+	<its_machining_strategy>
+		<type>freeform_strategy</type>
+		<description>
+
+		</description>
+	</its_machining_strategy>
+</freeform_operation>
+
+<freeform_strategy>
+	<description>
+
+	</description>
+
+	<pathmode>
+		<type>pathmode_type</type>
+		<description>
+
+		</description>
+	</pathmode>
+	<cutmode>
+		<type>cutmode_type</type>
+		<description>
+
+		</description>
+	</cutmode>
+	<its_milling_tolerances>
+		<type>tolerances</type>
+		<description>
+
+		</description>
+	</its_milling_tolerances>
+	<stepover>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</stepover>
+</freeform_strategy>
+
+
+
+
+
+<tolerances>
+	<description>
+
+	</description>
+
+	<chordal_tolerance>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</chordal_tolerance>
+	<scallop_height>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</scallop_height>
+</tolerances>
+
+<uv_strategy>
+	<description>
+
+	</description>
+
+	<forward_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</forward_direction>
+	<sideward_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</sideward_direction>
+</uv_strategy>
+
+<plane_cc_strategy>
+	<description>
+
+	</description>
+
+	<its_plane_normal>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</its_plane_normal>
+</plane_cc_strategy>
+
+<plane_cl_strategy>
+	<description>
+
+	</description>
+
+	<its_plane_normal>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</its_plane_normal>
+</plane_cl_strategy>
+
+<leading_line_strategy>
+	<description>
+
+	</description>
+
+	<its_line>
+		<type>bounded_curve</type>
+		<description>
+
+		</description>
+	</its_line>
+</leading_line_strategy>
+
+<two5d_milling_operation>
+	<description>
+
+	</description>
+
+	<its_machining_strategy>
+		<type>two5d_milling_strategy</type>
+		<description>
+
+		</description>
+	</its_machining_strategy>
+</two5d_milling_operation>
+
+<two5d_milling_strategy>
+	<description>
+
+	</description>
+
+	<overlap>
+		<type>positive_ratio_measure</type>
+		<description>
+
+		</description>
+	</overlap>
+	<allow_multiple_passes>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</allow_multiple_passes>
+</two5d_milling_strategy>
+
+<unidirectional>
+	<description>
+
+	</description>
+
+	<feed_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</feed_direction>
+	<cutmode>
+		<type>cutmode_type</type>
+		<description>
+
+		</description>
+	</cutmode>
+</unidirectional>
+
+<bidirectional>
+	<description>
+
+	</description>
+
+	<feed_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</feed_direction>
+	<stepover_direction>
+		<type>left_or_right</type>
+		<description>
+
+		</description>
+	</stepover_direction>
+	<its_stroke_connection_strategy>
+		<type>stroke_connection_strategy</type>
+		<description>
+
+		</description>
+	</its_stroke_connection_strategy>
+</bidirectional>
+
+
+
+
+
+<contour_parallel>
+	<description>
+
+	</description>
+
+	<rotation_direction>
+		<type>rot_direction</type>
+		<description>
+
+		</description>
+	</rotation_direction>
+	<cutmode>
+		<type>cutmode_type</type>
+		<description>
+
+		</description>
+	</cutmode>
+</contour_parallel>
+
+<bidirectional_contour>
+	<description>
+
+	</description>
+
+	<feed_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</feed_direction>
+	<stepover_direction>
+		<type>left_or_right</type>
+		<description>
+
+		</description>
+	</stepover_direction>
+	<rotation_direction>
+		<type>rot_direction</type>
+		<description>
+
+		</description>
+	</rotation_direction>
+	<spiral_cutmode>
+		<type>cutmode_type</type>
+		<description>
+
+		</description>
+	</spiral_cutmode>
+</bidirectional_contour>
+
+<contour_bidirectional>
+	<description>
+
+	</description>
+
+	<feed_direction>
+		<type>direction</type>
+		<description>
+
+		</description>
+	</feed_direction>
+	<stepover_direction>
+		<type>left_or_right</type>
+		<description>
+
+		</description>
+	</stepover_direction>
+	<rotation_direction>
+		<type>rot_direction</type>
+		<description>
+
+		</description>
+	</rotation_direction>
+	<spiral_cutmode>
+		<type>cutmode_type</type>
+		<description>
+
+		</description>
+	</spiral_cutmode>
+</contour_bidirectional>
+
+<contour_spiral>
+	<description>
+
+	</description>
+
+	<rotation_direction>
+		<type>rot_direction</type>
+		<description>
+
+		</description>
+	</rotation_direction>
+	<cutmode>
+		<type>cutmode_type</type>
+		<description>
+
+		</description>
+	</cutmode>
+</contour_spiral>
+
+<center_milling>
+	<description>
+
+	</description>
+
+</center_milling>
+
+<explicit>
+	<description>
+
+	</description>
+
+</explicit>
+
+<plane_milling>
+	<description>
+
+	</description>
+
+	<axial_cutting_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</axial_cutting_depth>
+	<allowance_bottom>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</allowance_bottom>
+</plane_milling>
+
+<plane_rough_milling>
+	<description>
+
+	</description>
+
+</plane_rough_milling>
+
+<plane_finish_milling>
+	<description>
+
+	</description>
+
+</plane_finish_milling>
+
+<side_milling>
+	<description>
+
+	</description>
+
+	<axial_cutting_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</axial_cutting_depth>
+	<radial_cutting_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</radial_cutting_depth>
+	<allowance_side>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</allowance_side>
+</side_milling>
+
+<side_rough_milling>
+	<description>
+
+	</description>
+
+</side_rough_milling>
+
+<side_finish_milling>
+	<description>
+
+	</description>
+
+</side_finish_milling>
+
+<bottom_and_side_milling>
+	<description>
+
+	</description>
+
+	<axial_cutting_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</axial_cutting_depth>
+	<radial_cutting_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</radial_cutting_depth>
+	<allowance_side>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</allowance_side>
+	<allowance_bottom>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</allowance_bottom>
+</bottom_and_side_milling>
+
+<bottom_and_side_rough_milling>
+	<description>
+
+	</description>
+
+</bottom_and_side_rough_milling>
+
+<bottom_and_side_finish_milling>
+	<description>
+
+	</description>
+
+</bottom_and_side_finish_milling>
+
+<drilling_type_operation>
+	<description>
+
+	</description>
+
+	<cutting_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</cutting_depth>
+	<previous_diameter>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</previous_diameter>
+	<dwell_time_bottom>
+		<type>time_measure</type>
+		<description>
+
+		</description>
+	</dwell_time_bottom>
+	<feed_on_retract>
+		<type>positive_ratio_measure</type>
+		<description>
+
+		</description>
+	</feed_on_retract>
+	<its_machining_strategy>
+		<type>drilling_type_strategy</type>
+		<description>
+
+		</description>
+	</its_machining_strategy>
+</drilling_type_operation>
+
+<drilling_type_strategy>
+	<description>
+
+	</description>
+
+	<reduced_cut_at_start>
+		<type>positive_ratio_measure</type>
+		<description>
+
+		</description>
+	</reduced_cut_at_start>
+	<reduced_feed_at_start>
+		<type>positive_ratio_measure</type>
+		<description>
+
+		</description>
+	</reduced_feed_at_start>
+	<depth_of_start>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</depth_of_start>
+	<reduced_cut_at_end>
+		<type>positive_ratio_measure</type>
+		<description>
+
+		</description>
+	</reduced_cut_at_end>
+	<reduced_feed_at_end>
+		<type>positive_ratio_measure</type>
+		<description>
+
+		</description>
+	</reduced_feed_at_end>
+	<depth_of_end>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</depth_of_end>
+</drilling_type_strategy>
+
+<drilling_operation>
+	<description>
+
+	</description>
+
+</drilling_operation>
+
+<drilling>
+	<description>
+
+	</description>
+
+</drilling>
+
+<center_drilling>
+	<description>
+
+	</description>
+
+</center_drilling>
+
+<counter_sinking>
+	<description>
+
+	</description>
+
+</counter_sinking>
+
+<multistep_drilling>
+	<description>
+
+	</description>
+
+	<retract_distance>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</retract_distance>
+	<first_depth>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</first_depth>
+	<depth_of_step>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</depth_of_step>
+	<dwell_time_step>
+		<type>time_measure</type>
+		<description>
+
+		</description>
+	</dwell_time_step>
+</multistep_drilling>
+
+<boring_operation>
+	<description>
+
+	</description>
+
+	<spindle_stop_at_bottom>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</spindle_stop_at_bottom>
+	<depth_of_testcut>
+		<type>length_measure</type>
+		<description>
+
+		</description>
+	</depth_of_testcut>
+	<waiting_position>
+		<type>cartesian_point</type>
+		<description>
+
+		</description>
+	</waiting_position>
+</boring_operation>
+
+<boring>
+	<description>
+
+	</description>
+
+</boring>
+
+<reaming>
+	<description>
+
+	</description>
+
+</reaming>
+
+<back_boring>
+	<description>
+
+	</description>
+
+</back_boring>
+
+<tapping>
+	<description>
+
+	</description>
+
+	<compensation_chuck>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</compensation_chuck>
+</tapping>
+
+<thread_drilling>
+	<description>
+
+	</description>
+
+	<helical_movement_on_forward>
+		<type>BOOLEAN </type>
+		<description>
+
+		</description>
+	</helical_movement_on_forward>
+</thread_drilling>
+
+

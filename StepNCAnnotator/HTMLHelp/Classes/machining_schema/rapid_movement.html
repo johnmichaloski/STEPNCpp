@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> rapid_movement </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="rapid_movement">rapid_movement </A></H1><P>For rapid movements between two workingsteps the entity rapid_movement is used. If no toolpath is given, i. e. the inherited attribute its_toolpath is not set, the NC controller will move the tool in rapid motion from the current position to the beginning of the next workingstep which needs to have a defined starting point. The connection will be done via the security plane. If a toolpath is specified, this toolpath will be executed in rapid motion. Note that a toolpath of type parameterised path can be used so as to avoid an explicit toolpath definition in cartesian space. This will provide greater flexibility in case of changing start and/or end points of the neighbouring workingsteps. Unlike a machining workingstep, the rapid movement by itself has no well-defined start and end point unless an explicit toolpath is specified in cartesian space. If rapid_movement is used during a five-axis machining operation, it will interpolate the tool direction between the previous and the next workingstep. In this case, the tool will retract in the tool direction from the last point of the previous workingstep. On the security plane the tool will rotate to the new tool direction, and then it will move down in the tool direction for the first point of the next workingstep. No change of the tool direction takes place during the lift and approach to and from the security plane. However, if a toolpath is specified and the toolpath contains an explicit definition of the toolaxis then this definition will prevail.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#rapid_movement">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY rapid_movement 
+SUPERTYPE  OF (<A HREF="return_home.html">return_home</A> )
+SUBTYPE  OF (<A HREF="workingstep.html">workingstep</A>,<A HREF="operation.html">operation</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

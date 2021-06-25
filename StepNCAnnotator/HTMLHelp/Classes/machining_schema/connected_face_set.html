@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> connected_face_set </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="connected_face_set">connected_face_set </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#connected_face_set">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>cfs_faces </TD>
+<TD> SET [ 1 : ? ] OF face </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY connected_face_set 
+SUPERTYPE  OF ( ONEOF (<A HREF="open_shell.html">open_shell</A> ,<A HREF="closed_shell.html">closed_shell</A> ) )
+SUBTYPE  OF (<A HREF="topological_representation_item.html">topological_representation_item</A> );
+ cfs_faces :  SET [ 1 : ? ] OF face;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

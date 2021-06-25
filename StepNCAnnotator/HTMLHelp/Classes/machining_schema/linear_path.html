@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> linear_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="linear_path">linear_path </A></H1><P>A linear_path is a type of path that is a direction of travel along a line.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#linear_path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>distance </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The length of the path. </TD></TR>
+<TR><TD>its_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>A vector which indicates the direction of the path starting from the path placement. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY linear_path 
+SUBTYPE  OF (<A HREF="travel_path.html">travel_path</A> );
+ distance : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ its_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

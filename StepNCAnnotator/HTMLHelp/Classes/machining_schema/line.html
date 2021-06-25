@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> line </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="line">line </A></H1><P>A line is an unbounded curve with constant tangent direction. A line is defined by a point and a direction. The positive direction of the line is in the direction of the dir vector.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#line">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>pnt </TD>
+<TD><A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A> </TD>
+<TD>The location of the line. </TD></TR>
+<TR><TD>dir </TD>
+<TD><A HREF="../machining_schema/vector.html#vector">vector</A> </TD>
+<TD>The direction of the line; the magnitude and units of dir affect the parametrisation of the line. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY line 
+SUBTYPE  OF (<A HREF="curve.html">curve</A> );
+ pnt : <A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A>;
+ dir : <A HREF="../machining_schema/vector.html#vector">vector</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

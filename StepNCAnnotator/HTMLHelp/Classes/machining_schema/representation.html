@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> representation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="representation">representation </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#representation">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>name </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>items </TD>
+<TD> SET [ 1 : ? ] OF representation_item </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>context_of_items </TD>
+<TD><A HREF="../machining_schema/representation_context.html#representation_context">representation_context</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY representation ;
+ name : <A HREF="../machining_schema/label.html#label">label</A>;
+ items :  SET [ 1 : ? ] OF representation_item;
+ context_of_items : <A HREF="../machining_schema/representation_context.html#representation_context">representation_context</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

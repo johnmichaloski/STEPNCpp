@@ -1,0 +1,31 @@
+<HTML><HEAD><TITLE> tool_probing </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="tool_probing">tool_probing </A></H1><P>Probing of the length and width/diameter of a tool. The selected tool starts its movement at a machine dependent start position. From that position the tool position is shifted to a fixed sensor position by the offset. Then the tool is moved in direction to the sensor until contact. This is done in longitudinal and perpendicular direction of the tool- axis. The result of probing is stored in the inherited attribute measured_offset and the NC controllers tool database is automatically updated. NC controllers providing tool correction algorithms are expected to use the updated information of its_tool from the moment the tool_probing workingstep has been completed.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#tool_probing">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>offset </TD>
+<TD><A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A> </TD>
+<TD>location of the sensor. </TD></TR>
+<TR><TD>max_wear </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>maximum permissible wear in length direction. </TD></TR>
+<TR><TD>its_tool </TD>
+<TD><A HREF="../machining_schema/machining_tool.html#machining_tool">machining_tool</A> </TD>
+<TD>The tool which has to be probed. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY tool_probing  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="tool_length_probing.html">tool_length_probing</A> ,<A HREF="tool_radius_probing.html">tool_radius_probing</A> ) )
+SUBTYPE  OF (<A HREF="touch_probing.html">touch_probing</A> );
+ offset : <A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A>;
+ max_wear : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ its_tool : <A HREF="../machining_schema/machining_tool.html#machining_tool">machining_tool</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

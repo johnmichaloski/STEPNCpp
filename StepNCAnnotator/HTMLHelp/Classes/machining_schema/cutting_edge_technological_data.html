@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> cutting_edge_technological_data </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="cutting_edge_technological_data">cutting_edge_technological_data </A></H1><P>Entity to describe the technological data associated with the cutting edge.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#cutting_edge_technological_data">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>cutting_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The angle of the edges of the cutting tool. </TD></TR>
+<TR><TD>free_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The free angle of the cutting edges. </TD></TR>
+<TR><TD>aux_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The auxiliary angle of the cutting edges. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY cutting_edge_technological_data ;
+ cutting_angle : OPTIONAL <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ free_angle : OPTIONAL <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ aux_angle : OPTIONAL <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

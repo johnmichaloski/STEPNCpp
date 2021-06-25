@@ -1,0 +1,37 @@
+<HTML><HEAD><TITLE> cutting_component </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="cutting_component">cutting_component </A></H1><P>Entity to describe the name of the material composing the cutting edge of a solid tool or the insert and it’s technological data.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#cutting_component">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>tool_offset_length </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The measured distance from the cutting tip to a designated standard reference point on the tool holding assembly for tool presetting. </TD></TR>
+<TR><TD>its_material </TD>
+<TD><A HREF="../machining_schema/material.html#material">material</A> </TD>
+<TD>The identification of the material composing the cutting edge of a solid tool or the insert. (Examples: The attribute material_identifier of the entity material can be High speed steel(HSS), Carbide, or Polycrystalline diamond(PCD) [ISO/CD 13399-3, Table 8] </TD></TR>
+<TR><TD>technological_data </TD>
+<TD><A HREF="../machining_schema/cutting_edge_technological_data.html#cutting_edge_technological_data">cutting_edge_technological_data</A> </TD>
+<TD>Technological information about the cutting edge. </TD></TR>
+<TR><TD>expected_tool_life </TD>
+<TD><A HREF="../machining_schema/time_measure.html#time_measure">time_measure</A> </TD>
+<TD>The expected number of hours that a given cutting tool can be used before tool wear significantly impacts the performance parameters. This value will also be dependent on a number of external factors, including workpiece material, desired part tolerances, and selected cutting parameters. </TD></TR>
+<TR><TD>its_technology </TD>
+<TD><A HREF="../milling_schema/milling_technology.html#milling_technology">milling_technology</A> </TD>
+<TD>The technology defines the spindle speed and the feed of the tool which guarantee expected_tool_life. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY cutting_component ;
+ tool_offset_length : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ its_material : OPTIONAL <A HREF="../machining_schema/material.html#material">material</A>;
+ technological_data : OPTIONAL <A HREF="../machining_schema/cutting_edge_technological_data.html#cutting_edge_technological_data">cutting_edge_technological_data</A>;
+ expected_tool_life : OPTIONAL <A HREF="../machining_schema/time_measure.html#time_measure">time_measure</A>;
+ its_technology : OPTIONAL <A HREF="../milling_schema/milling_technology.html#milling_technology">milling_technology</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

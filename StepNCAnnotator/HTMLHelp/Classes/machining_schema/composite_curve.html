@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> composite_curve </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="composite_curve">composite_curve </A></H1><P>A composite curve is a collection of curves joined end­to­end. The individual segments of the curve are themselves defined as composite curve segments. The parametrisation of the composite curve is an accumulation of the parametric ranges of the referenced bounded curves.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#composite_curve">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>segments </TD>
+<TD> LIST [ 1 : ? ] OF composite_curve_segment </TD>
+<TD>The component bounded curves, their transitions and senses. The transition attribute for the last segment defines the transition between the end of the last segment and the start of the first; this transition attribute may take the value discontinuous, which indicates an open curve. </TD></TR>
+<TR><TD>self_intersect </TD>
+<TD> LOGICAL </TD>
+<TD>Indication of whether the curve intersects itself or not; this is for information only. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY composite_curve 
+SUBTYPE  OF (<A HREF="bounded_curve.html">bounded_curve</A> );
+ segments :  LIST [ 1 : ? ] OF composite_curve_segment;
+ self_intersect :  LOGICAL;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

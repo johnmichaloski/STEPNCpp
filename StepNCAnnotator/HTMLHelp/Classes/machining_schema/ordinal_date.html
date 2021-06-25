@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> ordinal_date </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="ordinal_date">ordinal_date </A></H1><P>An ordinal_date is a date which is identified by a day of a year.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#ordinal_date">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>day_component </TD>
+<TD><A HREF="../machining_schema/day_in_year_number.html#day_in_year_number">day_in_year_number</A> </TD>
+<TD>the day element of the date. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY ordinal_date 
+SUBTYPE  OF (<A HREF="date.html">date</A> );
+ day_component : <A HREF="../machining_schema/day_in_year_number.html#day_in_year_number">day_in_year_number</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

@@ -1,0 +1,26 @@
+HKCR
+{
+	NiStep.StepPath.1 = s 'StepPath Class'
+	{
+		CLSID = s '{8FC9FCDD-3859-4753-972C-77C172944511}'
+	}
+	NiStep.StepPath = s 'StepPath Class'
+	{
+		CLSID = s '{8FC9FCDD-3859-4753-972C-77C172944511}'
+		CurVer = s 'NiStep.StepPath.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8FC9FCDD-3859-4753-972C-77C172944511} = s 'StepPath Class'
+		{
+			ProgID = s 'NiStep.StepPath.1'
+			VersionIndependentProgID = s 'NiStep.StepPath'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D36EF86D-25FB-4D81-8C40-B279AABEC145}'
+		}
+	}
+}

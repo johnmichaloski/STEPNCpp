@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="operation">operation </A></H1><P>Operations are used to specify the content of a workingstep. Unlike a workingstep, an operation cannot be executed by itself – unless it is also a workingstep by means of multiple inheritance, like rapid_movement or touch_probing. The latter do not require the presence of a feature for unambiguous interpretation. However, the most typical operation, machining operation, needs an association with a manufacturing feature in order to be interpreted. It relies on the geometric information provided by the feature, namely its placement in the workpiece co-ordinate system. Such association can either be established through a reference from a manufacturing_feature or through a reference from a machining_workingstep which references in turn a manufacturing_feature. The important difference between a workingstep and an operation is in the number of associated features. The workingstep is associated with zero or one features. So at the time of execution the NC controller will know unambiguously which feature to use for geometric placement (or to use workpiece co-ordinates if no feature is associated). A workingstep is thus unique. Duplicating a workingstep in a workplan will replicate the exact same physical machine action. The operation on the other hand can be associated with zero or multiple features. The same operation can thus be used in different locations. The NC controller would be unable to decide on which of the associated features to execute the operation, so an execution of a “naked” operation is not possible. The reason for this design is the possible re-use of operation data for several manufacturing features. Consider ten identical holes in different positions around the workpiece. They can all share the operation data, but they can not share the workingsteps which represent an operation at a certain instance in time and space. As the “heavyweight” operation entities can be shared, this may reduce the volume of data to be exchanged. The supertype operation specifies the generic data required by all operations. All operations have the option of specifying an explicit toolpath. For 2½D machining operations, many numerical controls will specify cycles for generating their own toolpaths. However, for older controls which are not able to generate toolpaths or if technological reasons require the communication of exactly prescribed toolpaths, the attribute its_toolpath may be used. Also, the 3-to 5-axis milling of freeform surfaces will typically require the explicit specification of toolpaths by a CAM system.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#operation">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_toolpath </TD>
+<TD><A HREF="../machining_schema/toolpath_list.html#toolpath_list">toolpath_list</A> </TD>
+<TD>Its_toolpath defines a list of all toolpaths in this operation. Note: If its_toolpath exists, the attribute its_machining_strategy in the subtype machining_operation is for information only. Also, all semantics or parameters provided by the operation will be overridden by its_toolpath. The toolpaths are given in coordinates as measured from the workpiece co-ordinate system or, if this operation is associated with a manufacturing_feature, in the local co-ordinate system of the feature. </TD></TR>
+<TR><TD>its_tool_direction </TD>
+<TD><A HREF="../machining_schema/tool_direction.html#tool_direction">tool_direction</A> </TD>
+<TD>Specification of the type of tool orientation used. If none is given, a technology specific default is assumed. Therefore refer to the technology specific parts of ISO 14649. Note that the operation is geometrically linked with the associated manufacturing_feature, if such an association exists. If the feature has a feature_placement attribute, this transformation will also apply to all geometry specified here, i. e. its_toolpath and to all other geometric information like directions or orientations which may be used in subtypes of operation. In other words, all geometry and parameters of the machining_operation are defined in the local co-ordinate system of the feature. As the operation may be associated with multiple manufacturing_features it can only be interpreted in the context of such feature. For features without a feature_placement attribute or for operations without an associated feature, all data is to be interpreted in workpiece co-ordinates as specified by the attribute its_origin of the workplan which uses this operation. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY operation  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="machining_operation.html">machining_operation</A> ,<A HREF="rapid_movement.html">rapid_movement</A> ,<A HREF="touch_probing.html">touch_probing</A> ) );
+ its_toolpath : OPTIONAL <A HREF="../machining_schema/toolpath_list.html#toolpath_list">toolpath_list</A>;
+ its_tool_direction : OPTIONAL <A HREF="../machining_schema/tool_direction.html#tool_direction">tool_direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

@@ -1,0 +1,72 @@
+[OPTIONS]
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=main.html
+Index file=index.hhk
+Language=0x409 English (United States)
+Title=StepNC++
+
+[WINDOWS]
+main="StepNC++","index.hhc","index.hhk","main.html","main.html",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+main.html
+AboutDlg_8h_source.html
+AddOns_8h_source.html
+CannedCyles_8h_source.html
+ClassUtils_8h_source.html
+ExpParser_8h_source.html
+ExpressUtils_8h_source.html
+FeatureCycles_8h_source.html
+HelpInfo_8h_source.html
+HtmlTable_8h_source.html
+iges_8h_source.html
+INode_8idl_source.html
+linalg3d_8h_source.html
+linalg3dDoc_8h_source.html
+linalg3dII_8h_source.html
+linalg3dImpl_8h_source.html
+MainFrm_8h_source.html
+MillingMath_8h_source.html
+Misc_8h_source.html
+OutDebug_8h_source.html
+QueryPath_8h_source.html
+resource_8h_source.html
+ScriptParser_8h_source.html
+stdafx_8h_source.html
+StdString_8h_source.html
+StepAnnotator_8h_source.html
+StepAnnotatorView_8h_source.html
+StepNCCenterDrilling_8h_source.html
+StepNCContourPocket_8h_source.html
+StepNCFacing_8h_source.html
+StepNCRectangularPocket_8h_source.html
+StepNCTooling_8h_source.html
+StepNCTreeView_8h_source.html
+StepVariant_8h_source.html
+SymbolTable_8h_source.html
+WTLHtmlView_8h_source.html
+annotated.html
+classes.html
+hierarchy.html
+functions.html
+functions_func.html
+functions_rela.html
+classCExpQueryAttributes.html
+classCExpQueryParser.html
+classCTreeNodeOperation.html
+classCTreeNodeOperation-members.html
+classEListT.html
+classISmartPointer.html
+classISmartPointer-members.html
+classMtx.html
+classMtx-members.html
+classVec.html
+classVec-members.html
+files.html
+tabs.css
+tab_b.gif
+tab_l.gif
+tab_r.gif

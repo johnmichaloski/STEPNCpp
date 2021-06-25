@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> loop </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="loop">loop </A></H1><P>A loop is a topological entity constructed from a single vertex, or by stringing together connected (oriented) edges, or linear segments beginning and ending at the same vertex. A loop has dimensionality 0 or 1. The domain of a 0­dimensional loop is a single point. The domain of a 1­dimensional loop is a connected, oriented curve, but need not be a manifold. As the loop is a cycle, the location of its beginning/ending point is arbitrary. The domain of the loop includes its bounds, and 0 Ÿ \Xi ! 1. A loop is represented by a single vertex, or by an ordered collection of oriented edges, or by an ordered collection of points.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#loop">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY loop 
+SUPERTYPE  OF ( ONEOF (<A HREF="vertex_loop.html">vertex_loop</A> ,<A HREF="edge_loop.html">edge_loop</A> ) )
+SUBTYPE  OF (<A HREF="topological_representation_item.html">topological_representation_item</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

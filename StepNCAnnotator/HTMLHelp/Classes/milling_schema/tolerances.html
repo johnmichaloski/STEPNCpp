@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> tolerances </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="tolerances">tolerances </A></H1><P>The tolerances which are associated with the free form operation. This does not refer to the general manufacturing tolerances but specifies two parameter which are needed if the NC controllers generates toolpaths for free-form surfaces. Through these values the stepover distance between the toolpaths can be derived.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#tolerances">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>chordal_tolerance </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Geometric error resulting from a linear approximation of a curve. </TD></TR>
+<TR><TD>scallop_height </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Height of the grooves caused by the tool radius </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY tolerances ;
+ chordal_tolerance : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ scallop_height : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

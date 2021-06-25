@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> general_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="general_path">general_path </A></H1><P>A General_path is a type of path that is a direction of travel along an arbitrary curve.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#general_path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>swept_path </TD>
+<TD><A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A> </TD>
+<TD>A continuous set of curves that define an arbitrary direction of travel. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY general_path 
+SUBTYPE  OF (<A HREF="travel_path.html">travel_path</A> );
+ swept_path : <A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

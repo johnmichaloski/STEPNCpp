@@ -1,0 +1,65 @@
+<HTML><HEAD><TITLE> address </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="address">address </A></H1><P>An address is the place where people and organizations are located.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#address">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>internal_location </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>an organization-defined address for internal mail delivery. </TD></TR>
+<TR><TD>street_number </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the number of a building in a street. </TD></TR>
+<TR><TD>street </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the name of a street. </TD></TR>
+<TR><TD>postal_box </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the number of a postal box. </TD></TR>
+<TR><TD>town </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the name of a town. </TD></TR>
+<TR><TD>region </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the name of a region. EXAMPLE - The counties of Great Britain and the states of the United States of America are examples of regions. </TD></TR>
+<TR><TD>postal_code </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the code that is used by the country's postal service. </TD></TR>
+<TR><TD>country </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the name of a country. </TD></TR>
+<TR><TD>facsimile_number </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the number at which facsimiles may be received. </TD></TR>
+<TR><TD>telephone_number </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>the name of a country. </TD></TR>
+<TR><TD>electronic_mail_address </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>telex_number </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY address ;
+ internal_location : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ street_number : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ street : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ postal_box : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ town : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ region : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ postal_code : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ country : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ facsimile_number : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ telephone_number : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ electronic_mail_address : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+ telex_number : OPTIONAL <A HREF="../machining_schema/label.html#label">label</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

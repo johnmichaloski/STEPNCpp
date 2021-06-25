@@ -1,0 +1,1098 @@
+<HTML><BODY><PRE>
+SCHEMA milling_schema ;
+REFERENCE FROM machining_schema ( bounded_curve , cartesian_point , cutting_tool , direction , identifier , label , length_measure , machine_functions , machining_operation , machining_tool , material , nc_function , plane_angle_measure , positive_ratio_measure , pressure_measure , property_parameter , rot_direction , rot_speed_measure , speed_measure , technology , time_measure , tool_body , toolpath_list , tool_direction ) ;
+
+ENTITY <A NAME="milling_cutting_tool">milling_cutting_tool </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#cutting_tool">cutting_tool </A>) ;
+<I>direction_for_spindle_orientation </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>tool_holder_diameter_for_spindle_orientation </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_tool_body">milling_tool_body </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#center_drill">center_drill</A>, <A HREF="#countersink">countersink</A>, <A HREF="#drill">drill</A>, <A HREF="#milling_cutter">milling_cutter</A>, <A HREF="#tap">tap</A>, <A HREF="#threading_tool">threading_tool</A>, <A HREF="#counterbore">counterbore</A>, <A HREF="#reamer">reamer</A>, <A HREF="#boring_tool">boring_tool</A>, <A HREF="#user_defined_tool">user_defined_tool</A>) ) 
+SUBTYPE OF ( <A HREF="machining_schema.html#tool_body">tool_body </A>) ;
+<I>dimension </I>: <A HREF="#milling_tool_dimension">milling_tool_dimension</A>;
+<I>number_of_teeth </I>:  OPTIONAL INTEGER ;
+<I>hand_of_cut </I>:  OPTIONAL <A HREF="#hand">hand</A>;
+<I>coolant_through_tool </I>:  OPTIONAL BOOLEAN ;
+<I>pilot_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_tool_dimension">milling_tool_dimension </A>;
+<I>diameter </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>tool_top_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>tool_circumference_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>cutting_edge_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>edge_radius </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>edge_center_vertical </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>edge_center_horizontal </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+TYPE <A NAME="hand">hand </A>= ENUMERATION OF ( left , right , neutral ) ;
+END_TYPE ;
+
+ENTITY <A NAME="center_drill">center_drill </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="countersink">countersink </A>
+SUPERTYPE OF ( <A HREF="#backside_countersink">backside_countersink</A>) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+<I>countersink_radius </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="backside_countersink">backside_countersink </A>
+SUBTYPE OF ( <A HREF="#countersink">countersink</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="drill">drill </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#twist_drill">twist_drill</A>, <A HREF="#spade_drill">spade_drill</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="twist_drill">twist_drill </A>
+SUPERTYPE OF ( <A HREF="#tapered_drill">tapered_drill</A>) 
+SUBTYPE OF ( <A HREF="#drill">drill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_drill">tapered_drill </A>
+SUBTYPE OF ( <A HREF="#twist_drill">twist_drill</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="spade_drill">spade_drill </A>
+SUBTYPE OF ( <A HREF="#drill">drill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_cutter">milling_cutter </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#facemill">facemill</A>, <A HREF="#endmill">endmill</A>, <A HREF="#t_slot_mill">t_slot_mill</A>, <A HREF="#dovetail_mill">dovetail_mill</A>, <A HREF="#woodruff_keyseat_mill">woodruff_keyseat_mill</A>, <A HREF="#side_mill">side_mill</A>, <A HREF="#thread_mill">thread_mill</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="facemill">facemill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="endmill">endmill </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#tapered_endmill">tapered_endmill</A>, <A HREF="#ball_endmill">ball_endmill</A>, <A HREF="#bullnose_endmill">bullnose_endmill</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_endmill">tapered_endmill </A>
+SUBTYPE OF ( <A HREF="#endmill">endmill</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ball_endmill">ball_endmill </A>
+SUBTYPE OF ( <A HREF="#endmill">endmill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bullnose_endmill">bullnose_endmill </A>
+SUBTYPE OF ( <A HREF="#endmill">endmill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="t_slot_mill">t_slot_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>cutting_thickness </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="dovetail_mill">dovetail_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>included_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="woodruff_keyseat_mill">woodruff_keyseat_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>cutter_width </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="side_mill">side_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>cutter_width </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="thread_mill">thread_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tap">tap </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#tapered_tap">tapered_tap</A>, <A HREF="#combined_drill_and_tap">combined_drill_and_tap</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_tap">tapered_tap </A>
+SUBTYPE OF ( <A HREF="#tap">tap</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="combined_drill_and_tap">combined_drill_and_tap </A>
+SUBTYPE OF ( <A HREF="#tap">tap</A>) ;
+<I>drill_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="threading_tool">threading_tool </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="counterbore">counterbore </A>
+SUPERTYPE OF ( <A HREF="#backside_counterbore">backside_counterbore</A>) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="backside_counterbore">backside_counterbore </A>
+SUBTYPE OF ( <A HREF="#counterbore">counterbore</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="reamer">reamer </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#tapered_reamer">tapered_reamer</A>, <A HREF="#combined_drill_and_reamer">combined_drill_and_reamer</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_reamer">tapered_reamer </A>
+SUBTYPE OF ( <A HREF="#reamer">reamer</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="combined_drill_and_reamer">combined_drill_and_reamer </A>
+SUBTYPE OF ( <A HREF="#reamer">reamer</A>) ;
+<I>drill_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="boring_tool">boring_tool </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="user_defined_tool">user_defined_tool </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+<I>identifier </I>: <A HREF="machining_schema.html#label">label </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="exchange_pallet">exchange_pallet </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="index_pallet">index_pallet </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="index_table">index_table </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="load_tool">load_tool </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_tool </I>: <A HREF="machining_schema.html#machining_tool">machining_tool </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="unload_tool">unload_tool </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_tool </I>:  OPTIONAL <A HREF="machining_schema.html#machining_tool">machining_tool </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_direction_for_milling">tool_direction_for_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#three_axes_tilted_tool">three_axes_tilted_tool</A>, <A HREF="#five_axes_var_tilt_yaw">five_axes_var_tilt_yaw</A>, <A HREF="#five_axes_const_tilt_yaw">five_axes_const_tilt_yaw</A>) ) 
+SUBTYPE OF ( <A HREF="machining_schema.html#tool_direction">tool_direction </A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="three_axes_tilted_tool">three_axes_tilted_tool </A>
+SUBTYPE OF ( <A HREF="#tool_direction_for_milling">tool_direction_for_milling</A>) ;
+<I>tool_direction </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="five_axes_var_tilt_yaw">five_axes_var_tilt_yaw </A>
+SUBTYPE OF ( <A HREF="#tool_direction_for_milling">tool_direction_for_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="five_axes_const_tilt_yaw">five_axes_const_tilt_yaw </A>
+SUBTYPE OF ( <A HREF="#tool_direction_for_milling">tool_direction_for_milling</A>) ;
+<I>tilt_angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>yaw_angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_machining_operation">milling_machining_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#milling_type_operation">milling_type_operation</A>, <A HREF="#drilling_type_operation">drilling_type_operation</A>) ) 
+SUBTYPE OF ( <A HREF="machining_schema.html#machining_operation">machining_operation </A>) ;
+<I>overcut_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_technology">milling_technology </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#technology">technology </A>) ;
+<I>cutspeed </I>:  OPTIONAL <A HREF="machining_schema.html#speed_measure">speed_measure </A>;
+<I>spindle </I>:  OPTIONAL <A HREF="machining_schema.html#rot_speed_measure">rot_speed_measure </A>;
+<I>feedrate_per_tooth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>synchronize_spindle_with_feed </I>: BOOLEAN ;
+<I>inhibit_feedrate_override </I>: BOOLEAN ;
+<I>inhibit_spindle_override </I>: BOOLEAN ;
+<I>its_adaptive_control </I>:  OPTIONAL <A HREF="#adaptive_control">adaptive_control</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="adaptive_control">adaptive_control </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_machine_functions">milling_machine_functions </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#machine_functions">machine_functions </A>) ;
+<I>coolant </I>: BOOLEAN ;
+<I>coolant_pressure </I>:  OPTIONAL <A HREF="machining_schema.html#pressure_measure">pressure_measure </A>;
+<I>mist </I>:  OPTIONAL BOOLEAN ;
+<I>through_spindle_coolant </I>: BOOLEAN ;
+<I>through_pressure </I>:  OPTIONAL <A HREF="machining_schema.html#pressure_measure">pressure_measure </A>;
+<I>axis_clamping </I>: LIST [ 0 : ? ] OF identifier ;
+<I>chip_removal </I>: BOOLEAN ;
+<I>oriented_spindle_stop </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>its_process_model </I>:  OPTIONAL <A HREF="#process_model_list">process_model_list</A>;
+<I>other_functions </I>: SET [ 0 : ? ] OF property_parameter ;
+END_ENTITY ;
+
+ENTITY <A NAME="process_model_list">process_model_list </A>;
+<I>its_list </I>: LIST [ 1 : ? ] OF process_model ;
+END_ENTITY ;
+
+ENTITY <A NAME="process_model">process_model </A>;
+<I>ini_data_file </I>: <A HREF="machining_schema.html#label">label </A>;
+<I>its_type </I>: <A HREF="machining_schema.html#label">label </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_type_operation">milling_type_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#freeform_operation">freeform_operation</A>, <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_machining_operation">milling_machining_operation</A>) ;
+<I>approach </I>:  OPTIONAL <A HREF="#approach_retract_strategy">approach_retract_strategy</A>;
+<I>retract </I>:  OPTIONAL <A HREF="#approach_retract_strategy">approach_retract_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="approach_retract_strategy">approach_retract_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plunge_strategy">plunge_strategy</A>, <A HREF="#air_strategy">air_strategy</A>, <A HREF="#along_path">along_path</A>) ) ;
+<I>tool_orientation </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_strategy">plunge_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plunge_toolaxis">plunge_toolaxis</A>, <A HREF="#plunge_ramp">plunge_ramp</A>, <A HREF="#plunge_helix">plunge_helix</A>, <A HREF="#plunge_zigzag">plunge_zigzag</A>) ) 
+SUBTYPE OF ( <A HREF="#approach_retract_strategy">approach_retract_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_toolaxis">plunge_toolaxis </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_ramp">plunge_ramp </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_helix">plunge_helix </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+<I>radius </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_zigzag">plunge_zigzag </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>width </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="air_strategy">air_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#ap_retract_angle">ap_retract_angle</A>, <A HREF="#ap_retract_tangent">ap_retract_tangent</A>) ) 
+SUBTYPE OF ( <A HREF="#approach_retract_strategy">approach_retract_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_retract_angle">ap_retract_angle </A>
+SUBTYPE OF ( <A HREF="#air_strategy">air_strategy</A>) ;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>travel_length </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_retract_tangent">ap_retract_tangent </A>
+SUBTYPE OF ( <A HREF="#air_strategy">air_strategy</A>) ;
+<I>radius </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="along_path">along_path </A>
+SUBTYPE OF ( <A HREF="#approach_retract_strategy">approach_retract_strategy</A>) ;
+<I>path </I>: <A HREF="machining_schema.html#toolpath_list">toolpath_list </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="freeform_operation">freeform_operation </A>
+SUBTYPE OF ( <A HREF="#milling_type_operation">milling_type_operation</A>) ;
+<I>its_machining_strategy </I>:  OPTIONAL <A HREF="#freeform_strategy">freeform_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="freeform_strategy">freeform_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#uv_strategy">uv_strategy</A>, <A HREF="#plane_cc_strategy">plane_cc_strategy</A>, <A HREF="#plane_cl_strategy">plane_cl_strategy</A>, <A HREF="#leading_line_strategy">leading_line_strategy</A>) ) ;
+<I>pathmode </I>: <A HREF="#pathmode_type">pathmode_type</A>;
+<I>cutmode </I>: <A HREF="#cutmode_type">cutmode_type</A>;
+<I>its_milling_tolerances </I>: <A HREF="#tolerances">tolerances</A>;
+<I>stepover </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+TYPE <A NAME="pathmode_type">pathmode_type </A>= ENUMERATION OF ( forward , zigzag ) ;
+END_TYPE ;
+
+TYPE <A NAME="cutmode_type">cutmode_type </A>= ENUMERATION OF ( climb , conventional ) ;
+END_TYPE ;
+
+ENTITY <A NAME="tolerances">tolerances </A>;
+<I>chordal_tolerance </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>scallop_height </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="uv_strategy">uv_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>forward_direction </I>: <A HREF="machining_schema.html#direction">direction </A>;
+<I>sideward_direction </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_cc_strategy">plane_cc_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>its_plane_normal </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_cl_strategy">plane_cl_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>its_plane_normal </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="leading_line_strategy">leading_line_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>its_line </I>: <A HREF="machining_schema.html#bounded_curve">bounded_curve </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="two5d_milling_operation">two5d_milling_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plane_milling">plane_milling</A>, <A HREF="#side_milling">side_milling</A>, <A HREF="#bottom_and_side_milling">bottom_and_side_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_type_operation">milling_type_operation</A>) ;
+<I>its_machining_strategy </I>:  OPTIONAL <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="two5d_milling_strategy">two5d_milling_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#unidirectional">unidirectional</A>, <A HREF="#bidirectional">bidirectional</A>, <A HREF="#contour_parallel">contour_parallel</A>, <A HREF="#bidirectional_contour">bidirectional_contour</A>, <A HREF="#contour_bidirectional">contour_bidirectional</A>, <A HREF="#contour_spiral">contour_spiral</A>, <A HREF="#center_milling">center_milling</A>, <A HREF="#explicit">explicit</A>) ) ;
+<I>overlap </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>allow_multiple_passes </I>:  OPTIONAL BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="unidirectional">unidirectional </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bidirectional">bidirectional </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>stepover_direction </I>:  OPTIONAL <A HREF="#left_or_right">left_or_right</A>;
+<I>its_stroke_connection_strategy </I>:  OPTIONAL <A HREF="#stroke_connection_strategy">stroke_connection_strategy</A>;
+END_ENTITY ;
+
+TYPE <A NAME="left_or_right">left_or_right </A>= ENUMERATION OF ( left , right ) ;
+END_TYPE ;
+
+TYPE <A NAME="stroke_connection_strategy">stroke_connection_strategy </A>= ENUMERATION OF ( straghtline , lift_shift_plunge , degouge , loop_back ) ;
+END_TYPE ;
+
+ENTITY <A NAME="contour_parallel">contour_parallel </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bidirectional_contour">bidirectional_contour </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>stepover_direction </I>:  OPTIONAL <A HREF="#left_or_right">left_or_right</A>;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>spiral_cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="contour_bidirectional">contour_bidirectional </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>stepover_direction </I>:  OPTIONAL <A HREF="#left_or_right">left_or_right</A>;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>spiral_cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="contour_spiral">contour_spiral </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="center_milling">center_milling </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="explicit">explicit </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_milling">plane_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plane_rough_milling">plane_rough_milling</A>, <A HREF="#plane_finish_milling">plane_finish_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ;
+<I>axial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_bottom </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_rough_milling">plane_rough_milling </A>
+SUBTYPE OF ( <A HREF="#plane_milling">plane_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_finish_milling">plane_finish_milling </A>
+SUBTYPE OF ( <A HREF="#plane_milling">plane_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="side_milling">side_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#side_rough_milling">side_rough_milling</A>, <A HREF="#side_finish_milling">side_finish_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ;
+<I>axial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>radial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_side </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="side_rough_milling">side_rough_milling </A>
+SUBTYPE OF ( <A HREF="#side_milling">side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="side_finish_milling">side_finish_milling </A>
+SUBTYPE OF ( <A HREF="#side_milling">side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bottom_and_side_milling">bottom_and_side_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#bottom_and_side_rough_milling">bottom_and_side_rough_milling</A>, <A HREF="#bottom_and_side_finish_milling">bottom_and_side_finish_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ;
+<I>axial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>radial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_side </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_bottom </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bottom_and_side_rough_milling">bottom_and_side_rough_milling </A>
+SUBTYPE OF ( <A HREF="#bottom_and_side_milling">bottom_and_side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bottom_and_side_finish_milling">bottom_and_side_finish_milling </A>
+SUBTYPE OF ( <A HREF="#bottom_and_side_milling">bottom_and_side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling_type_operation">drilling_type_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#drilling_operation">drilling_operation</A>, <A HREF="#boring_operation">boring_operation</A>, <A HREF="#back_boring">back_boring</A>, <A HREF="#tapping">tapping</A>, <A HREF="#thread_drilling">thread_drilling</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_machining_operation">milling_machining_operation</A>) ;
+<I>cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>previous_diameter </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>dwell_time_bottom </I>:  OPTIONAL <A HREF="machining_schema.html#time_measure">time_measure </A>;
+<I>feed_on_retract </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>its_machining_strategy </I>:  OPTIONAL <A HREF="#drilling_type_strategy">drilling_type_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling_type_strategy">drilling_type_strategy </A>;
+<I>reduced_cut_at_start </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>reduced_feed_at_start </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>depth_of_start </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>reduced_cut_at_end </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>reduced_feed_at_end </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>depth_of_end </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling_operation">drilling_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#drilling">drilling</A>, <A HREF="#center_drilling">center_drilling</A>, <A HREF="#counter_sinking">counter_sinking</A>, <A HREF="#multistep_drilling">multistep_drilling</A>) ) 
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling">drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="center_drilling">center_drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="counter_sinking">counter_sinking </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="multistep_drilling">multistep_drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+<I>retract_distance </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>first_depth </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>depth_of_step </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>dwell_time_step </I>:  OPTIONAL <A HREF="machining_schema.html#time_measure">time_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="boring_operation">boring_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#boring">boring</A>, <A HREF="#reaming">reaming</A>) ) 
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+<I>spindle_stop_at_bottom </I>: BOOLEAN ;
+<I>depth_of_testcut </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>waiting_position </I>:  OPTIONAL <A HREF="machining_schema.html#cartesian_point">cartesian_point </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="boring">boring </A>
+SUBTYPE OF ( <A HREF="#boring_operation">boring_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="reaming">reaming </A>
+SUBTYPE OF ( <A HREF="#boring_operation">boring_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="back_boring">back_boring </A>
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapping">tapping </A>
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+<I>compensation_chuck </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="thread_drilling">thread_drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+<I>helical_movement_on_forward </I>: BOOLEAN ;
+END_ENTITY ;
+END_SCHEMA ;
+SCHEMA milling_schema ;
+REFERENCE FROM machining_schema ( bounded_curve , cartesian_point , cutting_tool , direction , identifier , label , length_measure , machine_functions , machining_operation , machining_tool , material , nc_function , plane_angle_measure , positive_ratio_measure , pressure_measure , property_parameter , rot_direction , rot_speed_measure , speed_measure , technology , time_measure , tool_body , toolpath_list , tool_direction ) ;
+
+ENTITY <A NAME="milling_cutting_tool">milling_cutting_tool </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#cutting_tool">cutting_tool </A>) ;
+<I>direction_for_spindle_orientation </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>tool_holder_diameter_for_spindle_orientation </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_tool_body">milling_tool_body </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#center_drill">center_drill</A>, <A HREF="#countersink">countersink</A>, <A HREF="#drill">drill</A>, <A HREF="#milling_cutter">milling_cutter</A>, <A HREF="#tap">tap</A>, <A HREF="#threading_tool">threading_tool</A>, <A HREF="#counterbore">counterbore</A>, <A HREF="#reamer">reamer</A>, <A HREF="#boring_tool">boring_tool</A>, <A HREF="#user_defined_tool">user_defined_tool</A>) ) 
+SUBTYPE OF ( <A HREF="machining_schema.html#tool_body">tool_body </A>) ;
+<I>dimension </I>: <A HREF="#milling_tool_dimension">milling_tool_dimension</A>;
+<I>number_of_teeth </I>:  OPTIONAL INTEGER ;
+<I>hand_of_cut </I>:  OPTIONAL <A HREF="#hand">hand</A>;
+<I>coolant_through_tool </I>:  OPTIONAL BOOLEAN ;
+<I>pilot_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_tool_dimension">milling_tool_dimension </A>;
+<I>diameter </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>tool_top_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>tool_circumference_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>cutting_edge_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>edge_radius </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>edge_center_vertical </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>edge_center_horizontal </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+TYPE <A NAME="hand">hand </A>= ENUMERATION OF ( left , right , neutral ) ;
+END_TYPE ;
+
+ENTITY <A NAME="center_drill">center_drill </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="countersink">countersink </A>
+SUPERTYPE OF ( <A HREF="#backside_countersink">backside_countersink</A>) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+<I>countersink_radius </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="backside_countersink">backside_countersink </A>
+SUBTYPE OF ( <A HREF="#countersink">countersink</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="drill">drill </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#twist_drill">twist_drill</A>, <A HREF="#spade_drill">spade_drill</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="twist_drill">twist_drill </A>
+SUPERTYPE OF ( <A HREF="#tapered_drill">tapered_drill</A>) 
+SUBTYPE OF ( <A HREF="#drill">drill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_drill">tapered_drill </A>
+SUBTYPE OF ( <A HREF="#twist_drill">twist_drill</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="spade_drill">spade_drill </A>
+SUBTYPE OF ( <A HREF="#drill">drill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_cutter">milling_cutter </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#facemill">facemill</A>, <A HREF="#endmill">endmill</A>, <A HREF="#t_slot_mill">t_slot_mill</A>, <A HREF="#dovetail_mill">dovetail_mill</A>, <A HREF="#woodruff_keyseat_mill">woodruff_keyseat_mill</A>, <A HREF="#side_mill">side_mill</A>, <A HREF="#thread_mill">thread_mill</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="facemill">facemill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="endmill">endmill </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#tapered_endmill">tapered_endmill</A>, <A HREF="#ball_endmill">ball_endmill</A>, <A HREF="#bullnose_endmill">bullnose_endmill</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_endmill">tapered_endmill </A>
+SUBTYPE OF ( <A HREF="#endmill">endmill</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ball_endmill">ball_endmill </A>
+SUBTYPE OF ( <A HREF="#endmill">endmill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bullnose_endmill">bullnose_endmill </A>
+SUBTYPE OF ( <A HREF="#endmill">endmill</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="t_slot_mill">t_slot_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>cutting_thickness </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="dovetail_mill">dovetail_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>included_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="woodruff_keyseat_mill">woodruff_keyseat_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>cutter_width </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="side_mill">side_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+<I>cutter_width </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="thread_mill">thread_mill </A>
+SUBTYPE OF ( <A HREF="#milling_cutter">milling_cutter</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tap">tap </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#tapered_tap">tapered_tap</A>, <A HREF="#combined_drill_and_tap">combined_drill_and_tap</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_tap">tapered_tap </A>
+SUBTYPE OF ( <A HREF="#tap">tap</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="combined_drill_and_tap">combined_drill_and_tap </A>
+SUBTYPE OF ( <A HREF="#tap">tap</A>) ;
+<I>drill_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="threading_tool">threading_tool </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="counterbore">counterbore </A>
+SUPERTYPE OF ( <A HREF="#backside_counterbore">backside_counterbore</A>) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="backside_counterbore">backside_counterbore </A>
+SUBTYPE OF ( <A HREF="#counterbore">counterbore</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="reamer">reamer </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#tapered_reamer">tapered_reamer</A>, <A HREF="#combined_drill_and_reamer">combined_drill_and_reamer</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapered_reamer">tapered_reamer </A>
+SUBTYPE OF ( <A HREF="#reamer">reamer</A>) ;
+<I>taper_angle </I>:  OPTIONAL <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="combined_drill_and_reamer">combined_drill_and_reamer </A>
+SUBTYPE OF ( <A HREF="#reamer">reamer</A>) ;
+<I>drill_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="boring_tool">boring_tool </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="user_defined_tool">user_defined_tool </A>
+SUBTYPE OF ( <A HREF="#milling_tool_body">milling_tool_body</A>) ;
+<I>identifier </I>: <A HREF="machining_schema.html#label">label </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="exchange_pallet">exchange_pallet </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="index_pallet">index_pallet </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="index_table">index_table </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="load_tool">load_tool </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_tool </I>: <A HREF="machining_schema.html#machining_tool">machining_tool </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="unload_tool">unload_tool </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#nc_function">nc_function </A>) ;
+<I>its_tool </I>:  OPTIONAL <A HREF="machining_schema.html#machining_tool">machining_tool </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_direction_for_milling">tool_direction_for_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#three_axes_tilted_tool">three_axes_tilted_tool</A>, <A HREF="#five_axes_var_tilt_yaw">five_axes_var_tilt_yaw</A>, <A HREF="#five_axes_const_tilt_yaw">five_axes_const_tilt_yaw</A>) ) 
+SUBTYPE OF ( <A HREF="machining_schema.html#tool_direction">tool_direction </A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="three_axes_tilted_tool">three_axes_tilted_tool </A>
+SUBTYPE OF ( <A HREF="#tool_direction_for_milling">tool_direction_for_milling</A>) ;
+<I>tool_direction </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="five_axes_var_tilt_yaw">five_axes_var_tilt_yaw </A>
+SUBTYPE OF ( <A HREF="#tool_direction_for_milling">tool_direction_for_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="five_axes_const_tilt_yaw">five_axes_const_tilt_yaw </A>
+SUBTYPE OF ( <A HREF="#tool_direction_for_milling">tool_direction_for_milling</A>) ;
+<I>tilt_angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>yaw_angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_machining_operation">milling_machining_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#milling_type_operation">milling_type_operation</A>, <A HREF="#drilling_type_operation">drilling_type_operation</A>) ) 
+SUBTYPE OF ( <A HREF="machining_schema.html#machining_operation">machining_operation </A>) ;
+<I>overcut_length </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_technology">milling_technology </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#technology">technology </A>) ;
+<I>cutspeed </I>:  OPTIONAL <A HREF="machining_schema.html#speed_measure">speed_measure </A>;
+<I>spindle </I>:  OPTIONAL <A HREF="machining_schema.html#rot_speed_measure">rot_speed_measure </A>;
+<I>feedrate_per_tooth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>synchronize_spindle_with_feed </I>: BOOLEAN ;
+<I>inhibit_feedrate_override </I>: BOOLEAN ;
+<I>inhibit_spindle_override </I>: BOOLEAN ;
+<I>its_adaptive_control </I>:  OPTIONAL <A HREF="#adaptive_control">adaptive_control</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="adaptive_control">adaptive_control </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_machine_functions">milling_machine_functions </A>
+SUBTYPE OF ( <A HREF="machining_schema.html#machine_functions">machine_functions </A>) ;
+<I>coolant </I>: BOOLEAN ;
+<I>coolant_pressure </I>:  OPTIONAL <A HREF="machining_schema.html#pressure_measure">pressure_measure </A>;
+<I>mist </I>:  OPTIONAL BOOLEAN ;
+<I>through_spindle_coolant </I>: BOOLEAN ;
+<I>through_pressure </I>:  OPTIONAL <A HREF="machining_schema.html#pressure_measure">pressure_measure </A>;
+<I>axis_clamping </I>: LIST [ 0 : ? ] OF identifier ;
+<I>chip_removal </I>: BOOLEAN ;
+<I>oriented_spindle_stop </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>its_process_model </I>:  OPTIONAL <A HREF="#process_model_list">process_model_list</A>;
+<I>other_functions </I>: SET [ 0 : ? ] OF property_parameter ;
+END_ENTITY ;
+
+ENTITY <A NAME="process_model_list">process_model_list </A>;
+<I>its_list </I>: LIST [ 1 : ? ] OF process_model ;
+END_ENTITY ;
+
+ENTITY <A NAME="process_model">process_model </A>;
+<I>ini_data_file </I>: <A HREF="machining_schema.html#label">label </A>;
+<I>its_type </I>: <A HREF="machining_schema.html#label">label </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="milling_type_operation">milling_type_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#freeform_operation">freeform_operation</A>, <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_machining_operation">milling_machining_operation</A>) ;
+<I>approach </I>:  OPTIONAL <A HREF="#approach_retract_strategy">approach_retract_strategy</A>;
+<I>retract </I>:  OPTIONAL <A HREF="#approach_retract_strategy">approach_retract_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="approach_retract_strategy">approach_retract_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plunge_strategy">plunge_strategy</A>, <A HREF="#air_strategy">air_strategy</A>, <A HREF="#along_path">along_path</A>) ) ;
+<I>tool_orientation </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_strategy">plunge_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plunge_toolaxis">plunge_toolaxis</A>, <A HREF="#plunge_ramp">plunge_ramp</A>, <A HREF="#plunge_helix">plunge_helix</A>, <A HREF="#plunge_zigzag">plunge_zigzag</A>) ) 
+SUBTYPE OF ( <A HREF="#approach_retract_strategy">approach_retract_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_toolaxis">plunge_toolaxis </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_ramp">plunge_ramp </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_helix">plunge_helix </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+<I>radius </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plunge_zigzag">plunge_zigzag </A>
+SUBTYPE OF ( <A HREF="#plunge_strategy">plunge_strategy</A>) ;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>width </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="air_strategy">air_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#ap_retract_angle">ap_retract_angle</A>, <A HREF="#ap_retract_tangent">ap_retract_tangent</A>) ) 
+SUBTYPE OF ( <A HREF="#approach_retract_strategy">approach_retract_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_retract_angle">ap_retract_angle </A>
+SUBTYPE OF ( <A HREF="#air_strategy">air_strategy</A>) ;
+<I>angle </I>: <A HREF="machining_schema.html#plane_angle_measure">plane_angle_measure </A>;
+<I>travel_length </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_retract_tangent">ap_retract_tangent </A>
+SUBTYPE OF ( <A HREF="#air_strategy">air_strategy</A>) ;
+<I>radius </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="along_path">along_path </A>
+SUBTYPE OF ( <A HREF="#approach_retract_strategy">approach_retract_strategy</A>) ;
+<I>path </I>: <A HREF="machining_schema.html#toolpath_list">toolpath_list </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="freeform_operation">freeform_operation </A>
+SUBTYPE OF ( <A HREF="#milling_type_operation">milling_type_operation</A>) ;
+<I>its_machining_strategy </I>:  OPTIONAL <A HREF="#freeform_strategy">freeform_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="freeform_strategy">freeform_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#uv_strategy">uv_strategy</A>, <A HREF="#plane_cc_strategy">plane_cc_strategy</A>, <A HREF="#plane_cl_strategy">plane_cl_strategy</A>, <A HREF="#leading_line_strategy">leading_line_strategy</A>) ) ;
+<I>pathmode </I>: <A HREF="#pathmode_type">pathmode_type</A>;
+<I>cutmode </I>: <A HREF="#cutmode_type">cutmode_type</A>;
+<I>its_milling_tolerances </I>: <A HREF="#tolerances">tolerances</A>;
+<I>stepover </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+TYPE <A NAME="pathmode_type">pathmode_type </A>= ENUMERATION OF ( forward , zigzag ) ;
+END_TYPE ;
+
+TYPE <A NAME="cutmode_type">cutmode_type </A>= ENUMERATION OF ( climb , conventional ) ;
+END_TYPE ;
+
+ENTITY <A NAME="tolerances">tolerances </A>;
+<I>chordal_tolerance </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>scallop_height </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="uv_strategy">uv_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>forward_direction </I>: <A HREF="machining_schema.html#direction">direction </A>;
+<I>sideward_direction </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_cc_strategy">plane_cc_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>its_plane_normal </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_cl_strategy">plane_cl_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>its_plane_normal </I>: <A HREF="machining_schema.html#direction">direction </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="leading_line_strategy">leading_line_strategy </A>
+SUBTYPE OF ( <A HREF="#freeform_strategy">freeform_strategy</A>) ;
+<I>its_line </I>: <A HREF="machining_schema.html#bounded_curve">bounded_curve </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="two5d_milling_operation">two5d_milling_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plane_milling">plane_milling</A>, <A HREF="#side_milling">side_milling</A>, <A HREF="#bottom_and_side_milling">bottom_and_side_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_type_operation">milling_type_operation</A>) ;
+<I>its_machining_strategy </I>:  OPTIONAL <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="two5d_milling_strategy">two5d_milling_strategy </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#unidirectional">unidirectional</A>, <A HREF="#bidirectional">bidirectional</A>, <A HREF="#contour_parallel">contour_parallel</A>, <A HREF="#bidirectional_contour">bidirectional_contour</A>, <A HREF="#contour_bidirectional">contour_bidirectional</A>, <A HREF="#contour_spiral">contour_spiral</A>, <A HREF="#center_milling">center_milling</A>, <A HREF="#explicit">explicit</A>) ) ;
+<I>overlap </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>allow_multiple_passes </I>:  OPTIONAL BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="unidirectional">unidirectional </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bidirectional">bidirectional </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>stepover_direction </I>:  OPTIONAL <A HREF="#left_or_right">left_or_right</A>;
+<I>its_stroke_connection_strategy </I>:  OPTIONAL <A HREF="#stroke_connection_strategy">stroke_connection_strategy</A>;
+END_ENTITY ;
+
+TYPE <A NAME="left_or_right">left_or_right </A>= ENUMERATION OF ( left , right ) ;
+END_TYPE ;
+
+TYPE <A NAME="stroke_connection_strategy">stroke_connection_strategy </A>= ENUMERATION OF ( straghtline , lift_shift_plunge , degouge , loop_back ) ;
+END_TYPE ;
+
+ENTITY <A NAME="contour_parallel">contour_parallel </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bidirectional_contour">bidirectional_contour </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>stepover_direction </I>:  OPTIONAL <A HREF="#left_or_right">left_or_right</A>;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>spiral_cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="contour_bidirectional">contour_bidirectional </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>feed_direction </I>:  OPTIONAL <A HREF="machining_schema.html#direction">direction </A>;
+<I>stepover_direction </I>:  OPTIONAL <A HREF="#left_or_right">left_or_right</A>;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>spiral_cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="contour_spiral">contour_spiral </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+<I>rotation_direction </I>:  OPTIONAL <A HREF="machining_schema.html#rot_direction">rot_direction </A>;
+<I>cutmode </I>:  OPTIONAL <A HREF="#cutmode_type">cutmode_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="center_milling">center_milling </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="explicit">explicit </A>
+SUBTYPE OF ( <A HREF="#two5d_milling_strategy">two5d_milling_strategy</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_milling">plane_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#plane_rough_milling">plane_rough_milling</A>, <A HREF="#plane_finish_milling">plane_finish_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ;
+<I>axial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_bottom </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_rough_milling">plane_rough_milling </A>
+SUBTYPE OF ( <A HREF="#plane_milling">plane_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="plane_finish_milling">plane_finish_milling </A>
+SUBTYPE OF ( <A HREF="#plane_milling">plane_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="side_milling">side_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#side_rough_milling">side_rough_milling</A>, <A HREF="#side_finish_milling">side_finish_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ;
+<I>axial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>radial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_side </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="side_rough_milling">side_rough_milling </A>
+SUBTYPE OF ( <A HREF="#side_milling">side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="side_finish_milling">side_finish_milling </A>
+SUBTYPE OF ( <A HREF="#side_milling">side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bottom_and_side_milling">bottom_and_side_milling </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#bottom_and_side_rough_milling">bottom_and_side_rough_milling</A>, <A HREF="#bottom_and_side_finish_milling">bottom_and_side_finish_milling</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_milling_operation">two5d_milling_operation</A>) ;
+<I>axial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>radial_cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_side </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>allowance_bottom </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bottom_and_side_rough_milling">bottom_and_side_rough_milling </A>
+SUBTYPE OF ( <A HREF="#bottom_and_side_milling">bottom_and_side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bottom_and_side_finish_milling">bottom_and_side_finish_milling </A>
+SUBTYPE OF ( <A HREF="#bottom_and_side_milling">bottom_and_side_milling</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling_type_operation">drilling_type_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#drilling_operation">drilling_operation</A>, <A HREF="#boring_operation">boring_operation</A>, <A HREF="#back_boring">back_boring</A>, <A HREF="#tapping">tapping</A>, <A HREF="#thread_drilling">thread_drilling</A>) ) 
+SUBTYPE OF ( <A HREF="#milling_machining_operation">milling_machining_operation</A>) ;
+<I>cutting_depth </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>previous_diameter </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>dwell_time_bottom </I>:  OPTIONAL <A HREF="machining_schema.html#time_measure">time_measure </A>;
+<I>feed_on_retract </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>its_machining_strategy </I>:  OPTIONAL <A HREF="#drilling_type_strategy">drilling_type_strategy</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling_type_strategy">drilling_type_strategy </A>;
+<I>reduced_cut_at_start </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>reduced_feed_at_start </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>depth_of_start </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>reduced_cut_at_end </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>reduced_feed_at_end </I>:  OPTIONAL <A HREF="machining_schema.html#positive_ratio_measure">positive_ratio_measure </A>;
+<I>depth_of_end </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling_operation">drilling_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#drilling">drilling</A>, <A HREF="#center_drilling">center_drilling</A>, <A HREF="#counter_sinking">counter_sinking</A>, <A HREF="#multistep_drilling">multistep_drilling</A>) ) 
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="drilling">drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="center_drilling">center_drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="counter_sinking">counter_sinking </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="multistep_drilling">multistep_drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_operation">drilling_operation</A>) ;
+<I>retract_distance </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>first_depth </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>depth_of_step </I>: <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>dwell_time_step </I>:  OPTIONAL <A HREF="machining_schema.html#time_measure">time_measure </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="boring_operation">boring_operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#boring">boring</A>, <A HREF="#reaming">reaming</A>) ) 
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+<I>spindle_stop_at_bottom </I>: BOOLEAN ;
+<I>depth_of_testcut </I>:  OPTIONAL <A HREF="machining_schema.html#length_measure">length_measure </A>;
+<I>waiting_position </I>:  OPTIONAL <A HREF="machining_schema.html#cartesian_point">cartesian_point </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="boring">boring </A>
+SUBTYPE OF ( <A HREF="#boring_operation">boring_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="reaming">reaming </A>
+SUBTYPE OF ( <A HREF="#boring_operation">boring_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="back_boring">back_boring </A>
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tapping">tapping </A>
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+<I>compensation_chuck </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="thread_drilling">thread_drilling </A>
+SUBTYPE OF ( <A HREF="#drilling_type_operation">drilling_type_operation</A>) ;
+<I>helical_movement_on_forward </I>: BOOLEAN ;
+END_ENTITY ;
+END_SCHEMA ;
+</PRE></BODY></HTML>

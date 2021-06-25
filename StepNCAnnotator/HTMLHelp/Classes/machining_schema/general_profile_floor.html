@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> general_profile_floor </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="general_profile_floor">general_profile_floor </A></H1><P>A general_profile_floor is a type of profile_floor that specifies an enclosed area bounded by an arbitrary shape.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#general_profile_floor">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>floor </TD>
+<TD><A HREF="../machining_schema/face.html#face">face</A> </TD>
+<TD>Specification of the face at the bottom of a shape_profile, adjacent to all the shape_profile walls. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY general_profile_floor 
+SUBTYPE  OF (<A HREF="profile_floor.html">profile_floor</A> );
+ floor : <A HREF="../machining_schema/face.html#face">face</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

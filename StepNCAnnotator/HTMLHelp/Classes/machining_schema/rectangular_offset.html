@@ -1,0 +1,33 @@
+<HTML><HEAD><TITLE> rectangular_offset </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="rectangular_offset">rectangular_offset </A></H1><P>Entity to describe the position of a single relocated element whitin a rectangular pattern of elements.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#rectangular_offset">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>offset_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>Direction of the offset of the element. </TD></TR>
+<TR><TD>offset_distance </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Amount of offset of the element. </TD></TR>
+<TR><TD>row_index </TD>
+<TD> INTEGER </TD>
+<TD>Row of the offset element. </TD></TR>
+<TR><TD>column_index </TD>
+<TD> INTEGER </TD>
+<TD>Column of the offset element. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY rectangular_offset ;
+ offset_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ offset_distance : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ row_index :  INTEGER;
+ column_index :  INTEGER;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

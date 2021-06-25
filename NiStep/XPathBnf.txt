@@ -1,0 +1,92 @@
+
+
+http://www.w3.org/2002/11/xquery-xpath-applets/xpath-bnf.html 
+
+
+
+
+[13]    XPath    ::=    ExprSequence? 
+[14]    ExprSequence    ::=    Expr ("," Expr)* 
+[15]    Expr    ::=    OrExpr 
+[16]    OrExpr    ::=    AndExpr ( "or"  AndExpr )* 
+[17]    AndExpr    ::=    ForExpr ( "and"  ForExpr )* 
+[18]    ForExpr    ::=    (SimpleForClause "return")* QuantifiedExpr 
+[19]    QuantifiedExpr    ::=    ((<"some" "$"> |  <"every" "$">) VarName "in" Expr ("," "$" VarName "in" Expr)* "satisfies")* IfExpr 
+[20]    IfExpr    ::=    (<"if" "("> Expr ")" "then" Expr "else")* InstanceofExpr 
+[21]    InstanceofExpr    ::=    CastableExpr ( <"instance" "of"> SequenceType )? 
+[22]    CastableExpr    ::=    ComparisonExpr ( <"castable" "as"> SingleType )? 
+[23]    ComparisonExpr    ::=    RangeExpr ( (ValueComp 
+|  GeneralComp 
+|  NodeComp 
+|  OrderComp)  RangeExpr )? 
+[24]    RangeExpr    ::=    AdditiveExpr ( "to"  AdditiveExpr )? 
+[25]    AdditiveExpr    ::=    MultiplicativeExpr ( ("+" |  "-")  MultiplicativeExpr )* 
+[26]    MultiplicativeExpr    ::=    UnaryExpr ( ("*" |  "div" |  "idiv" |  "mod")  UnaryExpr )* 
+[27]    UnaryExpr    ::=    ("-" |  "+")* UnionExpr 
+[28]    UnionExpr    ::=    IntersectExceptExpr ( ("union" |  "|")  IntersectExceptExpr )* 
+[29]    IntersectExceptExpr    ::=    ValueExpr ( ("intersect" |  "except")  ValueExpr )* 
+[30]    ValueExpr    ::=    ValidateExpr |  CastExpr |  TreatExpr |  PathExpr 
+[31]    PathExpr    ::=    ("/" RelativePathExpr?) |  ("//" RelativePathExpr) |  RelativePathExpr 
+[32]    RelativePathExpr    ::=    StepExpr (("/" |  "//") StepExpr)* 
+[33]    StepExpr    ::=    (ForwardStep |  ReverseStep |  PrimaryExpr) Predicates 
+[34]    SimpleForClause    ::=    <"for" "$"> VarName "in" Expr ("," "$" VarName "in" Expr)* 
+[35]    ValidateExpr    ::=    (<"validate" "{"> |  (<"validate" "context"> SchemaGlobalContext ("/" SchemaContextStep)* "{")) Expr "}" 
+[36]    CastExpr    ::=    <"cast" "as"> SingleType ParenthesizedExpr 
+[37]    TreatExpr    ::=    <"treat" "as"> SequenceType ParenthesizedExpr 
+[38]    GeneralComp    ::=    "=" |  "!=" |  "<" |  "<=" |  ">" |  ">=" 
+[39]    ValueComp    ::=    "eq" |  "ne" |  "lt" |  "le" |  "gt" |  "ge" 
+[40]    NodeComp    ::=    "is" |  "isnot" 
+[41]    OrderComp    ::=    "<<" |  ">>" 
+[42]    PrimaryExpr    ::=    Literal |  FunctionCall |  ("$" VarName) |  ParenthesizedExpr 
+[43]    ForwardAxis    ::=    <"child" "::">
+|  <"descendant" "::">
+|  <"attribute" "::">
+|  <"self" "::">
+|  <"descendant-or-self" "::">
+|  <"following-sibling" "::">
+|  <"following" "::">
+|  <"namespace" "::"> 
+[44]    ReverseAxis    ::=    <"parent" "::">
+|  <"ancestor" "::">
+|  <"preceding-sibling" "::">
+|  <"preceding" "::">
+|  <"ancestor-or-self" "::"> 
+[45]    NodeTest    ::=    KindTest |  NameTest 
+[46]    NameTest    ::=    QName |  Wildcard 
+[47]    Wildcard    ::=    "*" |  <NCName ":" "*"> |  <"*" ":" NCName> 
+[48]    KindTest    ::=    ProcessingInstructionTest 
+|  CommentTest 
+|  TextTest 
+|  AnyKindTest 
+[49]    ProcessingInstructionTest    ::=    <"processing-instruction" "("> StringLiteral? ")" 
+[50]    CommentTest    ::=    <"comment" "("> ")" 
+[51]    TextTest    ::=    <"text" "("> ")" 
+[52]    AnyKindTest    ::=    <"node" "("> ")" 
+[53]    ForwardStep    ::=    (ForwardAxis NodeTest) |  AbbreviatedForwardStep 
+[54]    ReverseStep    ::=    (ReverseAxis NodeTest) |  AbbreviatedReverseStep 
+[55]    AbbreviatedForwardStep    ::=    "." |  ("@" NameTest) |  NodeTest 
+[56]    AbbreviatedReverseStep    ::=    ".." 
+[57]    Predicates    ::=    ("[" Expr "]")* 
+[58]    NumericLiteral    ::=    IntegerLiteral |  DecimalLiteral |  DoubleLiteral 
+[59]    Literal    ::=    NumericLiteral |  StringLiteral 
+[60]    ParenthesizedExpr    ::=    "(" ExprSequence? ")" 
+[61]    FunctionCall    ::=    <QName "("> (Expr ("," Expr)*)? ")" 
+[62]    SchemaContext    ::=    "context" SchemaGlobalContext ("/" SchemaContextStep)* 
+[63]    SchemaGlobalContext    ::=    QName |  <"type" QName> 
+[64]    SchemaContextStep    ::=    QName 
+[65]    SingleType    ::=    AtomicType "?"? 
+[66]    SequenceType    ::=    (ItemType OccurrenceIndicator) |  "empty" 
+[67]    ItemType    ::=    (("element" |  "attribute") ElemOrAttrType?)
+|  "node"
+|  "processing-instruction"
+|  "comment"
+|  "text"
+|  "document"
+|  "item"
+|  AtomicType 
+|  "untyped"
+|  <"atomic" "value"> 
+[68]    ElemOrAttrType    ::=    (QName (SchemaType |  SchemaContext?)) |  SchemaType 
+[69]    SchemaType    ::=    <"of" "type"> QName 
+[70]    AtomicType    ::=    QName 
+[71]    OccurrenceIndicator    ::=    ("*" |  "+" |  "?")? 

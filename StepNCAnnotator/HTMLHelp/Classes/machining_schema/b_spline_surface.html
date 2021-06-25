@@ -1,0 +1,47 @@
+<HTML><HEAD><TITLE> b_spline_surface </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="b_spline_surface">b_spline_surface </A></H1><P>A b spline surface is a general form of rational or polynomial parametric surface which is represented by control points, basis functions, and possibly, weights. As with the corresponding curve entity it has some special subtypes where some of the data can be derived.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#b_spline_surface">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>u_degree </TD>
+<TD> INTEGER </TD>
+<TD>Algebraic degree of basis functions in u. </TD></TR>
+<TR><TD>v_degree </TD>
+<TD> INTEGER </TD>
+<TD>Algebraic degree of basis functions in v. </TD></TR>
+<TR><TD>control_points_list </TD>
+<TD> LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF cartesian_point </TD>
+<TD>This is a list of lists of control points. </TD></TR>
+<TR><TD>surface_form </TD>
+<TD><A HREF="../machining_schema/b_spline_surface_form.html#b_spline_surface_form">b_spline_surface_form</A> </TD>
+<TD>Indicator of special surface types. </TD></TR>
+<TR><TD>u_closed </TD>
+<TD> LOGICAL </TD>
+<TD>Indication of whether the surface is closed in the u direction; this is for information only. </TD></TR>
+<TR><TD>v_closed </TD>
+<TD> LOGICAL </TD>
+<TD>Indication of whether the surface is closed in the v direction; this is for information only. </TD></TR>
+<TR><TD>self_intersect </TD>
+<TD> LOGICAL </TD>
+<TD>Flag to indicate whether, or not, surface is self­intersecting; this is for information only. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY b_spline_surface 
+SUPERTYPE  OF ( ONEOF (<A HREF="b_spline_surface_with_knots.html">b_spline_surface_with_knots</A> ,<A HREF="uniform_surface.html">uniform_surface</A> ,<A HREF="quasi_uniform_surface.html">quasi_uniform_surface</A> ,<A HREF="bezier_surface.html">bezier_surface</A> ) ANDOR<A HREF="rational_b_spline_surface.html">rational_b_spline_surface</A> )
+SUBTYPE  OF (<A HREF="bounded_surface.html">bounded_surface</A> );
+ u_degree :  INTEGER;
+ v_degree :  INTEGER;
+ control_points_list :  LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF cartesian_point;
+ surface_form : <A HREF="../machining_schema/b_spline_surface_form.html#b_spline_surface_form">b_spline_surface_form</A>;
+ u_closed :  LOGICAL;
+ v_closed :  LOGICAL;
+ self_intersect :  LOGICAL;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

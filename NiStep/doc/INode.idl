@@ -1,0 +1,266 @@
+///////////////////////////////////////////////////////////////////////////////////
+// INode
+
+// Documentation for INode
+
+/** 
+\fn HRESULT INode::IsSimpleType([out,retval] VARIANT_BOOL* flag)
+COM method to determine if Step Node type is simple type. 
+Simple StepNodeType types are: string_,  integer_, real_, boolean_, number_, logical_, enumeration_.
+@param[out] flag pointer to variant bool to store true if it is false otherwise.
+*/
+
+/** \property HRESULT INode::Type([out, retval] StepNodeType* pVal)
+COM property for Step Node's express schema type. 
+@param[out] pVal pointer to StepNodeType to store type.*/
+
+/** \property HRESULT INode::ListType([out, retval] StepNodeType* pVal)
+COM property for Step Node list's express schema type. Node's type is list. 
+@param[out] pVal pointer to StepNodeType to store  list type.
+*/
+
+/** \property HRESULT INode::Classname([out, retval] BSTR* pVal)
+COM property for Step Node's express schema classname. 
+@param[out] pVal pointer to bstring pointer to store classname.
+*/
+
+/** \fn HRESULT INode::IsListType([out,retval] VARIANT_BOOL* flag)
+COM method to determine if Step Node type is list. 
+@param[out] flag pointer to variant bool to store true if it is false otherwise.
+*/
+
+/** \property HRESULT INode::Name([out, retval] BSTR* pVal) 
+COM property for Step Node's Name, such as #1. 
+@param[out] pVal pointer to bstring pointer to store name.*/
+
+
+/** \property HRESULT INode::ListClassname([out, retval] BSTR* pVal)
+COM property for Step Node's list classname. 
+@param[out] pVal pointer to bstring pointer to store list classname.
+*/
+
+/** \fn HRESULT INode::GetVarString([out, retval] BSTR* pVal)
+COM method that returns Simple list variable's value as string. 
+\code Example:
+\endcode
+@param[out] pVal pointer to bstring to store true if it is false otherwise.
+*/
+
+/** \fn HRESULT INode::SetVarString([in] BSTR bstrVal)
+COM method that sets a simple STEP node variable or list using input string. 
+\par Examples
+Shows the ability of all primitive nodes to be set using strings.
+\code
+		pStrStepNode->SetVarString(_bstr_t(L"0"));
+		pIntStepNode->SetVarString(_bstr_t(L"0"));
+		pRealStepNode->SetVarString(_bstr_t(L"0.0"));
+		pSimpleListStepNode->SetVarString(_bstr_t(L"0.0, 0.0, 0.0"));
+		pBoolStepNode->SetVarString(_bstr_t(L".T."));
+		pEnumStepNode->SetVarString(_bstr_t(L".LEFT."));  // assuming "hand "
+\endcode
+@param[in] bstrVal bstring containg value to store.
+*/
+
+/** \fn HRESULT INode::AddAttribute([in] BSTR bstrPath, [out, retval] VARIANT_BOOL* flag)
+COM method to fill out a step branch using the given spath. 
+\par Example
+Assuming the current step node is the project or root node, we will define a spath to create
+a new machining_workingstep under the its_elements branch. 
+\code
+	project->AddAttribute(bstrFormat(bstr_t(L"/main_workplan/its_elements[-1]{machining_workingstep}")));
+\endcode
+The [-1] says to append a new step instance to the its_elements. 
+The {machining_workingstep} part says to create the new its_elements instance as a "machining_workingstep" type class.
+
+* @param  bstrPath  bstring step variable path.
+* @param  flag  successful class derivation returns true.
+*/
+
+/** \fn HRESULT INode::GetAttributeNodeList([in] BSTR bstrPath,  [out, retval] INodeList ** pNodeList)
+* Navigates Step Node branch  to return list Step Node returned as INodeList enumeration.
+\par Example
+Assume project is the current node. To get the worplan elements:
+\code	INodeListPtr its_elements = project->GetAttributeNodeList(_bstr_t(L"/main_workplan/its_elements"));
+\endcode
+* @param  bstrPath  bstr step variable path.
+* @param  pNodeList  pointer to node list pointer to store list.
+*/
+
+/** \fn HRESULT INode::CreateAttributeNode([in] BSTR spath, [in] BSTR classname, [out, retval]  INode** ppNode)
+* Given an SPATH describing a step attribute branch, create, set and return attribute's node.
+\par Example
+\code
+	IStepNodePtr pStepLine = pSegment->CreateAttributeNode(_bstr_t(L"parent_curve"), _bstr_t(L"line"));
+\endcode
+* @param  spath   bstring step variable path.
+* @param  classname  bstr classname to create and store into final spath variable.
+* @param  ppNode  pointer to pointer to store newly created step node.
+*/
+/** \fn HRESULT INode::DoesPathExist([in] BSTR bstrPath, [out, retval] VARIANT_BOOL* flag)
+* Determines if Step Node branch  exists.
+\par Example
+Assume node is of type workpiece, then we can use the following code to determine if a bounding geometry
+has been defined for the workpiece.
+\code 		if(workpiece->DoesPathExist(_bstr_t(L"its_bounding_geometry"))==VARIANT_FALSE)
+			continue;
+\endcode
+* @param  bstrPath  bstr step variable path.
+* @param  flag  if successful spath nagivation returns variant_true.
+*/
+
+/** \fn  HRESULT INode::SetAttributeNode([in] BSTR bstrPath, [in] INode * pNode, [out, retval] VARIANT_BOOL* flag)
+* Given an SPATH describing a step variable branch, sets attribute's node.
+* Returns E_INVALIDARG if spath is not a valid variable path.
+\code Example:
+\endcode
+* @param  bstrPath  step variable path.
+* @param  pNode  step node to store.
+* @param  flag  successful store returns true.
+*/
+
+/** \fn  INode::GetAttributeValue([in] BSTR attrname, [in] VARIANT vDefault, [out, retval] VARIANT * pVal);
+* Given an SPATH describing a step variable branch, will return the value at the given node. 
+* End node must be Express simple types: integer, string, boolean, real, enumeration. 
+* End node given as list of simple types also allowed.
+* Will create attribute nodes if not already defined. See SPATH for details.
+\code Example:
+\endcode
+* @param  attrname  path describing attribute node to return. eg. for the root node, "main_workplan/its_elements[1]".
+* @param  vDefault  variant describing default value, if node does not exist.
+* @param  pVal  pointer to pointer to store variant value.
+*/
+
+/** 
+* \fn HRESULT INode::GetAttributeList([out, retval] IAttributeList ** pVal)
+* get the attributes associated with this Step Node. List can be zero length. 
+* Will create a new  IAttributeList COM instance to return.
+\code Example:
+\endcode
+* @param  pVal  pointer to attribute list pointer to store list.
+*/
+
+/**  \fn HRESULT INode::GetAttributeClassname([in] BSTR bstrPath, [out, retval] BSTR * pBstrClassname)
+COM method to get a attribute variables instance (node) express classname. 
+* \par Example
+If project is the current node:
+\code
+[in] bstrPath: "/main_workplan/its_elements[0]"
+[out]pBstrClassname:  "machining_workingstep"
+\endcode 
+The following example can be used to determine the boundary type for a pocketing operation, i.e., circle, rectangle, contour.
+\code
+	CString szProfileType = (LPCTSTR) pFeature->GetAttributeClassname(_bstr_t(L"feature_boundary"));
+\endcode
+* @param  bstrPath  bstring step variable path.
+* @param  pBstrClassname  bstring to store express classname.
+*/
+
+
+/** \fn HRESULT INode::GetAttribute([in] BSTR attrname,  [out, retval] IAttribute ** pVal) 
+Returns the  descriptor for a given attribute. 
+\par Example
+The following example shows how to use spath to get the  0th element of a list attribute.
+\code 
+	IStepNodePtr workpiece= project->GetAttribute(bstrFormat(_T("/its_workpieces[%d]"), 0));
+\endcode
+@param  attrname attribute name  
+@param  pVal pointer to pointer to store IAttribute instance.
+*/
+
+/** 
+* \fn  HRESULT INode::IsSimpleListType([out,retval] VARIANT_BOOL* flag)
+* COM method to determine if Step Node type is simple list type (int, real, string etc). 
+* @param[out] pVal pointer to variant bool to store true if it is false otherwise.
+*/
+
+
+/** 
+\fn  HRESULT INode::IsKindOf([in] BSTR bstrClassname, [out, retval] VARIANT_BOOL* flag)
+COM method to determine if a given Step node instance is or is derived from the given express classname. 
+* \par Example
+Current node is /project/main_workplan/its_elements[0]
+\code 
+[in] bstrClassname:  "machining_workingstep" [out] only true if class instance is machining_workingstep
+[in] bstrClassname:  "executable" 	[out] always true, as all supertypes derive from this class.
+\endcode
+* @param  bstrClassname  bstring express classname.
+* @param  flag  successful class derivation returns true.
+*/
+
+/**
+* \fn HRESULT INode::ToVector([in] BSTR bstrPath, [out,  retval] Vector3d* pVector)
+* Returns an vector from a step variable .
+\par Example
+Assume current node is a polyline of points, we can then set the a point coordinates.
+\code 
+Vector3d v = pPoints->ToVector(_T("start_point/coordinates")
+\endcode
+* @param  bstrPath  bstring step variable path.
+* @param  pVector  pointer to vector to store values.
+*/
+
+/**
+* \fn  HRESULT INode::GetNodeList([out, retval] INodeList ** pVal)
+* Transforms Step List node into INodeList enumeration. Will create a new  IAttributeList COM instance to return.
+\par Example
+Assume current node is a polyline of point coordinates
+\code INodeListPtr points = pCurve->SelectNode(_T("points"))->GetNodeList();
+for(int i=0; i< points->size(); i++) 
+...
+\endcode
+* @param  pVal  pointer to node list pointer to store list.
+*/
+
+/**
+* \fn  HRESULT  INode::SelectNodeList([in] BSTR bstrPath, [out, retval] INodeList ** ppNodeList)
+* Selects a Step Node List given an SPATH describing a step variable branch, and returns a IStepNodeList enumeration. 
+* Will create attribute nodes if not already defined. See SPATH for details.
+\par Example
+Assume current node is a polyline of point coordinates
+\code
+INodeListPtr  points = pStepClass->SelectNodeList(_bstr_t(L"points"));
+for(int i=0; i< points->size(); i++) 
+...
+\endcode
+* @param  bstrPath  path describing attribute node to return. eg. for the root node, "main_workplan/its_elements[1]".
+* @param  ppNodeList  pointer to pointer to store node.
+*/	
+
+/**
+* \fn HRESULT INode::SetAttributeValue([in] BSTR bstrPath, [in] VARIANT vValue, [out, retval] VARIANT_BOOL* flag)
+* Given an SPATH describing a step variable branch and a variant value, sets the value at a a given node. 
+* End node must be Express simple types: integer, string, boolean, real, enumeration. 
+* End node given as list will take string value list delimited by commas (not variant array).
+* Will create attribute nodes if not already defined. See SPATH for details.
+\par Example
+Shows how to set a node value. Assume current node is of type  workpiece
+\code 
+workpiece->SetAttributeValue(_bstr_t(L"its_bounding_geometry/x"), _variant_t((double) 35.0));
+\endcode
+
+* @param  bstrPath  path describing attribute node to return. eg. for the root node, "main_workplan/its_elements[1]".
+* @param  vValue  variant describing value.
+* @param  flag  pointer to pointer to set operation success.
+*/
+
+/**
+\fn HRESULT INode::SetAttributeString([in] BSTR bstrPath, [in] BSTR vStrValue, [out, retval] VARIANT_BOOL* flag)
+* Given an SPATH describing a step variable branch and string value, sets the value at a a given node. 
+* End node must be Express simple types: integer, string, boolean, real, enumeration. 
+* End node given as list will take string value list delimited by commas.
+* Will create attribute nodes if not already defined. See SPATH for details.
+* Returns E_INVALIDARG if spath is not a valid variable path.
+\par Example
+Example 1 assume current node is of type  workpiece. It shows how to set a node value.
+\code  
+workpiece->SetAttributeValue(_bstr_t(L"its_bounding_geometry/x"), _bstr_t( L"35.0"));
+\endcode
+Example 2: shows how to set a list node value using a comma separated bstring.
+Assume current node is of type line.
+\code 
+pStepLine->SetAttributeString(_bstr_t(L"dir/orientation/direction_ratios"), _bstr_t(L"0.0, 0.0, 1.0)); 
+\endcode
+* @param  bstrPath  path describing attribute node to return. eg. for the root node, "main_workplan/its_elements[1]".
+* @param  vStrValue  bstr describing  value.
+* @param  flag  pointer to pointer to set operation success.
+*/

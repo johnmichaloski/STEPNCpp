@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> two5d_milling_operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="two5d_milling_operation">two5d_milling_operation </A></H1><P>This is the base class of all operations for 2½D milling derived from milling_type_operation.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#two5d_milling_operation">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_machining_strategy </TD>
+<TD><A HREF="../milling_schema/two5d_milling_strategy.html#two5d_milling_strategy">two5d_milling_strategy</A> </TD>
+<TD>Description of the strategy to be used when executing the operation. In case the attribute its_toolpath of the supertype operation is specified, the strategy is for information only. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY two5d_milling_operation  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="plane_milling.html">plane_milling</A> ,<A HREF="side_milling.html">side_milling</A> ,<A HREF="bottom_and_side_milling.html">bottom_and_side_milling</A> ) )
+SUBTYPE  OF (<A HREF="milling_type_operation.html">milling_type_operation</A> );
+ its_machining_strategy : OPTIONAL <A HREF="../milling_schema/two5d_milling_strategy.html#two5d_milling_strategy">two5d_milling_strategy</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> parallel </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="parallel">parallel </A></H1><P>The parallel entity allows to run several executables in parallel. All branches are started at the same time; the execution of the parallel entity ends when the last branch has finished. If the NC controller determines that the branches cannot be executed in parallel the machine will stop with an error condition. Note that normally parallel execution will require the use of different channels in each branch. NC functions can be used to synchronise events across different channels.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#parallel">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>branches </TD>
+<TD> SET [ 2 : ? ] OF executable </TD>
+<TD>Executables to be executed in parallel. The parallel entity allows to define the general processing of execuables in parallel. To define the delay of single executalbes etc. we concede that there have to be defined more detailed subtypes of parallel. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY parallel 
+SUBTYPE  OF (<A HREF="program_structure.html">program_structure</A> );
+ branches :  SET [ 2 : ? ] OF executable;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

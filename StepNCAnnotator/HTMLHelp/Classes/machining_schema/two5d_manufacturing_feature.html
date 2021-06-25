@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> two5d_manufacturing_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="two5d_manufacturing_feature">two5d_manufacturing_feature </A></H1><P>The entity two5D_manufacturing_feature is the abstract supertype of all 2½D features. This structure is defined in close resemblance to ISO 10303-224.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#two5d_manufacturing_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feature_placement </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>The placement of the feature relative to the workpiece co-ordinate system. The placement is a translation and/or a rotation which transforms the origin of the workpiece co-ordinate system origin into the origin of the feature’s local co-ordinate system. For information on coordinate systems refer to Section 4.6.4.1.2. If the manufacturing feature is part of a compound_feature, then its placement is defined relative to the compound_feature´s origin. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY two5d_manufacturing_feature  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="machining_feature.html">machining_feature</A> ,<A HREF="replicate_feature.html">replicate_feature</A> ,<A HREF="compound_feature.html">compound_feature</A> ) )
+SUBTYPE  OF (<A HREF="manufacturing_feature.html">manufacturing_feature</A> );
+ feature_placement : <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> linear_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="linear_profile">linear_profile </A></H1><P>A linear_profile is a type of open_profile that is a straight line of a specified length. The linear_profile shall have orientation parallel to the X-axis.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#linear_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>profile_length </TD>
+<TD><A HREF="../machining_schema/numeric_parameter.html#numeric_parameter">numeric_parameter</A> </TD>
+<TD>The length of the profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY linear_profile 
+SUBTYPE  OF (<A HREF="open_profile.html">open_profile</A> );
+ profile_length : <A HREF="../machining_schema/numeric_parameter.html#numeric_parameter">numeric_parameter</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

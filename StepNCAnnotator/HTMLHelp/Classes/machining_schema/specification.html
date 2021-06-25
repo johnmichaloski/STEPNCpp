@@ -1,0 +1,33 @@
+<HTML><HEAD><TITLE> specification </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="specification">specification </A></H1><P>A specification is a document that defines information pertaining to properties or processes for a workpiece or an aspect of a workpiece.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#specification">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>constraint </TD>
+<TD> SET [ 0 : ? ] OF specification_usage_constraint </TD>
+<TD>A set of the restrictions on the specification. </TD></TR>
+<TR><TD>specification_id </TD>
+<TD><A HREF="../machining_schema/text.html#text">text</A> </TD>
+<TD>A unigue identifier of the document. </TD></TR>
+<TR><TD>specification_description </TD>
+<TD><A HREF="../machining_schema/text.html#text">text</A> </TD>
+<TD>A description of the content of the specification and any notes in human interpretable prose. </TD></TR>
+<TR><TD>specification_class </TD>
+<TD><A HREF="../machining_schema/text.html#text">text</A> </TD>
+<TD>A section within a specification that is divided into classes. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY specification ;
+ constraint :  SET [ 0 : ? ] OF specification_usage_constraint;
+ specification_id : <A HREF="../machining_schema/text.html#text">text</A>;
+ specification_description : OPTIONAL <A HREF="../machining_schema/text.html#text">text</A>;
+ specification_class : OPTIONAL <A HREF="../machining_schema/text.html#text">text</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

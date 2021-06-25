@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> t_slot_mill </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="t_slot_mill">t_slot_mill </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#t_slot_mill">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>cutting_thickness </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY t_slot_mill 
+SUBTYPE  OF (<A HREF="milling_cutter.html">milling_cutter</A> );
+ cutting_thickness : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

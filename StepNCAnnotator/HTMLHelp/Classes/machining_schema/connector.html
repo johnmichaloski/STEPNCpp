@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> connector </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="connector">connector </A></H1><P>The connector entity defines a connection path between a lift and a following approach movement. This path type if typically needed to implement a rapid_movement operation but can also be used within a machining operation for connecting several cutting paths.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#connector">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY connector  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="connect_secplane.html">connect_secplane</A> ,<A HREF="connect_direct.html">connect_direct</A> ) )
+SUBTYPE  OF (<A HREF="parameterised_path.html">parameterised_path</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

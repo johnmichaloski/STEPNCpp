@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> technology </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="technology">technology </A></H1><P>This entity is the supertype for the technologies defined in the following parts of ISO 14649.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#technology">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feedrate </TD>
+<TD><A HREF="../machining_schema/speed_measure.html#speed_measure">speed_measure</A> </TD>
+<TD>Feed of the tool expressed as a linear speed. The feed rate specified applies to the motion of the tool center point. </TD></TR>
+<TR><TD>feedrate_reference </TD>
+<TD><A HREF="../machining_schema/tool_reference_point.html#tool_reference_point">tool_reference_point</A> </TD>
+<TD>Specifies whether the feed rate given above is to be calculated with regard to the tool center point or the cutter contact point. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY technology  ABSTRACT
+SUPERTYPE ;
+ feedrate : OPTIONAL <A HREF="../machining_schema/speed_measure.html#speed_measure">speed_measure</A>;
+ feedrate_reference : <A HREF="../machining_schema/tool_reference_point.html#tool_reference_point">tool_reference_point</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

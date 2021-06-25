@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> round_hole </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="round_hole">round_hole </A></H1><P>This entity defines both holes and threaded holes. The feature_placement of a hole is the center point at the surface, i. e. the hole is located at x = y = 0 in the local co-ordinate system. The specified (positive) depth causes the tool to advance into the hole in negative z direction.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#round_hole">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>diameter </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The diameter of the hole. The diameter is measured in the xy-plane where z = 0. </TD></TR>
+<TR><TD>change_in_diameter </TD>
+<TD><A HREF="../machining_schema/taper_select.html#taper_select">taper_select</A> </TD>
+<TD>An optional parameter used to specify holes with a taper. </TD></TR>
+<TR><TD>bottom_condition </TD>
+<TD><A HREF="../machining_schema/hole_bottom_condition.html#hole_bottom_condition">hole_bottom_condition</A> </TD>
+<TD>Specification of the bottom of a hole. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY round_hole 
+SUBTYPE  OF (<A HREF="machining_feature.html">machining_feature</A> );
+ diameter : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ change_in_diameter : OPTIONAL <A HREF="../machining_schema/taper_select.html#taper_select">taper_select</A>;
+ bottom_condition : <A HREF="../machining_schema/hole_bottom_condition.html#hole_bottom_condition">hole_bottom_condition</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> limits_and_fits </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="limits_and_fits">limits_and_fits </A></H1><P>A Limits_and_fits contains the necessary information to express a tolerance of the limits-and-fits system standardized by ISO 286.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#limits_and_fits">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>deviation </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The difference between a measured actual size and the corresponding basic size as defined in ISO 286-1.grade:The grade specifies the quality or the accuracy grade of a toler </TD></TR>
+<TR><TD>grade </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>its_fitting_type </TD>
+<TD><A HREF="../machining_schema/fitting_type.html#fitting_type">fitting_type</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY limits_and_fits ;
+ deviation : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ grade : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ its_fitting_type : OPTIONAL <A HREF="../machining_schema/fitting_type.html#fitting_type">fitting_type</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

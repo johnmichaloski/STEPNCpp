@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> multiple_arity_boolean_expression </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="multiple_arity_boolean_expression">multiple_arity_boolean_expression </A></H1><P>Binary operators perform Boolean algebra on multiple arguments and produce a false or true value: AND(a,b,c, ...) is true if a,b,c,etc are all true and OR(a,b,c, ...) true if one of a,b,c,etc is true.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#multiple_arity_boolean_expression">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>operands </TD>
+<TD> LIST [ 2 : ? ] OF boolean_expression </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY multiple_arity_boolean_expression  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="and_expression.html">and_expression</A> ,<A HREF="or_expression.html">or_expression</A> ) )
+SUBTYPE  OF (<A HREF="boolean_expression.html">boolean_expression</A> );
+ operands :  LIST [ 2 : ? ] OF boolean_expression;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

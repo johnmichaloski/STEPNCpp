@@ -1,0 +1,64 @@
+<HTML>
+<BODY>
+<PRE>
+; STEP-NC ISO 14649 NIST Feature-Based  Siemens 840D NC Generator
+; Generated: Sat Aug 02 13:54:29 2008
+
+N010 G17 G90 G54 G94
+;WS(0) Feature=planar_face Operation(0)=plane_rough_milling Tool=facemill
+N020 G0  X0.000 Y0.000 Z20.000
+N030 F4M03S500
+N040 CYCLE71(20.000,10.000,2.000,-10.000,0.000,0.000,100.000,200.000,0.000,6.000,10.000,5.000,0.750,4.000,31,2.000)
+;WS(0) Feature=planar_face Operation(1)=plane_finish_milling Tool=facemill
+N050 G0  X0.000 Y0.000 Z20.000
+N060 F1M03S2000
+N070 CYCLE71(20.000,10.000,2.000,-10.000,0.000,0.000,100.000,200.000,0.000,6.000,10.000,5.000,0.750,1.000,32,2.000)
+;WS(6) Feature=closed_pocket Operation(0)=bottom_and_side_rough_milling Tool=bullnose_endmill
+N080 G0  F2000 X60.000 Y75.000 Z10.000
+N090 F4M03S500
+G0  F2000 X60.000   Y75.000   Z10.000  
+CYCLE71(10.000,0.000,2.000,-10.000,1.#IO,50.000,50.000,3.000,60.000,75.000,0.000,1.#IO,4.000,1.#IO,4587591.#IO,1)
+;WS(6) Feature=closed_pocket Operation(1)=bottom_and_side_finish_milling Tool=bullnose_endmill
+N100 G0  F2000 X60.000 Y75.000 Z10.000
+N110 F1M03S2000
+G0  F2000 X60.000   Y75.000   Z10.000  
+CYCLE71(10.000,0.000,2.000,-10.000,1.#IO,50.000,50.000,3.000,60.000,75.000,0.000,1.#IO,1.000,1.#IO,4587591.#IO,21.#IO,1.#IO,   1.#IO)
+;WS(7) Feature=closed_pocket Operation(0)=bottom_and_side_rough_milling Tool=bullnose_endmill
+N120 G0  F2000 X75.000 Y75.000 Z0.000
+N130 F4M03S500
+G0  F2000 X75.000   Y75.000   Z0.000   
+CYCLE71(0.000,-10.000,2.000,-10.000,1.#IO,40.000,40.000,3.000,75.000,75.000,0.000,1.#IO,4.000,1.#IO,4587591.#IO,1)
+;WS(7) Feature=closed_pocket Operation(1)=bottom_and_side_finish_milling Tool=bullnose_endmill
+N140 G0  F2000 X75.000 Y75.000 Z0.000
+N150 F1M03S2000
+G0  F2000 X75.000   Y75.000   Z0.000   
+CYCLE71(0.000,-10.000,2.000,-10.000,1.#IO,40.000,40.000,3.000,75.000,75.000,0.000,1.#IO,1.000,1.#IO,4587591.#IO,21.#IO,1.#IO,   1.#IO)
+;WS(8) Feature=round_hole Operation(0)=drilling Tool=center_drill
+N160 G0 F2000 X185.000 Y85.000 Z10.000
+N170 F4M03S500
+N180 CYCLE81(10.000,0.000,2.000,-30.000)
+;WS(8) Feature=round_hole Operation(1)=reaming Tool=tapered_reamer
+N190 G0  F2000 X185.000 Y85.000 Z10.000
+N200 F1M03S2000
+N210 CYCLE85(10.000,0.000,2.000,-30.000,0.000,1.000,1.000)
+;WS(9) Feature=round_hole Operation(0)=drilling Tool=center_drill
+N220 G0 F2000 X185.000 Y15.000 Z10.000
+N230 F4M03S500
+N240 CYCLE81(10.000,0.000,2.000,-30.000)
+;WS(9) Feature=round_hole Operation(1)=reaming Tool=tapered_reamer
+N250 G0  F2000 X185.000 Y15.000 Z10.000
+N260 F1M03S2000
+N270 CYCLE85(10.000,0.000,2.000,-30.000,0.000,1.000,1.000)
+;WS(10) Feature=round_hole Operation(0)=drilling Tool=center_drill
+N280 G0 F2000 X100.000 Y50.000 Z-10.000
+N290 F4M03S500
+N300 CYCLE81(-10.000,-20.000,2.000,-10.000)
+;WS(10) Feature=round_hole Operation(1)=reaming Tool=tapered_reamer
+N310 G0  F2000 X100.000 Y50.000 Z-10.000
+N320 F1M03S2000
+N330 CYCLE85(-10.000,-20.000,2.000,-10.000,0.000,1.000,1.000)
+N340 M30
+
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<HTML><HEAD><TITLE> square_u_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="square_u_profile">square_u_profile </A></H1><P>A square U profile is a type of open profile that is bounded by three lines. One is the base line and has a defined length. The other two lines begin at the ends of the base line, and extend infinitely at any obtuse or acute angle that is equal to or larger than a right angle. The corners of the square U profile need not be blended by a radius.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#square_u_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>width </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>he size of the base line for a square U profile. </TD></TR>
+<TR><TD>first_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The radius shape blend between one side of the profile and the base. </TD></TR>
+<TR><TD>first_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The angle of the one side of the profile measured against the local z axis. </TD></TR>
+<TR><TD>second_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The radius shape blend between the second side of the profile and the base. </TD></TR>
+<TR><TD>second_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The angle of the another side of the profile measured against the local z axis. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY square_u_profile 
+SUBTYPE  OF (<A HREF="open_profile.html">open_profile</A> );
+ width : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ first_radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ first_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ second_radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ second_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

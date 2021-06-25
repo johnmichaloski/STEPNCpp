@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> date_and_time </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="date_and_time">date_and_time </A></H1><P>A date_and_time is a moment of time on a particular day.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#date_and_time">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>date_component </TD>
+<TD><A HREF="../machining_schema/date.html#date">date</A> </TD>
+<TD>the date element of the date time combination. </TD></TR>
+<TR><TD>time_component </TD>
+<TD><A HREF="../machining_schema/local_time.html#local_time">local_time</A> </TD>
+<TD>the time element of the date time combination. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY date_and_time ;
+ date_component : <A HREF="../machining_schema/date.html#date">date</A>;
+ time_component : <A HREF="../machining_schema/local_time.html#local_time">local_time</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

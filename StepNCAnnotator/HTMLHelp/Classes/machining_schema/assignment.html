@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> assignment </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="assignment">assignment </A></H1><P>Assigns a value to a nc_variable.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#assignment">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_lvalue </TD>
+<TD><A HREF="../machining_schema/nc_variable.html#nc_variable">nc_variable</A> </TD>
+<TD>The nc_variable which will be assigned a value. </TD></TR>
+<TR><TD>its_rvalue </TD>
+<TD><A HREF="../machining_schema/rvalue.html#rvalue">rvalue</A> </TD>
+<TD>The value to be assigned to its_lvalue. This is either a numeric constant or a reference to another nc_variable. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY assignment 
+SUBTYPE  OF (<A HREF="program_structure.html">program_structure</A> );
+ its_lvalue : <A HREF="../machining_schema/nc_variable.html#nc_variable">nc_variable</A>;
+ its_rvalue : <A HREF="../machining_schema/rvalue.html#rvalue">rvalue</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

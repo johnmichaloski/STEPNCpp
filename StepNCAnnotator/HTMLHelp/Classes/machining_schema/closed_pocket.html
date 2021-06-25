@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> closed_pocket </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="closed_pocket">closed_pocket </A></H1><P>Derived from the class pocket. A closed pocket is a pocket which is surrounded by material everywhere along its circumference. Its feature boundary is given by a closed profile.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#closed_pocket">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feature_boundary </TD>
+<TD><A HREF="../machining_schema/closed_profile.html#closed_profile">closed_profile</A> </TD>
+<TD>The shape or outline that describes the upper edge of the pocket. It is an enclosed area that has a completely closed profile. The profile specifies the area required by a closed pocket. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY closed_pocket 
+SUBTYPE  OF (<A HREF="pocket.html">pocket</A> );
+ feature_boundary : <A HREF="../machining_schema/closed_profile.html#closed_profile">closed_profile</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

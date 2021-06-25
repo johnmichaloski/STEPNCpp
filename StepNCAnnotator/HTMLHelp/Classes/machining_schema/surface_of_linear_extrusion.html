@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> surface_of_linear_extrusion </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="surface_of_linear_extrusion">surface_of_linear_extrusion </A></H1><P>This surface is a simple swept surface or a generalised cylinder obtained by sweeping a curve in a given direction.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#surface_of_linear_extrusion">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>extrusion_axis </TD>
+<TD><A HREF="../machining_schema/vector.html#vector">vector</A> </TD>
+<TD>The direction of extrusion, the magnitude of this vector determines the parameterization. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY surface_of_linear_extrusion 
+SUBTYPE  OF (<A HREF="swept_surface.html">swept_surface</A> );
+ extrusion_axis : <A HREF="../machining_schema/vector.html#vector">vector</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

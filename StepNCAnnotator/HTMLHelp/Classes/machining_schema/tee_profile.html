@@ -1,0 +1,50 @@
+<HTML><HEAD><TITLE> tee_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="tee_profile">tee_profile </A></H1><P>A T profile is a type of open profile the cross-section of which has the shape of the letter \"T\". The attributes are<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#tee_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>first_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Angular measurement for creating a chamfer on the open end. </TD></TR>
+<TR><TD>second_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Angular measurement for creating a chamfer between the stem and the cross bar parts of a T profile. </TD></TR>
+<TR><TD>cross_bar_width </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Width of the T cross bar. </TD></TR>
+<TR><TD>cross_bar_depth </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Depth of the T cross bar. </TD></TR>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Arc size for blending the sides of a tee cross bar. </TD></TR>
+<TR><TD>width </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Width of the T stem. </TD></TR>
+<TR><TD>first_offset </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Distance from the edge of the T stem to create a chamfer on the open end. </TD></TR>
+<TR><TD>second_offset </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Distance from the edge of the T stem to create a chamfer a distance from the edge of a surface to the finish of a chamfer. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY tee_profile 
+SUBTYPE  OF (<A HREF="open_profile.html">open_profile</A> );
+ first_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ second_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ cross_bar_width : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ cross_bar_depth : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ width : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ first_offset : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ second_offset : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

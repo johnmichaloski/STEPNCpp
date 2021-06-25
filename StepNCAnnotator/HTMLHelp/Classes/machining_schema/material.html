@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> material </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="material">material </A></H1><P>This entity is for identifying the workpiece material.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#material">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>standard_identifier </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>The standard used for identifying the material. This can be a national standard or one used internally in the company. </TD></TR>
+<TR><TD>material_identifier </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>The name which identifies the material. </TD></TR>
+<TR><TD>material_property </TD>
+<TD> SET [ 0 : ? ] OF property_parameter </TD>
+<TD>The parameter which describes the properties of material. Since the demand for material properties varies, a generic type „property parameter” is used. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY material ;
+ standard_identifier : <A HREF="../machining_schema/label.html#label">label</A>;
+ material_identifier : <A HREF="../machining_schema/label.html#label">label</A>;
+ material_property :  SET [ 0 : ? ] OF property_parameter;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

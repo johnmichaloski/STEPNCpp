@@ -1,0 +1,15 @@
+<HTML><HEAD><TITLE> bezier_curve </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="bezier_curve">bezier_curve </A></H1><P>This subtype represents in the most general case a piecewise B'ezier curve. This is a special type of curve which can be represented as a type of b spline curve in which the knots are evenly spaced and have high multiplicities. Suitable default values for the knots and knot multiplicities are derived in this case. A B­spline curve is a piecewise B'ezier curve if it is quasi­uniform except that the interior knots have multiplicity degree rather than having multiplicity one. In this subtype the knot spacing is 1.0, starting at 0.0. A piecewise B'ezier curve which has only two knots, 0.0 and 1.0, each of multiplicity (degree+1), is a simple B'ezier curve.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#bezier_curve">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY bezier_curve 
+SUBTYPE  OF (<A HREF="b_spline_curve.html">b_spline_curve</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

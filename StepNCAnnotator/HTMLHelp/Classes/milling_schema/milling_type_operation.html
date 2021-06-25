@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> milling_type_operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="milling_type_operation">milling_type_operation </A></H1><P>This is the base class of all operations for milling. It includes all necessary attributes to describe technology and strategy. It is a subtype of entity milling_machining_operation. In general, there are two types of machining operations: roughing and finishing. The roughing is to remove all material from the original raw piece surface down to the bottom or side of the feature minus the finishing allowance in multiple passes. The finishing will then remove the finish allowance to yield the final surface of the feature. In case of pre-cast features, e.g. pre-cast holes and pockets, roughing operation need to be one<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#milling_type_operation">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>approach </TD>
+<TD><A HREF="../milling_schema/approach_retract_strategy.html#approach_retract_strategy">approach_retract_strategy</A> </TD>
+<TD>By default, the NC controller decides about the approach strategy. It may decide not to use any approach movement at all if the start point of cutting coincides with the end point of cutting for the preceding operation. If its_toolpath is given, this attribute will be ignored. </TD></TR>
+<TR><TD>retract </TD>
+<TD><A HREF="../milling_schema/approach_retract_strategy.html#approach_retract_strategy">approach_retract_strategy</A> </TD>
+<TD>Optional information about retract strategy after finishing the last cut. By default, the NC controller decides about the retract strategy. It may decide not to use any retract movement at all if the end point of cutting coincides with the start point of cutting for the next operation. If its_toolpath is given, this attribute will be ignored. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY milling_type_operation  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="freeform_operation.html">freeform_operation</A> ,<A HREF="two5d_milling_operation.html">two5d_milling_operation</A> ) )
+SUBTYPE  OF (<A HREF="milling_machining_operation.html">milling_machining_operation</A> );
+ approach : OPTIONAL <A HREF="../milling_schema/approach_retract_strategy.html#approach_retract_strategy">approach_retract_strategy</A>;
+ retract : OPTIONAL <A HREF="../milling_schema/approach_retract_strategy.html#approach_retract_strategy">approach_retract_strategy</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

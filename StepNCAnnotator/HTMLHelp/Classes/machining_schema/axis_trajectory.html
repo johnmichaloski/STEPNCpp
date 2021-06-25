@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> axis_trajectory </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="axis_trajectory">axis_trajectory </A></H1><P>Axis trajectories do not directly define a tool movement, but rather the movement of the machine axis. They are comparable to the G0/G1 commands of ISO 6983. They should not be used because the resulting NC programme will no longer be machine independent.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#axis_trajectory">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>axis_list </TD>
+<TD> LIST [ 1 : ? ] OF identifier </TD>
+<TD>A list with axis names defining these axes which will be moved by the trajectory. </TD></TR>
+<TR><TD>commands </TD>
+<TD> LIST [ 1 : ? ] OF bounded_curve </TD>
+<TD>A list of one-dimensional curves. The array contains one curve per axis whose name is given by the respective index in the axis_list. The values represent axis positions in units as defined for length_measure (for linear axes) or planar_angle_measure (for rotary axes). </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY axis_trajectory 
+SUBTYPE  OF (<A HREF="trajectory.html">trajectory</A> );
+ axis_list :  LIST [ 1 : ? ] OF identifier;
+ commands :  LIST [ 1 : ? ] OF bounded_curve;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

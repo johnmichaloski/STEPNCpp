@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> uv_strategy </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="uv_strategy">uv_strategy </A></H1><P>Milling follows the parameter lines in the local (u,v) coordinate system.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#uv_strategy">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>forward_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The direction used in the first cut. </TD></TR>
+<TR><TD>sideward_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The direction in which the second cut is offset from the first. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY uv_strategy 
+SUBTYPE  OF (<A HREF="freeform_strategy.html">freeform_strategy</A> );
+ forward_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ sideward_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

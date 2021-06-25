@@ -1,0 +1,173 @@
+Team Part:
+
+CONICAL_SURFACE
+CYLINDRICAL_SURFACE
+
+http://www.codeguru.com/forum/showthread.php?t=269905
+
+http://en.wikiversity.org/wiki/CAD_Lesson_-_CAD_Objects 
+
+http://dcom.arch.gatech.edu/CS6754
+
+#82=MANIFOLD_SOLID_BREP('',#83);
+#83=CLOSED_SHELL('',(#84,#107,#130,#141,#150,#159));
+
+#10=PLANE('',#13);
+#11=CARTESIAN_POINT('',(0.,0.,2.5));
+#12=DIRECTION('',(0.,0.,1.));
+#13=AXIS2_PLACEMENT_3D('',#11,#12,$);
+
+
+#84=ADVANCED_FACE('',(#85),#10,.T.);
+#85=FACE_BOUND('',#86,.T.);
+#86=EDGE_LOOP('',(#87,#94,#99,#104));
+#87=ORIENTED_EDGE('',*,*,#88,.T.);
+#88=EDGE_CURVE('',#90,#92,#89,.T.);
+#89=INTERSECTION_CURVE('',#18,(#10,#14),.CURVE_3D.);
+#90=VERTEX_POINT('',#91);
+#91=CARTESIAN_POINT('',(1.5,-2.,2.5));
+#92=VERTEX_POINT('',#93);
+#93=CARTESIAN_POINT('',(1.5,2.,2.5));
+#94=ORIENTED_EDGE('',*,*,#95,.T.);
+#95=EDGE_CURVE('',#92,#97,#96,.T.);
+#96=INTERSECTION_CURVE('',#26,(#10,#22),.CURVE_3D.);
+#97=VERTEX_POINT('',#98);
+#98=CARTESIAN_POINT('',(-1.5,2.,2.5));
+#99=ORIENTED_EDGE('',*,*,#100,.T.);
+#100=EDGE_CURVE('',#97,#102,#101,.T.);
+#101=INTERSECTION_CURVE('',#34,(#10,#30),.CURVE_3D.);
+#102=VERTEX_POINT('',#103);
+#103=CARTESIAN_POINT('',(-1.5,-2.,2.5));
+#104=ORIENTED_EDGE('',*,*,#105,.T.);
+#105=EDGE_CURVE('',#102,#90,#106,.T.);
+#106=INTERSECTION_CURVE('',#42,(#10,#38),.CURVE_3D.);
+
+
+Line 1.50  0.00  2.50 -> 1.50  1.00  2.50
+Line 0.00  2.00  2.50 -> -1.00  2.00  2.50
+Line -1.50  0.00  2.50 -> -1.50  -1.00  2.50
+Line 0.00  -2.00  2.50 -> 1.00  -2.00  2.50
+Line 1.50  0.00  -2.50 -> 1.50  -1.00  -2.50
+Line 0.00  -2.00  -2.50 -> -1.00  -2.00  -2.50
+Line -1.50  0.00  -2.50 -> -1.50  1.00  -2.50
+Line 0.00  2.00  -2.50 -> 1.00  2.00  -2.50
+Line -1.50  -2.00  0.00 -> -1.50  -2.00  -1.00
+Line 0.00  -2.00  -2.50 -> -1.00  -2.00  -2.50
+Line 1.50  -2.00  0.00 -> 1.50  -2.00  -1.00
+Line 0.00  -2.00  2.50 -> 1.00  -2.00  2.50
+Line -1.50  2.00  0.00 -> -1.50  2.00  -1.00
+Line -1.50  0.00  -2.50 -> -1.50  1.00  -2.50
+Line -1.50  -2.00  0.00 -> -1.50  -2.00  -1.00
+Line -1.50  0.00  2.50 -> -1.50  -1.00  2.50
+Line 1.50  2.00  0.00 -> 1.50  2.00  -1.00
+Line 0.00  2.00  -2.50 -> 1.00  2.00  -2.50
+Line -1.50  2.00  0.00 -> -1.50  2.00  -1.00
+Line 0.00  2.00  2.50 -> -1.00  2.00  2.50
+Line 1.50  -2.00  0.00 -> 1.50  -2.00  -1.00
+Line 1.50  0.00  -2.50 -> 1.50  -1.00  -2.50
+Line 1.50  2.00  0.00 -> 1.50  2.00  -1.00
+Line 1.50  0.00  2.50 -> 1.50  1.00  2.50
+
+====================================================================================================================================
+Implicit function:
+
+x2 + y2 = r2. 
+Parametric equation can be written using the trigonometric functions sine and cosine:
+
+x = a + r cos(t) 
+y = b + r sin(t), where t is parametric variable. 
+
+http://www.cadtutor.net/tutorials/autocad/basic-3d.php
+
+http://cic.nist.gov/vrml/cis/lpm6/structural_frame_schema/lexical/intersection_curve.html#definition
+
+struct IOglPlotter;
+#define PDONE -2
+#define PERROR -1
+#define POK 0
+
+#define CLASSDEF(X) \
+	long _atom;\
+	virtual LONG Draw(IOglPlotter * m_plotter) { return POK; }\
+	
+	
+====================================================================================================================================
+	
+Creating the Part 21 reader for Part 203
+
+1) create CPP classes from Part 203 Express schema add to project - compile.
+
+	- ap203SchemaDeclarations.h,  ap203ClassDefinitions.h,  ap203ClassImplementation.cpp
+	- expressutils.{h,cpp}
+	- misc.h  - string vector, etc.
+	- In MainFrm.cpp change
+		m_view.Create(m_splitter, rcDefault, _T("http://www.microsoft.com"), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_HSCROLL | WS_VSCROLL, WS_EX_CLIENTEDGE);
+	microsoft.com to about:blank for now
+	
+
+2) stdafx.h
+	-  solution to unresolved external symbol _com_issue_error _bstr_t::_bstr_t
+		LNK2019: unresolved external symbol ?void __stdcall _com_issue_error(long)? 
+		(?_com_issue_error@@YGXJ@Z) referenced in function ?public: __thiscall 
+		_bstr_t::_bstr_t(unsigned short const *)? (??0_bstr_t@@QAE@PBG@Z)
+	ADD:
+		#include <comdef.h>
+		
+		#include "ExpressUtils.h"
+		#include "ap203SchemaDeclarations.h"
+		#include "ap203ClassDefinitions.h"
+
+	Problems: (to be fixed)
+		pascal is a reserved compiler word... changed to	Epascal,
+		class in Edocument  is a reserved compiler word... changed to	eclass,
+		Ecount_measure not included in part203... didn't recognize  NUMBER
+
+	- disable endless warnings.
+		#pragma warning(disable: 4800) //warning C4800: forcing value to bool 'true' or 'false' (performance warning)
+		#pragma warning(disable: 4018) //warning C4018: '<' : signed/unsigned mismatch
+		#pragma warning(disable: 4244) //warning C4244: 'argument' : conversion from 'double' to 'LPARAM', possible loss of data
+		#pragma warning(disable: 4267) //warning C4244: 'argument' : conversion from 'double' to 'LPARAM', possible loss of data
+		#pragma warning(disable: 4312) //warning C4244: conversion from 'OPCHANDLE' to 'OPCItem *' of greater size
+		#pragma warning(disable: 4800) //warning C4800: forcing value to bool 'true' or 'false' (performance warning)
+		#pragma warning(disable: 4018) //warning C4018: '<' : signed/unsigned mismatch
+		#pragma warning(disable: 4996) 
+		#pragma warning(disable: 4311)
+		#pragma warning(disable: 4996)
+		#pragma warning(disable: 4541)
+
+3) Copy and Add WTLHtmlView.h,WTLHtmlView.cpp to project, 
+	- in Mainfrm.h include WtlHtmlView.h and set m_view to type CWtlHtmlView
+	
+	
+2) Add event handler to FIle Open 
+	a) open resource view, double click menu, double click "IDR_MAINFRAM"E, right-click "Open", and then Click "Add Event Handler"
+	b) add event Cmainframe.
+	c) 	add event code:
+	
+	static TCHAR strFilter[] = { "Any NC Files (*.*)|*.*||" };
+
+	CFileDialog dlg(TRUE,
+		_T("*"),
+		NULL,
+		OFN_HIDEREADONLY,
+		strFilter);
+	if( dlg.DoModal() == IDOK )
+	{
+		dlg.m_szFileName; 
+		_vP21View.Navigate(CString("file:\\\\") + parser.P21filename());
+
+	}
+	return 0;
+	
+3) Part 21 Reader additions.
+	a) copy and add Part 21 files to project:Step21Parser.{h,cpp}
+	   - also copy and add OutDebug.h as it eases debugging spirit, if necessary.\
+	   Outdebug allows OutputDebugString and file saving from std lib io streaming.
+	b) Add boost to include path and then save all project:
+		i.e., "C:\Program Files\NIST\src\boost\boost_1_35_0" 
+	c) add "Parse" to menu and add event handler to CMainFrm.
+	
+	
+
+4) Add StepNCTreeView.{h,cpp} & bitmpa with IDB_TREE_ICONS
+	commented out help for now. Gets to be quite spaghetti

@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> spherical_hole_bottom </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="spherical_hole_bottom">spherical_hole_bottom </A></H1><P>A hole with a spherical bottom.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#spherical_hole_bottom">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The radius of the spherical hole bottom. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY spherical_hole_bottom 
+SUBTYPE  OF (<A HREF="blind_bottom_condition.html">blind_bottom_condition</A> );
+ radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

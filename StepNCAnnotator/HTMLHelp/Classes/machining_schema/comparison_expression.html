@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> comparison_expression </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="comparison_expression">comparison_expression </A></H1><P>The comparison establishes a relationship between the values of two operands. Carefully observe the note on the time-critical behaviour of variables.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#comparison_expression">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>operand1 </TD>
+<TD><A HREF="../machining_schema/nc_variable.html#nc_variable">nc_variable</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>operand2 </TD>
+<TD><A HREF="../machining_schema/rvalue.html#rvalue">rvalue</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY comparison_expression  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="comparison_equal.html">comparison_equal</A> ,<A HREF="comparison_not_equal.html">comparison_not_equal</A> ,<A HREF="comparison_greater.html">comparison_greater</A> ,<A HREF="comparison_greater_equal.html">comparison_greater_equal</A> ,<A HREF="comparison_less.html">comparison_less</A> ,<A HREF="comparison_less_equal.html">comparison_less_equal</A> ) )
+SUBTYPE  OF (<A HREF="boolean_expression.html">boolean_expression</A> );
+ operand1 : <A HREF="../machining_schema/nc_variable.html#nc_variable">nc_variable</A>;
+ operand2 : <A HREF="../machining_schema/rvalue.html#rvalue">rvalue</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

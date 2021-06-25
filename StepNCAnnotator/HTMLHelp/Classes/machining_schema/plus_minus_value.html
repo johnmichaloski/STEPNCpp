@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> plus_minus_value </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="plus_minus_value">plus_minus_value </A></H1><P>The plus_minuns_value describes the upper and lower limits valid for a scalar dimension referencing this entity.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#plus_minus_value">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>upper_limit </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>The value of the tolerance that shall be added to the exact value to establish the maximum allowed value. </TD></TR>
+<TR><TD>lower_limit </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>the value of the tolerance that shall be subtracted from the exact value to establish the minimum allowed value. </TD></TR>
+<TR><TD>significant_digits </TD>
+<TD> INTEGER </TD>
+<TD>The number of decimal digits indicating the accuracy of the lower_bound and upper_bound values. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY plus_minus_value ;
+ upper_limit : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+ lower_limit : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+ significant_digits :  INTEGER;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

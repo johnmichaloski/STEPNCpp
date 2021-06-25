@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> hyperbola </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="hyperbola">hyperbola </A></H1><P>A hyperbola is a conic section defined by the lengths of the major and minor radii and the position (mid­point of the line joining two foci) and orientation of the curve.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#hyperbola">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>semi_axis </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>: The length of the semi­axis of the hyperbola. This is positive and is half the minimum distance between the two branches of the hyperbola. </TD></TR>
+<TR><TD>semi_imag_axis </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>The length of the semi­imaginary axis of the hyperbola which shall be positive. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY hyperbola 
+SUBTYPE  OF (<A HREF="conic.html">conic</A> );
+ semi_axis : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+ semi_imag_axis : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

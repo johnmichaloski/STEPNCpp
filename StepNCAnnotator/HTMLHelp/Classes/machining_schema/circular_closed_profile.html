@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> circular_closed_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="circular_closed_profile">circular_closed_profile </A></H1><P>A circular_closed_profile is a type of closed_profile that is an enclosed area bounded by a circle. The orientation is at the center of the circle.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#circular_closed_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>diameter </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The distance across the circular_closed_profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY circular_closed_profile 
+SUBTYPE  OF (<A HREF="closed_profile.html">closed_profile</A> );
+ diameter : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

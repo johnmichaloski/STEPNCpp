@@ -1,0 +1,15 @@
+<HTML><HEAD><TITLE> back_boring </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="back_boring">back_boring </A></H1><P>Workingstep for back boring a hole. Backboring is the cutting of the back plane of a through bottom hole. After the tool is positioned at the start point, the spindle stops at the direction_of_spindle_orientation specified as an attribute of milling_cutting_tool. The tool is shifted in the opposite of direction_of_spindle_orientation in order to path through the hole with rapid traverse. At the bottom of the hole, it returns to the cutting position for the shifted value and the spindle starts to rotate. In special tools whose cutting edge can be hidden inside the tool body, the spindle will stop after passing through the hole and will reverse its direction. The attribute oriented_spindle_stop of its_maching_functions is required and will cause an oriented spindle stop which is needed for collapsible backboring tools.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#back_boring">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY back_boring 
+SUBTYPE  OF (<A HREF="drilling_type_operation.html">drilling_type_operation</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

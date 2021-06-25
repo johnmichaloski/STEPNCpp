@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> non_sequential </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="non_sequential">non_sequential </A></H1><P>The non_sequential entity allows to define a set of executables which all shall be executed but which’s order is not prescribed. In contrast to the workplan entity the non_sequential does not define a sequence.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#non_sequential">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_elements </TD>
+<TD> SET [ 2 : ? ] OF executable </TD>
+<TD>An set of executable objects. The non_sequential cannot contain itself as element. It can only contain itself indirectly within a control structure which allows to skip itself in order to prevent an infinite loop. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY non_sequential 
+SUBTYPE  OF (<A HREF="program_structure.html">program_structure</A> );
+ its_elements :  SET [ 2 : ? ] OF executable;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

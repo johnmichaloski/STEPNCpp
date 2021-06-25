@@ -1,0 +1,37 @@
+<HTML><HEAD><TITLE> surface_texture_parameter </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="surface_texture_parameter">surface_texture_parameter </A></H1><P>A Surface_texture_parameter is a combination of a parameter name and possibly indices describing one particular parameter of a surface texture such as roughness or waviness<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#surface_texture_parameter">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_value </TD>
+<TD><A HREF="../machining_schema/parameter_value.html#parameter_value">parameter_value</A> </TD>
+<TD>The value of the surface_texture_parameter. </TD></TR>
+<TR><TD>parameter_name </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>The name of the surface_tex </TD></TR>
+<TR><TD>measuring_method </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>The measuring_method specifies the method or standard that describes the method used to characterize the Surface_texture. Where applicable the following values shall be used: 'ISO 4287': The used surface texture parameters are defined in ISO 4287; 'ISO 12085': The used surface texture parameters are defined in ISO 12085; 'ISO 13565': The used surface texture parameters are defined in ISO 13565. </TD></TR>
+<TR><TD>parameter_index </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>An index that specifies the name of the measuring_method further. </TD></TR>
+<TR><TD>applied_surfaces </TD>
+<TD> SET [ 1 : ? ] OF machined_surface </TD>
+<TD>Physical surface of machining_feature that will define where the surface_texture_parameter will be applied. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY surface_texture_parameter ;
+ its_value : <A HREF="../machining_schema/parameter_value.html#parameter_value">parameter_value</A>;
+ parameter_name : <A HREF="../machining_schema/label.html#label">label</A>;
+ measuring_method : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ parameter_index : OPTIONAL <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ applied_surfaces :  SET [ 1 : ? ] OF machined_surface;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

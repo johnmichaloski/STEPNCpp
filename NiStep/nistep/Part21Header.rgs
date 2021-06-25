@@ -1,0 +1,26 @@
+HKCR
+{
+	NiStep.Part21Header.1 = s 'Part21Header Class'
+	{
+		CLSID = s '{F2F2F428-B6B9-49C3-93F8-984B73D9B085}'
+	}
+	NiStep.Part21Header = s 'Part21Header Class'
+	{
+		CLSID = s '{F2F2F428-B6B9-49C3-93F8-984B73D9B085}'
+		CurVer = s 'NiStep.Part21Header.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F2F2F428-B6B9-49C3-93F8-984B73D9B085} = s 'Part21Header Class'
+		{
+			ProgID = s 'NiStep.Part21Header.1'
+			VersionIndependentProgID = s 'NiStep.Part21Header'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D36EF86D-25FB-4D81-8C40-B279AABEC145}'
+		}
+	}
+}

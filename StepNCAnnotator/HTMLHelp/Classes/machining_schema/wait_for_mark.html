@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> wait_for_mark </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="wait_for_mark">wait_for_mark </A></H1><P>This function is used to synchronize the multiple channel operation. When it is invoked, the specified channel start to wait until the mark is read from another channel's program or from the main program.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#wait_for_mark">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_channel </TD>
+<TD><A HREF="../machining_schema/channel.html#channel">channel</A> </TD>
+<TD>The identification of the channel engaged in a synchronized operation. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY wait_for_mark 
+SUBTYPE  OF (<A HREF="nc_function.html">nc_function</A> );
+ its_channel : <A HREF="../machining_schema/channel.html#channel">channel</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

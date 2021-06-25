@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> machining_workingstep </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="machining_workingstep">machining_workingstep </A></H1><P>Machining workingsteps represent the machining process for a specified area of the workpiece. As opposed to the other workingsteps, machining workingsteps cannot exist independent of a feature. Rather, they specify the association between a distinct feature and an operation to be performed on the feature. This removes the ambiguity of the n:1 relation between features and operations, thus creating an unambiguous specification which can be executed by the machine. As the underlying operation, the machining workingstep is characterised by the use of a single tool and a set of technological parameters which normally remain constant during the reign of this machining workingstep. Upon the execution of a machining workingstep the first operation will be, if necessary, a tool change. During the machining workingstep, no tool change is possible. The machine is instructed to reach the operating conditions specified by its_operation (attributes its_tool and its_technology) before the operation of the workingstep commences. If the machine is unable to reach these conditions during the preceding workingstep (e.g. during a preceding rapid movement) a halt will occur before the execution of the workingstep until all parameters are stable. See the technology specific parts of ISO 14649 for details on operations, especially on how the association between the feature and the operation will change the interpretation of the operation.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#machining_workingstep">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_feature </TD>
+<TD><A HREF="../machining_schema/manufacturing_feature.html#manufacturing_feature">manufacturing_feature</A> </TD>
+<TD>The manufacturing_feature upon which the workingstep operates. its_operation:The opera </TD></TR>
+<TR><TD>its_operation </TD>
+<TD><A HREF="../machining_schema/machining_operation.html#machining_operation">machining_operation</A> </TD>
+<TD>The operation. </TD></TR>
+<TR><TD>its_effect </TD>
+<TD><A HREF="../machining_schema/in_process_geometry.html#in_process_geometry">in_process_geometry</A> </TD>
+<TD>The change to the geometry of the workpiece effected by the operation. A CAM system can use this attribute to describe the predicted effect of this operation on the geometry of the workpiece. If given the controller can compare the geometry change described by this attribute with the geometry change predicted by its internal algorithm. ISO 14649 does not describe how closely the two geometries must match in order for the controller to be considered to be in conformance. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY machining_workingstep 
+SUBTYPE  OF (<A HREF="workingstep.html">workingstep</A> );
+ its_feature : <A HREF="../machining_schema/manufacturing_feature.html#manufacturing_feature">manufacturing_feature</A>;
+ its_operation : <A HREF="../machining_schema/machining_operation.html#machining_operation">machining_operation</A>;
+ its_effect : OPTIONAL <A HREF="../machining_schema/in_process_geometry.html#in_process_geometry">in_process_geometry</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

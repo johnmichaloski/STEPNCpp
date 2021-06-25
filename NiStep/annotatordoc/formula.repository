@@ -1,0 +1,34 @@
+\form#0:$(x, y, z)$
+\form#1:$ \parallel v \parallel =x^2 + y^2 + z^2$
+\form#2:$ \parallel v \parallel = \sqrt{x^2+y^2+z^2} $
+\form#3:$ \hat{u} = \frac{u}{\parallel u \parallel} $
+\form#4:$\vec{u}$
+\form#5:$(Ax,Ay,Az)$
+\form#6:$(Bx,By,Bz)$
+\form#7:$ A \cdot B = AxBx + AyBy + AzBz $
+\form#8:$ A \times B = ( AyBz - AzBy, AzBy - AxBz, AxBy - AyBx ) $
+\form#9:$ \| u-v \| $
+\form#10:$ \hat{v_2} ( v_1 \cdot \hat{v_2} ) $
+\form#11:$\epsilon$
+\form#12:$ \| v_1 \cdot v_2 \| < \epsilon $
+\form#13:$ \| \hat{v_1} - \hat{v_2} \| < \epsilon $
+\form#14:$ (-\pi, \pi] $
+\form#15:$[0,2\pi)$
+\form#16:$2\pi$
+\form#17:$ v_2 - v_1$
+\form#18:\[ \left ( \begin{array}{cccc} d_{11} & d_{12} & d_{13} & d_{14} \\ d_{21} & d_{22} & d_{23} & d_{24}\\ d_{31} & d_{32} & d_{33} & d_{34}\\ d_{41} & d_{42} & d_{43} & d_{44} \end{array} \right ) \]
+\form#19:$M$
+\form#20:$M^T$
+\form#21:$det\left|M\right|$
+\form#22:$a,b,c,d,e,f,g,h,i$
+\form#23:\[ \left ( \begin{array}{cccc} a & b & c & x \\ d & e & f & y \\ g & h & i & z \\ 0 & 0 & 0 & w \end{array} \right ) \]
+\form#24:$x,y,z,w$
+\form#25:$v = (x,y,z) $
+\form#26:\[ \left ( \begin{array}{cccc} x & 0 & 0 & 0 \\ 0 & y & 0 & 0 \\ 0 & 0 & z & 0 \\ 0 & 0 & 0 & 1 \end{array} \right ) \]
+\form#27:\[ \left ( \begin{array}{cccc} 1 & 0 & 0 & x \\ 0 & 1 & 0 & y \\ 0 & 0 & 1 & z \\ 0 & 0 & 0 & 1 \end{array} \right ) \]
+\form#28:\[ \left ( \begin{array}{cccc} 1 & 0 & 0 & 0 \\ 0 & \cos(\theta) & -\sin(\theta) & 0 \\ 0 & \sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & 0& 1 \end{array} \right ) \]
+\form#29:$ where\ \theta=ang $
+\form#30:\[ \left ( \begin{array}{cccc} \cos(\theta)& 0 & -\sin(\theta) & 0 \\ 0 & 1 & 0 & 0 \\ -\sin(\theta) & 0 & \cos(\theta) & 0 \\ 0 & 0 & 0& 1 \end{array} \right ) \]
+\form#31:\[ \left ( \begin{array}{cccc} \cos(\theta)& -\sin(\theta) & 0 & 0 \\ \sin(\theta) & \cos(\theta) & 0& 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0& 1 \end{array} \right ) \]
+\form#32:\begin{eqnarray*} Ax&=&b \\ x&=&A^{-1}b \end{eqnarray*}
+\form#33:$det\left|A\right|\neq0$

@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> compound_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="compound_feature">compound_feature </A></H1><P>A compound feature is a feature composed of two or more features. As opposed to the replicate feature, there is no regular spacing between the elements of the compound feature. In general, they will also not be of the same type. The volume of removed material of the compound feature is the union of all volumes of the elements of the compound feature. It is illegal to create a compound feature where the volumes of the elements are not connected in such a way that their union can be machined. Note that the individual elements of the compound feature are associated with machining operation. In addition the compound feature includes by the attribute its_operations all operations of its minor elements.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#compound_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>elements </TD>
+<TD> SET [ 2 : ? ] OF compound_feature_select </TD>
+<TD>Set of features composing the compound feature. Note that the feature_placement attribute of the elements will specify their position relative to the local co-ordinate system of the compound feature, not relative to the workpiece co-ordinates. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY compound_feature 
+SUPERTYPE  OF ( ONEOF (<A HREF="counterbore_hole.html">counterbore_hole</A> ,<A HREF="countersunk_hole.html">countersunk_hole</A> ) )
+SUBTYPE  OF (<A HREF="two5d_manufacturing_feature.html">two5d_manufacturing_feature</A> );
+ elements :  SET [ 2 : ? ] OF compound_feature_select;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

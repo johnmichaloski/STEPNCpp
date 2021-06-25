@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> parabola </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="parabola">parabola </A></H1><P>A parabola is a conic section defined by its focal length, position (apex), and orientation.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#parabola">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>focal_dist </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The distance of the focal point from the apex point. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY parabola 
+SUBTYPE  OF (<A HREF="conic.html">conic</A> );
+ focal_dist : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

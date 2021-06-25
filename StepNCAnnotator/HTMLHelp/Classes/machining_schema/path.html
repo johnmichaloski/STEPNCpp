@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="path">path </A></H1><P>A path is a topological entity consisting of an ordered collection of oriented ­ edges, such that the edge start vertex of each edge coincides with the edge end of its predecessor. The path is ordered from the edge start of its first oriented edge to the edge end of its last oriented edge. The BOOLEAN value orientation in the oriented edge indicates whether the edge direction agrees with the direction of the path (TRUE) or is in the opposite direction (FALSE). An individual edge can only be referenced once by an individual path. An edge can be referenced by multiple paths. An edge can exist independently of a path.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>edge_list </TD>
+<TD> LIST [ 1 : ? ] OF UNIQUE oriented_edge </TD>
+<TD>List of oriented edge entities which are concatenated together to form this path. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY path 
+SUPERTYPE  OF (<A HREF="edge_loop.html">edge_loop</A> )
+SUBTYPE  OF (<A HREF="topological_representation_item.html">topological_representation_item</A> );
+ edge_list :  LIST [ 1 : ? ] OF UNIQUE oriented_edge;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

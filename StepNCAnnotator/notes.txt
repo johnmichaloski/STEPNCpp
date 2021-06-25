@@ -1,0 +1,108 @@
+
+
+OGL - Step display list
+	- active X com component - first just COM server
+	
+Vesion code from: http://www.codeproject.com/KB/cpp/GetLocalVersionInfos.aspx
+
+
+Splitter: http://www.codeproject.com/KB/wtl/splitpane.aspx
+Multidimensional array http://www.boost.org/doc/libs/1_36_0/libs/multi_array/doc/reference.html#MultiArray 
+
+http://www.flipcode.com/archives/Faster_Vector_Math_Using_Templates.shtml 
+Centralized Error Handling
+Bug report: Hand of Cut -> OK
+	integer and boolean without being derived is a problem in tree. Just sticks the node.
+	
+	EIntegerPtr number_of_teeth; 
+	EhandPtr hand_of_cut; 
+	EBooleanPtr coolant_through_tool; 
+
+
+direction - add insert menu, (1,0,0), etc. - DONE
+MAY PREFER XML with Import/Export
+
+
+
+Documentation:
+	list of commands
+
+Migrate to SimpleList and ComplexList at code generation?
+
+no delete on simple type or simple list
+
+LIST
+	SIMPLE
+			delete - clear all (clear())	- DONE
+			insert - NO, just overwrite		- DONE
+	ENTITY
+			insert - add data item - where (at end) - DONE
+					 NEED listtype list instead of entity type
+			delete entire list - do you realliy want to clear the entire list.
+	ENTITY INDEXED ITEM
+			insert - fill out entity item. - DONE
+			delete - BY INDEX - need deletion use CVarDef _addr to find index, delete use parent info?
+
+	
+ENTITY
+	if parent is entity, delete subbranch, leave entity since attribute. DELET==Clear
+	if parent is list, delete  branch and entity DELETE== delete
+	
+
+INSERTALL
+	if no cycles create all subchildren. BUT GUESSING? since multiple supertypes per attribute...
+
+	
+I NEED CVarDef for list entries: entity is really index into list.
+CVarDef must be stored into EListT since there is no other place for it - is there?
+
+
+INSERT SimpleList: match tokens size and list size (by either deleting or inserting.) Overwrite values using SetString.
+
+COPY: entity->entity match
+PASTE: only paste if match of is-kind-of
+
+COPY:
+	Simple type - types must match? or attribute names must match
+	Simple List Type - only copy entire list from one List owner
+	Complex List - 
+		1) copy item to list owner, 
+			- index classname is actual class, index ListClassname is the subtype to match owner listclassname
+		2) copy entire list and replace list.
+						
+	Clone step node/vardef...
+
+COPY:
+	Simple type - types must match? or attribute names must match
+	Simple List Type - only copy entire list from one List owner
+	Complex List - 
+		1) copy item to list owner, 
+			- index classname is actual class, index ListClassname is the subtype to match owner listclassname
+		2) copy entire list and replace list.
+						
+	Clone step node/vardef...
+	
+RENUMBER
+	renumber complex list type - DONE
+
+Move Up/ DOwn - DONE
+
+Multi-select up/down?
+Drag/drop selection for indexes
+UNDO
+	DELETE - undo is insert at location - problem is tree insert can be iffy given parent and prev sibling...
+	INSERT - is delete - simple
+	
+	
+NOTES:
+move tree into splitter into main view
+FIX: multidimesional lists - look @ safe array for handling multi-dimensional array.
+
+
+BUG REPORT - use of EString as attribute primitive causes some problems.
+
+"married" to truth, 
+push-button CNC
+probing with tool offsets using Step-NC, optional stop etc. other
+Step-NC already exhibits process incompatabilities. RS274 at least is close.
+	

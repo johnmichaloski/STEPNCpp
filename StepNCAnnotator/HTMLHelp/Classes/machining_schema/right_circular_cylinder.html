@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> right_circular_cylinder </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="right_circular_cylinder">right_circular_cylinder </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#right_circular_cylinder">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>position </TD>
+<TD><A HREF="../machining_schema/axis1_placement.html#axis1_placement">axis1_placement</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>height </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY right_circular_cylinder 
+SUBTYPE  OF (<A HREF="geometric_representation_item.html">geometric_representation_item</A> );
+ position : <A HREF="../machining_schema/axis1_placement.html#axis1_placement">axis1_placement</A>;
+ height : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+ radius : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

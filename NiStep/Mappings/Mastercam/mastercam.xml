@@ -1,0 +1,878 @@
+<PROJECT>
+<Setup>
+<StockSize>7.000000 9.000000 3.000000</StockSize>
+<Centroid>3.200000 13.400000 2.110000</Centroid>
+<SumToAddToolLengthOffset>0</SumToAddToolLengthOffset>
+<SumToAddToolDiaOffset>0</SumToAddToolDiaOffset>
+<DontSaveBinaryNCI>0</DontSaveBinaryNCI>
+<CalcFeedSpeedMatrl>1</CalcFeedSpeedMatrl>
+<AdjustFeedOnArcMove>0</AdjustFeedOnArcMove>
+<GenerateBinaryNciSsectionImmediately>1</GenerateBinaryNciSsectionImmediately>
+<AssignNextAavailableToolNumber>1</AssignNextAavailableToolNumber>
+<CalculateLengthAndDiaOffsetFromToolNum>1</CalculateLengthAndDiaOffsetFromToolNum>
+<MaterialName>ALUMINUM meter - 2024</MaterialName>
+<MaximumToolSpindleSpeed>5000</MaximumToolSpindleSpeed>
+<OriginCorner>0</OriginCorner>
+</Setup>
+<Tools>
+<Tool>
+<Number>1</Number>
+<Type>13</Type>
+<RadiusType>0</RadiusType>
+<Diameter>3.000000</Diameter>
+<CornerRadius>0.000000</CornerRadius>
+<ThreadsPerInch>0.000000</ThreadsPerInch>
+<TipAngle>0.000000</TipAngle>
+<DiameterOffsetNumber>1</DiameterOffsetNumber>
+<LengthOffsetNumber>1</LengthOffsetNumber>
+<Feedrate>0.000000</Feedrate>
+<Plungerate>0.000000</Plungerate>
+<Retractrate>0.000000</Retractrate>
+<SpindleSpeed>0.000000</SpindleSpeed>
+<Use_css>0</Use_css>
+<FeedisSurfaceFinish>0</FeedisSurfaceFinish>
+<PlungeisSurfaceFinish>0</PlungeisSurfaceFinish>
+<Coolant>1</Coolant>
+<NumberFlutes>0</NumberFlutes>
+<Material>0</Material>
+<Comment>3.0 in FACEMILL#2330</Comment>
+<Metric>0</Metric>
+<Slot>1</Slot>
+<sPilotDiameter>0.000000</sPilotDiameter>
+<sFluteLength>0.539000</sFluteLength>
+<sOverallLength>0.000000</sOverallLength>
+<sShoulderlength>0.000000</sShoulderlength>
+<sArborDiameter>0.000000</sArborDiameter>
+<sHolder_dia>0.000000</sHolder_dia>
+<sSpindle_rot>0.000000</sSpindle_rot>
+<sSfmPercentMaterial>0.000000</sSfmPercentMaterial>
+<sFpPercentToolRev>0.000000</sFpPercentToolRev>
+<sManufacturerToolCode>0.000000</sManufacturerToolCode>
+</Tool>
+<Tool>
+<Number>4</Number>
+<Type>10</Type>
+<RadiusType>0</RadiusType>
+<Diameter>0.250000</Diameter>
+<CornerRadius>0.000000</CornerRadius>
+<ThreadsPerInch>0.000000</ThreadsPerInch>
+<TipAngle>0.000000</TipAngle>
+<DiameterOffsetNumber>4</DiameterOffsetNumber>
+<LengthOffsetNumber>4</LengthOffsetNumber>
+<Feedrate>0.000000</Feedrate>
+<Plungerate>0.000000</Plungerate>
+<Retractrate>0.000000</Retractrate>
+<SpindleSpeed>0.000000</SpindleSpeed>
+<Use_css>0</Use_css>
+<FeedisSurfaceFinish>0</FeedisSurfaceFinish>
+<PlungeisSurfaceFinish>0</PlungeisSurfaceFinish>
+<Coolant>1</Coolant>
+<NumberFlutes>0</NumberFlutes>
+<Material>0</Material>
+<Comment>0.25 in ENDMILL</Comment>
+<Metric>0</Metric>
+<Slot>2</Slot>
+<sPilotDiameter>0.000000</sPilotDiameter>
+<sFluteLength>0.750000</sFluteLength>
+<sOverallLength>3.000000</sOverallLength>
+<sShoulderlength>0.750000</sShoulderlength>
+<sArborDiameter>0.250000</sArborDiameter>
+<sHolder_dia>0.000000</sHolder_dia>
+<sSpindle_rot>0.000000</sSpindle_rot>
+<sSfmPercentMaterial>0.000000</sSfmPercentMaterial>
+<sFpPercentToolRev>0.000000</sFpPercentToolRev>
+<sManufacturerToolCode>0.000000</sManufacturerToolCode>
+</Tool>
+<Tool>
+<Number>3</Number>
+<Type>10</Type>
+<RadiusType>0</RadiusType>
+<Diameter>0.500000</Diameter>
+<CornerRadius>0.000000</CornerRadius>
+<ThreadsPerInch>0.000000</ThreadsPerInch>
+<TipAngle>45.000000</TipAngle>
+<DiameterOffsetNumber>3</DiameterOffsetNumber>
+<LengthOffsetNumber>3</LengthOffsetNumber>
+<Feedrate>0.000000</Feedrate>
+<Plungerate>0.000000</Plungerate>
+<Retractrate>0.000000</Retractrate>
+<SpindleSpeed>0.000000</SpindleSpeed>
+<Use_css>0</Use_css>
+<FeedisSurfaceFinish>0</FeedisSurfaceFinish>
+<PlungeisSurfaceFinish>0</PlungeisSurfaceFinish>
+<Coolant>1</Coolant>
+<NumberFlutes>4</NumberFlutes>
+<Material>0</Material>
+<Comment>0.5 in ENDMILL</Comment>
+<Metric>0</Metric>
+<Slot>3</Slot>
+<sPilotDiameter>0.000000</sPilotDiameter>
+<sFluteLength>0.500000</sFluteLength>
+<sOverallLength>3.000000</sOverallLength>
+<sShoulderlength>0.500000</sShoulderlength>
+<sArborDiameter>1.000000</sArborDiameter>
+<sHolder_dia>2.000000</sHolder_dia>
+<sSpindle_rot>0.000000</sSpindle_rot>
+<sSfmPercentMaterial>0.000000</sSfmPercentMaterial>
+<sFpPercentToolRev>0.000000</sFpPercentToolRev>
+<sManufacturerToolCode>0.000000</sManufacturerToolCode>
+</Tool>
+<Tool>
+<Number>2</Number>
+<Type>19</Type>
+<RadiusType>1</RadiusType>
+<Diameter>0.750000</Diameter>
+<CornerRadius>0.125000</CornerRadius>
+<ThreadsPerInch>0.000000</ThreadsPerInch>
+<TipAngle>0.000000</TipAngle>
+<DiameterOffsetNumber>2</DiameterOffsetNumber>
+<LengthOffsetNumber>2</LengthOffsetNumber>
+<Feedrate>0.000000</Feedrate>
+<Plungerate>0.000000</Plungerate>
+<Retractrate>0.000000</Retractrate>
+<SpindleSpeed>0.000000</SpindleSpeed>
+<Use_css>0</Use_css>
+<FeedisSurfaceFinish>0</FeedisSurfaceFinish>
+<PlungeisSurfaceFinish>0</PlungeisSurfaceFinish>
+<Coolant>1</Coolant>
+<NumberFlutes>4</NumberFlutes>
+<Material>0</Material>
+<Comment></Comment>
+<Metric>0</Metric>
+<Slot>4</Slot>
+<sPilotDiameter>0.000000</sPilotDiameter>
+<sFluteLength>1.000000</sFluteLength>
+<sOverallLength>2.000000</sOverallLength>
+<sShoulderlength>1.200000</sShoulderlength>
+<sArborDiameter>1.000000</sArborDiameter>
+<sHolder_dia>2.000000</sHolder_dia>
+<sSpindle_rot>0.000000</sSpindle_rot>
+<sSfmPercentMaterial>0.000000</sSfmPercentMaterial>
+<sFpPercentToolRev>0.000000</sFpPercentToolRev>
+<sManufacturerToolCode>0.000000</sManufacturerToolCode>
+</Tool>
+</Tools>
+<Operations>
+<Operation>
+<Type> TP_POCKET</Type>
+<Slot>1</Slot>
+<Comment></Comment>
+<OpCommon>
+<ProgramNumber>0</ProgramNumber>
+<StartingSequenceNumber>100</StartingSequenceNumber>
+<SequenceNumberIncrement>2</SequenceNumberIncrement>
+<ClearancePlane>0.000000</ClearancePlane>
+<ClearanceInc>2061584302</ClearanceInc>
+<ClearanceOn>1</ClearanceOn>
+<RetractPlane>2.210000</RetractPlane>
+<RetractIncremental>0</RetractIncremental>
+<RetractOn>1</RetractOn>
+<FeedPlane>2.210000</FeedPlane>
+<FeedPlaneIncremental>0</FeedPlaneIncremental>
+<DepthInZOfToolpath>0.860000</DepthInZOfToolpath>
+<DepthInZOfToolpathIncremental>0</DepthInZOfToolpathIncremental>
+<RapidRretract>1</RapidRretract>
+<CalculatedCycleTimeForNciSection>0.000000</CalculatedCycleTimeForNciSection>
+<RefPointOn>0</RefPointOn>
+<ToolpathReferenceRretractionPt>0.000000 0.000000 0.000000</ToolpathReferenceRretractionPt>
+<NciOutputDestinationFileName>C:\MCAM9\MILL\NCI\T.NCI</NciOutputDestinationFileName>
+<AmountOfStockToLeave>0.000000</AmountOfStockToLeave>
+<TopOfstock>2.100000</TopOfstock>
+<TopOfstockIncremental>0</TopOfstockIncremental>
+<ForceAToolChangeinNCI>0</ForceAToolChangeinNCI>
+<Use_groups>0</Use_groups>
+<Use_subpgm>0</Use_subpgm>
+<OperationGroupIdNum>1</OperationGroupIdNum>
+<ForCommonParameterDialog>0</ForCommonParameterDialog>
+<Batch>0</Batch>
+<Ref_pt2_on>0</Ref_pt2_on>
+<SecondReferencePt>0.000000 0.000000 0.000000</SecondReferencePt>
+<Ref_pt_state>0</Ref_pt_state>
+<Clr_start_end>0</Clr_start_end>
+</OpCommon>
+<OpDepthCuts>
+<On>1</On>
+<MaxRoughStepSize>-343597384</MaxRoughStepSize>
+<NumberOfFinishCuts>1</NumberOfFinishCuts>
+<NumberOfRoughingCuts>0</NumberOfRoughingCuts>
+<ZDepthOfFinishCuts>0.010000</ZDepthOfFinishCuts>
+<StockToLeave>0.000000</StockToLeave>
+<SubProgramLabels>0</SubProgramLabels>
+<KeepToolDown>0</KeepToolDown>
+<sUseIslandDepths>0</sUseIslandDepths>
+<NumberofRoughCutsMultiaxis>0</NumberofRoughCutsMultiaxis>
+<ByDepth>0</ByDepth>
+<SubInc>0</SubInc>
+</OpDepthCuts>
+<OpMultiCuts>
+<On>0</On>
+<NumberOfRoughingCuts>1</NumberOfRoughingCuts>
+<DepthOfRoughingCuts>0.100000</DepthOfRoughingCuts>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<DepthOfFinishCuts>0.050000</DepthOfFinishCuts>
+<KeepToolDown>0</KeepToolDown>
+</OpMultiCuts>
+<Toolpaths>
+<Toolpath>
+<Id>69</Id>
+<Type>StartofChain</Type>
+<Units>ENGLISH</Units>
+</Toolpath>
+<Toolpath>
+<Id>70</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>2.804167 13.854445 2.110000</Start>
+<End>1.595834 13.854445 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>71</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>1.543334 13.906945 2.110000</Start>
+<End>1.595834 13.854445 2.110000</End>
+<Center>1.595834 13.906945 2.110000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>3.141593 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>72</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>1.543334 13.906945 2.110000</Start>
+<End>1.543334 16.448611 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>73</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>1.595834 16.501112 2.110000</Start>
+<End>1.543333 16.448611 2.110000</End>
+<Center>1.595834 16.448611 2.110000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>1.570796 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>74</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>1.595834 16.501112 2.110000</Start>
+<End>2.804167 16.501112 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>75</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>2.856667 16.448611 2.110000</Start>
+<End>2.804167 16.501112 2.110000</End>
+<Center>2.804167 16.448611 2.110000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>0.000000 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>76</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>2.856667 16.448611 2.110000</Start>
+<End>2.856667 13.906945 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>77</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>2.804167 13.854445 2.110000</Start>
+<End>2.856667 13.906945 2.110000</End>
+<Center>2.804167 13.906945 2.110000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>4.712389 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+</Toolpaths>
+<PocketType>0</PocketType>
+<PocketRoughing>1</PocketRoughing>
+<PocketFinishing>0</PocketFinishing>
+<PocketClimb>1</PocketClimb>
+<PocketFinishingPasses>1</PocketFinishingPasses>
+<PocketFinishPassStepSize>0.070310</PocketFinishPassStepSize>
+</Operation>
+<Operation>
+<Type> TP_POCKET</Type>
+<Slot>2</Slot>
+<Comment></Comment>
+<OpCommon>
+<ProgramNumber>0</ProgramNumber>
+<StartingSequenceNumber>100</StartingSequenceNumber>
+<SequenceNumberIncrement>2</SequenceNumberIncrement>
+<ClearancePlane>0.000000</ClearancePlane>
+<ClearanceInc>1546188227</ClearanceInc>
+<ClearanceOn>1</ClearanceOn>
+<RetractPlane>2.220000</RetractPlane>
+<RetractIncremental>0</RetractIncremental>
+<RetractOn>1</RetractOn>
+<FeedPlane>2.220000</FeedPlane>
+<FeedPlaneIncremental>0</FeedPlaneIncremental>
+<DepthInZOfToolpath>0.090000</DepthInZOfToolpath>
+<DepthInZOfToolpathIncremental>0</DepthInZOfToolpathIncremental>
+<RapidRretract>1</RapidRretract>
+<CalculatedCycleTimeForNciSection>0.000000</CalculatedCycleTimeForNciSection>
+<RefPointOn>0</RefPointOn>
+<ToolpathReferenceRretractionPt>0.000000 0.000000 0.000000</ToolpathReferenceRretractionPt>
+<NciOutputDestinationFileName>C:\MCAM9\MILL\NCI\T.NCI</NciOutputDestinationFileName>
+<AmountOfStockToLeave>0.000000</AmountOfStockToLeave>
+<TopOfstock>2.100000</TopOfstock>
+<TopOfstockIncremental>0</TopOfstockIncremental>
+<ForceAToolChangeinNCI>0</ForceAToolChangeinNCI>
+<Use_groups>0</Use_groups>
+<Use_subpgm>0</Use_subpgm>
+<OperationGroupIdNum>1</OperationGroupIdNum>
+<ForCommonParameterDialog>0</ForCommonParameterDialog>
+<Batch>0</Batch>
+<Ref_pt2_on>0</Ref_pt2_on>
+<SecondReferencePt>0.000000 0.000000 0.000000</SecondReferencePt>
+<Ref_pt_state>0</Ref_pt_state>
+<Clr_start_end>0</Clr_start_end>
+</OpCommon>
+<OpDepthCuts>
+<On>1</On>
+<MaxRoughStepSize>-343597384</MaxRoughStepSize>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<NumberOfRoughingCuts>0</NumberOfRoughingCuts>
+<ZDepthOfFinishCuts>0.000000</ZDepthOfFinishCuts>
+<StockToLeave>0.000000</StockToLeave>
+<SubProgramLabels>0</SubProgramLabels>
+<KeepToolDown>0</KeepToolDown>
+<sUseIslandDepths>0</sUseIslandDepths>
+<NumberofRoughCutsMultiaxis>0</NumberofRoughCutsMultiaxis>
+<ByDepth>0</ByDepth>
+<SubInc>0</SubInc>
+</OpDepthCuts>
+<OpMultiCuts>
+<On>0</On>
+<NumberOfRoughingCuts>1</NumberOfRoughingCuts>
+<DepthOfRoughingCuts>0.100000</DepthOfRoughingCuts>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<DepthOfFinishCuts>0.050000</DepthOfFinishCuts>
+<KeepToolDown>0</KeepToolDown>
+</OpMultiCuts>
+<Toolpaths>
+<Toolpath>
+<Id>166</Id>
+<Type>StartofChain</Type>
+<Units>ENGLISH</Units>
+</Toolpath>
+<Toolpath>
+<Id>167</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>3.569458 12.924056 2.120000</Start>
+<End>4.795880 11.288826 2.120000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>168</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>4.795880 11.288826 2.120000</Start>
+<End>4.888813 11.307593 2.120000</End>
+<Center>4.837880 11.320326 2.120000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>3.785094 </StartAngle>
+<SweepAngle>2.253118 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>169</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>4.888813 11.307593 2.120000</Start>
+<End>5.504217 13.769211 2.120000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>170</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>5.504217 13.769211 2.120000</Start>
+<End>5.453285 13.834444 2.120000</End>
+<Center>5.453285 13.781944 2.120000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>6.038207 </StartAngle>
+<SweepAngle>1.815775 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>171</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>5.453285 13.834444 2.120000</Start>
+<End>4.231250 13.834444 2.120000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>172</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>4.231250 13.834444 2.120000</Start>
+<End>4.189250 13.813444 2.120000</End>
+<Center>4.231250 13.781944 2.120000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>1.570796 </StartAngle>
+<SweepAngle>0.927295 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>173</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>4.189250 13.813444 2.120000</Start>
+<End>3.569458 12.987056 2.120000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>174</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>3.569458 12.987056 2.120000</Start>
+<End>3.569458 12.924056 2.120000</End>
+<Center>3.611458 12.955556 2.120000</Center>
+<Radius>0.052500 </Radius>
+<StartAngle>2.498092 </StartAngle>
+<SweepAngle>1.287002 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+</Toolpaths>
+<PocketType>0</PocketType>
+<PocketRoughing>1</PocketRoughing>
+<PocketFinishing>0</PocketFinishing>
+<PocketClimb>1</PocketClimb>
+<PocketFinishingPasses>1</PocketFinishingPasses>
+<PocketFinishPassStepSize>0.070313</PocketFinishPassStepSize>
+</Operation>
+<Operation>
+<Type> TP_POCKET</Type>
+<Slot>3</Slot>
+<Comment></Comment>
+<OpCommon>
+<ProgramNumber>0</ProgramNumber>
+<StartingSequenceNumber>100</StartingSequenceNumber>
+<SequenceNumberIncrement>2</SequenceNumberIncrement>
+<ClearancePlane>0.000000</ClearancePlane>
+<ClearanceInc>1546188227</ClearanceInc>
+<ClearanceOn>1</ClearanceOn>
+<RetractPlane>2.220000</RetractPlane>
+<RetractIncremental>0</RetractIncremental>
+<RetractOn>1</RetractOn>
+<FeedPlane>2.220000</FeedPlane>
+<FeedPlaneIncremental>0</FeedPlaneIncremental>
+<DepthInZOfToolpath>0.600000</DepthInZOfToolpath>
+<DepthInZOfToolpathIncremental>0</DepthInZOfToolpathIncremental>
+<RapidRretract>1</RapidRretract>
+<CalculatedCycleTimeForNciSection>0.000000</CalculatedCycleTimeForNciSection>
+<RefPointOn>0</RefPointOn>
+<ToolpathReferenceRretractionPt>0.000000 0.000000 0.000000</ToolpathReferenceRretractionPt>
+<NciOutputDestinationFileName>C:\MCAM9\MILL\NCI\T.NCI</NciOutputDestinationFileName>
+<AmountOfStockToLeave>0.000000</AmountOfStockToLeave>
+<TopOfstock>2.100000</TopOfstock>
+<TopOfstockIncremental>0</TopOfstockIncremental>
+<ForceAToolChangeinNCI>0</ForceAToolChangeinNCI>
+<Use_groups>0</Use_groups>
+<Use_subpgm>0</Use_subpgm>
+<OperationGroupIdNum>1</OperationGroupIdNum>
+<ForCommonParameterDialog>0</ForCommonParameterDialog>
+<Batch>0</Batch>
+<Ref_pt2_on>0</Ref_pt2_on>
+<SecondReferencePt>0.000000 0.000000 0.000000</SecondReferencePt>
+<Ref_pt_state>0</Ref_pt_state>
+<Clr_start_end>0</Clr_start_end>
+</OpCommon>
+<OpDepthCuts>
+<On>1</On>
+<MaxRoughStepSize>-343597384</MaxRoughStepSize>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<NumberOfRoughingCuts>0</NumberOfRoughingCuts>
+<ZDepthOfFinishCuts>0.000000</ZDepthOfFinishCuts>
+<StockToLeave>0.000000</StockToLeave>
+<SubProgramLabels>0</SubProgramLabels>
+<KeepToolDown>0</KeepToolDown>
+<sUseIslandDepths>0</sUseIslandDepths>
+<NumberofRoughCutsMultiaxis>0</NumberofRoughCutsMultiaxis>
+<ByDepth>0</ByDepth>
+<SubInc>0</SubInc>
+</OpDepthCuts>
+<OpMultiCuts>
+<On>0</On>
+<NumberOfRoughingCuts>1</NumberOfRoughingCuts>
+<DepthOfRoughingCuts>0.100000</DepthOfRoughingCuts>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<DepthOfFinishCuts>0.050000</DepthOfFinishCuts>
+<KeepToolDown>0</KeepToolDown>
+</OpMultiCuts>
+<Toolpaths>
+<Toolpath>
+<Id>189</Id>
+<Type>StartofChain</Type>
+<Units>ENGLISH</Units>
+</Toolpath>
+<Toolpath>
+<Id>190</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>2.879331 11.094310 0.000000</Start>
+<End>2.879331 11.094310 0.000000</End>
+<Center>1.879331 11.094310 0.000000</Center>
+<Radius>1.000000 </Radius>
+<StartAngle>0.000000 </StartAngle>
+<SweepAngle>6.283185 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+</Toolpaths>
+<PocketType>0</PocketType>
+<PocketRoughing>1</PocketRoughing>
+<PocketFinishing>1</PocketFinishing>
+<PocketClimb>1</PocketClimb>
+<PocketFinishingPasses>1</PocketFinishingPasses>
+<PocketFinishPassStepSize>0.039063</PocketFinishPassStepSize>
+</Operation>
+<Operation>
+<Type> TP_POCKET</Type>
+<Slot>4</Slot>
+<Comment></Comment>
+<OpCommon>
+<ProgramNumber>0</ProgramNumber>
+<StartingSequenceNumber>100</StartingSequenceNumber>
+<SequenceNumberIncrement>2</SequenceNumberIncrement>
+<ClearancePlane>0.000000</ClearancePlane>
+<ClearanceInc>1546188227</ClearanceInc>
+<ClearanceOn>1</ClearanceOn>
+<RetractPlane>2.220000</RetractPlane>
+<RetractIncremental>0</RetractIncremental>
+<RetractOn>1</RetractOn>
+<FeedPlane>2.220000</FeedPlane>
+<FeedPlaneIncremental>0</FeedPlaneIncremental>
+<DepthInZOfToolpath>0.090000</DepthInZOfToolpath>
+<DepthInZOfToolpathIncremental>0</DepthInZOfToolpathIncremental>
+<RapidRretract>1</RapidRretract>
+<CalculatedCycleTimeForNciSection>0.000000</CalculatedCycleTimeForNciSection>
+<RefPointOn>0</RefPointOn>
+<ToolpathReferenceRretractionPt>0.000000 0.000000 0.000000</ToolpathReferenceRretractionPt>
+<NciOutputDestinationFileName>C:\MCAM9\MILL\NCI\T.NCI</NciOutputDestinationFileName>
+<AmountOfStockToLeave>0.000000</AmountOfStockToLeave>
+<TopOfstock>2.100000</TopOfstock>
+<TopOfstockIncremental>0</TopOfstockIncremental>
+<ForceAToolChangeinNCI>0</ForceAToolChangeinNCI>
+<Use_groups>0</Use_groups>
+<Use_subpgm>0</Use_subpgm>
+<OperationGroupIdNum>1</OperationGroupIdNum>
+<ForCommonParameterDialog>0</ForCommonParameterDialog>
+<Batch>0</Batch>
+<Ref_pt2_on>0</Ref_pt2_on>
+<SecondReferencePt>0.000000 0.000000 0.000000</SecondReferencePt>
+<Ref_pt_state>0</Ref_pt_state>
+<Clr_start_end>0</Clr_start_end>
+</OpCommon>
+<OpDepthCuts>
+<On>1</On>
+<MaxRoughStepSize>0</MaxRoughStepSize>
+<NumberOfFinishCuts>1</NumberOfFinishCuts>
+<NumberOfRoughingCuts>0</NumberOfRoughingCuts>
+<ZDepthOfFinishCuts>0.000000</ZDepthOfFinishCuts>
+<StockToLeave>0.000000</StockToLeave>
+<SubProgramLabels>0</SubProgramLabels>
+<KeepToolDown>0</KeepToolDown>
+<sUseIslandDepths>0</sUseIslandDepths>
+<NumberofRoughCutsMultiaxis>0</NumberofRoughCutsMultiaxis>
+<ByDepth>0</ByDepth>
+<SubInc>0</SubInc>
+</OpDepthCuts>
+<OpMultiCuts>
+<On>0</On>
+<NumberOfRoughingCuts>1</NumberOfRoughingCuts>
+<DepthOfRoughingCuts>0.100000</DepthOfRoughingCuts>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<DepthOfFinishCuts>0.050000</DepthOfFinishCuts>
+<KeepToolDown>0</KeepToolDown>
+</OpMultiCuts>
+<Toolpaths>
+<Toolpath>
+<Id>192</Id>
+<Type>StartofChain</Type>
+<Units>ENGLISH</Units>
+</Toolpath>
+<Toolpath>
+<Id>193</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>5.296245 15.750084 0.000000</Start>
+<End>5.296245 15.750084 0.000000</End>
+<Center>4.671245 15.750084 0.000000</Center>
+<Radius>0.625000 </Radius>
+<StartAngle>0.000000 </StartAngle>
+<SweepAngle>6.283185 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+</Toolpaths>
+<PocketType>0</PocketType>
+<PocketRoughing>1</PocketRoughing>
+<PocketFinishing>1</PocketFinishing>
+<PocketClimb>1</PocketClimb>
+<PocketFinishingPasses>1</PocketFinishingPasses>
+<PocketFinishPassStepSize>0.039063</PocketFinishPassStepSize>
+</Operation>
+<Operation>
+<Type> TP_POCKET</Type>
+<Slot>5</Slot>
+<Comment></Comment>
+<OpCommon>
+<ProgramNumber>0</ProgramNumber>
+<StartingSequenceNumber>100</StartingSequenceNumber>
+<SequenceNumberIncrement>2</SequenceNumberIncrement>
+<ClearancePlane>0.000000</ClearancePlane>
+<ClearanceInc>2061584302</ClearanceInc>
+<ClearanceOn>1</ClearanceOn>
+<RetractPlane>2.210000</RetractPlane>
+<RetractIncremental>0</RetractIncremental>
+<RetractOn>1</RetractOn>
+<FeedPlane>2.210000</FeedPlane>
+<FeedPlaneIncremental>0</FeedPlaneIncremental>
+<DepthInZOfToolpath>0.850000</DepthInZOfToolpath>
+<DepthInZOfToolpathIncremental>0</DepthInZOfToolpathIncremental>
+<RapidRretract>1</RapidRretract>
+<CalculatedCycleTimeForNciSection>0.000000</CalculatedCycleTimeForNciSection>
+<RefPointOn>0</RefPointOn>
+<ToolpathReferenceRretractionPt>0.000000 0.000000 0.000000</ToolpathReferenceRretractionPt>
+<NciOutputDestinationFileName>C:\MCAM9\MILL\NCI\T.NCI</NciOutputDestinationFileName>
+<AmountOfStockToLeave>0.000000</AmountOfStockToLeave>
+<TopOfstock>2.100000</TopOfstock>
+<TopOfstockIncremental>0</TopOfstockIncremental>
+<ForceAToolChangeinNCI>0</ForceAToolChangeinNCI>
+<Use_groups>0</Use_groups>
+<Use_subpgm>0</Use_subpgm>
+<OperationGroupIdNum>1</OperationGroupIdNum>
+<ForCommonParameterDialog>0</ForCommonParameterDialog>
+<Batch>0</Batch>
+<Ref_pt2_on>0</Ref_pt2_on>
+<SecondReferencePt>0.000000 0.000000 0.000000</SecondReferencePt>
+<Ref_pt_state>0</Ref_pt_state>
+<Clr_start_end>0</Clr_start_end>
+</OpCommon>
+<OpDepthCuts>
+<On>1</On>
+<MaxRoughStepSize>0</MaxRoughStepSize>
+<NumberOfFinishCuts>1</NumberOfFinishCuts>
+<NumberOfRoughingCuts>0</NumberOfRoughingCuts>
+<ZDepthOfFinishCuts>0.000000</ZDepthOfFinishCuts>
+<StockToLeave>0.000000</StockToLeave>
+<SubProgramLabels>0</SubProgramLabels>
+<KeepToolDown>0</KeepToolDown>
+<sUseIslandDepths>0</sUseIslandDepths>
+<NumberofRoughCutsMultiaxis>0</NumberofRoughCutsMultiaxis>
+<ByDepth>0</ByDepth>
+<SubInc>0</SubInc>
+</OpDepthCuts>
+<OpMultiCuts>
+<On>0</On>
+<NumberOfRoughingCuts>1</NumberOfRoughingCuts>
+<DepthOfRoughingCuts>0.100000</DepthOfRoughingCuts>
+<NumberOfFinishCuts>0</NumberOfFinishCuts>
+<DepthOfFinishCuts>0.050000</DepthOfFinishCuts>
+<KeepToolDown>0</KeepToolDown>
+</OpMultiCuts>
+<Toolpaths>
+<Toolpath>
+<Id>123</Id>
+<Type>StartofChain</Type>
+<Units>ENGLISH</Units>
+</Toolpath>
+<Toolpath>
+<Id>124</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>2.804167 13.844445 2.110000</Start>
+<End>1.595834 13.844445 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>125</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>1.533334 13.906945 2.110000</Start>
+<End>1.595834 13.844445 2.110000</End>
+<Center>1.595834 13.906945 2.110000</Center>
+<Radius>0.062500 </Radius>
+<StartAngle>3.141593 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>126</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>1.533334 13.906945 2.110000</Start>
+<End>1.533334 16.448611 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>127</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>1.595834 16.511111 2.110000</Start>
+<End>1.533334 16.448611 2.110000</End>
+<Center>1.595834 16.448611 2.110000</Center>
+<Radius>0.062500 </Radius>
+<StartAngle>1.570796 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>128</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>1.595834 16.511111 2.110000</Start>
+<End>2.804167 16.511111 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>129</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>2.866667 16.448611 2.110000</Start>
+<End>2.804167 16.511111 2.110000</End>
+<Center>2.804167 16.448611 2.110000</Center>
+<Radius>0.062500 </Radius>
+<StartAngle>0.000000 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>130</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Line>
+<Start>2.866667 16.448611 2.110000</Start>
+<End>2.866667 13.906945 2.110000</End>
+</Line>
+</Entity>
+</Toolpath>
+<Toolpath>
+<Id>131</Id>
+<Type>Boundary entity</Type>
+<Units>ENGLISH</Units>
+<Entity>
+<Arc>
+<Start>2.804167 13.844445 2.110000</Start>
+<End>2.866667 13.906945 2.110000</End>
+<Center>2.804167 13.906945 2.110000</Center>
+<Radius>0.062500 </Radius>
+<StartAngle>4.712389 </StartAngle>
+<SweepAngle>1.570796 </SweepAngle>
+<View>1 </View>
+</Arc>
+</Entity>
+</Toolpath>
+</Toolpaths>
+<PocketType>0</PocketType>
+<PocketRoughing>1</PocketRoughing>
+<PocketFinishing>1</PocketFinishing>
+<PocketClimb>1</PocketClimb>
+<PocketFinishingPasses>1</PocketFinishingPasses>
+<PocketFinishPassStepSize>0.039060</PocketFinishPassStepSize>
+</Operation>
+</Operations>
+</PROJECT>

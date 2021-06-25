@@ -1,0 +1,264 @@
+
+
+abstract_supertype_declaration=
+		str_p("ABSTRACT") >>str_p("SUPERTYPE") >>subtype_constraint(?);
+actual_parameter_list=
+		'(' list_p(parameter , ',' ) >>')';
+add_like_op=	'+' | '-' | str_p("OR") | str_p("XOR");
+aggregate_initializer=
+		'[' >>!( list_p(element , ',' ) )>> ']';
+aggregate_source=
+		simple_expression;
+aggregate_type=	str_p("AGGREGATE") >>!( ':' >>type_label )>> str_p("OF") >>parameter_type;
+aggregation_types=
+		array_type | bag_type | list_type | set_type;
+algorithm_head=	*declaration>> ! constant_decl>>!local_decl;
+alias_stmt=	str_p("ALIAS") >>variable_id >>str_p("FOR")>> general_ref >>*qualifier>> ch_p(';') >>*stmt(>> str_p("END_ALIAS") >>ch_p(';');
+array_type=	str_p("ARRAY") >> bound_spec >>str_p("OF") >>!( str_p("OPTIONAL") )>>! ( str_p("UNIQUE") )>> base_type;
+assignment_stmt=
+		general_ref >>*qualifier >> str_p(":=")>> expression >>ch_p(';');
+attribute_decl=	attribute_id | qualified_attribute;
+attribute_id=	simple_id;
+
+attribute_qualifier=
+		'.' >>attribute_ref;
+
+bag_type=	str_p("BAG") bound_spec(?) str_p("OF") base_type;
+base_type=	aggregation_types | simple_types | named_types;
+binary_type=	str_p("BINARY") width_spec(?);
+boolean_type=	str_p("BOOLEAN");
+bound_1=	numeric_expression;
+bound_2:	numeric_expression;
+bound_spec:	'[' bound_1 ':' bound_2 ']';
+built_in_constant:
+		str_p("CONST_E") | str_p("PI") | str_p("SELF") | '?';
+built_in_function:
+		str_p("ABS") | str_p("ACOS") | str_p("ASIN") | str_p("ATAN") | str_p("BLENGTH") | str_p("COS") | str_p("EXISTS") | str_p("EXP") 
+		| str_p("FORMAT") | str_p("HIBOUND") | str_p("HIINDEX") | str_p("LENGTH") | str_p("LOBOUND") | str_p("LOINDEX") 
+		| str_p("LOG2") | str_p("LOG10") | str_p("LOG") | str_p("NVL") | str_p("ODD") | str_p("ROLESOF") | str_p("SIN") | str_p("SIZEOF") 
+		| str_p("SQRT") | str_p("TAN") | str_p("TYPEOF") | str_p("USEDIN") | str_p("VALUE_IN") | str_p("VALUE_UNIQUE") | str_p("VALUE") ;
+#Order changed against ISO.
+built_in_procedure:
+		str_p("INSERT") | str_p("REMOVE");
+
+case_action:	case_label ( ',' case_label )(s?) ':' stmt;
+case_label:	expression
+case_stmt:	str_p("CASE") selector str_p("OF") case_action(s?) ( str_p("OTHERWISE") ':' stmt )(?) str_p("END_CASE") ch_p(';');
+compound_stmt:	str_p("BEGIN") stmt(s) str_p("END") ch_p(';');
+constant_body:	constant_id ':' base_type str_p(":=") expression ch_p(';');
+constant_decl:	str_p("CONSTANT") constant_body(s) str_p("END_CONSTANT") ch_p(';');
+constant_factor=
+		built_in_constant | constant_ref;
+constant_id=	simple_id;
+
+constructed_types=
+		enumeration_type | select_type;
+declaration=	entity_decl | function_decl | procedure_decl | type_decl;
+
+derived_attr=	attribute_decl ':' base_type str_p(":=") expression ch_p(';');
+derive_clause=	str_p("DERIVE") derived_attr(s);
+domain_rule=	( label ':' )(?) logical_expression;
+element=	expression ( ':' repetition )(?);
+entity_body=	explicit_attr(s?) derive_clause(?) inverse_clause(?) unique_clause(?) where_clause(?);
+entity_constructor=
+		entity_ref '(' ( expression ( ',' expression )(s?) )(?) ')';
+entity_decl=	entity_head entity_body str_p("END_ENTITY") ch_p(';');
+entity_head=	str_p("ENTITY") entity_id subsuper(?) ch_p(';');
+entity_id=	simple_id ;
+enumeration_id=	simple_id;
+enumeration_reference=
+		( type_ref '.' )(?) enumeration_ref;
+enumeration_type=
+		str_p("ENUMERATION") str_p("OF") '(' enumeration_id 
+		(	',' enumeration_id 
+		)(s?) 
+		{ foreach ( $item[4],@{$item[5][1]} ) {
+			$enumeration{$schema}{$_} = 1;
+		  }
+		} ')';
+escape_stmt=	str_p("ESCAPE") ch_p(';');
+explicit_attr=	attribute_decl ( ',' attribute_decl )(s?)  ':' ( str_p("OPTIONAL") )(?) base_type ch_p(';');
+expression=	simple_expression ( rel_op_extended simple_expression)(?);
+factor=		simple_factor ( str_p("**") simple_factor )(?);
+formal_parameter=
+		parameter_id ( ',' parameter_id )(s?) ':' parameter_type;
+function_call=	( built_in_function | function_ref ) actual_parameter_list(?);
+function_decl=	function_head 
+		{ $function = $item[1]; }
+		algorithm_head(?) stmt(s) str_p("END_FUNCTION") 
+		{ undef $function;
+		  1;
+		}
+		ch_p(';');
+function_head=	str_p("FUNCTION") function_id 
+		{ $return = $item[2]; }
+		( '(' formal_parameter ( ch_p(';') formal_parameter )(s?) ')' )(?) ':' parameter_type ch_p(';');
+
+function_id=	simple_id;
+
+generalized_types=
+		aggregate_type | general_aggregation_types | generic_type;
+general_aggregation_types=
+		general_array_type | general_bag_type | general_list_type | general_set_type;
+general_array_type=
+		str_p("ARRAY") bound_spec(?) str_p("OF") ( str_p("OPTIONAL") )(?) ( str_p("UNIQUE") )(?) parameter_type;
+general_bag_type=
+		str_p("BAG") bound_spec(?) str_p("OF") parameter_type;
+general_list_type=
+		str_p("LIST") bound_spec(?) str_p("OF") ( str_p("UNIQUE") )(?) parameter_type;
+general_ref=	parameter_ref | variable_ref;
+general_set_type= 
+		str_p("SET") bound_spec(?) str_p("OF") parameter_type;
+generic_type=	str_p("GENERIC") ( ':' type_label )(?);
+group_qualifier= 
+		'\\' entity_ref;
+
+if_stmt=	str_p("IF") logical_expression str_p("THEN") stmt(s) ( str_p("ELSE") stmt(s) )(?) str_p("END_IF") ch_p(';');
+increment=	numeric_expression;
+increment_control=
+		variable_id str_p(":=") bound_1 str_p("TO") bound_2 ( str_p("BY") increment )(?);
+index=		numeric_expression;
+index_1=	index;
+index_2=	index;
+index_qualifier=
+		'[' index_1 ( ':' index_2 )(?) ']';
+integer_type=	str_p("INTEGER");
+interface_specification=
+		reference_clause | use_clause;
+interval=	'{' interval_low interval_op interval_item interval_op interval_high '}';
+
+interval_high=	simple_expression;
+interval_item=	simple_expression;
+interval_low=	simple_expression;
+interval_op=	str_p("<=") | '<' ;
+inverse_attr=	attribute_decl >>':' >>!( ( str_p("SET") | str_p("BAG") ) >> !bound_spec >>str_p("OF") ) entity_ref str_p("FOR") attribute_ref ch_p(';');
+inverse_clause=	str_p("INVERSE") >> +inverse_attr;
+label=		simple_id;
+
+list_type=	str_p("LIST") >> !bound_spec >>str_p("OF") >> !( str_p("UNIQUE") )>> base_type;
+literal=	binary_literal | integer_literal | logical_literal | real_literal | string_literal;
+
+local_decl=	str_p("LOCAL") >> +local_variable >>str_p("END_LOCAL") >>ch_p(';');
+
+local_variable=	list_p(variable_id  ',' )>> ':' >>parameter_type >> !( str_p(":=") >>expression )>> ch_p(';');
+logical_expression=
+		expression;
+logical_literal=
+		str_p("FALSE") | str_p("TRUE") | str_p("UNKNOWN");
+logical_type=	str_p("LOGICAL");
+multiplication_like_op=
+		'*' | '/' | str_p("DIV") | str_p("MOD") | str_p("AND") | str_p("||");
+named_types=	entity_ref | type_ref;
+named_type_or_rename=
+		named_types ( str_p("AS") ( entity_id | type_id ) )(?);
+null_stmt=	ch_p(';');
+number_type=	str_p("NUMBER");
+numeric_expression=
+		simple_expression;
+
+one_of=		str_p("ONEOF") >>'(' list_p(supertype_expression , ',' ) >>')';
+parameter=	expression;
+parameter_id=	simple_id;
+
+parameter_type=	generalized_types | named_types | simple_types;
+population=	entity_ref;
+precision_spec=	numeric_expression;
+primary=	literal | ( qualifiable_factor >> *qualifier );
+procedure_call_stmt=
+		( built_in_procedure | procedure_ref ) >> !(actual_parameter_list) >>ch_p(';');
+procedure_decl=	procedure_head >>!algorithm_head>>* stmt>> str_p("END_PROCEDURE") >>ch_p(';');
+procedure_head=	str_p("PROCEDURE") >>procedure_id >> ( '(' >>!( str_p("VAR") )>> formal_parameter 
+		>>!( ch_p(';')>> ( str_p("VAR") )>>* formal_parameter )>> ')' )>> ch_p(';');
+
+procedure_id=	simple_id;
+qualifiable_factor=	
+		attribute_ref | constant_factor | function_call | general_ref | population;
+qualified_attribute=
+		str_p("SELF")>> group_qualifier >>attribute_qualifier;
+qualifier=	attribute_qualifier | group_qualifier | index_qualifier;
+query_expression=
+		str_p("QUERY") >> '(' >>variable_id>> str_p("<*")>> aggregate_source >>'|'>> logical_expression>> ')';
+real_type=	str_p("REAL") >> !( '(' >>precision_spec >>')' );
+referenced_attribute=
+		attribute_ref | qualified_attribute;
+reference_clause=
+		str_p("REFERENCE") >>str_p("FROM") >>schema_ref >> !(  
+			'(' list_p(resource_or_rename, ',') >> ')' 
+			{ $return = [ $item[2],@{$item[3]} ]; }
+		) >> ch_p(';');
+rel_op=		str_p("<>") | str_p("<=") | str_p(">=") | '<' | '>' | '=' | str_p(":<>:") | str_p(":=:");
+rel_op_extended=
+		rel_op | str_p("IN") | str_p("LIKE");
+
+rename_id=	constant_id | entity_id | function_id | procedure_id | type_id;
+repeat_control=	!increment_control >>!while_control >>!until_control;
+repeat_stmt=	str_p("REPEAT") >>repeat_control >>':' >>stmt(s)>> str_p("END_REPEAT") >>ch_p(';');
+repetition=	numeric_expression;
+resource_or_rename=	# This rule is only used in reference_clause.
+		resource_ref >> !( str_p("AS") >> rename_id );
+
+resource_ref=	constant_ref | entity_ref | function_ref | procedure_ref | type_ref;
+return_stmt=	str_p("RETURN")>> !( '(' >>expression >>')' ) >> ch_p(';');
+rule_decl=	rule_head >> !algorithm_head >> *stmt >>) where_clause >> str_p("END_RULE") >> ch_p(';');
+rule_head=	str_p("RULE")>> rule_id>> str_p("FOR")>> '(' >> list_p(entity_ref , ',' ) >> ')'>> ch_p(';');
+rule_id=	simple_id;
+
+schema_body=	*interface_specification>> !constant_decl >> *( declaration | rule_decl );
+schema_decl=	str_p("SCHEMA") >> schema_id >> ch_p(';') >>schema_body >>str_p("END_SCHEMA")>> ch_p(';');
+schema_id=	simple_id;
+selector=	expression;
+select_type=	str_p("SELECT") >>'(' >> list_p(named_types, ',' ) >> ')';
+set_type=	str_p("SET") >> !bound_spec >> str_p("OF") >> base_type;
+sign=		'+' | '-';
+simple_expression=
+		term >> *( add_like_op >> term );
+simple_factor=	aggregate_initializer | entity_constructor | 
+		enumeration_reference 
+		| interval | query_expression | 
+		( !unary_op >>( '(' >>expression>> ')' | primary ) );
+simple_types=	binary_type | boolean_type | integer_type | logical_type | 
+		number_type | real_type | string_type;
+
+skip_stmt=	str_p("SKIP") >> ch_p(';');
+stmt=		alias_stmt | assignment_stmt | case_stmt | compound_stmt | escape_stmt | 
+		if_stmt | null_stmt | procedure_call_stmt | repeat_stmt | return_stmt | 
+		skip_stmt;
+string_literal=	simple_string_literal | encoded_string_literal;
+// #string_type=	str_p("STRING") >> width_spec(?);
+//#Hm. What do they mean in the iso document? My version is here:
+string_type=	( str_p("STRING") | simple_id 		)  >>!width_spec;
+subsuper=	!supertype_constraint  >> !subtype_declaration;
+subtype_constraint=
+		str_p("OF")  >>'('  >>supertype_expression >> ')';
+subtype_declaration=
+		str_p("SUBTYPE") >> str_p("OF") >> '(' list_p(entity_ref , ',' ) ')';
+supertype_constraint=
+		abstract_supertype_declaration | supertype_rule;
+supertype_expression=
+		supertype_factor >> *( str_p("ANDOR") >> supertype_factor );
+supertype_factor=
+		supertype_term >> *( str_p("AND") >> supertype_term );
+
+supertype_rule=	str_p("SUPERTYPE") >> subtype_constraint;
+supertype_term=	entity_ref | one_of | '(' >> supertype_expression >> ')';
+syntax=		schema_decl(s) ;
+term=		factor >> *( multiplication_like_op >> factor );
+type_decl=	str_p("TYPE") >> type_id >> '=' >> underlying_type >> ch_p(';') >> !(where_clause) >> str_p("END_TYPE") >>ch_p(';');
+type_id=	simple_id;
+
+type_label=	type_label_id | type_label_ref;
+type_label_id=	simple_id;
+
+unary_op=	'+' | '-' | str_p("NOT");
+underlying_type=	constructed_types | aggregation_types | simple_types | type_ref;
+
+unique_clause=	str_p("UNIQUE") ( unique_rule ';' )(s);
+unique_rule=	!( label ':' ) >> !list_p(referenced_attribute , ',' );
+until_control=	str_p("UNTIL")>> logical_expression;
+use_clause=	str_p("USE") >>str_p("FROM") >>schema_ref >> !( '(' >> list_p(named_type_or_rename, ',') >> ')' ) >> ch_p(';');
+variable_id=	simple_id;
+
+where_clause=	str_p("WHERE") >>domain_rule >>';' >> ( domain_rule >> ';' )(s?);
+while_control=	str_p("WHILE") >>logical_expression;
+width=		numeric_expression;
+width_spec=	'('>> width>> ')' >> !( str_p("FIXED") );

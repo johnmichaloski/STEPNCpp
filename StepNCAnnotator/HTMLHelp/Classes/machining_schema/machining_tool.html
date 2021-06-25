@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> machining_tool </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="machining_tool">machining_tool </A></H1><P>This is the supertype for all tools which are needed for machining. They are to be specified in the technology- specific parts of ISO 14649 or future standards might be referenced.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#machining_tool">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_id </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>An unique label to exactly identify the tool. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY machining_tool  ABSTRACT
+SUPERTYPE ;
+ its_id : <A HREF="../machining_schema/label.html#label">label</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

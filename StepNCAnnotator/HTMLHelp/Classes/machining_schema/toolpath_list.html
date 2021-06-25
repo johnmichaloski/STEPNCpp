@@ -1,0 +1,21 @@
+<HTML><HEAD><TITLE> toolpath_list </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="toolpath_list">toolpath_list </A></H1><P>The entity toolpath_list contains a list of toolpaths (trajectories) which will be executed by the CNC one after the other.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#toolpath_list">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_list </TD>
+<TD> LIST [ 1 : ? ] OF toolpath </TD>
+<TD>A list of toolpaths. These toolpaths shall be executed in the defined order. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY toolpath_list ;
+ its_list :  LIST [ 1 : ? ] OF toolpath;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

@@ -1,0 +1,38 @@
+<HTML><HEAD><TITLE> toolpath </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="toolpath">toolpath </A></H1><P>This is the supertype for all explicit toolpaths. If needed, the toolpaths can have technological parameters and the machine functions which override the default value specified at the operation level. If the attributes its_technology and/or its_machine_functions are given, the machine is instructed to reach the specified operating conditions before entering the toolpath. Unlike the similar case for workingsteps, no halt is allowed between toolpaths in an operation’s toolpath list. So the previous toolpath may be adversely affected if a significant change of parameters occurs and the controller tries to provide run up to these parameters prior to the current toolpath. Also, if the time span of the previous toolpath is insufficient to reach stable parameters, there is no guarantee that the new toolpath will be using these parameters from the start. Caution is therefore advised when using technological parameters at the toolpath level. If required, e.g. for special operations requiring a reversing of the spindle rotation, a feedstop toolpath should be inserted in order to grant the machine sufficient time for changing the parameters.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#toolpath">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_priority </TD>
+<TD> BOOLEAN </TD>
+<TD>As a toolpath may contain all necessary movements to manufacture a feature the priority of execution between the toolpath and the feature has to be determined. In case there is a toolpath of higher priority (true) than the geometry of the path generation based on the manufacturing feature is subordinated to this toolpath. </TD></TR>
+<TR><TD>its_type </TD>
+<TD><A HREF="../machining_schema/toolpath_type.html#toolpath_type">toolpath_type</A> </TD>
+<TD>Type of the toolpath. </TD></TR>
+<TR><TD>its_speed </TD>
+<TD><A HREF="../machining_schema/toolpath_speedprofile.html#toolpath_speedprofile">toolpath_speedprofile</A> </TD>
+<TD>A means to influence the feed rate. This factor will be multiplied into the feed rate defined in the operation. It can be either a fixed value or a curve specifying a velocity profile along the toolpath. </TD></TR>
+<TR><TD>its_technology </TD>
+<TD><A HREF="../machining_schema/technology.html#technology">technology</A> </TD>
+<TD>The technology defines the spindle and the feed of the tool. </TD></TR>
+<TR><TD>its_machine_functions </TD>
+<TD><A HREF="../machining_schema/machine_functions.html#machine_functions">machine_functions</A> </TD>
+<TD>Various machine functions, like coolant, chip removal, etc. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY toolpath  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="feedstop.html">feedstop</A> ,<A HREF="trajectory.html">trajectory</A> ,<A HREF="parameterised_path.html">parameterised_path</A> ) );
+ its_priority :  BOOLEAN;
+ its_type : <A HREF="../machining_schema/toolpath_type.html#toolpath_type">toolpath_type</A>;
+ its_speed : OPTIONAL <A HREF="../machining_schema/toolpath_speedprofile.html#toolpath_speedprofile">toolpath_speedprofile</A>;
+ its_technology : OPTIONAL <A HREF="../machining_schema/technology.html#technology">technology</A>;
+ its_machine_functions : OPTIONAL <A HREF="../machining_schema/machine_functions.html#machine_functions">machine_functions</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

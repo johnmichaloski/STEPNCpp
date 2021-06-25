@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> contour_spiral </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="contour_spiral">contour_spiral </A></H1><P>Contour spiral milling is similar to contour parallel milling, with the exception, that in this case the milling path is a truly spiral path rather than concentric paths which are connected by a orthogonal movement. The step over direction (outside_in or inside_out) is automatically derived from rotation_direction and cutmode.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#contour_spiral">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>rotation_direction </TD>
+<TD><A HREF="../machining_schema/rot_direction.html#rot_direction">rot_direction</A> </TD>
+<TD>The direction of the spiral path (clockwise or counterclockwise) as seen from the top of the feature. The default is counterclockwise. The attribute cutmode, if given, takes precedence over this attribute. </TD></TR>
+<TR><TD>cutmode </TD>
+<TD><A HREF="../milling_schema/cutmode_type.html#cutmode_type">cutmode_type</A> </TD>
+<TD>Specifies whether conventional or climb cutting should be used. Default is conventional. The cutmode refers to the functional walls of the contour which are produced by side milling, i. e. the outer contour of of pocket and possible bosses. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY contour_spiral 
+SUBTYPE  OF (<A HREF="two5d_milling_strategy.html">two5d_milling_strategy</A> );
+ rotation_direction : OPTIONAL <A HREF="../machining_schema/rot_direction.html#rot_direction">rot_direction</A>;
+ cutmode : OPTIONAL <A HREF="../milling_schema/cutmode_type.html#cutmode_type">cutmode_type</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

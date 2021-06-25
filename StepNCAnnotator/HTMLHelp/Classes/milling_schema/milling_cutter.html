@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> milling_cutter </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="milling_cutter">milling_cutter </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#milling_cutter">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY milling_cutter  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="facemill.html">facemill</A> ,<A HREF="endmill.html">endmill</A> ,<A HREF="t_slot_mill.html">t_slot_mill</A> ,<A HREF="dovetail_mill.html">dovetail_mill</A> ,<A HREF="woodruff_keyseat_mill.html">woodruff_keyseat_mill</A> ,<A HREF="side_mill.html">side_mill</A> ,<A HREF="thread_mill.html">thread_mill</A> ) )
+SUBTYPE  OF (<A HREF="milling_tool_body.html">milling_tool_body</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

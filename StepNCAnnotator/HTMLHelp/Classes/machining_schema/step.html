@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> step </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="step">step </A></H1><P>A step (or shoulder) is a volume of material removed from the top and the sides of the workpiece. Like an open pocket, its contour is open to its sides. The part of the V-profile describing the step’s bottom lies in the elementary surface defined by the feature’s attribute depth. The step may have one or more bosses as given by the optional attribute.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#step">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>open_boundary </TD>
+<TD><A HREF="../machining_schema/linear_path.html#linear_path">linear_path</A> </TD>
+<TD>The outline or shape that forms the upper edge of the step. When travelling along the curve based as defined by its sense, the material is to the left of the curve. </TD></TR>
+<TR><TD>wall_boundary </TD>
+<TD><A HREF="../machining_schema/vee_profile.html#vee_profile">vee_profile</A> </TD>
+<TD>The outline or shape that forms the side edge of the step, i. e. the “profile” of the cut. </TD></TR>
+<TR><TD>its_boss </TD>
+<TD> SET [ 0 : ? ] OF boss </TD>
+<TD>A step may have one or more bosses.. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY step 
+SUBTYPE  OF (<A HREF="machining_feature.html">machining_feature</A> );
+ open_boundary : <A HREF="../machining_schema/linear_path.html#linear_path">linear_path</A>;
+ wall_boundary : OPTIONAL <A HREF="../machining_schema/vee_profile.html#vee_profile">vee_profile</A>;
+ its_boss :  SET [ 0 : ? ] OF boss;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

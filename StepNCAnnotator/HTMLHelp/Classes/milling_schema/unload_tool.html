@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> unload_tool </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="unload_tool">unload_tool </A></H1><P>This function is used to unload a tool.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#unload_tool">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_tool </TD>
+<TD><A HREF="../machining_schema/machining_tool.html#machining_tool">machining_tool</A> </TD>
+<TD>The tool which has to be exchanged. In case of an operation where more than one tool is in use at the same time this attribute has to be set. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY unload_tool 
+SUBTYPE  OF (<A HREF="../machining_schema/nc_function.html">nc_function </A> );
+ its_tool : OPTIONAL <A HREF="../machining_schema/machining_tool.html#machining_tool">machining_tool</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> partial_area_definition </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="partial_area_definition">partial_area_definition </A></H1><P>A partial_area_definition includes the limitations of a surface for applying a thread. It places a limitation on how much and where to apply the thread on the cylindrical shape.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#partial_area_definition">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>effective_length </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The length of the thread which is usable. </TD></TR>
+<TR><TD>placement </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>The location and direction of the partial_area_definition. </TD></TR>
+<TR><TD>maximum_length </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The dimension along a surface to apply a thread. It limits The dimensional distance limits the length along the surface axis for defining a thread. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY partial_area_definition ;
+ effective_length : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ placement : <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+ maximum_length : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

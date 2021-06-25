@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> boss </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="boss">boss </A></H1><P>A boss is a feature which has to be related to an other feature. No separate workingstep can be assigned to manufacture a boss (i.e. it is not possible to first cut the feature and then cut the boss). Instead, the boss is that material which remains unworked after the machining of a feature with a boss. For this reason, boss is not an independent machining feature but exists only as an attribute.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#boss">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_boundary </TD>
+<TD><A HREF="../machining_schema/closed_profile.html#closed_profile">closed_profile</A> </TD>
+<TD>The contour of the boss at the top of the boss. The contour at the bottom may be calculated by traversing the slope along the contour. Also, for the boss to have a well-defined height, its_boundary should be parallel to the bottom of the parent feature. When travelling along the profile based as defined by its sense, the material is to the left of the profile. </TD></TR>
+<TR><TD>slope </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The slope of the contour of the boss relative to the local z axis of the parent feature. The default is 0 degrees. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY boss 
+SUBTYPE  OF (<A HREF="machining_feature.html">machining_feature</A> );
+ its_boundary : <A HREF="../machining_schema/closed_profile.html#closed_profile">closed_profile</A>;
+ slope : OPTIONAL <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

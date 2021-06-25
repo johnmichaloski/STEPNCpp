@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> ap_lift_path_tangent </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="ap_lift_path_tangent">ap_lift_path_tangent </A></H1><P>Approach or lift to the path using a tangential approach (see figure).<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#ap_lift_path_tangent">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>The radius of the approach movement. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY ap_lift_path_tangent 
+SUBTYPE  OF (<A HREF="approach_lift_path.html">approach_lift_path</A> );
+ radius : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:41 2008
+
+</BODY></HTML>

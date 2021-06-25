@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> pcurve </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="pcurve">pcurve </A></H1><P>A pcurve is a 3D curve defined by means of a 2D curve in the parameter space of a surface. If the curve is parametrised by the function (u; v) = f(t), and the surface is parametrised by the function (x; y; z) = g(u; v), the pcurve is parametrised by the function (x; y; z) = g(f(t)). A pcurve definition contains a reference to its basis surface and an indirect reference to a 2D curve through a definitional representation entity. The 2D curve, being in parameter space, is not in the context of the basis surface. Thus a direct reference is not possible. For the 2D curve the variables involved are u and v, which occur in the parametric representation of the basis surface rather than x; y Cartesian coordinates. The curve is only defined within the parametric range of the surface.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#pcurve">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>basis_surface </TD>
+<TD><A HREF="../machining_schema/surface.html#surface">surface</A> </TD>
+<TD>The surface in whose parameter space the curve is defined. reference to curve: The reference to the parameter space curve which defines the pcurve. </TD></TR>
+<TR><TD>reference_to_curve </TD>
+<TD><A HREF="../machining_schema/definitional_representation.html#definitional_representation">definitional_representation</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY pcurve 
+SUBTYPE  OF (<A HREF="curve.html">curve</A> );
+ basis_surface : <A HREF="../machining_schema/surface.html#surface">surface</A>;
+ reference_to_curve : <A HREF="../machining_schema/definitional_representation.html#definitional_representation">definitional_representation</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

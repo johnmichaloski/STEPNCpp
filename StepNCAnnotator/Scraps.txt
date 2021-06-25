@@ -1,0 +1,14 @@
+	bool IsSimpleType() 
+	{  
+		if(_eType == special_)
+		{
+			CVarDefs & vars = SpecialMRefCVars(this); //  this->m_ref;
+			if(vars.size() > 1)
+				return false;
+			if(vars.size() )
+				return vars[0]->IsSimpleType() ;
+		}
+		if( _eType== string_  ||  _eType== integer_  ||  _eType== real_)
+			return true;
+		return false;
+	}

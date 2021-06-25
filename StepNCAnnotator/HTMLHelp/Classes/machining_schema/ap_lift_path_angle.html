@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> ap_lift_path_angle </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="ap_lift_path_angle">ap_lift_path_angle </A></H1><P>Approach or lift at an angle to the path using a linear approach<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#ap_lift_path_angle">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Approach or lift angle. </TD></TR>
+<TR><TD>benddist </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>The length of the angular approach angle. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY ap_lift_path_angle 
+SUBTYPE  OF (<A HREF="approach_lift_path.html">approach_lift_path</A> );
+ angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ benddist : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:41 2008
+
+</BODY></HTML>

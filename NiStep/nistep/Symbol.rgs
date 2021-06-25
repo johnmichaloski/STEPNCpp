@@ -1,0 +1,26 @@
+HKCR
+{
+	NiStep.Symbol.1 = s 'Symbol Class'
+	{
+		CLSID = s '{31F107E2-5286-4449-8368-F5FFF5102167}'
+	}
+	NiStep.Symbol = s 'Symbol Class'
+	{
+		CLSID = s '{31F107E2-5286-4449-8368-F5FFF5102167}'
+		CurVer = s 'NiStep.Symbol.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {31F107E2-5286-4449-8368-F5FFF5102167} = s 'Symbol Class'
+		{
+			ProgID = s 'NiStep.Symbol.1'
+			VersionIndependentProgID = s 'NiStep.Symbol'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D36EF86D-25FB-4D81-8C40-B279AABEC145}'
+		}
+	}
+}

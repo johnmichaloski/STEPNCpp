@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> transition_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="transition_feature">transition_feature </A></H1><P>A transition feature may be added at the border of two features. Example: An edge round or a chamfer between two planar faces or between a planar face and a pocket. Unlike in ISO 10303-224, only those transition features which are generated using additional tool movements are considered here. Example: An edge round between a pocket and a planar face needs an additional manufacturing operation (workingstep). On the contrary, a fillet between the sides and the bottom of a pocket results from the geometry of the tool and thus needs no additional tool movement. It is therefore not considered in this context.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#transition_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>first_feature </TD>
+<TD><A HREF="../machining_schema/machining_feature.html#machining_feature">machining_feature</A> </TD>
+<TD>The first of the two features connected by the transition feature. </TD></TR>
+<TR><TD>second_feature </TD>
+<TD><A HREF="../machining_schema/machining_feature.html#machining_feature">machining_feature</A> </TD>
+<TD>The second of the two features connected by the transition feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY transition_feature  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="chamfer.html">chamfer</A> ,<A HREF="edge_round.html">edge_round</A> ) )
+SUBTYPE  OF (<A HREF="manufacturing_feature.html">manufacturing_feature</A> );
+ first_feature : <A HREF="../machining_schema/machining_feature.html#machining_feature">machining_feature</A>;
+ second_feature : <A HREF="../machining_schema/machining_feature.html#machining_feature">machining_feature</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

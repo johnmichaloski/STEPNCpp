@@ -1,0 +1,38 @@
+<HTML><HEAD><TITLE> trimmed_curve </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="trimmed_curve">trimmed_curve </A></H1><P>A trimmed curve is a bounded curve which is created by taking a se­ lected portion, between two identified points, of the associated basis curve. The basis curve itself is unaltered and more than one trimmed curve may reference the same basis curve.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#trimmed_curve">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>basis_curve </TD>
+<TD><A HREF="../machining_schema/curve.html#curve">curve</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>trim_1 </TD>
+<TD> SET [ 1 : 2 ] OF trimming_select </TD>
+<TD>The first trimming point which may be specified as a cartesian point (point 1), as a real parameter value (parameter 1 = t 1 ), or both. </TD></TR>
+<TR><TD>trim_2 </TD>
+<TD> SET [ 1 : 2 ] OF trimming_select </TD>
+<TD>The second trimming point which may be specified as a cartesian point (point 2), as a real parameter value (parameter 2 = t 2 ), or both. </TD></TR>
+<TR><TD>sense_agreement </TD>
+<TD> BOOLEAN </TD>
+<TD>Flag to indicate whether the direction of the trimmed curve agrees with or is opposed to the direction of basis curve. </TD></TR>
+<TR><TD>master_representation </TD>
+<TD><A HREF="../machining_schema/trimming_preference.html#trimming_preference">trimming_preference</A> </TD>
+<TD>Where both parameter and point are present at either end of the curve this indicates the preferred form. Multiple representations provide the ability to communicate data in more than one form, even though the data are expected to be geometrically </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY trimmed_curve 
+SUBTYPE  OF (<A HREF="bounded_curve.html">bounded_curve</A> );
+ basis_curve : <A HREF="../machining_schema/curve.html#curve">curve</A>;
+ trim_1 :  SET [ 1 : 2 ] OF trimming_select;
+ trim_2 :  SET [ 1 : 2 ] OF trimming_select;
+ sense_agreement :  BOOLEAN;
+ master_representation : <A HREF="../machining_schema/trimming_preference.html#trimming_preference">trimming_preference</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> partial_circular_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="partial_circular_profile">partial_circular_profile </A></H1><P>A partial circular profile is a type of open_profile that is specified by an arc. The arc shall be a constant radius swept about a point. The orientation of the profile shall be positioned at the origin of the are, with one end point of the arc on the X-axis.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#partial_circular_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The size of the arc to define a partial circular profile </TD></TR>
+<TR><TD>sweep_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The size of the angle to define a circular shaped profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY partial_circular_profile 
+SUBTYPE  OF (<A HREF="open_profile.html">open_profile</A> );
+ radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ sweep_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

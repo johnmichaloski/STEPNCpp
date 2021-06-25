@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> general_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="general_profile">general_profile </A></H1><P>Any profile as defined by an arbitrary contour.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#general_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_profile </TD>
+<TD><A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A> </TD>
+<TD>A contour describing the general profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY general_profile 
+SUBTYPE  OF (<A HREF="open_profile.html">open_profile</A> );
+ its_profile : <A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

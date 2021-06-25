@@ -1,0 +1,26 @@
+HKCR
+{
+	NiStep.Variable.1 = s 'Variable Class'
+	{
+		CLSID = s '{B93FE105-1C8B-48AD-83C2-675965F9A34C}'
+	}
+	NiStep.Variable = s 'Variable Class'
+	{
+		CLSID = s '{B93FE105-1C8B-48AD-83C2-675965F9A34C}'
+		CurVer = s 'NiStep.Variable.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B93FE105-1C8B-48AD-83C2-675965F9A34C} = s 'Variable Class'
+		{
+			ProgID = s 'NiStep.Variable.1'
+			VersionIndependentProgID = s 'NiStep.Variable'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D36EF86D-25FB-4D81-8C40-B279AABEC145}'
+		}
+	}
+}

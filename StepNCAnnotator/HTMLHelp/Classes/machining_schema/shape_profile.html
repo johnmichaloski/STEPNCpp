@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> shape_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="shape_profile">shape_profile </A></H1><P>A shape profile is the removal volume of shaped profile from the boundary shape of a workpiece. The bottom of the boundary shape is limited by a floor condition. This is an abstract supertype of general shape profile, partial circular shape profile, circular closed shape profile, rectangular open shape profile, and rectangular closed shape profile.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#shape_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>floor_condition </TD>
+<TD><A HREF="../machining_schema/profile_select.html#profile_select">profile_select</A> </TD>
+<TD>Specification of the shape of the bottom. </TD></TR>
+<TR><TD>removal_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>A vector that points in the general direction away from the material. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY shape_profile  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="general_shape_profile.html">general_shape_profile</A> ,<A HREF="partial_circular_shape_profile.html">partial_circular_shape_profile</A> ,<A HREF="circular_closed_shape_profile.html">circular_closed_shape_profile</A> ,<A HREF="rectangular_open_shape_profile.html">rectangular_open_shape_profile</A> ,<A HREF="rectangular_closed_shape_profile.html">rectangular_closed_shape_profile</A> ) )
+SUBTYPE  OF (<A HREF="profile_feature.html">profile_feature</A> );
+ floor_condition : <A HREF="../machining_schema/profile_select.html#profile_select">profile_select</A>;
+ removal_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

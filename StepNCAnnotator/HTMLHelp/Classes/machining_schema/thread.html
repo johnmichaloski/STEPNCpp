@@ -1,0 +1,55 @@
+<HTML><HEAD><TITLE> thread </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="thread">thread </A></H1><P>A thread is a ridge of a uniform section on the form of a helix on the external or internal surface of a cylinder. Each thread is either a catalogue_thread or a defined_thread.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#thread">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>partial_profile </TD>
+<TD><A HREF="../machining_schema/partial_area_definition.html#partial_area_definition">partial_area_definition</A> </TD>
+<TD>Specification of limitations of a surface to be applied on the thread. </TD></TR>
+<TR><TD>applied_shape </TD>
+<TD> SET [ 1 : ? ] OF machining_feature </TD>
+<TD>Physical shape of the workpiece that will define where the thread will be applied. </TD></TR>
+<TR><TD>inner_or_outer_thread </TD>
+<TD> BOOLEAN </TD>
+<TD>A flag specifies whether or not a thread is applied as an internal thread or an external thread. </TD></TR>
+<TR><TD>qualifier </TD>
+<TD><A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A> </TD>
+<TD>Additional text information that describes a thread. </TD></TR>
+<TR><TD>fit_class </TD>
+<TD><A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A> </TD>
+<TD>The value for the type of fit specification. These types are distinguished from each other by the amount of the tolerance and allowance. </TD></TR>
+<TR><TD>form </TD>
+<TD><A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A> </TD>
+<TD>The definition of the shape of the thread. Various forms of threads are used to hold parts together, to adjust parts with reference to each other, or to transmit power. </TD></TR>
+<TR><TD>major_diameter </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The dimension of the largest diameter of the thread and is applied to both an internal and external thread. </TD></TR>
+<TR><TD>number_of_threads </TD>
+<TD><A HREF="../machining_schema/numeric_parameter.html#numeric_parameter">numeric_parameter</A> </TD>
+<TD>The thread pitch when used with metric unit of measure and the density of threads per inch when used with English unit of measure. </TD></TR>
+<TR><TD>thread_hand </TD>
+<TD><A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A> </TD>
+<TD>A description of whether the thread is right or left handed. When viewed toward an end, a right hand winds in a clockwise direction and a left hand winds in a counterclockwise direction. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY thread  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="catalogue_thread.html">catalogue_thread</A> ,<A HREF="defined_thread.html">defined_thread</A> ) )
+SUBTYPE  OF (<A HREF="machining_feature.html">machining_feature</A> );
+ partial_profile : <A HREF="../machining_schema/partial_area_definition.html#partial_area_definition">partial_area_definition</A>;
+ applied_shape :  SET [ 1 : ? ] OF machining_feature;
+ inner_or_outer_thread :  BOOLEAN;
+ qualifier : OPTIONAL <A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A>;
+ fit_class : <A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A>;
+ form : <A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A>;
+ major_diameter : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ number_of_threads : <A HREF="../machining_schema/numeric_parameter.html#numeric_parameter">numeric_parameter</A>;
+ thread_hand : <A HREF="../machining_schema/descriptive_parameter.html#descriptive_parameter">descriptive_parameter</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> plunge_strategy </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="plunge_strategy">plunge_strategy </A></H1><P>This is the base class for all approach movements which include cutting of material. This is typically the case for pocketing operations where the approach to the depth of the first cutting layer or between cutting layers requires the removal of material in order to create the approach path. All plunge movements are guaranteed to occur within the boundaries of the underlying feature. All plunge movements will start at the retract plane valid for the current operation. They will end in the start point of the cutting operation, with the tangent of its approach path coinciding with the tangent of the ensuing cutting motion.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#plunge_strategy">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY plunge_strategy  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="plunge_toolaxis.html">plunge_toolaxis</A> ,<A HREF="plunge_ramp.html">plunge_ramp</A> ,<A HREF="plunge_helix.html">plunge_helix</A> ,<A HREF="plunge_zigzag.html">plunge_zigzag</A> ) )
+SUBTYPE  OF (<A HREF="approach_retract_strategy.html">approach_retract_strategy</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

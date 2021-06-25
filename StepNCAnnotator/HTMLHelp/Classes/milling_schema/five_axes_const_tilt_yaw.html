@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> five_axes_const_tilt_yaw </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="five_axes_const_tilt_yaw">five_axes_const_tilt_yaw </A></H1><P>This is a special case of five_axes_var_tilt_yaw. The tool is moved so that the tilt and yaw angles are constant in each point of the toolpath, relative to the co-ordinate system given by the surface normal in the cutter contact point and the tangent in feed direction. Tilt and yaw are given as attributes of this entity. Note that these values may be overridden if an explicit tool direction curve is specified for a toolpath.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#five_axes_const_tilt_yaw">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>tilt_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The inclination of the tool in feed direction, measured against the surface normal in the cutter contact point. </TD></TR>
+<TR><TD>yaw_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The rotation of the inclined tool around the surface normal, measured against the surface tangent in feed direction in the cutter contact point. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY five_axes_const_tilt_yaw 
+SUBTYPE  OF (<A HREF="tool_direction_for_milling.html">tool_direction_for_milling</A> );
+ tilt_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ yaw_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

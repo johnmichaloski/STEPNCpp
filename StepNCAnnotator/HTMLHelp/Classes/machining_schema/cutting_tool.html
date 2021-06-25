@@ -1,0 +1,31 @@
+<HTML><HEAD><TITLE> cutting_tool </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="cutting_tool">cutting_tool </A></H1><P>Entity to describe the basic information needed for cutting tool description, which includes all type tools for chipping technologies (e.g. lathe tool, milling cutter, reamer, drill, tap, boring tool). As Part 10 cannot be implemented without at least one specific technology dependent part this Entity only includes general data and therefore is an abstract supertype.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#cutting_tool">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_tool_body </TD>
+<TD><A HREF="../machining_schema/tool_body.html#tool_body">tool_body</A> </TD>
+<TD>The information describing the kind of cutting tool and it’s corresponding characteristics. </TD></TR>
+<TR><TD>its_cutting_edge </TD>
+<TD> LIST [ 1 : ? ] OF cutting_component </TD>
+<TD>The information describing the cutting edge(s) of the cutting tool. </TD></TR>
+<TR><TD>overall_assembly_length </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The entire length of the assembled tooling measured along the tooling axis for tool collision check. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY cutting_tool  ABSTRACT
+SUPERTYPE 
+SUBTYPE  OF (<A HREF="machining_tool.html">machining_tool</A> );
+ its_tool_body : <A HREF="../machining_schema/tool_body.html#tool_body">tool_body</A>;
+ its_cutting_edge :  LIST [ 1 : ? ] OF cutting_component;
+ overall_assembly_length : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

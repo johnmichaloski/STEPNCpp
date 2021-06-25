@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://home.earthlink.net/~jmoleary/stdstring.htm -->
+<HTML><HEAD><TITLE>StdString</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2900.3132" name=GENERATOR><LINK 
+href="StdString_files/theme.css" type=text/css rel=stylesheet 
+VI6.0THEME="Clear Day"><LINK href="StdString_files/graph0.css" type=text/css 
+rel=stylesheet VI6.0THEME="Clear Day"><LINK href="StdString_files/color0.css" 
+type=text/css rel=stylesheet VI6.0THEME="Clear Day"><LINK 
+href="StdString_files/custom.css" type=text/css rel=stylesheet 
+VI6.0THEME="Clear Day"></HEAD>
+<BODY bgColor=lightslategray>
+<CENTER>
+<H1><FONT color=black>CStdString</FONT></H1>
+<P>This page last updated May 27, 2000</P></CENTER>
+<HR>
+
+<P><!--METADATA TYPE="DesignerControl" startspan
+<OBJECT classid="clsid:1F56DB70-9821-11D1-B7B7-00C04FD6564F">
+	
+																																                                                 
+                 
+</OBJECT>
+--><!-- Begin Layout Header --><!--METADATA TYPE="DesignerControl" endspan--></P>
+<TABLE height="100%" width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=150 rowSpan=2><FONT size=2>
+      <P><A href="http://home.earthlink.net/~jmoleary/index.htm">Main</A></P>
+      <P><A 
+      href="http://home.earthlink.net/~jmoleary/projects.htm">Projects</A></P></FONT></TD></TR>
+  <TR>
+    <TD vAlign=top width="100%"><!-- VI6.0LAYOUT = "Top and Left 1"-->
+      <P>
+      <UL>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring.htm#Features">Features</A> 
+        </FONT>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_compatibility.htm">CString 
+        compatability</A> </FONT>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_preprocessor_macros.htm">Preprocessor 
+        Macros</A> </FONT>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring.htm#Examples">Example 
+        usage</A> </FONT>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring.htm#Issues">Issues</A> 
+        </FONT>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_destructor.htm">Dangers 
+        of deriving from basic_string</A> </FONT>
+        <LI><FONT size=2><A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_pl_ind.htm">Platform 
+        Independence</A></FONT> </LI></UL>
+      <P></P>
+      <P><FONT size=2>This class is not really innovation&nbsp;so much as hard 
+      work but I have found it extremely useful.&nbsp; I have seen attempts at 
+      this in the past that I never really liked very much... </FONT></P>
+      <P></P>
+      <P><FONT size=2>Basically, I love the ease of use of MFC's CString class 
+      but I don't want to use MFC.&nbsp; In fact, I don't want to rely on any 
+      proprietary library's string class becase I want portability.&nbsp; The 
+      Standard C++ Library string classes (string and wstring) are OK, but they 
+      are not nearly as easy to use as CString.&nbsp; I decided to combine the 
+      best of both worlds and create:</FONT> </P>
+      <P><FONT size=2>&nbsp;&nbsp;&nbsp; <A 
+      href="http://home.earthlink.net/~jmoleary/code/StdString.zip" 
+      type=application/zip>CStdString</A></FONT></P>
+      <P><FONT face="" color=brown></FONT><FONT color=black size=2>(or as my 
+      friend Mike Herstine named it, "Stud String")</FONT></P>
+      <P><FONT size=2><FONT color=black>This is a string class derived from the 
+      Standard C++ Library basic_string&lt;TCHAR&gt;.&nbsp; To this&nbsp;it adds 
+      the entire CString set of functions (<A 
+      href="http://home.earthlink.net/~jmoleary/stdstring_compatibility.htm">with 
+      three exceptions</A>).</FONT><FONT color=black>&nbsp; It is as 
+      close&nbsp;to being a drop-in replacement for CString as you are likely to 
+      find.&nbsp; You can use it along with MFC, ATL, or 
+      neither.&nbsp;</FONT></FONT></P>
+      <P><FONT color=black></FONT><FONT face="" size=4><A 
+      name=Features></A>Features:</FONT></P>
+      <P><FONT color=black size=2>In addition to basic_string and CString 
+      functionality, the class provides the following features:</FONT></P>
+      <UL>
+        <LI><FONT size=2>It fixes the assignment bug in Microsoft's 
+        basic_string&lt;&gt; implementations before version 6.0.&nbsp; In 
+        version 6 and later the fix is unnecessary and not compiled. </FONT>
+        <LI><FONT size=2>It fixes <A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_delete_fix.htm">a 
+        minor bug in CString::Delete</A> -- the docs say it should return the 
+        length of the changed string but it erroneously returns the length of 
+        the string <EM>before </EM>deletion </FONT>
+        <LI><FONT size=2>If you use CStdString in an MFC build (i.e. when 
+        _MFC_VER is defined), it adds global serialization operators so you can 
+        read and write CStdStrings to CArchive objects. </FONT>
+        <LI><FONT size=2>When used in non-ATL, non-MFC builds, the header file 
+        also defines UNICODE/MBCS conversion macros identical to those of MFC 
+        and ATL (e.g. A2CT, T2CW, etc.) </FONT>
+        <LI><FONT size=2>It has no member data and requires no cleanup code, 
+        thereby avoiding the potential danger of the fact that basic_string's 
+        destructor is non-virtual.&nbsp; Ok. this is not strictly true.&nbsp; <A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_destructor.htm">Read 
+        More</A> </FONT>
+        <LI><FONT size=2>Most functions are inline for speed. </FONT>
+        <LI><FONT size=2>A static SetResourceHandle() member function if you 
+        want to search another HINST first when attempting to load string 
+        resources (a thin imitation of AfxSetResourceHandle ) </FONT>
+        <LI><FONT size=2>Constuctor and assignment operator that takes the new 
+        Visual C++ _bstr_t compiler support class.&nbsp; This eliminates 
+        compiler ambiguity errors that you would otherwise receive if you tried 
+        to assign a _bstr_t to a CStdString. </FONT>
+        <LI><FONT size=2>Implementations of Load() and Format() are cleaner, 
+        shorter, and faster than CString's </FONT>
+        <LI><FONT size=2>Member functions to simplify the process of persisting 
+        CStdStrings to/from DCOM IStream interfaces (StreamSize, StreamSave, 
+        StreamLoad) </FONT>
+        <LI><FONT size=2>Functional objects (e.g. StdStringLessNoCase) which 
+        allow CStdStrings to be used as keys in STL map objects with 
+        case-insensitive comparison </FONT>
+        <LI><FONT size=2>There are a few <A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_preprocessor_macros.htm">preprocessor 
+        flags</A> you can #define to control CStdString behavior</FONT> </LI></UL>
+      <P><FONT size=2>Most of the code is implemented in a template, not a 
+      class.&nbsp; This means you always have both char-based version 
+      ("CStdStringA") and a wchar_t-based version ("CStdStringW") available at 
+      all times.&nbsp; In fact, the name "CStdString" is just a #define of one 
+      of these two, depending upon the setting of the _UNICODE macro.</FONT> 
+</P>
+      <P><FONT size=2>I have found this class invaluable for several large-scale 
+      distributed projects.&nbsp; I have used it with and without both MFC and 
+      ATL.&nbsp; The class does not conflict with either class library.</FONT> 
+      </P>
+      <P><FONT face="" size=4><A name=Issues>Issues:</A></FONT></P>
+      <P>There are a few of things to keep in mind when using this class.</P>
+      <UL>
+        <LI><FONT size=2>The reference-counting&nbsp; logic of MS' basic_string 
+        implementation is unchanged.&nbsp; It uses operator++ and -- which are 
+        <EM>not </EM>thread-safe.&nbsp; To get around this, you two 
+        options.&nbsp; Either <A 
+        href="http://home.earthlink.net/~jmoleary/stdstring_preprocessor_macros.htm">#define 
+        the SS_NO_REFCOUNT macro</A>, or, if you don't mind linking statically 
+        to the CRT and you are willing to edit the Microsoft &lt;xstring&gt; 
+        header, find the line that 
+        says:<BR>&nbsp;<BR><CODE></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum 
+        _Mref {_FROZEN = 255};<BR>&nbsp;<BR></CODE><FONT size=2>and change the 
+        value of _FROZEN from 255 to zero. </FONT>
+        <LI><FONT size=2>Even though this class fixes the&nbsp; MS 
+        basic_string::assign() bug, You can probably use it with most other 
+        implementation of basic_string.&nbsp; I don't think I have used any 
+        knowledge of the implementation. </FONT>
+        <LI><FONT size=2>I have optimized a couple of the helper functions (i.e. 
+        ToLower(), ToUpper(), etc) for speed on Win32 platforms by using either 
+        Win32 functions or Microsoft-specific C run-time library 
+        functions.&nbsp; Since this is not quite Standard C++, I have given you 
+        the option of turning this optimization off simply by definint a macro 
+        (SS_ANSI).&nbsp; If you need the portability and don't mind a 
+        significant drop in speed, just #define SS_ANSI. </FONT>
+        <LI><FONT size=2>If you build your code on a Windows 9x machine and you 
+        #include StdString.h in a precompiled header of a project, you may get 
+        an internal compiler error at build time in one of the basic_string 
+        constructors.&nbsp; On WinNT/2000, this problem does not occur.&nbsp; I 
+        cannot explain it except to say that I believe it has to due with VC's 
+        inability to properly handle default template arguments.&nbsp; The 
+        workaround is to keep the class out of a precompiled header on your 
+        Win9x builds.&nbsp; On one hand, I am sorry I cannot offer more help on 
+        this one.&nbsp; On the other hand, an internal compiler error is by 
+        definition a problem with the compiler, not the code.&nbsp; If anyone 
+        really has trouble with this, e-mail me and I'll try help you out</FONT> 
+        .</LI></UL>
+      <P><STRONG>Improvements I Intend to Make in the Future:</STRONG></P>
+      <P>
+      <UL>
+        <LI><FONT size=2>I've pretty much taken CStdString as far as it should 
+        go, I think.&nbsp; My goals with it now are really just better 
+        portability and&nbsp;stamping out any remaining bugs I may find.&nbsp; 
+        </FONT></LI></UL>
+      <P></P>
+      <P><FONT size=2>This version is more up to date than the one I have posted 
+      at CodeGuru.&nbsp; I found it easier to update it here.</FONT> </P>
+      <P><FONT face="" size=4><A name=Examples>Example Usage:</A></FONT> </P>
+      <P><FONT size=2>I assume that you know how to use CString and basic_string 
+      so I will spare you the more tedious examples. <BR><BR><CODE></FONT>// You 
+      can add just about any form of string to a CStdString<BR>// with 
+      operator+()<BR>CStdString strVal1(_T("THIS IS A STRING&nbsp;&nbsp; 
+      "));<BR>OutputDebugString(strVal1 + _T("\n"));<BR>strVal1 += _bstr_t(" 
+      plus a BSTR string");<BR>strVal1 += '.' &lt; /P&gt; 
+      <P>// Some conversion functions can be chained 
+      together<BR><BR>strVal1.ToLower().TrimRight();</P>
+      <P>// Case INsensitive comparison via Equals() or 
+      CompareNoCase()<BR><BR>strVal1 = _T("THIS IS A STRING")<BR>CStdString 
+      strVal2(_T("thIs Is a sTRing"));<BR>_ASSERTE(strVal1 != 
+      strVal2);<BR>_ASSERTE(strVal1.Equals(strVal2));<BR>_ASSERTE(strVal1.CompareNoCase(strVal2) 
+      == 0);<BR><BR><BR>// Format() works just like CString's</P>
+      <P>strVal1.Format(_T("This %s a string named strVal%d"), _T("IS"), 
+      1);<BR>OutputDebugString(strVal1 + _T("\n"));</P>
+      <P><BR>// Declare an STL map class which maps strings to integers.&nbsp; 
+      The<BR>// keys are case insensitive, so an integer stored under the 
+      key<BR>// _T("MYKEY") could be retrieved with the value 
+      _T("mykey")<BR><BR>typedef std::map&lt;CStdString, int, 
+      StdStringLessNoCase&gt; CMyMap<BR>CMyMap myMap;<BR>myMap[_T("MYKEY")] = 
+      7;<BR>_ASSERTE(myMap.find(_T("mykey")) != myMap.end());<BR></P>
+      <P>// If this were MFC code, we could serialize the strings to 
+      CArchives:<BR><BR>void&nbsp; CMyObject::Serialize(CArchive&amp; 
+      ar)<BR>{<BR>&nbsp;&nbsp;&nbsp; CStdString strVal3(_T("This is a 
+      string"));<BR>&nbsp;&nbsp;&nbsp; if ( ar.IsStoring() 
+      )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ar &lt;&lt; 
+      strVal;<BR>&nbsp;&nbsp;&nbsp; 
+      else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ar &gt;&gt; 
+      strVal;<BR>}<BR><BR>// If we were implementing the IPersistStream 
+      interface on a COM<BR>// object which had a member CStdString variable 
+      named 'm_strVal',<BR>// we could take advantage of the CStdString stream 
+      functions to<BR>// greatly simplify the implementation as 
+      follows:<BR><BR>HRESULT CMyComObject::GetSizeMax(ULARGE_INTEGER* 
+      pcbSizeMax)<BR>{<BR>&nbsp;&nbsp;&nbsp; pcbSizeMax-&gt;QuadPart = 
+      m_strVal.StreamSize();<BR>&nbsp;&nbsp;&nbsp; return S_OK;<BR>}<BR>HRESULT 
+      CMyComObject::Save(IStream* pStream, BOOL 
+      bClearDirty)<BR>{<BR>&nbsp;&nbsp;&nbsp; return 
+      m_strVal.StreamSave(pStream);<BR>}<BR>HRESULT CMyComObject::Load(IStream* 
+      pStream)<BR>{<BR>&nbsp;&nbsp;&nbsp; return 
+      m_strVal.StreamLoad(pStream);<BR>}</P>
+      <P>// If we were calling some windows function that fills 
+      out&nbsp;a<BR>//&nbsp;buffer for us we can use the GetBuffer() 
+      function.&nbsp; .<BR><BR>CStdString 
+      strPath;<BR>::GetTempPath(strPath.GetBuffer(MAX_PATH+1),&nbsp;MAX_PATH);<BR>strPath.ReleaseBuffer();</P>
+      <P>//&nbsp;You can set the resource handle for loading string 
+      resources<BR>// and then load them via either the constructor or the 
+      Load()<BR>// function.</P>
+      <P>CStdString::SetResourceHandle(::GetModuleHandle(NULL));<BR>CStdString 
+      strString(IDS_STRING1);<BR>strString.Load(IDS_STRING2)<BR>&nbsp;</P><!--METADATA TYPE="DesignerControl" startspan
+<OBJECT classid="clsid:1F56DB72-9821-11D1-B7B7-00C04FD6564F" 
+      style="LEFT: 0px; TOP: 0px">
+	
+      	      	                      </OBJECT>
+--><!-- Begin Layout Footer --><!--METADATA TYPE="DesignerControl" endspan--></CODE></TD></TR></TBODY></TABLE><!--METADATA TYPE="DesignerControl" startspan
+<OBJECT classid="clsid:1F56DB73-9821-11D1-B7B7-00C04FD6564F" 
+style="LEFT: 0px; TOP: 0px">
+	
+		      
+</OBJECT>
+--><!-- End Layout Footer --><!--METADATA TYPE="DesignerControl" endspan--></BODY></HTML>

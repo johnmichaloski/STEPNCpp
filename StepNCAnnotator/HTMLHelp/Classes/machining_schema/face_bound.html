@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> face_bound </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="face_bound">face_bound </A></H1><P>A face bound is a loop which is intended to be used for bounding a face.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#face_bound">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>bound </TD>
+<TD><A HREF="../machining_schema/loop.html#loop">loop</A> </TD>
+<TD>The loop which will be used as a face boundary. </TD></TR>
+<TR><TD>orientation </TD>
+<TD> BOOLEAN </TD>
+<TD>This indicates whether (TRUE), or not (FALSE) the loop has the same sense when used to bound the face as when first defined. If orientation is FALSE, the senses of all its component oriented edges are implicitly reversed when used in </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY face_bound 
+SUPERTYPE  OF (<A HREF="face_outer_bound.html">face_outer_bound</A> )
+SUBTYPE  OF (<A HREF="topological_representation_item.html">topological_representation_item</A> );
+ bound : <A HREF="../machining_schema/loop.html#loop">loop</A>;
+ orientation :  BOOLEAN;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

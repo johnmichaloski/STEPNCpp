@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> composite_curve_segment </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="composite_curve_segment">composite_curve_segment </A></H1><P>A composite curve segment is a bounded curve together with transition information which is used to construct a composite curve.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#composite_curve_segment">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>transition </TD>
+<TD><A HREF="../machining_schema/transition_code.html#transition_code">transition_code</A> </TD>
+<TD>The state of transition (i.e., geometric continuity from the last point of this segment to the first point of the next segment) in a composite curve. </TD></TR>
+<TR><TD>same_sense </TD>
+<TD> BOOLEAN </TD>
+<TD>An indicator of whether or not the sense of the segment agrees with, or opposes, that of the parent curve. If same sense is false, the point with highest parameter value is taken as the first point of the segment. </TD></TR>
+<TR><TD>parent_curve </TD>
+<TD><A HREF="../machining_schema/curve.html#curve">curve</A> </TD>
+<TD>The bounded curve which defines the geometry of the segment. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY composite_curve_segment ;
+ transition : <A HREF="../machining_schema/transition_code.html#transition_code">transition_code</A>;
+ same_sense :  BOOLEAN;
+ parent_curve : <A HREF="../machining_schema/curve.html#curve">curve</A>;
+ INVERSE u s i n g _ c u r v e s : B A G [ 1 : ? ] O F c o m p o s i t e _ c u r v e F O R s e g m e n t s ; W H E R E W R 1 : ( ' M I L L I N G _ S C H E M A . B O U N D E D _ C U R V E ' I N T Y P E O F ( p a r e n t _ c u r v e ) ) ;END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

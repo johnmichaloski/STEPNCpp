@@ -1,0 +1,5355 @@
+		 schema_id machining_schema
+			 simple_id machining_schema
+		 schema_body 
+			 interface_specification 
+				 reference_clause milling_schema
+			 constant_decl 
+				 constant_decl CONSTANT
+				 constant_body 
+					 constant_id 
+						 simple_id dummy_gri
+					 constant_body :
+					 base_type 
+						 named_types 
+					 constant_body :=
+					 expression 
+						 simple_expression 
+								 factor 
+									 simple_factor 
+											 entity_ref 
+						 rel_op_extended 
+							 rel_op 
+								 rel_op ||
+						 simple_expression 
+								 factor 
+									 simple_factor 
+											 entity_ref 
+					 constant_body ;
+				 constant_decl END_CONSTANT
+				 constant_decl ;
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block approval
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block approval_status
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block date_and_time
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block date
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list date
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block calendar_date
+			 declaration 
+						 simple_id day_in_month_number
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl day_in_month_number
+			 declaration 
+						 simple_id month_in_year_number
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl month_in_year_number
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list date
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block ordinal_date
+			 declaration 
+						 simple_id day_in_year_number
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl day_in_year_number
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list date
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block week_of_year_and_day_date
+			 declaration 
+						 simple_id week_in_year_number
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl week_in_year_number
+			 declaration 
+						 simple_id day_in_week_number
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl day_in_week_number
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block local_time
+			 declaration 
+						 simple_id hour_in_day
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl hour_in_day
+			 declaration 
+						 simple_id minute_in_hour
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl minute_in_hour
+			 declaration 
+						 simple_id second_in_minute
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl second_in_minute
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block coordinated_universal_time_offset
+			 declaration 
+						 simple_id ahead_or_behind
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl ahead_or_behind
+			 declaration 
+						 simple_id year_number
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl year_number
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block person
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block address
+			 declaration 
+						 simple_id identifier
+					 underlying_type 
+						 simple_types 
+							 string_type 
+				 type_decl identifier
+			 declaration 
+						 simple_id label
+					 underlying_type 
+						 simple_types 
+							 string_type 
+				 type_decl label
+			 declaration 
+						 simple_id text
+					 underlying_type 
+						 simple_types 
+							 string_type 
+				 type_decl text
+			 declaration 
+				 function_block 
+			 declaration 
+						 simple_id length_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl length_measure
+			 declaration 
+						 simple_id parameter_value
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl parameter_value
+			 declaration 
+						 simple_id plane_angle_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl plane_angle_measure
+			 declaration 
+						 simple_id positive_length_measure
+					 underlying_type 
+						 type_id length_measure
+				 type_decl positive_length_measure
+			 declaration 
+						 simple_id positive_ratio_measure
+					 underlying_type 
+						 type_id ratio_measure
+				 type_decl positive_ratio_measure
+			 declaration 
+						 simple_id ratio_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl ratio_measure
+			 declaration 
+						 simple_id time_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl time_measure
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list representation
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block shape_representation
+			 declaration 
+						 simple_id trimming_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl trimming_select
+			 declaration 
+						 simple_id trimming_preference
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl trimming_preference
+			 declaration 
+						 simple_id transition_code
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl transition_code
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list bounded_curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block trimmed_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list bounded_curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 logical_type 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block composite_curve
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 inverse_clause 
+				 entity_block composite_curve_segment
+			 declaration 
+						 simple_id b_spline_curve_form
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl b_spline_curve_form
+			 declaration 
+						 simple_id b_spline_surface_form
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl b_spline_surface_form
+			 declaration 
+						 simple_id dimension_count
+					 underlying_type 
+						 simple_types 
+							 integer_type 
+				 type_decl dimension_count
+			 declaration 
+						 simple_id knot_type
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl knot_type
+			 declaration 
+						 simple_id pcurve_or_surface
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl pcurve_or_surface
+			 declaration 
+						 simple_id vector_or_direction
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl vector_or_direction
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list placement
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block axis1_placement
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list placement
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block axis2_placement_3d
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_curve
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block bezier_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_surface
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block bezier_surface
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list curve
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block bounded_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pcurve
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+						 where_clause 
+				 entity_block bounded_pcurve
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list surface
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block bounded_surface
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list bounded_curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 logical_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 logical_type 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block b_spline_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 simple_types 
+												 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block b_spline_curve_with_knots
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list bounded_surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 aggregation_types 
+												 list_type 
+													 list_type LIST
+													 bound_spec 
+														 bound_spec [
+														 bound_l 
+														 bound_spec :
+														 bound_2 
+														 bound_spec ]
+													 list_type OF
+													 base_type 
+														 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 logical_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 logical_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 logical_type 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block b_spline_surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 simple_types 
+												 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 simple_types 
+												 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block b_spline_surface_with_knots
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list point
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block cartesian_point
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list conic
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block circle
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block conic
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 simple_types 
+												 real_type 
+						 explicit_attr 
+						 where_clause 
+				 entity_block direction
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block elementary_surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list conic
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block ellipse
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list representation_context
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block geometric_representation_context
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+						 derive_clause 
+				 entity_block geometric_representation_item
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list conic
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block hyperbola
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block line
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list conic
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block parabola
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block pcurve
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block placement
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list elementary_surface
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block plane
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block point
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list bounded_curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block polyline
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_curve
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block quasi_uniform_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_surface
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block quasi_uniform_surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_curve
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 simple_types 
+												 real_type 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block rational_b_spline_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 aggregation_types 
+												 list_type 
+													 list_type LIST
+													 bound_spec 
+														 bound_spec [
+														 bound_l 
+														 bound_spec :
+														 bound_2 
+														 bound_spec ]
+													 list_type OF
+													 base_type 
+														 simple_types 
+															 real_type 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block rational_b_spline_surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list elementary_surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block spherical_surface
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list swept_surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block surface_of_linear_extrusion
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list swept_surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block surface_of_revolution
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list surface
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block swept_surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_curve
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block uniform_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list b_spline_surface
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block uniform_surface
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block vector
+			 rule_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list connected_face_set
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block closed_shell
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block connected_face_set
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block edge
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list edge
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+				 entity_block edge_curve
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list loop
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+						 derive_clause 
+				 entity_block edge_loop
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block face
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+				 entity_block face_bound
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list face_bound
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block face_outer_bound
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list face
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+				 entity_block face_surface
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block loop
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list connected_face_set
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block open_shell
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list edge
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+						 derive_clause 
+				 entity_block oriented_edge
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 list_type UNIQUE
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block path
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block topological_representation_item
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list topological_representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block vertex
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list loop
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block vertex_loop
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list vertex
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block vertex_point
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block block
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list solid_model
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block manifold_solid_brep
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block right_circular_cylinder
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list geometric_representation_item
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block solid_model
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list representation
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block definitional_representation
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block representation
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 inverse_clause 
+				 entity_block representation_context
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block representation_item
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+				 function_block 
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list face_surface
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block advanced_face
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list shape_representation
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block advanced_brep_shape_representation
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block toleranced_length_measure
+			 declaration 
+						 simple_id tolerance_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl tolerance_select
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+				 entity_block plus_minus_value
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block limits_and_fits
+			 declaration 
+						 simple_id fitting_type
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl fitting_type
+			 declaration 
+						 simple_id speed_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl speed_measure
+			 declaration 
+						 simple_id rot_speed_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl rot_speed_measure
+			 declaration 
+						 simple_id pressure_measure
+					 underlying_type 
+						 simple_types 
+							 real_type 
+				 type_decl pressure_measure
+			 declaration 
+						 simple_id rot_direction
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl rot_direction
+			 declaration 
+						 simple_id shape_tolerance
+					 underlying_type 
+						 type_id length_measure
+				 type_decl shape_tolerance
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block project
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block person_and_address
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block workpiece
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block material
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block property_parameter
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list property_parameter
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block descriptive_parameter
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list property_parameter
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block numeric_parameter
+			 declaration 
+						 simple_id bounding_geometry_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl bounding_geometry_select
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block manufacturing_feature
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list manufacturing_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block region
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list region
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block region_projection
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list region
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block region_surface_list
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list region
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block topological_region
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list manufacturing_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block two5d_manufacturing_feature
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list two5d_manufacturing_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block machining_feature
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block planar_face
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block pocket
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pocket
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block closed_pocket
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pocket
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block open_pocket
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block pocket_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pocket_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block through_pocket_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pocket_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block planar_pocket_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pocket_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block radiused_pocket_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list pocket_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block general_pocket_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block slot
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block slot_end_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list slot_end_type
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block woodruff_slot_end_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list slot_end_type
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block radiused_slot_end_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list slot_end_type
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block flat_slot_end_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list slot_end_type
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block loop_slot_end_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list slot_end_type
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block open_slot_end_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block step
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block profile_feature
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list profile_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block general_outside_profile
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list profile_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block shape_profile
+			 declaration 
+						 simple_id profile_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl profile_select
+			 declaration 
+				 entity_block through_profile_floor
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+				 entity_block profile_floor
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list profile_floor
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block general_profile_floor
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list profile_floor
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block planar_profile_floor
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list shape_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block general_shape_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list shape_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block partial_circular_shape_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list shape_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block circular_closed_shape_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list shape_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block rectangular_open_shape_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list shape_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block rectangular_closed_shape_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block round_hole
+			 declaration 
+						 simple_id taper_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl taper_select
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block diameter_taper
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block angle_taper
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block hole_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list hole_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block through_bottom_condition
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list hole_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block blind_bottom_condition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list blind_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block flat_hole_bottom
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list blind_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block flat_with_radius_hole_bottom
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list blind_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block spherical_hole_bottom
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list blind_bottom_condition
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block conical_hole_bottom
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block toolpath_feature
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block boss
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block spherical_cap
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block rounded_end
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list two5d_manufacturing_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block compound_feature
+			 declaration 
+						 simple_id compound_feature_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl compound_feature_select
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list compound_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+						 where_clause 
+				 entity_block counterbore_hole
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list compound_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+						 where_clause 
+				 entity_block countersunk_hole
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list two5d_manufacturing_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block replicate_feature
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list replicate_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block circular_pattern
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+				 entity_block circular_offset
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+				 entity_block circular_omit
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list replicate_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block rectangular_pattern
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+				 entity_block rectangular_offset
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+				 entity_block rectangular_omit
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list replicate_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block general_pattern
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list manufacturing_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block transition_feature
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list transition_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block chamfer
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list transition_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block edge_round
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_feature
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block thread
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block partial_area_definition
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list thread
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block catalogue_thread
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block specification
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block specification_usage_constraint
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list thread
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block defined_thread
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block profile
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list profile
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block open_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block linear_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block square_u_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block rounded_u_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block tee_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block vee_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block partial_circular_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list open_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block general_profile
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list profile
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block closed_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list closed_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block rectangular_closed_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list closed_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block circular_closed_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list closed_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 integer_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+				 entity_block ngon_profile
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list closed_profile
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block general_closed_profile
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block travel_path
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list travel_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block general_path
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list travel_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block linear_path
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list travel_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block circular_path
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list circular_path
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block complete_circular_path
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list circular_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block partial_circular_path
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block surface_texture_parameter
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block machined_surface
+			 declaration 
+						 simple_id bottom_or_side
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl bottom_or_side
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block executable
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list executable
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block workingstep
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list workingstep
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block machining_workingstep
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block in_process_geometry
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list workingstep
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block rapid_movement
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list rapid_movement
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block return_home
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list workingstep
+								 entity_ref 
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block touch_probing
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list touch_probing
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block workpiece_probing
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list touch_probing
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block workpiece_complete_probing
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block touch_probe
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block offset_vector
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list touch_probing
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block tool_probing
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block machining_tool
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list machining_tool
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block cutting_tool
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block tool_body
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block cutting_component
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block cutting_edge_technological_data
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list tool_probing
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block tool_length_probing
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list tool_probing
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block tool_radius_probing
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list executable
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block nc_function
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list nc_function
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block display_message
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list nc_function
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block optional_stop
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list nc_function
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block program_stop
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list nc_function
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block set_mark
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list nc_function
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block wait_for_mark
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list executable
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block program_structure
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block workplan
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block channel
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block setup
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block workpiece_setup
+			 declaration 
+						 simple_id restricted_area_select
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl restricted_area_select
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block setup_instruction
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block parallel
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block non_sequential
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 set_type 
+										 set_type SET
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 set_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block selective
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block if_statement
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block while_statement
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list program_structure
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block assignment
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block nc_variable
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block nc_constant
+			 declaration 
+						 simple_id rvalue
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl rvalue
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block boolean_expression
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block unary_boolean_expression
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list unary_boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block not_expression
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block binary_boolean_expression
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list binary_boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block xor_expression
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block multiple_arity_boolean_expression
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list multiple_arity_boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block and_expression
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list multiple_arity_boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block or_expression
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list boolean_expression
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block comparison_expression
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list comparison_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block comparison_equal
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list comparison_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block comparison_not_equal
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list comparison_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block comparison_greater
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list comparison_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block comparison_greater_equal
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list comparison_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block comparison_less
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list comparison_expression
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block comparison_less_equal
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block operation
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+				 entity_block toolpath_list
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block tool_direction
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list tool_direction
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block two_axes
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list tool_direction
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block three_axes
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list operation
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block machining_operation
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block technology
+			 declaration 
+						 simple_id tool_reference_point
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl tool_reference_point
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+				 entity_block machine_functions
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block toolpath
+			 declaration 
+						 simple_id toolpath_type
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl toolpath_type
+			 declaration 
+						 simple_id toolpath_speedprofile
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl toolpath_speedprofile
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block toolpath_speed
+			 declaration 
+						 simple_id speed_name
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl speed_name
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list toolpath
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block feedstop
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list toolpath
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 simple_types 
+									 boolean_type 
+						 explicit_attr 
+				 entity_block trajectory
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list trajectory
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block cutter_location_trajectory
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list trajectory
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block cutter_contact_trajectory
+			 declaration 
+						 simple_id curve_with_surface_normal
+					 underlying_type 
+						 select_type 
+							 select_type SELECT
+							 select_type (
+							 named_types 
+							 select_type ,
+							 named_types 
+							 select_type )
+				 type_decl curve_with_surface_normal
+			 declaration 
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block curve_with_normal_vector
+			 declaration 
+						 simple_id contact_type
+					 underlying_type 
+						 enumeration_type 
+							 enumeration_type ENUMERATION
+							 enumeration_type OF
+							 enumeration_type (
+							 enumeration_id 
+							 enumeration_type ,
+							 enumeration_id 
+							 enumeration_type )
+				 type_decl contact_type
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list trajectory
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 aggregation_types 
+									 list_type 
+										 list_type LIST
+										 bound_spec 
+											 bound_spec [
+											 bound_l 
+											 bound_spec :
+											 bound_2 
+											 bound_spec ]
+										 list_type OF
+										 base_type 
+											 named_types 
+						 explicit_attr 
+						 where_clause 
+				 entity_block axis_trajectory
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list toolpath
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block parameterised_path
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list parameterised_path
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block connector
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list connector
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block connect_secplane
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list connector
+								 entity_ref 
+							 subtype_declaration )
+				 entity_block connect_direct
+			 declaration 
+					 subsuper 
+						 supertype_declaration 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list parameterised_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block approach_lift_path
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list approach_lift_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block ap_lift_path_angle
+			 declaration 
+					 subsuper 
+						 subtype_declaration 
+							 subtype_declaration SUBTYPE
+							 subtype_declaration OF
+							 subtype_declaration (
+							 subtype_list approach_lift_path
+								 entity_ref 
+							 subtype_declaration )
+					 entity_body 
+							 attribute_decl 
+							 base_type 
+								 named_types 
+						 explicit_attr 
+				 entity_block ap_lift_path_tangent
+			 rule_block 
+			 rule_block 
+			 rule_block 

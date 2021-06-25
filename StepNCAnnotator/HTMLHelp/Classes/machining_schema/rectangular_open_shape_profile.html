@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> rectangular_open_shape_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="rectangular_open_shape_profile">rectangular_open_shape_profile </A></H1><P>A rectangular_open_shape_profile is a type of shape_profile that is an open profile with opposite sides that are of equal length and with one side that does not make contact with the workpiece.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#rectangular_open_shape_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>open_boundary </TD>
+<TD><A HREF="../machining_schema/square_u_profile.html#square_u_profile">square_u_profile</A> </TD>
+<TD>Specification of the outline or shape that is an enclosed area that is open on one side. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY rectangular_open_shape_profile 
+SUBTYPE  OF (<A HREF="shape_profile.html">shape_profile</A> );
+ open_boundary : <A HREF="../machining_schema/square_u_profile.html#square_u_profile">square_u_profile</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

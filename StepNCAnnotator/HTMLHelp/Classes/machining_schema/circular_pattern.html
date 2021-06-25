@@ -1,0 +1,42 @@
+<HTML><HEAD><TITLE> circular_pattern </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="circular_pattern">circular_pattern </A></H1><P>A circular pattern of features. A complete circle of features is a special case of circular pattern.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#circular_pattern">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>angle_increment </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Angle between two elements of the pattern. A positive angle means a counterclockwise increment when looking towards the plane in negative z direction. </TD></TR>
+<TR><TD>number_of_feature </TD>
+<TD> INTEGER </TD>
+<TD>The total number of features in the replicate_feature. The maximum index of the circular pattern is calculated from number_of_feature plus the number of elements in the missing_base_feature set. The maximum index times angle_increment should not exceed 360° or the behaviour will be undefined. </TD></TR>
+<TR><TD>relocated_base_feature </TD>
+<TD> SET [ 0 : ? ] OF circular_offset </TD>
+<TD>Optional description of relocated features. </TD></TR>
+<TR><TD>missing_base_feature </TD>
+<TD> SET [ 0 : ? ] OF circular_omit </TD>
+<TD>Optional description of omitted features. </TD></TR>
+<TR><TD>base_feature_diameter </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The diameter of the circular pattern. It has to be specified if rotate_feature is \"false\". If it is \"true\", the diameter can be calculated from the feature position and the location of the center. </TD></TR>
+<TR><TD>base_feature_rotation </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Specification of the angle to rotate one element in regard to the orientation of the previous element. The previous element is located in mathematical negative direction (counter-clockwise) to the current element. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY circular_pattern 
+SUBTYPE  OF (<A HREF="replicate_feature.html">replicate_feature</A> );
+ angle_increment : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ number_of_feature :  INTEGER;
+ relocated_base_feature :  SET [ 0 : ? ] OF circular_offset;
+ missing_base_feature :  SET [ 0 : ? ] OF circular_omit;
+ base_feature_diameter : OPTIONAL <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ base_feature_rotation : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

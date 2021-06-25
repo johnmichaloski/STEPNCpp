@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> general_pocket_bottom_condition </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="general_pocket_bottom_condition">general_pocket_bottom_condition </A></H1><P>Any bottom condition not covered by planar_bottom_condition or through_bottom_condition. General pocket bottom condition defines a free-form surface at the bottom of a pocket. Similar to the compound feature, the region referenced by the attribute shape is not allowed to be associated with machining operations of its own. All machining operations to manufacture the pocket must be defined by the attribute its_operations of the pocket itself.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#general_pocket_bottom_condition">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>shape </TD>
+<TD><A HREF="../machining_schema/region.html#region">region</A> </TD>
+<TD>Description of the pocket floor as 3D surface in local xyz co-ordinates. Note that the feature_placement attribute of shape will specify its position relative to the local coordinate system of the pocket, not relative to the workpiece co-ordinates. The pocket’s attribute depth should specify the maximum depth of the pocket. Note that the actual depth of the pocket will be determined by the shape of the surface which is defined in 3D space. It will override any conflicting data given in the attribute depth. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY general_pocket_bottom_condition 
+SUBTYPE  OF (<A HREF="pocket_bottom_condition.html">pocket_bottom_condition</A> );
+ shape : <A HREF="../machining_schema/region.html#region">region</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

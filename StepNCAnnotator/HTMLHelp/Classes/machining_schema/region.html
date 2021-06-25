@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> region </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="region">region </A></H1><P>The region is the equivalent of a feature in freeform machining. It describes a bounded area of the final workpiece surface to which the associated operations will be applied. Note that for freeform surfaces the regions for different operations (e.g. roughing, finishing) may have different shapes based upon technological decisions.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#region">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feature_placement </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>The placement of the feature relative to the workpiece co-ordinate system. The placement is a translation and/or a rotation which transforms the origin of the workpiece co-ordinate system origin into the origin of the feature’s local co-ordinate system. If no feature_placement is given, the region will use workpiece co-ordinates. Regarding coordinate systems </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY region  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="region_surface_list.html">region_surface_list</A> ,<A HREF="region_projection.html">region_projection</A> ,<A HREF="topological_region.html">topological_region</A> ) )
+SUBTYPE  OF (<A HREF="manufacturing_feature.html">manufacturing_feature</A> );
+ feature_placement : OPTIONAL <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

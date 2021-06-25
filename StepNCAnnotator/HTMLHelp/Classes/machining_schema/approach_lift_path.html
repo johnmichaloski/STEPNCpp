@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> approach_lift_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="approach_lift_path">approach_lift_path </A></H1><P>This subtype of parameterised path describes the lift and approach movement in terms of angles or tangential movements. See also Section 4.8.1. The strategy will initiate the generation of toolpath based on the surrounding feature. This entity, on the other hand, specifies a distinct path in cartesian space. It can be the result of a path generation based on an air strategy in which case the fix_point would lie in the retract_plane of the associated operation.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#approach_lift_path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>fix_point </TD>
+<TD><A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A> </TD>
+<TD>The starting point for the approach movement or the destination for the lift movement in the workpiece co-ordinate system, or the feature’s local co-ordinate system, respectively. The reference point on the tool is the tool center point (tcp), which is the point where the rotational axis of the tool leaves the tip. </TD></TR>
+<TR><TD>fix_point_dir </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The tool direction in fix_point as 3D vector in the workpiece co-ordinate system, or the feature’s local co-ordinate system, respectively. If given, the machine will attempt to interpolate between the tool direction in the fix point and the tool direction in the start (approach) or end (lift) point of the connecting toolpath during the approach/lift movement. If not given, the tool direction will not be changed during the approach/lift movement. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY approach_lift_path  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="ap_lift_path_angle.html">ap_lift_path_angle</A> ,<A HREF="ap_lift_path_tangent.html">ap_lift_path_tangent</A> ) )
+SUBTYPE  OF (<A HREF="parameterised_path.html">parameterised_path</A> );
+ fix_point : <A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A>;
+ fix_point_dir : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:41 2008
+
+</BODY></HTML>

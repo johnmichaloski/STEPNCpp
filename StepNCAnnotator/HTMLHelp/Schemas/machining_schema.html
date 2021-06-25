@@ -1,0 +1,3256 @@
+<HTML><BODY><PRE>
+SCHEMA machining_schema ;
+REFERENCE FROM milling_schema ( milling_technology ) ;
+CONSTANT dummy_gri : geometric_representation_item := representation_item ( ) || geometric_representation_item ( ) ;
+END_CONSTANT ;
+
+ENTITY <A NAME="approval">approval </A>;
+<I>status </I>: <A HREF="#approval_status">approval_status</A>;
+<I>level </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="approval_status">approval_status </A>;
+<I>name </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="date_and_time">date_and_time </A>;
+<I>date_component </I>: <A HREF="#date">date</A>;
+<I>time_component </I>: <A HREF="#local_time">local_time</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="date">date </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#calendar_date">calendar_date</A>, <A HREF="#ordinal_date">ordinal_date</A>, <A HREF="#week_of_year_and_day_date">week_of_year_and_day_date</A>) ) ;
+<I>year_component </I>: <A HREF="#year_number">year_number</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="calendar_date">calendar_date </A>
+SUBTYPE OF ( <A HREF="#date">date</A>) ;
+<I>day_component </I>: <A HREF="#day_in_month_number">day_in_month_number</A>;
+<I>month_component </I>: <A HREF="#month_in_year_number">month_in_year_number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="day_in_month_number">day_in_month_number </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="month_in_year_number">month_in_year_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="ordinal_date">ordinal_date </A>
+SUBTYPE OF ( <A HREF="#date">date</A>) ;
+<I>day_component </I>: <A HREF="#day_in_year_number">day_in_year_number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="day_in_year_number">day_in_year_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="week_of_year_and_day_date">week_of_year_and_day_date </A>
+SUBTYPE OF ( <A HREF="#date">date</A>) ;
+<I>week_component </I>: <A HREF="#week_in_year_number">week_in_year_number</A>;
+<I>day_component </I>:  OPTIONAL <A HREF="#day_in_week_number">day_in_week_number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="week_in_year_number">week_in_year_number </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="day_in_week_number">day_in_week_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="local_time">local_time </A>;
+<I>hour_component </I>: <A HREF="#hour_in_day">hour_in_day</A>;
+<I>minute_component </I>:  OPTIONAL <A HREF="#minute_in_hour">minute_in_hour</A>;
+<I>second_component </I>:  OPTIONAL <A HREF="#second_in_minute">second_in_minute</A>;
+<I>zone </I>: <A HREF="#coordinated_universal_time_offset">coordinated_universal_time_offset</A>;
+END_ENTITY ;
+
+TYPE <A NAME="hour_in_day">hour_in_day </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="minute_in_hour">minute_in_hour </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="second_in_minute">second_in_minute </A>= REAL ;
+END_TYPE ;
+
+ENTITY <A NAME="coordinated_universal_time_offset">coordinated_universal_time_offset </A>;
+<I>hour_offset </I>: INTEGER ;
+<I>minute_offset </I>:  OPTIONAL INTEGER ;
+<I>sense </I>: <A HREF="#ahead_or_behind">ahead_or_behind</A>;
+END_ENTITY ;
+
+TYPE <A NAME="ahead_or_behind">ahead_or_behind </A>= ENUMERATION OF ( ahead , exact , behind ) ;
+END_TYPE ;
+
+TYPE <A NAME="year_number">year_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="person">person </A>;
+<I>id </I>: <A HREF="#identifier">identifier</A>;
+<I>last_name </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>first_name </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>middle_names </I>:  OPTIONAL LIST [ 1 : ? ] OF label ;
+<I>prefix_titles </I>:  OPTIONAL LIST [ 1 : ? ] OF label ;
+<I>suffix_titles </I>:  OPTIONAL LIST [ 1 : ? ] OF label ;
+END_ENTITY ;
+
+ENTITY <A NAME="address">address </A>;
+<I>internal_location </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>street_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>street </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>postal_box </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>town </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>region </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>postal_code </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>country </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>facsimile_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>telephone_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>electronic_mail_address </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>telex_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+END_ENTITY ;
+
+TYPE <A NAME="identifier">identifier </A>= STRING ;
+END_TYPE ;
+
+TYPE <A NAME="label">label </A>= STRING ;
+END_TYPE ;
+
+TYPE <A NAME="text">text </A>= STRING ;
+END_TYPE ;
+
+TYPE <A NAME="length_measure">length_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="parameter_value">parameter_value </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="plane_angle_measure">plane_angle_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="positive_length_measure">positive_length_measure </A>= length_measure ;
+END_TYPE ;
+
+TYPE <A NAME="positive_ratio_measure">positive_ratio_measure </A>= ratio_measure ;
+END_TYPE ;
+
+TYPE <A NAME="ratio_measure">ratio_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="time_measure">time_measure </A>= REAL ;
+END_TYPE ;
+
+ENTITY <A NAME="shape_representation">shape_representation </A>
+SUBTYPE OF ( <A HREF="#representation">representation</A>) ;
+END_ENTITY ;
+
+TYPE <A NAME="trimming_select">trimming_select </A>= SELECT ( cartesian_point , parameter_value ) ;
+END_TYPE ;
+
+TYPE <A NAME="trimming_preference">trimming_preference </A>= ENUMERATION OF ( cartesian , parameter , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="transition_code">transition_code </A>= ENUMERATION OF ( discontinuous , continuous , cont_same_gradient , cont_same_gradient_same_curvature ) ;
+END_TYPE ;
+
+ENTITY <A NAME="trimmed_curve">trimmed_curve </A>
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>basis_curve </I>: <A HREF="#curve">curve</A>;
+<I>trim_1 </I>: SET [ 1 : 2 ] OF trimming_select ;
+<I>trim_2 </I>: SET [ 1 : 2 ] OF trimming_select ;
+<I>sense_agreement </I>: BOOLEAN ;
+<I>master_representation </I>: <A HREF="#trimming_preference">trimming_preference</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="composite_curve">composite_curve </A>
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>segments </I>: LIST [ 1 : ? ] OF composite_curve_segment ;
+<I>self_intersect </I>: LOGICAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="composite_curve_segment">composite_curve_segment </A>;
+<I>transition </I>: <A HREF="#transition_code">transition_code</A>;
+<I>same_sense </I>: BOOLEAN ;
+<I>parent_curve </I>: <A HREF="#curve">curve</A>;
+INVERSE u s i n g _ c u r v e s : B A G [ 1 : ? ] O F c o m p o s i t e _ c u r v e F O R s e g m e n t s ; W H E R E W R 1 : ( ' M I L L I N G _ S C H E M A . B O U N D E D _ C U R V E ' I N T Y P E O F ( p a r e n t _ c u r v e ) ) ; END_ENTITY ;
+
+TYPE <A NAME="b_spline_curve_form">b_spline_curve_form </A>= ENUMERATION OF ( polyline_form , circular_arc , elliptic_arc , parabolic_arc , hyperbolic_arc , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="b_spline_surface_form">b_spline_surface_form </A>= ENUMERATION OF ( plane_surf , cylindrical_surf , conical_surf , spherical_surf , toroidal_surf , surf_of_revolution , ruled_surf , generalised_cone , quadric_surf , surf_of_linear_extrusion , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="dimension_count">dimension_count </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="knot_type">knot_type </A>= ENUMERATION OF ( uniform_knots , quasi_uniform_knots , piecewise_bezier_knots , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="pcurve_or_surface">pcurve_or_surface </A>= SELECT ( pcurve , surface ) ;
+END_TYPE ;
+
+TYPE <A NAME="vector_or_direction">vector_or_direction </A>= SELECT ( vector , direction ) ;
+END_TYPE ;
+
+ENTITY <A NAME="axis1_placement">axis1_placement </A>
+SUBTYPE OF ( <A HREF="#placement">placement</A>) ;
+<I>axis </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="axis2_placement_3d">axis2_placement_3d </A>
+SUBTYPE OF ( <A HREF="#placement">placement</A>) ;
+<I>axis </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+<I>ref_direction </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bezier_curve">bezier_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bezier_surface">bezier_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bounded_curve">bounded_curve </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#polyline">polyline</A>, <A HREF="#b_spline_curve">b_spline_curve</A>, <A HREF="#trimmed_curve">trimmed_curve</A>, <A HREF="#bounded_pcurve">bounded_pcurve</A>, <A HREF="#composite_curve">composite_curve</A>) ) 
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bounded_pcurve">bounded_pcurve </A>
+SUBTYPE OF ( <A HREF="#pcurve">pcurve</A>,<A HREF="#bounded_curve">bounded_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bounded_surface">bounded_surface </A>
+SUPERTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) 
+SUBTYPE OF ( <A HREF="#surface">surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_curve">b_spline_curve </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#uniform_curve">uniform_curve</A>, <A HREF="#b_spline_curve_with_knots">b_spline_curve_with_knots</A>, <A HREF="#quasi_uniform_curve">quasi_uniform_curve</A>, <A HREF="#bezier_curve">bezier_curve</A>) ANDOR <A HREF="#rational_b_spline_curve">rational_b_spline_curve</A>) 
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>degree </I>: INTEGER ;
+<I>control_points_list </I>: LIST [ 2 : ? ] OF cartesian_point ;
+<I>curve_form </I>: <A HREF="#b_spline_curve_form">b_spline_curve_form</A>;
+<I>closed_curve </I>: LOGICAL ;
+<I>self_intersect </I>: LOGICAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_curve_with_knots">b_spline_curve_with_knots </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+<I>knot_multiplicities </I>: LIST [ 2 : ? ] OF INTEGER ;
+<I>knots </I>: LIST [ 2 : ? ] OF parameter_value ;
+<I>knot_spec </I>: <A HREF="#knot_type">knot_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_surface">b_spline_surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#b_spline_surface_with_knots">b_spline_surface_with_knots</A>, <A HREF="#uniform_surface">uniform_surface</A>, <A HREF="#quasi_uniform_surface">quasi_uniform_surface</A>, <A HREF="#bezier_surface">bezier_surface</A>) ANDOR <A HREF="#rational_b_spline_surface">rational_b_spline_surface</A>) 
+SUBTYPE OF ( <A HREF="#bounded_surface">bounded_surface</A>) ;
+<I>u_degree </I>: INTEGER ;
+<I>v_degree </I>: INTEGER ;
+<I>control_points_list </I>: LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF cartesian_point ;
+<I>surface_form </I>: <A HREF="#b_spline_surface_form">b_spline_surface_form</A>;
+<I>u_closed </I>: LOGICAL ;
+<I>v_closed </I>: LOGICAL ;
+<I>self_intersect </I>: LOGICAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_surface_with_knots">b_spline_surface_with_knots </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+<I>u_multiplicities </I>: LIST [ 2 : ? ] OF INTEGER ;
+<I>v_multiplicities </I>: LIST [ 2 : ? ] OF INTEGER ;
+<I>u_knots </I>: LIST [ 2 : ? ] OF parameter_value ;
+<I>v_knots </I>: LIST [ 2 : ? ] OF parameter_value ;
+<I>knot_spec </I>: <A HREF="#knot_type">knot_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cartesian_point">cartesian_point </A>
+SUBTYPE OF ( <A HREF="#point">point</A>) ;
+<I>coordinates </I>: LIST [ 1 : 3 ] OF length_measure ;
+END_ENTITY ;
+
+ENTITY <A NAME="circle">circle </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="conic">conic </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#circle">circle</A>, <A HREF="#ellipse">ellipse</A>, <A HREF="#hyperbola">hyperbola</A>, <A HREF="#parabola">parabola</A>) ) 
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+<I>position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="curve">curve </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#line">line</A>, <A HREF="#conic">conic</A>, <A HREF="#pcurve">pcurve</A>, <A HREF="#bounded_curve">bounded_curve</A>) ) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="direction">direction </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>direction_ratios </I>: LIST [ 2 : 3 ] OF REAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="elementary_surface">elementary_surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#plane">plane</A>, <A HREF="#spherical_surface">spherical_surface</A>) ) 
+SUBTYPE OF ( <A HREF="#surface">surface</A>) ;
+<I>position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ellipse">ellipse </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>semi_axis_1 </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>semi_axis_2 </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="geometric_representation_context">geometric_representation_context </A>
+SUBTYPE OF ( <A HREF="#representation_context">representation_context</A>) ;
+<I>coordinate_space_dimension </I>: <A HREF="#dimension_count">dimension_count</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="geometric_representation_item">geometric_representation_item </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#point">point</A>, <A HREF="#direction">direction</A>, <A HREF="#placement">placement</A>, <A HREF="#curve">curve</A>, <A HREF="#surface">surface</A>, <A HREF="#edge_curve">edge_curve</A>, <A HREF="#face_surface">face_surface</A>, <A HREF="#vertex_point">vertex_point</A>, <A HREF="#solid_model">solid_model</A>) ) 
+SUBTYPE OF ( <A HREF="#representation_item">representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="hyperbola">hyperbola </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>semi_axis </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>semi_imag_axis </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="line">line </A>
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+<I>pnt </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>dir </I>: <A HREF="#vector">vector</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="parabola">parabola </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>focal_dist </I>: <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="pcurve">pcurve </A>
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+<I>basis_surface </I>: <A HREF="#surface">surface</A>;
+<I>reference_to_curve </I>: <A HREF="#definitional_representation">definitional_representation</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="placement">placement </A>
+SUPERTYPE OF ( <A HREF="#axis2_placement_3d">axis2_placement_3d</A>) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>location </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane">plane </A>
+SUBTYPE OF ( <A HREF="#elementary_surface">elementary_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="point">point </A>
+SUPERTYPE OF ( <A HREF="#cartesian_point">cartesian_point</A>) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="polyline">polyline </A>
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>points </I>: LIST [ 2 : ? ] OF cartesian_point ;
+END_ENTITY ;
+
+ENTITY <A NAME="quasi_uniform_curve">quasi_uniform_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="quasi_uniform_surface">quasi_uniform_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="rational_b_spline_curve">rational_b_spline_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+<I>weights_data </I>: LIST [ 2 : ? ] OF REAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="rational_b_spline_surface">rational_b_spline_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+<I>weights_data </I>: LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF REAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="spherical_surface">spherical_surface </A>
+SUBTYPE OF ( <A HREF="#elementary_surface">elementary_surface</A>) ;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="surface">surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#swept_surface">swept_surface</A>, <A HREF="#elementary_surface">elementary_surface</A>, <A HREF="#bounded_surface">bounded_surface</A>) ) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="surface_of_linear_extrusion">surface_of_linear_extrusion </A>
+SUBTYPE OF ( <A HREF="#swept_surface">swept_surface</A>) ;
+<I>extrusion_axis </I>: <A HREF="#vector">vector</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="surface_of_revolution">surface_of_revolution </A>
+SUBTYPE OF ( <A HREF="#swept_surface">swept_surface</A>) ;
+<I>axis_position </I>: <A HREF="#axis1_placement">axis1_placement</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="swept_surface">swept_surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#surface_of_linear_extrusion">surface_of_linear_extrusion</A>, <A HREF="#surface_of_revolution">surface_of_revolution</A>) ) 
+SUBTYPE OF ( <A HREF="#surface">surface</A>) ;
+<I>swept_curve </I>: <A HREF="#curve">curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="uniform_curve">uniform_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="uniform_surface">uniform_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="vector">vector </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>orientation </I>: <A HREF="#direction">direction</A>;
+<I>magnitude </I>: <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+RULE compatible_dimension F O R ( c a r t e s i a n _ p o i n t , d i r e c t i o n , r e p r e s e n t a t i o n _ c o n t e x t , g e o m e t r i c _ r e p r e s e n t a t i o n _ c o n t e x t ) ; W H E R E W R 1 : S I Z E O F ( Q U E R Y ( x < * c a r t e s i a n _ p o i n t | S I Z E O F ( Q U E R Y ( y < * g e o m e t r i c _ r e p r e s e n t a t i o n _ c o n t e x t | i t e m _ i n _ c o n t e x t ( x , y ) A N D ( H I I N D E X ( x . c o o r d i n a t e s ) < > y . c o o r d i n a t e _ s p a c e _ d i m e n s i o n ) ) ) > 0 ) ) = 0 ; W R 2 : S I Z E O F ( Q U E R Y ( x < * d i r e c t i o n | S I Z E O F ( Q U E R Y ( y < * g e o m e t r i c _ r e p r e s e n t a t i o n _ c o n t e x t | i t e m _ i n _ c o n t e x t ( x , y ) A N D ( H I I N D E X ( x . d i r e c t i o n _ r a t i o s ) < > y . c o o r d i n a t e _ s p a c e _ d i m e n s i o n ) ) ) > 0 ) ) = 0 ; END_RULE ; 
+ENTITY <A NAME="closed_shell">closed_shell </A>
+SUBTYPE OF ( <A HREF="#connected_face_set">connected_face_set</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="connected_face_set">connected_face_set </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#open_shell">open_shell</A>, <A HREF="#closed_shell">closed_shell</A>) ) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>cfs_faces </I>: SET [ 1 : ? ] OF face ;
+END_ENTITY ;
+
+ENTITY <A NAME="edge">edge </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#edge_curve">edge_curve</A>, <A HREF="#oriented_edge">oriented_edge</A>) ) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>edge_start </I>: <A HREF="#vertex">vertex</A>;
+<I>edge_end </I>: <A HREF="#vertex">vertex</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="edge_curve">edge_curve </A>
+SUBTYPE OF ( <A HREF="#edge">edge</A>,<A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>edge_geometry </I>: <A HREF="#curve">curve</A>;
+<I>same_sense </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="edge_loop">edge_loop </A>
+SUBTYPE OF ( <A HREF="#loop">loop</A>,<A HREF="#path">path</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="face">face </A>
+SUPERTYPE OF ( <A HREF="#face_surface">face_surface</A>) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>bounds </I>: SET [ 1 : ? ] OF face_bound ;
+END_ENTITY ;
+
+ENTITY <A NAME="face_bound">face_bound </A>
+SUPERTYPE OF ( <A HREF="#face_outer_bound">face_outer_bound</A>) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>bound </I>: <A HREF="#loop">loop</A>;
+<I>orientation </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="face_outer_bound">face_outer_bound </A>
+SUBTYPE OF ( <A HREF="#face_bound">face_bound</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="face_surface">face_surface </A>
+SUPERTYPE OF ( <A HREF="#advanced_face">advanced_face</A>) 
+SUBTYPE OF ( <A HREF="#face">face</A>,<A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>face_geometry </I>: <A HREF="#surface">surface</A>;
+<I>same_sense </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="loop">loop </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#vertex_loop">vertex_loop</A>, <A HREF="#edge_loop">edge_loop</A>) ) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="open_shell">open_shell </A>
+SUPERTYPE OF ( <A HREF="#topological_region">topological_region</A>) 
+SUBTYPE OF ( <A HREF="#connected_face_set">connected_face_set</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="oriented_edge">oriented_edge </A>
+SUBTYPE OF ( <A HREF="#edge">edge</A>) ;
+<I>edge_element </I>: <A HREF="#edge">edge</A>;
+<I>orientation </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="path">path </A>
+SUPERTYPE OF ( <A HREF="#edge_loop">edge_loop</A>) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>edge_list </I>: LIST [ 1 : ? ] OF UNIQUE oriented_edge ;
+END_ENTITY ;
+
+ENTITY <A NAME="topological_representation_item">topological_representation_item </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#face_bound">face_bound</A>, <A HREF="#connected_face_set">connected_face_set</A>, <A HREF="#edge">edge</A>, <A HREF="#vertex">vertex</A>, <A HREF="#face">face</A>, (<A HREF="#loop">loop</A>ANDOR <A HREF="#path">path</A>)) ) 
+SUBTYPE OF ( <A HREF="#representation_item">representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="vertex">vertex </A>
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="vertex_loop">vertex_loop </A>
+SUBTYPE OF ( <A HREF="#loop">loop</A>) ;
+<I>loop_vertex </I>: <A HREF="#vertex">vertex</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="vertex_point">vertex_point </A>
+SUBTYPE OF ( <A HREF="#vertex">vertex</A>,<A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>vertex_geometry </I>: <A HREF="#point">point</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="block">block </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>x </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>y </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>z </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="manifold_solid_brep">manifold_solid_brep </A>
+SUBTYPE OF ( <A HREF="#solid_model">solid_model</A>) ;
+<I>outer </I>: <A HREF="#closed_shell">closed_shell</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="right_circular_cylinder">right_circular_cylinder </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>position </I>: <A HREF="#axis1_placement">axis1_placement</A>;
+<I>height </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="solid_model">solid_model </A>
+SUPERTYPE OF ( <A HREF="#manifold_solid_brep">manifold_solid_brep</A>) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="definitional_representation">definitional_representation </A>
+SUBTYPE OF ( <A HREF="#representation">representation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="representation">representation </A>;
+<I>name </I>: <A HREF="#label">label</A>;
+<I>items </I>: SET [ 1 : ? ] OF representation_item ;
+<I>context_of_items </I>: <A HREF="#representation_context">representation_context</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="representation_context">representation_context </A>;
+<I>context_identifier </I>: <A HREF="#identifier">identifier</A>;
+<I>context_type </I>: <A HREF="#text">text</A>;
+INVERSE r e p r e s e n t a t i o n s _ i n _ c o n t e x t : S E T [ 1 : ? ] O F r e p r e s e n t a t i o n F O R c o n t e x t _ o f _ i t e m s ; END_ENTITY ;
+
+ENTITY <A NAME="representation_item">representation_item </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>, <A HREF="#topological_representation_item">topological_representation_item</A>) ) ;
+<I>name </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="advanced_face">advanced_face </A>
+SUBTYPE OF ( <A HREF="#face_surface">face_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="advanced_brep_shape_representation">advanced_brep_shape_representation </A>
+SUBTYPE OF ( <A HREF="#shape_representation">shape_representation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="toleranced_length_measure">toleranced_length_measure </A>;
+<I>theoretical_size </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>implicit_tolerance </I>: <A HREF="#tolerance_select">tolerance_select</A>;
+END_ENTITY ;
+
+TYPE <A NAME="tolerance_select">tolerance_select </A>= SELECT ( plus_minus_value , limits_and_fits ) ;
+END_TYPE ;
+
+ENTITY <A NAME="plus_minus_value">plus_minus_value </A>;
+<I>upper_limit </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>lower_limit </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>significant_digits </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="limits_and_fits">limits_and_fits </A>;
+<I>deviation </I>: <A HREF="#length_measure">length_measure</A>;
+<I>grade </I>: <A HREF="#length_measure">length_measure</A>;
+<I>its_fitting_type </I>:  OPTIONAL <A HREF="#fitting_type">fitting_type</A>;
+END_ENTITY ;
+
+TYPE <A NAME="fitting_type">fitting_type </A>= ENUMERATION OF ( shaft , hole ) ;
+END_TYPE ;
+
+TYPE <A NAME="speed_measure">speed_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="rot_speed_measure">rot_speed_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="pressure_measure">pressure_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="rot_direction">rot_direction </A>= ENUMERATION OF ( cw , ccw ) ;
+END_TYPE ;
+
+TYPE <A NAME="shape_tolerance">shape_tolerance </A>= length_measure ;
+END_TYPE ;
+
+ENTITY <A NAME="project">project </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>main_workplan </I>: <A HREF="#workplan">workplan</A>;
+<I>its_workpieces </I>: SET [ 0 : ? ] OF workpiece ;
+<I>its_owner </I>:  OPTIONAL <A HREF="#person_and_address">person_and_address</A>;
+<I>its_release </I>:  OPTIONAL <A HREF="#date_and_time">date_and_time</A>;
+<I>its_status </I>:  OPTIONAL <A HREF="#approval">approval</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="person_and_address">person_and_address </A>;
+<I>its_person </I>: <A HREF="#person">person</A>;
+<I>its_address </I>:  OPTIONAL <A HREF="#address">address</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece">workpiece </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>its_material </I>:  OPTIONAL <A HREF="#material">material</A>;
+<I>global_tolerance </I>:  OPTIONAL <A HREF="#shape_tolerance">shape_tolerance</A>;
+<I>its_rawpiece </I>:  OPTIONAL <A HREF="#workpiece">workpiece</A>;
+<I>its_geometry </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+<I>its_bounding_geometry </I>:  OPTIONAL <A HREF="#bounding_geometry_select">bounding_geometry_select</A>;
+<I>clamping_positions </I>: SET [ 0 : ? ] OF cartesian_point ;
+END_ENTITY ;
+
+ENTITY <A NAME="material">material </A>;
+<I>standard_identifier </I>: <A HREF="#label">label</A>;
+<I>material_identifier </I>: <A HREF="#label">label</A>;
+<I>material_property </I>: SET [ 0 : ? ] OF property_parameter ;
+END_ENTITY ;
+
+ENTITY <A NAME="property_parameter">property_parameter </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#descriptive_parameter">descriptive_parameter</A>, <A HREF="#numeric_parameter">numeric_parameter</A>) ) ;
+<I>parameter_name </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="descriptive_parameter">descriptive_parameter </A>
+SUBTYPE OF ( <A HREF="#property_parameter">property_parameter</A>) ;
+<I>descriptive_string </I>: <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="numeric_parameter">numeric_parameter </A>
+SUBTYPE OF ( <A HREF="#property_parameter">property_parameter</A>) ;
+<I>its_parameter_value </I>: <A HREF="#parameter_value">parameter_value</A>;
+<I>its_parameter_unit </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+TYPE <A NAME="bounding_geometry_select">bounding_geometry_select </A>= SELECT ( block , right_circular_cylinder , advanced_brep_shape_representation ) ;
+END_TYPE ;
+
+ENTITY <A NAME="manufacturing_feature">manufacturing_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#region">region</A>, <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>, <A HREF="#transition_feature">transition_feature</A>) ) ;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>its_operations </I>: SET [ 0 : ? ] OF machining_operation ;
+END_ENTITY ;
+
+ENTITY <A NAME="region">region </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#region_surface_list">region_surface_list</A>, <A HREF="#region_projection">region_projection</A>, <A HREF="#topological_region">topological_region</A>) ) 
+SUBTYPE OF ( <A HREF="#manufacturing_feature">manufacturing_feature</A>) ;
+<I>feature_placement </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="region_projection">region_projection </A>
+SUBTYPE OF ( <A HREF="#region">region</A>) ;
+<I>proj_curve </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+<I>proj_dir </I>: <A HREF="#direction">direction</A>;
+<I>depth </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="region_surface_list">region_surface_list </A>
+SUBTYPE OF ( <A HREF="#region">region</A>) ;
+<I>surface_list </I>: LIST [ 1 : ? ] OF bounded_surface ;
+END_ENTITY ;
+
+ENTITY <A NAME="topological_region">topological_region </A>
+SUBTYPE OF ( <A HREF="#region">region</A>,<A HREF="#open_shell">open_shell</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="two5d_manufacturing_feature">two5d_manufacturing_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#machining_feature">machining_feature</A>, <A HREF="#replicate_feature">replicate_feature</A>, <A HREF="#compound_feature">compound_feature</A>) ) 
+SUBTYPE OF ( <A HREF="#manufacturing_feature">manufacturing_feature</A>) ;
+<I>feature_placement </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_feature">machining_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#planar_face">planar_face</A>, <A HREF="#pocket">pocket</A>, <A HREF="#slot">slot</A>, <A HREF="#step">step</A>, <A HREF="#round_hole">round_hole</A>, <A HREF="#toolpath_feature">toolpath_feature</A>, <A HREF="#profile_feature">profile_feature</A>, <A HREF="#boss">boss</A>, <A HREF="#spherical_cap">spherical_cap</A>, <A HREF="#rounded_end">rounded_end</A>, <A HREF="#thread">thread</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>) ;
+<I>depth </I>: <A HREF="#elementary_surface">elementary_surface</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="planar_face">planar_face </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>course_of_travel </I>: <A HREF="#linear_path">linear_path</A>;
+<I>removal_boundary </I>: <A HREF="#linear_profile">linear_profile</A>;
+<I>face_boundary </I>:  OPTIONAL <A HREF="#closed_profile">closed_profile</A>;
+<I>its_boss </I>: SET [ 0 : ? ] OF boss ;
+END_ENTITY ;
+
+ENTITY <A NAME="pocket">pocket </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#closed_pocket">closed_pocket</A>, <A HREF="#open_pocket">open_pocket</A>) ) 
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>its_boss </I>: SET [ 0 : ? ] OF boss ;
+<I>slope </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>bottom_condition </I>: <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>;
+<I>planar_radius </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>orthogonal_radius </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="closed_pocket">closed_pocket </A>
+SUBTYPE OF ( <A HREF="#pocket">pocket</A>) ;
+<I>feature_boundary </I>: <A HREF="#closed_profile">closed_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="open_pocket">open_pocket </A>
+SUBTYPE OF ( <A HREF="#pocket">pocket</A>) ;
+<I>open_boundary </I>: <A HREF="#open_profile">open_profile</A>;
+<I>wall_boundary </I>:  OPTIONAL <A HREF="#open_profile">open_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="pocket_bottom_condition">pocket_bottom_condition </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#through_pocket_bottom_condition">through_pocket_bottom_condition</A>, <A HREF="#planar_pocket_bottom_condition">planar_pocket_bottom_condition</A>, <A HREF="#radiused_pocket_bottom_condition">radiused_pocket_bottom_condition</A>, <A HREF="#general_pocket_bottom_condition">general_pocket_bottom_condition</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="through_pocket_bottom_condition">through_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="planar_pocket_bottom_condition">planar_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="radiused_pocket_bottom_condition">radiused_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+<I>floor_radius_center </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>floor_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_pocket_bottom_condition">general_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+<I>shape </I>: <A HREF="#region">region</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="slot">slot </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>course_of_travel </I>: <A HREF="#travel_path">travel_path</A>;
+<I>swept_shape </I>: <A HREF="#open_profile">open_profile</A>;
+<I>end_conditions </I>: LIST [ 0 : 2 ] OF slot_end_type ;
+END_ENTITY ;
+
+ENTITY <A NAME="slot_end_type">slot_end_type </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#woodruff_slot_end_type">woodruff_slot_end_type</A>, <A HREF="#radiused_slot_end_type">radiused_slot_end_type</A>, <A HREF="#flat_slot_end_type">flat_slot_end_type</A>, <A HREF="#loop_slot_end_type">loop_slot_end_type</A>, <A HREF="#open_slot_end_type">open_slot_end_type</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="woodruff_slot_end_type">woodruff_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="radiused_slot_end_type">radiused_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="flat_slot_end_type">flat_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+<I>corner_radius1 </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>corner_radius2 </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="loop_slot_end_type">loop_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="open_slot_end_type">open_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="step">step </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>open_boundary </I>: <A HREF="#linear_path">linear_path</A>;
+<I>wall_boundary </I>:  OPTIONAL <A HREF="#vee_profile">vee_profile</A>;
+<I>its_boss </I>: SET [ 0 : ? ] OF boss ;
+END_ENTITY ;
+
+ENTITY <A NAME="profile_feature">profile_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_outside_profile">general_outside_profile</A>, <A HREF="#shape_profile">shape_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>profile_swept_shape </I>: <A HREF="#linear_path">linear_path</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_outside_profile">general_outside_profile </A>
+SUBTYPE OF ( <A HREF="#profile_feature">profile_feature</A>) ;
+<I>feature_boundary </I>: <A HREF="#profile">profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="shape_profile">shape_profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_shape_profile">general_shape_profile</A>, <A HREF="#partial_circular_shape_profile">partial_circular_shape_profile</A>, <A HREF="#circular_closed_shape_profile">circular_closed_shape_profile</A>, <A HREF="#rectangular_open_shape_profile">rectangular_open_shape_profile</A>, <A HREF="#rectangular_closed_shape_profile">rectangular_closed_shape_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#profile_feature">profile_feature</A>) ;
+<I>floor_condition </I>: <A HREF="#profile_select">profile_select</A>;
+<I>removal_direction </I>: <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+TYPE <A NAME="profile_select">profile_select </A>= SELECT ( through_profile_floor , profile_floor ) ;
+END_TYPE ;
+
+ENTITY <A NAME="through_profile_floor">through_profile_floor </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="profile_floor">profile_floor </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_profile_floor">general_profile_floor</A>, <A HREF="#planar_profile_floor">planar_profile_floor</A>) ) ;
+<I>floor_radius </I>:  OPTIONAL <A HREF="#numeric_parameter">numeric_parameter</A>;
+<I>start_or_end </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="general_profile_floor">general_profile_floor </A>
+SUBTYPE OF ( <A HREF="#profile_floor">profile_floor</A>) ;
+<I>floor </I>: <A HREF="#face">face</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="planar_profile_floor">planar_profile_floor </A>
+SUBTYPE OF ( <A HREF="#profile_floor">profile_floor</A>) ;
+<I>floor </I>: <A HREF="#plane">plane</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_shape_profile">general_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>profile_boundary </I>: <A HREF="#profile">profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_circular_shape_profile">partial_circular_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>open_boundary </I>: <A HREF="#partial_circular_profile">partial_circular_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_closed_shape_profile">circular_closed_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>closed_boundary </I>: <A HREF="#circular_closed_profile">circular_closed_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_open_shape_profile">rectangular_open_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>open_boundary </I>: <A HREF="#square_u_profile">square_u_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_closed_shape_profile">rectangular_closed_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>closed_boundary </I>: <A HREF="#rectangular_closed_profile">rectangular_closed_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="round_hole">round_hole </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>change_in_diameter </I>:  OPTIONAL <A HREF="#taper_select">taper_select</A>;
+<I>bottom_condition </I>: <A HREF="#hole_bottom_condition">hole_bottom_condition</A>;
+END_ENTITY ;
+
+TYPE <A NAME="taper_select">taper_select </A>= SELECT ( diameter_taper , angle_taper ) ;
+END_TYPE ;
+
+ENTITY <A NAME="diameter_taper">diameter_taper </A>;
+<I>final_diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="angle_taper">angle_taper </A>;
+<I>angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="hole_bottom_condition">hole_bottom_condition </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>, <A HREF="#through_bottom_condition">through_bottom_condition</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="through_bottom_condition">through_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#hole_bottom_condition">hole_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="blind_bottom_condition">blind_bottom_condition </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#flat_hole_bottom">flat_hole_bottom</A>, <A HREF="#flat_with_radius_hole_bottom">flat_with_radius_hole_bottom</A>, <A HREF="#spherical_hole_bottom">spherical_hole_bottom</A>, <A HREF="#conical_hole_bottom">conical_hole_bottom</A>) ) 
+SUBTYPE OF ( <A HREF="#hole_bottom_condition">hole_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="flat_hole_bottom">flat_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="flat_with_radius_hole_bottom">flat_with_radius_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+<I>corner_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="spherical_hole_bottom">spherical_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="conical_hole_bottom">conical_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+<I>tip_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>tip_radius </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="toolpath_feature">toolpath_feature </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="boss">boss </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>its_boundary </I>: <A HREF="#closed_profile">closed_profile</A>;
+<I>slope </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="spherical_cap">spherical_cap </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>internal_angle </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+<I>radius </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rounded_end">rounded_end </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>course_of_travel </I>: <A HREF="#linear_path">linear_path</A>;
+<I>partial_circular_boundary </I>: <A HREF="#partial_circular_profile">partial_circular_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="compound_feature">compound_feature </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#counterbore_hole">counterbore_hole</A>, <A HREF="#countersunk_hole">countersunk_hole</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>) ;
+<I>elements </I>: SET [ 2 : ? ] OF compound_feature_select ;
+END_ENTITY ;
+
+TYPE <A NAME="compound_feature_select">compound_feature_select </A>= SELECT ( machining_feature , transition_feature ) ;
+END_TYPE ;
+
+ENTITY <A NAME="counterbore_hole">counterbore_hole </A>
+SUBTYPE OF ( <A HREF="#compound_feature">compound_feature</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="countersunk_hole">countersunk_hole </A>
+SUBTYPE OF ( <A HREF="#compound_feature">compound_feature</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="replicate_feature">replicate_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#rectangular_pattern">rectangular_pattern</A>, <A HREF="#circular_pattern">circular_pattern</A>, <A HREF="#general_pattern">general_pattern</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>) ;
+<I>replicate_base_feature </I>: <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_pattern">circular_pattern </A>
+SUBTYPE OF ( <A HREF="#replicate_feature">replicate_feature</A>) ;
+<I>angle_increment </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>number_of_feature </I>: INTEGER ;
+<I>relocated_base_feature </I>: SET [ 0 : ? ] OF circular_offset ;
+<I>missing_base_feature </I>: SET [ 0 : ? ] OF circular_omit ;
+<I>base_feature_diameter </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>base_feature_rotation </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_offset">circular_offset </A>;
+<I>angular_offset </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_omit">circular_omit </A>;
+<I>index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_pattern">rectangular_pattern </A>
+SUBTYPE OF ( <A HREF="#replicate_feature">replicate_feature</A>) ;
+<I>spacing </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_direction </I>: <A HREF="#direction">direction</A>;
+<I>number_of_rows </I>:  OPTIONAL INTEGER ;
+<I>number_of_columns </I>: INTEGER ;
+<I>row_spacing </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>row_layout_direction </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+<I>relocated_base_feature </I>: SET [ 0 : ? ] OF rectangular_offset ;
+<I>missing_base_feature </I>: SET [ 0 : ? ] OF rectangular_omit ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_offset">rectangular_offset </A>;
+<I>offset_direction </I>: <A HREF="#direction">direction</A>;
+<I>offset_distance </I>: <A HREF="#length_measure">length_measure</A>;
+<I>row_index </I>: INTEGER ;
+<I>column_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_omit">rectangular_omit </A>;
+<I>row_index </I>: INTEGER ;
+<I>column_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="general_pattern">general_pattern </A>
+SUBTYPE OF ( <A HREF="#replicate_feature">replicate_feature</A>) ;
+<I>replicate_locations </I>: LIST [ 2 : ? ] OF axis2_placement_3d ;
+END_ENTITY ;
+
+ENTITY <A NAME="transition_feature">transition_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#chamfer">chamfer</A>, <A HREF="#edge_round">edge_round</A>) ) 
+SUBTYPE OF ( <A HREF="#manufacturing_feature">manufacturing_feature</A>) ;
+<I>first_feature </I>: <A HREF="#machining_feature">machining_feature</A>;
+<I>second_feature </I>: <A HREF="#machining_feature">machining_feature</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="chamfer">chamfer </A>
+SUBTYPE OF ( <A HREF="#transition_feature">transition_feature</A>) ;
+<I>angle_to_plane </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>first_offset_amount </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="edge_round">edge_round </A>
+SUBTYPE OF ( <A HREF="#transition_feature">transition_feature</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_offset_amount </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>second_offset_amount </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="thread">thread </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#catalogue_thread">catalogue_thread</A>, <A HREF="#defined_thread">defined_thread</A>) ) 
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>partial_profile </I>: <A HREF="#partial_area_definition">partial_area_definition</A>;
+<I>applied_shape </I>: SET [ 1 : ? ] OF machining_feature ;
+<I>inner_or_outer_thread </I>: BOOLEAN ;
+<I>qualifier </I>:  OPTIONAL <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+<I>fit_class </I>: <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+<I>form </I>: <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+<I>major_diameter </I>: <A HREF="#length_measure">length_measure</A>;
+<I>number_of_threads </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+<I>thread_hand </I>: <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_area_definition">partial_area_definition </A>;
+<I>effective_length </I>: <A HREF="#length_measure">length_measure</A>;
+<I>placement </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>maximum_length </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="catalogue_thread">catalogue_thread </A>
+SUBTYPE OF ( <A HREF="#thread">thread</A>) ;
+<I>documentation </I>: <A HREF="#specification">specification</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="specification">specification </A>;
+<I>constraint </I>: SET [ 0 : ? ] OF specification_usage_constraint ;
+<I>specification_id </I>: <A HREF="#text">text</A>;
+<I>specification_description </I>:  OPTIONAL <A HREF="#text">text</A>;
+<I>specification_class </I>:  OPTIONAL <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="specification_usage_constraint">specification_usage_constraint </A>;
+<I>element </I>: <A HREF="#text">text</A>;
+<I>class_id </I>: <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="defined_thread">defined_thread </A>
+SUBTYPE OF ( <A HREF="#thread">thread</A>) ;
+<I>pitch_diameter </I>: <A HREF="#length_measure">length_measure</A>;
+<I>minor_diameter </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+<I>crest </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="profile">profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#closed_profile">closed_profile</A>, <A HREF="#open_profile">open_profile</A>) ) ;
+<I>placement </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="open_profile">open_profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#linear_profile">linear_profile</A>, <A HREF="#square_u_profile">square_u_profile</A>, <A HREF="#rounded_u_profile">rounded_u_profile</A>, <A HREF="#tee_profile">tee_profile</A>, <A HREF="#vee_profile">vee_profile</A>, <A HREF="#partial_circular_profile">partial_circular_profile</A>, <A HREF="#general_profile">general_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#profile">profile</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="linear_profile">linear_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>profile_length </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="square_u_profile">square_u_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>second_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>second_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rounded_u_profile">rounded_u_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tee_profile">tee_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>first_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>second_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>cross_bar_width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>cross_bar_depth </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_offset </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>second_offset </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="vee_profile">vee_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>profile_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>profile_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>tilt_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_circular_profile">partial_circular_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>sweep_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_profile">general_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>its_profile </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="closed_profile">closed_profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#rectangular_closed_profile">rectangular_closed_profile</A>, <A HREF="#circular_closed_profile">circular_closed_profile</A>, <A HREF="#ngon_profile">ngon_profile</A>, <A HREF="#general_closed_profile">general_closed_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#profile">profile</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_closed_profile">rectangular_closed_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>profile_width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>profile_length </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_closed_profile">circular_closed_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ngon_profile">ngon_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>number_of_sides </I>: INTEGER ;
+<I>circumscribed_or_across_flats </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="general_closed_profile">general_closed_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>closed_profile_shape </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="travel_path">travel_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_path">general_path</A>, <A HREF="#linear_path">linear_path</A>, <A HREF="#circular_path">circular_path</A>) ) ;
+<I>placement </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_path">general_path </A>
+SUBTYPE OF ( <A HREF="#travel_path">travel_path</A>) ;
+<I>swept_path </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="linear_path">linear_path </A>
+SUBTYPE OF ( <A HREF="#travel_path">travel_path</A>) ;
+<I>distance </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_direction </I>: <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_path">circular_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#complete_circular_path">complete_circular_path</A>, <A HREF="#partial_circular_path">partial_circular_path</A>) ) 
+SUBTYPE OF ( <A HREF="#travel_path">travel_path</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="complete_circular_path">complete_circular_path </A>
+SUBTYPE OF ( <A HREF="#circular_path">circular_path</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_circular_path">partial_circular_path </A>
+SUBTYPE OF ( <A HREF="#circular_path">circular_path</A>) ;
+<I>sweep_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="surface_texture_parameter">surface_texture_parameter </A>;
+<I>its_value </I>: <A HREF="#parameter_value">parameter_value</A>;
+<I>parameter_name </I>: <A HREF="#label">label</A>;
+<I>measuring_method </I>: <A HREF="#identifier">identifier</A>;
+<I>parameter_index </I>:  OPTIONAL <A HREF="#identifier">identifier</A>;
+<I>applied_surfaces </I>: SET [ 1 : ? ] OF machined_surface ;
+END_ENTITY ;
+
+ENTITY <A NAME="machined_surface">machined_surface </A>;
+<I>its_machining_feature </I>: <A HREF="#machining_feature">machining_feature</A>;
+<I>surface_element </I>: <A HREF="#bottom_or_side">bottom_or_side</A>;
+END_ENTITY ;
+
+TYPE <A NAME="bottom_or_side">bottom_or_side </A>= ENUMERATION OF ( bottom , side , bottom_and_side ) ;
+END_TYPE ;
+
+ENTITY <A NAME="executable">executable </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#workingstep">workingstep</A>, <A HREF="#nc_function">nc_function</A>, <A HREF="#program_structure">program_structure</A>) ) ;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workingstep">workingstep </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#machining_workingstep">machining_workingstep</A>, <A HREF="#rapid_movement">rapid_movement</A>, <A HREF="#touch_probing">touch_probing</A>) ) 
+SUBTYPE OF ( <A HREF="#executable">executable</A>) ;
+<I>its_secplane </I>: <A HREF="#elementary_surface">elementary_surface</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_workingstep">machining_workingstep </A>
+SUBTYPE OF ( <A HREF="#workingstep">workingstep</A>) ;
+<I>its_feature </I>: <A HREF="#manufacturing_feature">manufacturing_feature</A>;
+<I>its_operation </I>: <A HREF="#machining_operation">machining_operation</A>;
+<I>its_effect </I>:  OPTIONAL <A HREF="#in_process_geometry">in_process_geometry</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="in_process_geometry">in_process_geometry </A>;
+<I>as_is </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+<I>to_be </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+<I>removal </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rapid_movement">rapid_movement </A>
+SUPERTYPE OF ( <A HREF="#return_home">return_home</A>) 
+SUBTYPE OF ( <A HREF="#workingstep">workingstep</A>,<A HREF="#operation">operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="return_home">return_home </A>
+SUBTYPE OF ( <A HREF="#rapid_movement">rapid_movement</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="touch_probing">touch_probing </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#workpiece_probing">workpiece_probing</A>, <A HREF="#workpiece_complete_probing">workpiece_complete_probing</A>, <A HREF="#tool_probing">tool_probing</A>) ) 
+SUBTYPE OF ( <A HREF="#workingstep">workingstep</A>,<A HREF="#operation">operation</A>) ;
+<I>measured_offset </I>: <A HREF="#nc_variable">nc_variable</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece_probing">workpiece_probing </A>
+SUBTYPE OF ( <A HREF="#touch_probing">touch_probing</A>) ;
+<I>start_position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>its_direction </I>: <A HREF="#direction">direction</A>;
+<I>expected_value </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_probe </I>: <A HREF="#touch_probe">touch_probe</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece_complete_probing">workpiece_complete_probing </A>
+SUBTYPE OF ( <A HREF="#touch_probing">touch_probing</A>) ;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>probing_distance </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_probe </I>: <A HREF="#touch_probe">touch_probe</A>;
+<I>computed_offset </I>: <A HREF="#offset_vector">offset_vector</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="touch_probe">touch_probe </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="offset_vector">offset_vector </A>;
+<I>translate </I>: LIST [ 3 : 3 ] OF nc_variable ;
+<I>rotate </I>:  OPTIONAL LIST [ 3 : 3 ] OF nc_variable ;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_probing">tool_probing </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#tool_length_probing">tool_length_probing</A>, <A HREF="#tool_radius_probing">tool_radius_probing</A>) ) 
+SUBTYPE OF ( <A HREF="#touch_probing">touch_probing</A>) ;
+<I>offset </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>max_wear </I>: <A HREF="#length_measure">length_measure</A>;
+<I>its_tool </I>: <A HREF="#machining_tool">machining_tool</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_tool">machining_tool </A>ABSTRACT 
+SUPERTYPE ;
+<I>its_id </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cutting_tool">cutting_tool </A>ABSTRACT 
+SUPERTYPE 
+SUBTYPE OF ( <A HREF="#machining_tool">machining_tool</A>) ;
+<I>its_tool_body </I>: <A HREF="#tool_body">tool_body</A>;
+<I>its_cutting_edge </I>: LIST [ 1 : ? ] OF cutting_component ;
+<I>overall_assembly_length </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_body">tool_body </A>ABSTRACT 
+SUPERTYPE ;
+END_ENTITY ;
+
+ENTITY <A NAME="cutting_component">cutting_component </A>;
+<I>tool_offset_length </I>: <A HREF="#length_measure">length_measure</A>;
+<I>its_material </I>:  OPTIONAL <A HREF="#material">material</A>;
+<I>technological_data </I>:  OPTIONAL <A HREF="#cutting_edge_technological_data">cutting_edge_technological_data</A>;
+<I>expected_tool_life </I>:  OPTIONAL <A HREF="#time_measure">time_measure</A>;
+<I>its_technology </I>:  OPTIONAL <A HREF="milling_schema.html#milling_technology">milling_technology </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cutting_edge_technological_data">cutting_edge_technological_data </A>;
+<I>cutting_angle </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>free_angle </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>aux_angle </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_length_probing">tool_length_probing </A>
+SUBTYPE OF ( <A HREF="#tool_probing">tool_probing</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_radius_probing">tool_radius_probing </A>
+SUBTYPE OF ( <A HREF="#tool_probing">tool_probing</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="nc_function">nc_function </A>ABSTRACT 
+SUPERTYPE 
+SUBTYPE OF ( <A HREF="#executable">executable</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="display_message">display_message </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+<I>its_text </I>: <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="optional_stop">optional_stop </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="program_stop">program_stop </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="set_mark">set_mark </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="wait_for_mark">wait_for_mark </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+<I>its_channel </I>: <A HREF="#channel">channel</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="program_structure">program_structure </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#workplan">workplan</A>, <A HREF="#parallel">parallel</A>, <A HREF="#non_sequential">non_sequential</A>, <A HREF="#selective">selective</A>, <A HREF="#if_statement">if_statement</A>, <A HREF="#while_statement">while_statement</A>, <A HREF="#assignment">assignment</A>) ) 
+SUBTYPE OF ( <A HREF="#executable">executable</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="workplan">workplan </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_elements </I>: LIST [ 0 : ? ] OF executable ;
+<I>its_channel </I>:  OPTIONAL <A HREF="#channel">channel</A>;
+<I>its_setup </I>:  OPTIONAL <A HREF="#setup">setup</A>;
+<I>its_effect </I>:  OPTIONAL <A HREF="#in_process_geometry">in_process_geometry</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="channel">channel </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="setup">setup </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>its_origin </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>its_secplane </I>: <A HREF="#elementary_surface">elementary_surface</A>;
+<I>its_workpiece_setup </I>: LIST [ 0 : ? ] OF workpiece_setup ;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece_setup">workpiece_setup </A>;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>its_origin </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>its_offset </I>:  OPTIONAL <A HREF="#offset_vector">offset_vector</A>;
+<I>its_restricted_area </I>:  OPTIONAL <A HREF="#restricted_area_select">restricted_area_select</A>;
+<I>its_instructions </I>: LIST [ 0 : ? ] OF setup_instruction ;
+END_ENTITY ;
+
+TYPE <A NAME="restricted_area_select">restricted_area_select </A>= SELECT ( bounded_surface , bounding_geometry_select ) ;
+END_TYPE ;
+
+ENTITY <A NAME="setup_instruction">setup_instruction </A>;
+<I>description </I>:  OPTIONAL <A HREF="#text">text</A>;
+<I>external_document </I>:  OPTIONAL <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="parallel">parallel </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>branches </I>: SET [ 2 : ? ] OF executable ;
+END_ENTITY ;
+
+ENTITY <A NAME="non_sequential">non_sequential </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_elements </I>: SET [ 2 : ? ] OF executable ;
+END_ENTITY ;
+
+ENTITY <A NAME="selective">selective </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_elements </I>: SET [ 2 : ? ] OF executable ;
+END_ENTITY ;
+
+ENTITY <A NAME="if_statement">if_statement </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>condition </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+<I>true_branch </I>: <A HREF="#executable">executable</A>;
+<I>false_branch </I>:  OPTIONAL <A HREF="#executable">executable</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="while_statement">while_statement </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>condition </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+<I>body </I>: <A HREF="#executable">executable</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="assignment">assignment </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_lvalue </I>: <A HREF="#nc_variable">nc_variable</A>;
+<I>its_rvalue </I>: <A HREF="#rvalue">rvalue</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="nc_variable">nc_variable </A>;
+<I>its_name </I>: <A HREF="#label">label</A>;
+<I>initial_value </I>:  OPTIONAL <A HREF="#number">number</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="nc_constant">nc_constant </A>;
+<I>its_name </I>: <A HREF="#label">label</A>;
+<I>its_value </I>:  OPTIONAL <A HREF="#number">number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="rvalue">rvalue </A>= SELECT ( nc_constant , nc_variable ) ;
+END_TYPE ;
+
+ENTITY <A NAME="boolean_expression">boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#unary_boolean_expression">unary_boolean_expression</A>, <A HREF="#binary_boolean_expression">binary_boolean_expression</A>, <A HREF="#multiple_arity_boolean_expression">multiple_arity_boolean_expression</A>, <A HREF="#comparison_expression">comparison_expression</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="unary_boolean_expression">unary_boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( <A HREF="#not_expression">not_expression</A>) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operand </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="not_expression">not_expression </A>
+SUBTYPE OF ( <A HREF="#unary_boolean_expression">unary_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="binary_boolean_expression">binary_boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( <A HREF="#xor_expression">xor_expression</A>) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operand1 </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+<I>operand2 </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="xor_expression">xor_expression </A>
+SUBTYPE OF ( <A HREF="#binary_boolean_expression">binary_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="multiple_arity_boolean_expression">multiple_arity_boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#and_expression">and_expression</A>, <A HREF="#or_expression">or_expression</A>) ) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operands </I>: LIST [ 2 : ? ] OF boolean_expression ;
+END_ENTITY ;
+
+ENTITY <A NAME="and_expression">and_expression </A>
+SUBTYPE OF ( <A HREF="#multiple_arity_boolean_expression">multiple_arity_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="or_expression">or_expression </A>
+SUBTYPE OF ( <A HREF="#multiple_arity_boolean_expression">multiple_arity_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_expression">comparison_expression </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#comparison_equal">comparison_equal</A>, <A HREF="#comparison_not_equal">comparison_not_equal</A>, <A HREF="#comparison_greater">comparison_greater</A>, <A HREF="#comparison_greater_equal">comparison_greater_equal</A>, <A HREF="#comparison_less">comparison_less</A>, <A HREF="#comparison_less_equal">comparison_less_equal</A>) ) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operand1 </I>: <A HREF="#nc_variable">nc_variable</A>;
+<I>operand2 </I>: <A HREF="#rvalue">rvalue</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_equal">comparison_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_not_equal">comparison_not_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_greater">comparison_greater </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_greater_equal">comparison_greater_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_less">comparison_less </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_less_equal">comparison_less_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="operation">operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#machining_operation">machining_operation</A>, <A HREF="#rapid_movement">rapid_movement</A>, <A HREF="#touch_probing">touch_probing</A>) ) ;
+<I>its_toolpath </I>:  OPTIONAL <A HREF="#toolpath_list">toolpath_list</A>;
+<I>its_tool_direction </I>:  OPTIONAL <A HREF="#tool_direction">tool_direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="toolpath_list">toolpath_list </A>;
+<I>its_list </I>: LIST [ 1 : ? ] OF toolpath ;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_direction">tool_direction </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#two_axes">two_axes</A>, <A HREF="#three_axes">three_axes</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="two_axes">two_axes </A>
+SUBTYPE OF ( <A HREF="#tool_direction">tool_direction</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="three_axes">three_axes </A>
+SUBTYPE OF ( <A HREF="#tool_direction">tool_direction</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_operation">machining_operation </A>ABSTRACT 
+SUPERTYPE 
+SUBTYPE OF ( <A HREF="#operation">operation</A>) ;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>retract_plane </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+<I>start_point </I>:  OPTIONAL <A HREF="#cartesian_point">cartesian_point</A>;
+<I>its_tool </I>: <A HREF="#machining_tool">machining_tool</A>;
+<I>its_technology </I>: <A HREF="#technology">technology</A>;
+<I>its_machine_functions </I>: <A HREF="#machine_functions">machine_functions</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="technology">technology </A>ABSTRACT 
+SUPERTYPE ;
+<I>feedrate </I>:  OPTIONAL <A HREF="#speed_measure">speed_measure</A>;
+<I>feedrate_reference </I>: <A HREF="#tool_reference_point">tool_reference_point</A>;
+END_ENTITY ;
+
+TYPE <A NAME="tool_reference_point">tool_reference_point </A>= ENUMERATION OF ( tcp , ccp ) ;
+END_TYPE ;
+
+ENTITY <A NAME="machine_functions">machine_functions </A>ABSTRACT 
+SUPERTYPE ;
+END_ENTITY ;
+
+ENTITY <A NAME="toolpath">toolpath </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#feedstop">feedstop</A>, <A HREF="#trajectory">trajectory</A>, <A HREF="#parameterised_path">parameterised_path</A>) ) ;
+<I>its_priority </I>: BOOLEAN ;
+<I>its_type </I>: <A HREF="#toolpath_type">toolpath_type</A>;
+<I>its_speed </I>:  OPTIONAL <A HREF="#toolpath_speedprofile">toolpath_speedprofile</A>;
+<I>its_technology </I>:  OPTIONAL <A HREF="#technology">technology</A>;
+<I>its_machine_functions </I>:  OPTIONAL <A HREF="#machine_functions">machine_functions</A>;
+END_ENTITY ;
+
+TYPE <A NAME="toolpath_type">toolpath_type </A>= ENUMERATION OF ( approach , lift , connect , non_contact , contact , trajectory_path ) ;
+END_TYPE ;
+
+TYPE <A NAME="toolpath_speedprofile">toolpath_speedprofile </A>= SELECT ( toolpath_speed , positive_ratio_measure , speed_name ) ;
+END_TYPE ;
+
+ENTITY <A NAME="toolpath_speed">toolpath_speed </A>;
+<I>speed </I>: <A HREF="#b_spline_curve">b_spline_curve</A>;
+END_ENTITY ;
+
+TYPE <A NAME="speed_name">speed_name </A>= ENUMERATION OF ( RAPID ) ;
+END_TYPE ;
+
+ENTITY <A NAME="feedstop">feedstop </A>
+SUBTYPE OF ( <A HREF="#toolpath">toolpath</A>) ;
+<I>dwell </I>: <A HREF="#time_measure">time_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="trajectory">trajectory </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#cutter_location_trajectory">cutter_location_trajectory</A>, <A HREF="#cutter_contact_trajectory">cutter_contact_trajectory</A>, <A HREF="#axis_trajectory">axis_trajectory</A>) ) 
+SUBTYPE OF ( <A HREF="#toolpath">toolpath</A>) ;
+<I>its_direction </I>:  OPTIONAL BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="cutter_location_trajectory">cutter_location_trajectory </A>
+SUBTYPE OF ( <A HREF="#trajectory">trajectory</A>) ;
+<I>basiccurve </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+<I>its_toolaxis </I>:  OPTIONAL <A HREF="#bounded_curve">bounded_curve</A>;
+<I>surface_normal </I>:  OPTIONAL <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cutter_contact_trajectory">cutter_contact_trajectory </A>
+SUBTYPE OF ( <A HREF="#trajectory">trajectory</A>) ;
+<I>basiccurve </I>: <A HREF="#curve_with_surface_normal">curve_with_surface_normal</A>;
+<I>its_toolaxis </I>:  OPTIONAL <A HREF="#bounded_curve">bounded_curve</A>;
+<I>its_contact_type </I>:  OPTIONAL <A HREF="#contact_type">contact_type</A>;
+END_ENTITY ;
+
+TYPE <A NAME="curve_with_surface_normal">curve_with_surface_normal </A>= SELECT ( bounded_pcurve , curve_with_normal_vector ) ;
+END_TYPE ;
+
+ENTITY <A NAME="curve_with_normal_vector">curve_with_normal_vector </A>;
+<I>basiccurve </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+<I>surface_normal </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+TYPE <A NAME="contact_type">contact_type </A>= ENUMERATION OF ( side , front ) ;
+END_TYPE ;
+
+ENTITY <A NAME="axis_trajectory">axis_trajectory </A>
+SUBTYPE OF ( <A HREF="#trajectory">trajectory</A>) ;
+<I>axis_list </I>: LIST [ 1 : ? ] OF identifier ;
+<I>commands </I>: LIST [ 1 : ? ] OF bounded_curve ;
+END_ENTITY ;
+
+ENTITY <A NAME="parameterised_path">parameterised_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#approach_lift_path">approach_lift_path</A>, <A HREF="#connector">connector</A>) ) 
+SUBTYPE OF ( <A HREF="#toolpath">toolpath</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="connector">connector </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#connect_secplane">connect_secplane</A>, <A HREF="#connect_direct">connect_direct</A>) ) 
+SUBTYPE OF ( <A HREF="#parameterised_path">parameterised_path</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="connect_secplane">connect_secplane </A>
+SUBTYPE OF ( <A HREF="#connector">connector</A>) ;
+<I>up_dir </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+<I>down_dir </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="connect_direct">connect_direct </A>
+SUBTYPE OF ( <A HREF="#connector">connector</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="approach_lift_path">approach_lift_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#ap_lift_path_angle">ap_lift_path_angle</A>, <A HREF="#ap_lift_path_tangent">ap_lift_path_tangent</A>) ) 
+SUBTYPE OF ( <A HREF="#parameterised_path">parameterised_path</A>) ;
+<I>fix_point </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>fix_point_dir </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_lift_path_angle">ap_lift_path_angle </A>
+SUBTYPE OF ( <A HREF="#approach_lift_path">approach_lift_path</A>) ;
+<I>angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>benddist </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_lift_path_tangent">ap_lift_path_tangent </A>
+SUBTYPE OF ( <A HREF="#approach_lift_path">approach_lift_path</A>) ;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+RULE dependent_instantiable_representation_item F O R ( r e p r e s e n t a t i o n _ i t e m ) ; W H E R E W R 1 : S I Z E O F ( Q U E R Y ( r i < * r e p r e s e n t a t i o n _ i t e m | N O T ( S I Z E O F ( U S E D I N ( r i , ' ' ) ) > = 1 ) ) ) = 0 ; END_RULE ; RULE dependent_instantiable_shape_representation F O R ( s h a p e _ r e p r e s e n t a t i o n ) ; W H E R E W R 1 : S I Z E O F ( Q U E R Y ( s r < * s h a p e _ r e p r e s e n t a t i o n | N O T ( S I Z E O F ( U S E D I N ( s r , ' ' ) ) > = 1 ) ) ) = 0 ; END_RULE ; RULE geometric_representation_item_3d F O R ( g e o m e t r i c _ r e p r e s e n t a t i o n _ i t e m ) ; W H E R E W R 1 : 0 ; END_RULE ; END_SCHEMA ;
+SCHEMA machining_schema ;
+REFERENCE FROM milling_schema ( milling_technology ) ;
+CONSTANT dummy_gri : geometric_representation_item := representation_item ( ) || geometric_representation_item ( ) ;
+END_CONSTANT ;
+
+ENTITY <A NAME="approval">approval </A>;
+<I>status </I>: <A HREF="#approval_status">approval_status</A>;
+<I>level </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="approval_status">approval_status </A>;
+<I>name </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="date_and_time">date_and_time </A>;
+<I>date_component </I>: <A HREF="#date">date</A>;
+<I>time_component </I>: <A HREF="#local_time">local_time</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="date">date </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#calendar_date">calendar_date</A>, <A HREF="#ordinal_date">ordinal_date</A>, <A HREF="#week_of_year_and_day_date">week_of_year_and_day_date</A>) ) ;
+<I>year_component </I>: <A HREF="#year_number">year_number</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="calendar_date">calendar_date </A>
+SUBTYPE OF ( <A HREF="#date">date</A>) ;
+<I>day_component </I>: <A HREF="#day_in_month_number">day_in_month_number</A>;
+<I>month_component </I>: <A HREF="#month_in_year_number">month_in_year_number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="day_in_month_number">day_in_month_number </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="month_in_year_number">month_in_year_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="ordinal_date">ordinal_date </A>
+SUBTYPE OF ( <A HREF="#date">date</A>) ;
+<I>day_component </I>: <A HREF="#day_in_year_number">day_in_year_number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="day_in_year_number">day_in_year_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="week_of_year_and_day_date">week_of_year_and_day_date </A>
+SUBTYPE OF ( <A HREF="#date">date</A>) ;
+<I>week_component </I>: <A HREF="#week_in_year_number">week_in_year_number</A>;
+<I>day_component </I>:  OPTIONAL <A HREF="#day_in_week_number">day_in_week_number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="week_in_year_number">week_in_year_number </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="day_in_week_number">day_in_week_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="local_time">local_time </A>;
+<I>hour_component </I>: <A HREF="#hour_in_day">hour_in_day</A>;
+<I>minute_component </I>:  OPTIONAL <A HREF="#minute_in_hour">minute_in_hour</A>;
+<I>second_component </I>:  OPTIONAL <A HREF="#second_in_minute">second_in_minute</A>;
+<I>zone </I>: <A HREF="#coordinated_universal_time_offset">coordinated_universal_time_offset</A>;
+END_ENTITY ;
+
+TYPE <A NAME="hour_in_day">hour_in_day </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="minute_in_hour">minute_in_hour </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="second_in_minute">second_in_minute </A>= REAL ;
+END_TYPE ;
+
+ENTITY <A NAME="coordinated_universal_time_offset">coordinated_universal_time_offset </A>;
+<I>hour_offset </I>: INTEGER ;
+<I>minute_offset </I>:  OPTIONAL INTEGER ;
+<I>sense </I>: <A HREF="#ahead_or_behind">ahead_or_behind</A>;
+END_ENTITY ;
+
+TYPE <A NAME="ahead_or_behind">ahead_or_behind </A>= ENUMERATION OF ( ahead , exact , behind ) ;
+END_TYPE ;
+
+TYPE <A NAME="year_number">year_number </A>= INTEGER ;
+END_TYPE ;
+
+ENTITY <A NAME="person">person </A>;
+<I>id </I>: <A HREF="#identifier">identifier</A>;
+<I>last_name </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>first_name </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>middle_names </I>:  OPTIONAL LIST [ 1 : ? ] OF label ;
+<I>prefix_titles </I>:  OPTIONAL LIST [ 1 : ? ] OF label ;
+<I>suffix_titles </I>:  OPTIONAL LIST [ 1 : ? ] OF label ;
+END_ENTITY ;
+
+ENTITY <A NAME="address">address </A>;
+<I>internal_location </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>street_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>street </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>postal_box </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>town </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>region </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>postal_code </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>country </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>facsimile_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>telephone_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>electronic_mail_address </I>:  OPTIONAL <A HREF="#label">label</A>;
+<I>telex_number </I>:  OPTIONAL <A HREF="#label">label</A>;
+END_ENTITY ;
+
+TYPE <A NAME="identifier">identifier </A>= STRING ;
+END_TYPE ;
+
+TYPE <A NAME="label">label </A>= STRING ;
+END_TYPE ;
+
+TYPE <A NAME="text">text </A>= STRING ;
+END_TYPE ;
+
+TYPE <A NAME="length_measure">length_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="parameter_value">parameter_value </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="plane_angle_measure">plane_angle_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="positive_length_measure">positive_length_measure </A>= length_measure ;
+END_TYPE ;
+
+TYPE <A NAME="positive_ratio_measure">positive_ratio_measure </A>= ratio_measure ;
+END_TYPE ;
+
+TYPE <A NAME="ratio_measure">ratio_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="time_measure">time_measure </A>= REAL ;
+END_TYPE ;
+
+ENTITY <A NAME="shape_representation">shape_representation </A>
+SUBTYPE OF ( <A HREF="#representation">representation</A>) ;
+END_ENTITY ;
+
+TYPE <A NAME="trimming_select">trimming_select </A>= SELECT ( cartesian_point , parameter_value ) ;
+END_TYPE ;
+
+TYPE <A NAME="trimming_preference">trimming_preference </A>= ENUMERATION OF ( cartesian , parameter , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="transition_code">transition_code </A>= ENUMERATION OF ( discontinuous , continuous , cont_same_gradient , cont_same_gradient_same_curvature ) ;
+END_TYPE ;
+
+ENTITY <A NAME="trimmed_curve">trimmed_curve </A>
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>basis_curve </I>: <A HREF="#curve">curve</A>;
+<I>trim_1 </I>: SET [ 1 : 2 ] OF trimming_select ;
+<I>trim_2 </I>: SET [ 1 : 2 ] OF trimming_select ;
+<I>sense_agreement </I>: BOOLEAN ;
+<I>master_representation </I>: <A HREF="#trimming_preference">trimming_preference</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="composite_curve">composite_curve </A>
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>segments </I>: LIST [ 1 : ? ] OF composite_curve_segment ;
+<I>self_intersect </I>: LOGICAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="composite_curve_segment">composite_curve_segment </A>;
+<I>transition </I>: <A HREF="#transition_code">transition_code</A>;
+<I>same_sense </I>: BOOLEAN ;
+<I>parent_curve </I>: <A HREF="#curve">curve</A>;
+INVERSE u s i n g _ c u r v e s : B A G [ 1 : ? ] O F c o m p o s i t e _ c u r v e F O R s e g m e n t s ; W H E R E W R 1 : ( ' M I L L I N G _ S C H E M A . B O U N D E D _ C U R V E ' I N T Y P E O F ( p a r e n t _ c u r v e ) ) ; END_ENTITY ;
+
+TYPE <A NAME="b_spline_curve_form">b_spline_curve_form </A>= ENUMERATION OF ( polyline_form , circular_arc , elliptic_arc , parabolic_arc , hyperbolic_arc , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="b_spline_surface_form">b_spline_surface_form </A>= ENUMERATION OF ( plane_surf , cylindrical_surf , conical_surf , spherical_surf , toroidal_surf , surf_of_revolution , ruled_surf , generalised_cone , quadric_surf , surf_of_linear_extrusion , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="dimension_count">dimension_count </A>= INTEGER ;
+END_TYPE ;
+
+TYPE <A NAME="knot_type">knot_type </A>= ENUMERATION OF ( uniform_knots , quasi_uniform_knots , piecewise_bezier_knots , unspecified ) ;
+END_TYPE ;
+
+TYPE <A NAME="pcurve_or_surface">pcurve_or_surface </A>= SELECT ( pcurve , surface ) ;
+END_TYPE ;
+
+TYPE <A NAME="vector_or_direction">vector_or_direction </A>= SELECT ( vector , direction ) ;
+END_TYPE ;
+
+ENTITY <A NAME="axis1_placement">axis1_placement </A>
+SUBTYPE OF ( <A HREF="#placement">placement</A>) ;
+<I>axis </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="axis2_placement_3d">axis2_placement_3d </A>
+SUBTYPE OF ( <A HREF="#placement">placement</A>) ;
+<I>axis </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+<I>ref_direction </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="bezier_curve">bezier_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bezier_surface">bezier_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bounded_curve">bounded_curve </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#polyline">polyline</A>, <A HREF="#b_spline_curve">b_spline_curve</A>, <A HREF="#trimmed_curve">trimmed_curve</A>, <A HREF="#bounded_pcurve">bounded_pcurve</A>, <A HREF="#composite_curve">composite_curve</A>) ) 
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bounded_pcurve">bounded_pcurve </A>
+SUBTYPE OF ( <A HREF="#pcurve">pcurve</A>,<A HREF="#bounded_curve">bounded_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="bounded_surface">bounded_surface </A>
+SUPERTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) 
+SUBTYPE OF ( <A HREF="#surface">surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_curve">b_spline_curve </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#uniform_curve">uniform_curve</A>, <A HREF="#b_spline_curve_with_knots">b_spline_curve_with_knots</A>, <A HREF="#quasi_uniform_curve">quasi_uniform_curve</A>, <A HREF="#bezier_curve">bezier_curve</A>) ANDOR <A HREF="#rational_b_spline_curve">rational_b_spline_curve</A>) 
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>degree </I>: INTEGER ;
+<I>control_points_list </I>: LIST [ 2 : ? ] OF cartesian_point ;
+<I>curve_form </I>: <A HREF="#b_spline_curve_form">b_spline_curve_form</A>;
+<I>closed_curve </I>: LOGICAL ;
+<I>self_intersect </I>: LOGICAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_curve_with_knots">b_spline_curve_with_knots </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+<I>knot_multiplicities </I>: LIST [ 2 : ? ] OF INTEGER ;
+<I>knots </I>: LIST [ 2 : ? ] OF parameter_value ;
+<I>knot_spec </I>: <A HREF="#knot_type">knot_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_surface">b_spline_surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#b_spline_surface_with_knots">b_spline_surface_with_knots</A>, <A HREF="#uniform_surface">uniform_surface</A>, <A HREF="#quasi_uniform_surface">quasi_uniform_surface</A>, <A HREF="#bezier_surface">bezier_surface</A>) ANDOR <A HREF="#rational_b_spline_surface">rational_b_spline_surface</A>) 
+SUBTYPE OF ( <A HREF="#bounded_surface">bounded_surface</A>) ;
+<I>u_degree </I>: INTEGER ;
+<I>v_degree </I>: INTEGER ;
+<I>control_points_list </I>: LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF cartesian_point ;
+<I>surface_form </I>: <A HREF="#b_spline_surface_form">b_spline_surface_form</A>;
+<I>u_closed </I>: LOGICAL ;
+<I>v_closed </I>: LOGICAL ;
+<I>self_intersect </I>: LOGICAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="b_spline_surface_with_knots">b_spline_surface_with_knots </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+<I>u_multiplicities </I>: LIST [ 2 : ? ] OF INTEGER ;
+<I>v_multiplicities </I>: LIST [ 2 : ? ] OF INTEGER ;
+<I>u_knots </I>: LIST [ 2 : ? ] OF parameter_value ;
+<I>v_knots </I>: LIST [ 2 : ? ] OF parameter_value ;
+<I>knot_spec </I>: <A HREF="#knot_type">knot_type</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cartesian_point">cartesian_point </A>
+SUBTYPE OF ( <A HREF="#point">point</A>) ;
+<I>coordinates </I>: LIST [ 1 : 3 ] OF length_measure ;
+END_ENTITY ;
+
+ENTITY <A NAME="circle">circle </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="conic">conic </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#circle">circle</A>, <A HREF="#ellipse">ellipse</A>, <A HREF="#hyperbola">hyperbola</A>, <A HREF="#parabola">parabola</A>) ) 
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+<I>position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="curve">curve </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#line">line</A>, <A HREF="#conic">conic</A>, <A HREF="#pcurve">pcurve</A>, <A HREF="#bounded_curve">bounded_curve</A>) ) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="direction">direction </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>direction_ratios </I>: LIST [ 2 : 3 ] OF REAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="elementary_surface">elementary_surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#plane">plane</A>, <A HREF="#spherical_surface">spherical_surface</A>) ) 
+SUBTYPE OF ( <A HREF="#surface">surface</A>) ;
+<I>position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ellipse">ellipse </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>semi_axis_1 </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>semi_axis_2 </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="geometric_representation_context">geometric_representation_context </A>
+SUBTYPE OF ( <A HREF="#representation_context">representation_context</A>) ;
+<I>coordinate_space_dimension </I>: <A HREF="#dimension_count">dimension_count</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="geometric_representation_item">geometric_representation_item </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#point">point</A>, <A HREF="#direction">direction</A>, <A HREF="#placement">placement</A>, <A HREF="#curve">curve</A>, <A HREF="#surface">surface</A>, <A HREF="#edge_curve">edge_curve</A>, <A HREF="#face_surface">face_surface</A>, <A HREF="#vertex_point">vertex_point</A>, <A HREF="#solid_model">solid_model</A>) ) 
+SUBTYPE OF ( <A HREF="#representation_item">representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="hyperbola">hyperbola </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>semi_axis </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>semi_imag_axis </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="line">line </A>
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+<I>pnt </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>dir </I>: <A HREF="#vector">vector</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="parabola">parabola </A>
+SUBTYPE OF ( <A HREF="#conic">conic</A>) ;
+<I>focal_dist </I>: <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="pcurve">pcurve </A>
+SUBTYPE OF ( <A HREF="#curve">curve</A>) ;
+<I>basis_surface </I>: <A HREF="#surface">surface</A>;
+<I>reference_to_curve </I>: <A HREF="#definitional_representation">definitional_representation</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="placement">placement </A>
+SUPERTYPE OF ( <A HREF="#axis2_placement_3d">axis2_placement_3d</A>) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>location </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="plane">plane </A>
+SUBTYPE OF ( <A HREF="#elementary_surface">elementary_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="point">point </A>
+SUPERTYPE OF ( <A HREF="#cartesian_point">cartesian_point</A>) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="polyline">polyline </A>
+SUBTYPE OF ( <A HREF="#bounded_curve">bounded_curve</A>) ;
+<I>points </I>: LIST [ 2 : ? ] OF cartesian_point ;
+END_ENTITY ;
+
+ENTITY <A NAME="quasi_uniform_curve">quasi_uniform_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="quasi_uniform_surface">quasi_uniform_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="rational_b_spline_curve">rational_b_spline_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+<I>weights_data </I>: LIST [ 2 : ? ] OF REAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="rational_b_spline_surface">rational_b_spline_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+<I>weights_data </I>: LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF REAL ;
+END_ENTITY ;
+
+ENTITY <A NAME="spherical_surface">spherical_surface </A>
+SUBTYPE OF ( <A HREF="#elementary_surface">elementary_surface</A>) ;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="surface">surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#swept_surface">swept_surface</A>, <A HREF="#elementary_surface">elementary_surface</A>, <A HREF="#bounded_surface">bounded_surface</A>) ) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="surface_of_linear_extrusion">surface_of_linear_extrusion </A>
+SUBTYPE OF ( <A HREF="#swept_surface">swept_surface</A>) ;
+<I>extrusion_axis </I>: <A HREF="#vector">vector</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="surface_of_revolution">surface_of_revolution </A>
+SUBTYPE OF ( <A HREF="#swept_surface">swept_surface</A>) ;
+<I>axis_position </I>: <A HREF="#axis1_placement">axis1_placement</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="swept_surface">swept_surface </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#surface_of_linear_extrusion">surface_of_linear_extrusion</A>, <A HREF="#surface_of_revolution">surface_of_revolution</A>) ) 
+SUBTYPE OF ( <A HREF="#surface">surface</A>) ;
+<I>swept_curve </I>: <A HREF="#curve">curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="uniform_curve">uniform_curve </A>
+SUBTYPE OF ( <A HREF="#b_spline_curve">b_spline_curve</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="uniform_surface">uniform_surface </A>
+SUBTYPE OF ( <A HREF="#b_spline_surface">b_spline_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="vector">vector </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>orientation </I>: <A HREF="#direction">direction</A>;
+<I>magnitude </I>: <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+RULE compatible_dimension F O R ( c a r t e s i a n _ p o i n t , d i r e c t i o n , r e p r e s e n t a t i o n _ c o n t e x t , g e o m e t r i c _ r e p r e s e n t a t i o n _ c o n t e x t ) ; W H E R E W R 1 : S I Z E O F ( Q U E R Y ( x < * c a r t e s i a n _ p o i n t | S I Z E O F ( Q U E R Y ( y < * g e o m e t r i c _ r e p r e s e n t a t i o n _ c o n t e x t | i t e m _ i n _ c o n t e x t ( x , y ) A N D ( H I I N D E X ( x . c o o r d i n a t e s ) < > y . c o o r d i n a t e _ s p a c e _ d i m e n s i o n ) ) ) > 0 ) ) = 0 ; W R 2 : S I Z E O F ( Q U E R Y ( x < * d i r e c t i o n | S I Z E O F ( Q U E R Y ( y < * g e o m e t r i c _ r e p r e s e n t a t i o n _ c o n t e x t | i t e m _ i n _ c o n t e x t ( x , y ) A N D ( H I I N D E X ( x . d i r e c t i o n _ r a t i o s ) < > y . c o o r d i n a t e _ s p a c e _ d i m e n s i o n ) ) ) > 0 ) ) = 0 ; END_RULE ; 
+ENTITY <A NAME="closed_shell">closed_shell </A>
+SUBTYPE OF ( <A HREF="#connected_face_set">connected_face_set</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="connected_face_set">connected_face_set </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#open_shell">open_shell</A>, <A HREF="#closed_shell">closed_shell</A>) ) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>cfs_faces </I>: SET [ 1 : ? ] OF face ;
+END_ENTITY ;
+
+ENTITY <A NAME="edge">edge </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#edge_curve">edge_curve</A>, <A HREF="#oriented_edge">oriented_edge</A>) ) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>edge_start </I>: <A HREF="#vertex">vertex</A>;
+<I>edge_end </I>: <A HREF="#vertex">vertex</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="edge_curve">edge_curve </A>
+SUBTYPE OF ( <A HREF="#edge">edge</A>,<A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>edge_geometry </I>: <A HREF="#curve">curve</A>;
+<I>same_sense </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="edge_loop">edge_loop </A>
+SUBTYPE OF ( <A HREF="#loop">loop</A>,<A HREF="#path">path</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="face">face </A>
+SUPERTYPE OF ( <A HREF="#face_surface">face_surface</A>) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>bounds </I>: SET [ 1 : ? ] OF face_bound ;
+END_ENTITY ;
+
+ENTITY <A NAME="face_bound">face_bound </A>
+SUPERTYPE OF ( <A HREF="#face_outer_bound">face_outer_bound</A>) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>bound </I>: <A HREF="#loop">loop</A>;
+<I>orientation </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="face_outer_bound">face_outer_bound </A>
+SUBTYPE OF ( <A HREF="#face_bound">face_bound</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="face_surface">face_surface </A>
+SUPERTYPE OF ( <A HREF="#advanced_face">advanced_face</A>) 
+SUBTYPE OF ( <A HREF="#face">face</A>,<A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>face_geometry </I>: <A HREF="#surface">surface</A>;
+<I>same_sense </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="loop">loop </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#vertex_loop">vertex_loop</A>, <A HREF="#edge_loop">edge_loop</A>) ) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="open_shell">open_shell </A>
+SUPERTYPE OF ( <A HREF="#topological_region">topological_region</A>) 
+SUBTYPE OF ( <A HREF="#connected_face_set">connected_face_set</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="oriented_edge">oriented_edge </A>
+SUBTYPE OF ( <A HREF="#edge">edge</A>) ;
+<I>edge_element </I>: <A HREF="#edge">edge</A>;
+<I>orientation </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="path">path </A>
+SUPERTYPE OF ( <A HREF="#edge_loop">edge_loop</A>) 
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+<I>edge_list </I>: LIST [ 1 : ? ] OF UNIQUE oriented_edge ;
+END_ENTITY ;
+
+ENTITY <A NAME="topological_representation_item">topological_representation_item </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#face_bound">face_bound</A>, <A HREF="#connected_face_set">connected_face_set</A>, <A HREF="#edge">edge</A>, <A HREF="#vertex">vertex</A>, <A HREF="#face">face</A>, (<A HREF="#loop">loop</A>ANDOR <A HREF="#path">path</A>)) ) 
+SUBTYPE OF ( <A HREF="#representation_item">representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="vertex">vertex </A>
+SUBTYPE OF ( <A HREF="#topological_representation_item">topological_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="vertex_loop">vertex_loop </A>
+SUBTYPE OF ( <A HREF="#loop">loop</A>) ;
+<I>loop_vertex </I>: <A HREF="#vertex">vertex</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="vertex_point">vertex_point </A>
+SUBTYPE OF ( <A HREF="#vertex">vertex</A>,<A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>vertex_geometry </I>: <A HREF="#point">point</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="block">block </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>x </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>y </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>z </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="manifold_solid_brep">manifold_solid_brep </A>
+SUBTYPE OF ( <A HREF="#solid_model">solid_model</A>) ;
+<I>outer </I>: <A HREF="#closed_shell">closed_shell</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="right_circular_cylinder">right_circular_cylinder </A>
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+<I>position </I>: <A HREF="#axis1_placement">axis1_placement</A>;
+<I>height </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="solid_model">solid_model </A>
+SUPERTYPE OF ( <A HREF="#manifold_solid_brep">manifold_solid_brep</A>) 
+SUBTYPE OF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="definitional_representation">definitional_representation </A>
+SUBTYPE OF ( <A HREF="#representation">representation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="representation">representation </A>;
+<I>name </I>: <A HREF="#label">label</A>;
+<I>items </I>: SET [ 1 : ? ] OF representation_item ;
+<I>context_of_items </I>: <A HREF="#representation_context">representation_context</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="representation_context">representation_context </A>;
+<I>context_identifier </I>: <A HREF="#identifier">identifier</A>;
+<I>context_type </I>: <A HREF="#text">text</A>;
+INVERSE r e p r e s e n t a t i o n s _ i n _ c o n t e x t : S E T [ 1 : ? ] O F r e p r e s e n t a t i o n F O R c o n t e x t _ o f _ i t e m s ; END_ENTITY ;
+
+ENTITY <A NAME="representation_item">representation_item </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#geometric_representation_item">geometric_representation_item</A>, <A HREF="#topological_representation_item">topological_representation_item</A>) ) ;
+<I>name </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="advanced_face">advanced_face </A>
+SUBTYPE OF ( <A HREF="#face_surface">face_surface</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="advanced_brep_shape_representation">advanced_brep_shape_representation </A>
+SUBTYPE OF ( <A HREF="#shape_representation">shape_representation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="toleranced_length_measure">toleranced_length_measure </A>;
+<I>theoretical_size </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>implicit_tolerance </I>: <A HREF="#tolerance_select">tolerance_select</A>;
+END_ENTITY ;
+
+TYPE <A NAME="tolerance_select">tolerance_select </A>= SELECT ( plus_minus_value , limits_and_fits ) ;
+END_TYPE ;
+
+ENTITY <A NAME="plus_minus_value">plus_minus_value </A>;
+<I>upper_limit </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>lower_limit </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+<I>significant_digits </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="limits_and_fits">limits_and_fits </A>;
+<I>deviation </I>: <A HREF="#length_measure">length_measure</A>;
+<I>grade </I>: <A HREF="#length_measure">length_measure</A>;
+<I>its_fitting_type </I>:  OPTIONAL <A HREF="#fitting_type">fitting_type</A>;
+END_ENTITY ;
+
+TYPE <A NAME="fitting_type">fitting_type </A>= ENUMERATION OF ( shaft , hole ) ;
+END_TYPE ;
+
+TYPE <A NAME="speed_measure">speed_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="rot_speed_measure">rot_speed_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="pressure_measure">pressure_measure </A>= REAL ;
+END_TYPE ;
+
+TYPE <A NAME="rot_direction">rot_direction </A>= ENUMERATION OF ( cw , ccw ) ;
+END_TYPE ;
+
+TYPE <A NAME="shape_tolerance">shape_tolerance </A>= length_measure ;
+END_TYPE ;
+
+ENTITY <A NAME="project">project </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>main_workplan </I>: <A HREF="#workplan">workplan</A>;
+<I>its_workpieces </I>: SET [ 0 : ? ] OF workpiece ;
+<I>its_owner </I>:  OPTIONAL <A HREF="#person_and_address">person_and_address</A>;
+<I>its_release </I>:  OPTIONAL <A HREF="#date_and_time">date_and_time</A>;
+<I>its_status </I>:  OPTIONAL <A HREF="#approval">approval</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="person_and_address">person_and_address </A>;
+<I>its_person </I>: <A HREF="#person">person</A>;
+<I>its_address </I>:  OPTIONAL <A HREF="#address">address</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece">workpiece </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>its_material </I>:  OPTIONAL <A HREF="#material">material</A>;
+<I>global_tolerance </I>:  OPTIONAL <A HREF="#shape_tolerance">shape_tolerance</A>;
+<I>its_rawpiece </I>:  OPTIONAL <A HREF="#workpiece">workpiece</A>;
+<I>its_geometry </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+<I>its_bounding_geometry </I>:  OPTIONAL <A HREF="#bounding_geometry_select">bounding_geometry_select</A>;
+<I>clamping_positions </I>: SET [ 0 : ? ] OF cartesian_point ;
+END_ENTITY ;
+
+ENTITY <A NAME="material">material </A>;
+<I>standard_identifier </I>: <A HREF="#label">label</A>;
+<I>material_identifier </I>: <A HREF="#label">label</A>;
+<I>material_property </I>: SET [ 0 : ? ] OF property_parameter ;
+END_ENTITY ;
+
+ENTITY <A NAME="property_parameter">property_parameter </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#descriptive_parameter">descriptive_parameter</A>, <A HREF="#numeric_parameter">numeric_parameter</A>) ) ;
+<I>parameter_name </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="descriptive_parameter">descriptive_parameter </A>
+SUBTYPE OF ( <A HREF="#property_parameter">property_parameter</A>) ;
+<I>descriptive_string </I>: <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="numeric_parameter">numeric_parameter </A>
+SUBTYPE OF ( <A HREF="#property_parameter">property_parameter</A>) ;
+<I>its_parameter_value </I>: <A HREF="#parameter_value">parameter_value</A>;
+<I>its_parameter_unit </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+TYPE <A NAME="bounding_geometry_select">bounding_geometry_select </A>= SELECT ( block , right_circular_cylinder , advanced_brep_shape_representation ) ;
+END_TYPE ;
+
+ENTITY <A NAME="manufacturing_feature">manufacturing_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#region">region</A>, <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>, <A HREF="#transition_feature">transition_feature</A>) ) ;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>its_operations </I>: SET [ 0 : ? ] OF machining_operation ;
+END_ENTITY ;
+
+ENTITY <A NAME="region">region </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#region_surface_list">region_surface_list</A>, <A HREF="#region_projection">region_projection</A>, <A HREF="#topological_region">topological_region</A>) ) 
+SUBTYPE OF ( <A HREF="#manufacturing_feature">manufacturing_feature</A>) ;
+<I>feature_placement </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="region_projection">region_projection </A>
+SUBTYPE OF ( <A HREF="#region">region</A>) ;
+<I>proj_curve </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+<I>proj_dir </I>: <A HREF="#direction">direction</A>;
+<I>depth </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="region_surface_list">region_surface_list </A>
+SUBTYPE OF ( <A HREF="#region">region</A>) ;
+<I>surface_list </I>: LIST [ 1 : ? ] OF bounded_surface ;
+END_ENTITY ;
+
+ENTITY <A NAME="topological_region">topological_region </A>
+SUBTYPE OF ( <A HREF="#region">region</A>,<A HREF="#open_shell">open_shell</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="two5d_manufacturing_feature">two5d_manufacturing_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#machining_feature">machining_feature</A>, <A HREF="#replicate_feature">replicate_feature</A>, <A HREF="#compound_feature">compound_feature</A>) ) 
+SUBTYPE OF ( <A HREF="#manufacturing_feature">manufacturing_feature</A>) ;
+<I>feature_placement </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_feature">machining_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#planar_face">planar_face</A>, <A HREF="#pocket">pocket</A>, <A HREF="#slot">slot</A>, <A HREF="#step">step</A>, <A HREF="#round_hole">round_hole</A>, <A HREF="#toolpath_feature">toolpath_feature</A>, <A HREF="#profile_feature">profile_feature</A>, <A HREF="#boss">boss</A>, <A HREF="#spherical_cap">spherical_cap</A>, <A HREF="#rounded_end">rounded_end</A>, <A HREF="#thread">thread</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>) ;
+<I>depth </I>: <A HREF="#elementary_surface">elementary_surface</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="planar_face">planar_face </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>course_of_travel </I>: <A HREF="#linear_path">linear_path</A>;
+<I>removal_boundary </I>: <A HREF="#linear_profile">linear_profile</A>;
+<I>face_boundary </I>:  OPTIONAL <A HREF="#closed_profile">closed_profile</A>;
+<I>its_boss </I>: SET [ 0 : ? ] OF boss ;
+END_ENTITY ;
+
+ENTITY <A NAME="pocket">pocket </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#closed_pocket">closed_pocket</A>, <A HREF="#open_pocket">open_pocket</A>) ) 
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>its_boss </I>: SET [ 0 : ? ] OF boss ;
+<I>slope </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>bottom_condition </I>: <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>;
+<I>planar_radius </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>orthogonal_radius </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="closed_pocket">closed_pocket </A>
+SUBTYPE OF ( <A HREF="#pocket">pocket</A>) ;
+<I>feature_boundary </I>: <A HREF="#closed_profile">closed_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="open_pocket">open_pocket </A>
+SUBTYPE OF ( <A HREF="#pocket">pocket</A>) ;
+<I>open_boundary </I>: <A HREF="#open_profile">open_profile</A>;
+<I>wall_boundary </I>:  OPTIONAL <A HREF="#open_profile">open_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="pocket_bottom_condition">pocket_bottom_condition </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#through_pocket_bottom_condition">through_pocket_bottom_condition</A>, <A HREF="#planar_pocket_bottom_condition">planar_pocket_bottom_condition</A>, <A HREF="#radiused_pocket_bottom_condition">radiused_pocket_bottom_condition</A>, <A HREF="#general_pocket_bottom_condition">general_pocket_bottom_condition</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="through_pocket_bottom_condition">through_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="planar_pocket_bottom_condition">planar_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="radiused_pocket_bottom_condition">radiused_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+<I>floor_radius_center </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>floor_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_pocket_bottom_condition">general_pocket_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#pocket_bottom_condition">pocket_bottom_condition</A>) ;
+<I>shape </I>: <A HREF="#region">region</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="slot">slot </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>course_of_travel </I>: <A HREF="#travel_path">travel_path</A>;
+<I>swept_shape </I>: <A HREF="#open_profile">open_profile</A>;
+<I>end_conditions </I>: LIST [ 0 : 2 ] OF slot_end_type ;
+END_ENTITY ;
+
+ENTITY <A NAME="slot_end_type">slot_end_type </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#woodruff_slot_end_type">woodruff_slot_end_type</A>, <A HREF="#radiused_slot_end_type">radiused_slot_end_type</A>, <A HREF="#flat_slot_end_type">flat_slot_end_type</A>, <A HREF="#loop_slot_end_type">loop_slot_end_type</A>, <A HREF="#open_slot_end_type">open_slot_end_type</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="woodruff_slot_end_type">woodruff_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="radiused_slot_end_type">radiused_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="flat_slot_end_type">flat_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+<I>corner_radius1 </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>corner_radius2 </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="loop_slot_end_type">loop_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="open_slot_end_type">open_slot_end_type </A>
+SUBTYPE OF ( <A HREF="#slot_end_type">slot_end_type</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="step">step </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>open_boundary </I>: <A HREF="#linear_path">linear_path</A>;
+<I>wall_boundary </I>:  OPTIONAL <A HREF="#vee_profile">vee_profile</A>;
+<I>its_boss </I>: SET [ 0 : ? ] OF boss ;
+END_ENTITY ;
+
+ENTITY <A NAME="profile_feature">profile_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_outside_profile">general_outside_profile</A>, <A HREF="#shape_profile">shape_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>profile_swept_shape </I>: <A HREF="#linear_path">linear_path</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_outside_profile">general_outside_profile </A>
+SUBTYPE OF ( <A HREF="#profile_feature">profile_feature</A>) ;
+<I>feature_boundary </I>: <A HREF="#profile">profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="shape_profile">shape_profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_shape_profile">general_shape_profile</A>, <A HREF="#partial_circular_shape_profile">partial_circular_shape_profile</A>, <A HREF="#circular_closed_shape_profile">circular_closed_shape_profile</A>, <A HREF="#rectangular_open_shape_profile">rectangular_open_shape_profile</A>, <A HREF="#rectangular_closed_shape_profile">rectangular_closed_shape_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#profile_feature">profile_feature</A>) ;
+<I>floor_condition </I>: <A HREF="#profile_select">profile_select</A>;
+<I>removal_direction </I>: <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+TYPE <A NAME="profile_select">profile_select </A>= SELECT ( through_profile_floor , profile_floor ) ;
+END_TYPE ;
+
+ENTITY <A NAME="through_profile_floor">through_profile_floor </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="profile_floor">profile_floor </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_profile_floor">general_profile_floor</A>, <A HREF="#planar_profile_floor">planar_profile_floor</A>) ) ;
+<I>floor_radius </I>:  OPTIONAL <A HREF="#numeric_parameter">numeric_parameter</A>;
+<I>start_or_end </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="general_profile_floor">general_profile_floor </A>
+SUBTYPE OF ( <A HREF="#profile_floor">profile_floor</A>) ;
+<I>floor </I>: <A HREF="#face">face</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="planar_profile_floor">planar_profile_floor </A>
+SUBTYPE OF ( <A HREF="#profile_floor">profile_floor</A>) ;
+<I>floor </I>: <A HREF="#plane">plane</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_shape_profile">general_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>profile_boundary </I>: <A HREF="#profile">profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_circular_shape_profile">partial_circular_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>open_boundary </I>: <A HREF="#partial_circular_profile">partial_circular_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_closed_shape_profile">circular_closed_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>closed_boundary </I>: <A HREF="#circular_closed_profile">circular_closed_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_open_shape_profile">rectangular_open_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>open_boundary </I>: <A HREF="#square_u_profile">square_u_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_closed_shape_profile">rectangular_closed_shape_profile </A>
+SUBTYPE OF ( <A HREF="#shape_profile">shape_profile</A>) ;
+<I>closed_boundary </I>: <A HREF="#rectangular_closed_profile">rectangular_closed_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="round_hole">round_hole </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>change_in_diameter </I>:  OPTIONAL <A HREF="#taper_select">taper_select</A>;
+<I>bottom_condition </I>: <A HREF="#hole_bottom_condition">hole_bottom_condition</A>;
+END_ENTITY ;
+
+TYPE <A NAME="taper_select">taper_select </A>= SELECT ( diameter_taper , angle_taper ) ;
+END_TYPE ;
+
+ENTITY <A NAME="diameter_taper">diameter_taper </A>;
+<I>final_diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="angle_taper">angle_taper </A>;
+<I>angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="hole_bottom_condition">hole_bottom_condition </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>, <A HREF="#through_bottom_condition">through_bottom_condition</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="through_bottom_condition">through_bottom_condition </A>
+SUBTYPE OF ( <A HREF="#hole_bottom_condition">hole_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="blind_bottom_condition">blind_bottom_condition </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#flat_hole_bottom">flat_hole_bottom</A>, <A HREF="#flat_with_radius_hole_bottom">flat_with_radius_hole_bottom</A>, <A HREF="#spherical_hole_bottom">spherical_hole_bottom</A>, <A HREF="#conical_hole_bottom">conical_hole_bottom</A>) ) 
+SUBTYPE OF ( <A HREF="#hole_bottom_condition">hole_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="flat_hole_bottom">flat_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="flat_with_radius_hole_bottom">flat_with_radius_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+<I>corner_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="spherical_hole_bottom">spherical_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="conical_hole_bottom">conical_hole_bottom </A>
+SUBTYPE OF ( <A HREF="#blind_bottom_condition">blind_bottom_condition</A>) ;
+<I>tip_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>tip_radius </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="toolpath_feature">toolpath_feature </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="boss">boss </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>its_boundary </I>: <A HREF="#closed_profile">closed_profile</A>;
+<I>slope </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="spherical_cap">spherical_cap </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>internal_angle </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+<I>radius </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rounded_end">rounded_end </A>
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>course_of_travel </I>: <A HREF="#linear_path">linear_path</A>;
+<I>partial_circular_boundary </I>: <A HREF="#partial_circular_profile">partial_circular_profile</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="compound_feature">compound_feature </A>
+SUPERTYPE OF ( ONEOF ( <A HREF="#counterbore_hole">counterbore_hole</A>, <A HREF="#countersunk_hole">countersunk_hole</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>) ;
+<I>elements </I>: SET [ 2 : ? ] OF compound_feature_select ;
+END_ENTITY ;
+
+TYPE <A NAME="compound_feature_select">compound_feature_select </A>= SELECT ( machining_feature , transition_feature ) ;
+END_TYPE ;
+
+ENTITY <A NAME="counterbore_hole">counterbore_hole </A>
+SUBTYPE OF ( <A HREF="#compound_feature">compound_feature</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="countersunk_hole">countersunk_hole </A>
+SUBTYPE OF ( <A HREF="#compound_feature">compound_feature</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="replicate_feature">replicate_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#rectangular_pattern">rectangular_pattern</A>, <A HREF="#circular_pattern">circular_pattern</A>, <A HREF="#general_pattern">general_pattern</A>) ) 
+SUBTYPE OF ( <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>) ;
+<I>replicate_base_feature </I>: <A HREF="#two5d_manufacturing_feature">two5d_manufacturing_feature</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_pattern">circular_pattern </A>
+SUBTYPE OF ( <A HREF="#replicate_feature">replicate_feature</A>) ;
+<I>angle_increment </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>number_of_feature </I>: INTEGER ;
+<I>relocated_base_feature </I>: SET [ 0 : ? ] OF circular_offset ;
+<I>missing_base_feature </I>: SET [ 0 : ? ] OF circular_omit ;
+<I>base_feature_diameter </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>base_feature_rotation </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_offset">circular_offset </A>;
+<I>angular_offset </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_omit">circular_omit </A>;
+<I>index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_pattern">rectangular_pattern </A>
+SUBTYPE OF ( <A HREF="#replicate_feature">replicate_feature</A>) ;
+<I>spacing </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_direction </I>: <A HREF="#direction">direction</A>;
+<I>number_of_rows </I>:  OPTIONAL INTEGER ;
+<I>number_of_columns </I>: INTEGER ;
+<I>row_spacing </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>row_layout_direction </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+<I>relocated_base_feature </I>: SET [ 0 : ? ] OF rectangular_offset ;
+<I>missing_base_feature </I>: SET [ 0 : ? ] OF rectangular_omit ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_offset">rectangular_offset </A>;
+<I>offset_direction </I>: <A HREF="#direction">direction</A>;
+<I>offset_distance </I>: <A HREF="#length_measure">length_measure</A>;
+<I>row_index </I>: INTEGER ;
+<I>column_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_omit">rectangular_omit </A>;
+<I>row_index </I>: INTEGER ;
+<I>column_index </I>: INTEGER ;
+END_ENTITY ;
+
+ENTITY <A NAME="general_pattern">general_pattern </A>
+SUBTYPE OF ( <A HREF="#replicate_feature">replicate_feature</A>) ;
+<I>replicate_locations </I>: LIST [ 2 : ? ] OF axis2_placement_3d ;
+END_ENTITY ;
+
+ENTITY <A NAME="transition_feature">transition_feature </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#chamfer">chamfer</A>, <A HREF="#edge_round">edge_round</A>) ) 
+SUBTYPE OF ( <A HREF="#manufacturing_feature">manufacturing_feature</A>) ;
+<I>first_feature </I>: <A HREF="#machining_feature">machining_feature</A>;
+<I>second_feature </I>: <A HREF="#machining_feature">machining_feature</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="chamfer">chamfer </A>
+SUBTYPE OF ( <A HREF="#transition_feature">transition_feature</A>) ;
+<I>angle_to_plane </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>first_offset_amount </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="edge_round">edge_round </A>
+SUBTYPE OF ( <A HREF="#transition_feature">transition_feature</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_offset_amount </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>second_offset_amount </I>:  OPTIONAL <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="thread">thread </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#catalogue_thread">catalogue_thread</A>, <A HREF="#defined_thread">defined_thread</A>) ) 
+SUBTYPE OF ( <A HREF="#machining_feature">machining_feature</A>) ;
+<I>partial_profile </I>: <A HREF="#partial_area_definition">partial_area_definition</A>;
+<I>applied_shape </I>: SET [ 1 : ? ] OF machining_feature ;
+<I>inner_or_outer_thread </I>: BOOLEAN ;
+<I>qualifier </I>:  OPTIONAL <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+<I>fit_class </I>: <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+<I>form </I>: <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+<I>major_diameter </I>: <A HREF="#length_measure">length_measure</A>;
+<I>number_of_threads </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+<I>thread_hand </I>: <A HREF="#descriptive_parameter">descriptive_parameter</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_area_definition">partial_area_definition </A>;
+<I>effective_length </I>: <A HREF="#length_measure">length_measure</A>;
+<I>placement </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>maximum_length </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="catalogue_thread">catalogue_thread </A>
+SUBTYPE OF ( <A HREF="#thread">thread</A>) ;
+<I>documentation </I>: <A HREF="#specification">specification</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="specification">specification </A>;
+<I>constraint </I>: SET [ 0 : ? ] OF specification_usage_constraint ;
+<I>specification_id </I>: <A HREF="#text">text</A>;
+<I>specification_description </I>:  OPTIONAL <A HREF="#text">text</A>;
+<I>specification_class </I>:  OPTIONAL <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="specification_usage_constraint">specification_usage_constraint </A>;
+<I>element </I>: <A HREF="#text">text</A>;
+<I>class_id </I>: <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="defined_thread">defined_thread </A>
+SUBTYPE OF ( <A HREF="#thread">thread</A>) ;
+<I>pitch_diameter </I>: <A HREF="#length_measure">length_measure</A>;
+<I>minor_diameter </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+<I>crest </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="profile">profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#closed_profile">closed_profile</A>, <A HREF="#open_profile">open_profile</A>) ) ;
+<I>placement </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="open_profile">open_profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#linear_profile">linear_profile</A>, <A HREF="#square_u_profile">square_u_profile</A>, <A HREF="#rounded_u_profile">rounded_u_profile</A>, <A HREF="#tee_profile">tee_profile</A>, <A HREF="#vee_profile">vee_profile</A>, <A HREF="#partial_circular_profile">partial_circular_profile</A>, <A HREF="#general_profile">general_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#profile">profile</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="linear_profile">linear_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>profile_length </I>: <A HREF="#numeric_parameter">numeric_parameter</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="square_u_profile">square_u_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>second_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>second_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rounded_u_profile">rounded_u_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tee_profile">tee_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>first_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>second_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>cross_bar_width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>cross_bar_depth </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>first_offset </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>second_offset </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="vee_profile">vee_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>profile_radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>profile_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>tilt_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_circular_profile">partial_circular_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>sweep_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_profile">general_profile </A>
+SUBTYPE OF ( <A HREF="#open_profile">open_profile</A>) ;
+<I>its_profile </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="closed_profile">closed_profile </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#rectangular_closed_profile">rectangular_closed_profile</A>, <A HREF="#circular_closed_profile">circular_closed_profile</A>, <A HREF="#ngon_profile">ngon_profile</A>, <A HREF="#general_closed_profile">general_closed_profile</A>) ) 
+SUBTYPE OF ( <A HREF="#profile">profile</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="rectangular_closed_profile">rectangular_closed_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>profile_width </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>profile_length </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_closed_profile">circular_closed_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ngon_profile">ngon_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>diameter </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>number_of_sides </I>: INTEGER ;
+<I>circumscribed_or_across_flats </I>: BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="general_closed_profile">general_closed_profile </A>
+SUBTYPE OF ( <A HREF="#closed_profile">closed_profile</A>) ;
+<I>closed_profile_shape </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="travel_path">travel_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#general_path">general_path</A>, <A HREF="#linear_path">linear_path</A>, <A HREF="#circular_path">circular_path</A>) ) ;
+<I>placement </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="general_path">general_path </A>
+SUBTYPE OF ( <A HREF="#travel_path">travel_path</A>) ;
+<I>swept_path </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="linear_path">linear_path </A>
+SUBTYPE OF ( <A HREF="#travel_path">travel_path</A>) ;
+<I>distance </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_direction </I>: <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="circular_path">circular_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#complete_circular_path">complete_circular_path</A>, <A HREF="#partial_circular_path">partial_circular_path</A>) ) 
+SUBTYPE OF ( <A HREF="#travel_path">travel_path</A>) ;
+<I>radius </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="complete_circular_path">complete_circular_path </A>
+SUBTYPE OF ( <A HREF="#circular_path">circular_path</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="partial_circular_path">partial_circular_path </A>
+SUBTYPE OF ( <A HREF="#circular_path">circular_path</A>) ;
+<I>sweep_angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="surface_texture_parameter">surface_texture_parameter </A>;
+<I>its_value </I>: <A HREF="#parameter_value">parameter_value</A>;
+<I>parameter_name </I>: <A HREF="#label">label</A>;
+<I>measuring_method </I>: <A HREF="#identifier">identifier</A>;
+<I>parameter_index </I>:  OPTIONAL <A HREF="#identifier">identifier</A>;
+<I>applied_surfaces </I>: SET [ 1 : ? ] OF machined_surface ;
+END_ENTITY ;
+
+ENTITY <A NAME="machined_surface">machined_surface </A>;
+<I>its_machining_feature </I>: <A HREF="#machining_feature">machining_feature</A>;
+<I>surface_element </I>: <A HREF="#bottom_or_side">bottom_or_side</A>;
+END_ENTITY ;
+
+TYPE <A NAME="bottom_or_side">bottom_or_side </A>= ENUMERATION OF ( bottom , side , bottom_and_side ) ;
+END_TYPE ;
+
+ENTITY <A NAME="executable">executable </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#workingstep">workingstep</A>, <A HREF="#nc_function">nc_function</A>, <A HREF="#program_structure">program_structure</A>) ) ;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workingstep">workingstep </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#machining_workingstep">machining_workingstep</A>, <A HREF="#rapid_movement">rapid_movement</A>, <A HREF="#touch_probing">touch_probing</A>) ) 
+SUBTYPE OF ( <A HREF="#executable">executable</A>) ;
+<I>its_secplane </I>: <A HREF="#elementary_surface">elementary_surface</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_workingstep">machining_workingstep </A>
+SUBTYPE OF ( <A HREF="#workingstep">workingstep</A>) ;
+<I>its_feature </I>: <A HREF="#manufacturing_feature">manufacturing_feature</A>;
+<I>its_operation </I>: <A HREF="#machining_operation">machining_operation</A>;
+<I>its_effect </I>:  OPTIONAL <A HREF="#in_process_geometry">in_process_geometry</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="in_process_geometry">in_process_geometry </A>;
+<I>as_is </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+<I>to_be </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+<I>removal </I>:  OPTIONAL <A HREF="#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="rapid_movement">rapid_movement </A>
+SUPERTYPE OF ( <A HREF="#return_home">return_home</A>) 
+SUBTYPE OF ( <A HREF="#workingstep">workingstep</A>,<A HREF="#operation">operation</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="return_home">return_home </A>
+SUBTYPE OF ( <A HREF="#rapid_movement">rapid_movement</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="touch_probing">touch_probing </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#workpiece_probing">workpiece_probing</A>, <A HREF="#workpiece_complete_probing">workpiece_complete_probing</A>, <A HREF="#tool_probing">tool_probing</A>) ) 
+SUBTYPE OF ( <A HREF="#workingstep">workingstep</A>,<A HREF="#operation">operation</A>) ;
+<I>measured_offset </I>: <A HREF="#nc_variable">nc_variable</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece_probing">workpiece_probing </A>
+SUBTYPE OF ( <A HREF="#touch_probing">touch_probing</A>) ;
+<I>start_position </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>its_direction </I>: <A HREF="#direction">direction</A>;
+<I>expected_value </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_probe </I>: <A HREF="#touch_probe">touch_probe</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece_complete_probing">workpiece_complete_probing </A>
+SUBTYPE OF ( <A HREF="#touch_probing">touch_probing</A>) ;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>probing_distance </I>: <A HREF="#toleranced_length_measure">toleranced_length_measure</A>;
+<I>its_probe </I>: <A HREF="#touch_probe">touch_probe</A>;
+<I>computed_offset </I>: <A HREF="#offset_vector">offset_vector</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="touch_probe">touch_probe </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="offset_vector">offset_vector </A>;
+<I>translate </I>: LIST [ 3 : 3 ] OF nc_variable ;
+<I>rotate </I>:  OPTIONAL LIST [ 3 : 3 ] OF nc_variable ;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_probing">tool_probing </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#tool_length_probing">tool_length_probing</A>, <A HREF="#tool_radius_probing">tool_radius_probing</A>) ) 
+SUBTYPE OF ( <A HREF="#touch_probing">touch_probing</A>) ;
+<I>offset </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>max_wear </I>: <A HREF="#length_measure">length_measure</A>;
+<I>its_tool </I>: <A HREF="#machining_tool">machining_tool</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_tool">machining_tool </A>ABSTRACT 
+SUPERTYPE ;
+<I>its_id </I>: <A HREF="#label">label</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cutting_tool">cutting_tool </A>ABSTRACT 
+SUPERTYPE 
+SUBTYPE OF ( <A HREF="#machining_tool">machining_tool</A>) ;
+<I>its_tool_body </I>: <A HREF="#tool_body">tool_body</A>;
+<I>its_cutting_edge </I>: LIST [ 1 : ? ] OF cutting_component ;
+<I>overall_assembly_length </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_body">tool_body </A>ABSTRACT 
+SUPERTYPE ;
+END_ENTITY ;
+
+ENTITY <A NAME="cutting_component">cutting_component </A>;
+<I>tool_offset_length </I>: <A HREF="#length_measure">length_measure</A>;
+<I>its_material </I>:  OPTIONAL <A HREF="#material">material</A>;
+<I>technological_data </I>:  OPTIONAL <A HREF="#cutting_edge_technological_data">cutting_edge_technological_data</A>;
+<I>expected_tool_life </I>:  OPTIONAL <A HREF="#time_measure">time_measure</A>;
+<I>its_technology </I>:  OPTIONAL <A HREF="milling_schema.html#milling_technology">milling_technology </A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cutting_edge_technological_data">cutting_edge_technological_data </A>;
+<I>cutting_angle </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>free_angle </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>aux_angle </I>:  OPTIONAL <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_length_probing">tool_length_probing </A>
+SUBTYPE OF ( <A HREF="#tool_probing">tool_probing</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_radius_probing">tool_radius_probing </A>
+SUBTYPE OF ( <A HREF="#tool_probing">tool_probing</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="nc_function">nc_function </A>ABSTRACT 
+SUPERTYPE 
+SUBTYPE OF ( <A HREF="#executable">executable</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="display_message">display_message </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+<I>its_text </I>: <A HREF="#text">text</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="optional_stop">optional_stop </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="program_stop">program_stop </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="set_mark">set_mark </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="wait_for_mark">wait_for_mark </A>
+SUBTYPE OF ( <A HREF="#nc_function">nc_function</A>) ;
+<I>its_channel </I>: <A HREF="#channel">channel</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="program_structure">program_structure </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#workplan">workplan</A>, <A HREF="#parallel">parallel</A>, <A HREF="#non_sequential">non_sequential</A>, <A HREF="#selective">selective</A>, <A HREF="#if_statement">if_statement</A>, <A HREF="#while_statement">while_statement</A>, <A HREF="#assignment">assignment</A>) ) 
+SUBTYPE OF ( <A HREF="#executable">executable</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="workplan">workplan </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_elements </I>: LIST [ 0 : ? ] OF executable ;
+<I>its_channel </I>:  OPTIONAL <A HREF="#channel">channel</A>;
+<I>its_setup </I>:  OPTIONAL <A HREF="#setup">setup</A>;
+<I>its_effect </I>:  OPTIONAL <A HREF="#in_process_geometry">in_process_geometry</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="channel">channel </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="setup">setup </A>;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>its_origin </I>:  OPTIONAL <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>its_secplane </I>: <A HREF="#elementary_surface">elementary_surface</A>;
+<I>its_workpiece_setup </I>: LIST [ 0 : ? ] OF workpiece_setup ;
+END_ENTITY ;
+
+ENTITY <A NAME="workpiece_setup">workpiece_setup </A>;
+<I>its_workpiece </I>: <A HREF="#workpiece">workpiece</A>;
+<I>its_origin </I>: <A HREF="#axis2_placement_3d">axis2_placement_3d</A>;
+<I>its_offset </I>:  OPTIONAL <A HREF="#offset_vector">offset_vector</A>;
+<I>its_restricted_area </I>:  OPTIONAL <A HREF="#restricted_area_select">restricted_area_select</A>;
+<I>its_instructions </I>: LIST [ 0 : ? ] OF setup_instruction ;
+END_ENTITY ;
+
+TYPE <A NAME="restricted_area_select">restricted_area_select </A>= SELECT ( bounded_surface , bounding_geometry_select ) ;
+END_TYPE ;
+
+ENTITY <A NAME="setup_instruction">setup_instruction </A>;
+<I>description </I>:  OPTIONAL <A HREF="#text">text</A>;
+<I>external_document </I>:  OPTIONAL <A HREF="#identifier">identifier</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="parallel">parallel </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>branches </I>: SET [ 2 : ? ] OF executable ;
+END_ENTITY ;
+
+ENTITY <A NAME="non_sequential">non_sequential </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_elements </I>: SET [ 2 : ? ] OF executable ;
+END_ENTITY ;
+
+ENTITY <A NAME="selective">selective </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_elements </I>: SET [ 2 : ? ] OF executable ;
+END_ENTITY ;
+
+ENTITY <A NAME="if_statement">if_statement </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>condition </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+<I>true_branch </I>: <A HREF="#executable">executable</A>;
+<I>false_branch </I>:  OPTIONAL <A HREF="#executable">executable</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="while_statement">while_statement </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>condition </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+<I>body </I>: <A HREF="#executable">executable</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="assignment">assignment </A>
+SUBTYPE OF ( <A HREF="#program_structure">program_structure</A>) ;
+<I>its_lvalue </I>: <A HREF="#nc_variable">nc_variable</A>;
+<I>its_rvalue </I>: <A HREF="#rvalue">rvalue</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="nc_variable">nc_variable </A>;
+<I>its_name </I>: <A HREF="#label">label</A>;
+<I>initial_value </I>:  OPTIONAL <A HREF="#number">number</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="nc_constant">nc_constant </A>;
+<I>its_name </I>: <A HREF="#label">label</A>;
+<I>its_value </I>:  OPTIONAL <A HREF="#number">number</A>;
+END_ENTITY ;
+
+TYPE <A NAME="rvalue">rvalue </A>= SELECT ( nc_constant , nc_variable ) ;
+END_TYPE ;
+
+ENTITY <A NAME="boolean_expression">boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#unary_boolean_expression">unary_boolean_expression</A>, <A HREF="#binary_boolean_expression">binary_boolean_expression</A>, <A HREF="#multiple_arity_boolean_expression">multiple_arity_boolean_expression</A>, <A HREF="#comparison_expression">comparison_expression</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="unary_boolean_expression">unary_boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( <A HREF="#not_expression">not_expression</A>) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operand </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="not_expression">not_expression </A>
+SUBTYPE OF ( <A HREF="#unary_boolean_expression">unary_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="binary_boolean_expression">binary_boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( <A HREF="#xor_expression">xor_expression</A>) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operand1 </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+<I>operand2 </I>: <A HREF="#boolean_expression">boolean_expression</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="xor_expression">xor_expression </A>
+SUBTYPE OF ( <A HREF="#binary_boolean_expression">binary_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="multiple_arity_boolean_expression">multiple_arity_boolean_expression </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#and_expression">and_expression</A>, <A HREF="#or_expression">or_expression</A>) ) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operands </I>: LIST [ 2 : ? ] OF boolean_expression ;
+END_ENTITY ;
+
+ENTITY <A NAME="and_expression">and_expression </A>
+SUBTYPE OF ( <A HREF="#multiple_arity_boolean_expression">multiple_arity_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="or_expression">or_expression </A>
+SUBTYPE OF ( <A HREF="#multiple_arity_boolean_expression">multiple_arity_boolean_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_expression">comparison_expression </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#comparison_equal">comparison_equal</A>, <A HREF="#comparison_not_equal">comparison_not_equal</A>, <A HREF="#comparison_greater">comparison_greater</A>, <A HREF="#comparison_greater_equal">comparison_greater_equal</A>, <A HREF="#comparison_less">comparison_less</A>, <A HREF="#comparison_less_equal">comparison_less_equal</A>) ) 
+SUBTYPE OF ( <A HREF="#boolean_expression">boolean_expression</A>) ;
+<I>operand1 </I>: <A HREF="#nc_variable">nc_variable</A>;
+<I>operand2 </I>: <A HREF="#rvalue">rvalue</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_equal">comparison_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_not_equal">comparison_not_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_greater">comparison_greater </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_greater_equal">comparison_greater_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_less">comparison_less </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="comparison_less_equal">comparison_less_equal </A>
+SUBTYPE OF ( <A HREF="#comparison_expression">comparison_expression</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="operation">operation </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#machining_operation">machining_operation</A>, <A HREF="#rapid_movement">rapid_movement</A>, <A HREF="#touch_probing">touch_probing</A>) ) ;
+<I>its_toolpath </I>:  OPTIONAL <A HREF="#toolpath_list">toolpath_list</A>;
+<I>its_tool_direction </I>:  OPTIONAL <A HREF="#tool_direction">tool_direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="toolpath_list">toolpath_list </A>;
+<I>its_list </I>: LIST [ 1 : ? ] OF toolpath ;
+END_ENTITY ;
+
+ENTITY <A NAME="tool_direction">tool_direction </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#two_axes">two_axes</A>, <A HREF="#three_axes">three_axes</A>) ) ;
+END_ENTITY ;
+
+ENTITY <A NAME="two_axes">two_axes </A>
+SUBTYPE OF ( <A HREF="#tool_direction">tool_direction</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="three_axes">three_axes </A>
+SUBTYPE OF ( <A HREF="#tool_direction">tool_direction</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="machining_operation">machining_operation </A>ABSTRACT 
+SUPERTYPE 
+SUBTYPE OF ( <A HREF="#operation">operation</A>) ;
+<I>its_id </I>: <A HREF="#identifier">identifier</A>;
+<I>retract_plane </I>:  OPTIONAL <A HREF="#length_measure">length_measure</A>;
+<I>start_point </I>:  OPTIONAL <A HREF="#cartesian_point">cartesian_point</A>;
+<I>its_tool </I>: <A HREF="#machining_tool">machining_tool</A>;
+<I>its_technology </I>: <A HREF="#technology">technology</A>;
+<I>its_machine_functions </I>: <A HREF="#machine_functions">machine_functions</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="technology">technology </A>ABSTRACT 
+SUPERTYPE ;
+<I>feedrate </I>:  OPTIONAL <A HREF="#speed_measure">speed_measure</A>;
+<I>feedrate_reference </I>: <A HREF="#tool_reference_point">tool_reference_point</A>;
+END_ENTITY ;
+
+TYPE <A NAME="tool_reference_point">tool_reference_point </A>= ENUMERATION OF ( tcp , ccp ) ;
+END_TYPE ;
+
+ENTITY <A NAME="machine_functions">machine_functions </A>ABSTRACT 
+SUPERTYPE ;
+END_ENTITY ;
+
+ENTITY <A NAME="toolpath">toolpath </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#feedstop">feedstop</A>, <A HREF="#trajectory">trajectory</A>, <A HREF="#parameterised_path">parameterised_path</A>) ) ;
+<I>its_priority </I>: BOOLEAN ;
+<I>its_type </I>: <A HREF="#toolpath_type">toolpath_type</A>;
+<I>its_speed </I>:  OPTIONAL <A HREF="#toolpath_speedprofile">toolpath_speedprofile</A>;
+<I>its_technology </I>:  OPTIONAL <A HREF="#technology">technology</A>;
+<I>its_machine_functions </I>:  OPTIONAL <A HREF="#machine_functions">machine_functions</A>;
+END_ENTITY ;
+
+TYPE <A NAME="toolpath_type">toolpath_type </A>= ENUMERATION OF ( approach , lift , connect , non_contact , contact , trajectory_path ) ;
+END_TYPE ;
+
+TYPE <A NAME="toolpath_speedprofile">toolpath_speedprofile </A>= SELECT ( toolpath_speed , positive_ratio_measure , speed_name ) ;
+END_TYPE ;
+
+ENTITY <A NAME="toolpath_speed">toolpath_speed </A>;
+<I>speed </I>: <A HREF="#b_spline_curve">b_spline_curve</A>;
+END_ENTITY ;
+
+TYPE <A NAME="speed_name">speed_name </A>= ENUMERATION OF ( RAPID ) ;
+END_TYPE ;
+
+ENTITY <A NAME="feedstop">feedstop </A>
+SUBTYPE OF ( <A HREF="#toolpath">toolpath</A>) ;
+<I>dwell </I>: <A HREF="#time_measure">time_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="trajectory">trajectory </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#cutter_location_trajectory">cutter_location_trajectory</A>, <A HREF="#cutter_contact_trajectory">cutter_contact_trajectory</A>, <A HREF="#axis_trajectory">axis_trajectory</A>) ) 
+SUBTYPE OF ( <A HREF="#toolpath">toolpath</A>) ;
+<I>its_direction </I>:  OPTIONAL BOOLEAN ;
+END_ENTITY ;
+
+ENTITY <A NAME="cutter_location_trajectory">cutter_location_trajectory </A>
+SUBTYPE OF ( <A HREF="#trajectory">trajectory</A>) ;
+<I>basiccurve </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+<I>its_toolaxis </I>:  OPTIONAL <A HREF="#bounded_curve">bounded_curve</A>;
+<I>surface_normal </I>:  OPTIONAL <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="cutter_contact_trajectory">cutter_contact_trajectory </A>
+SUBTYPE OF ( <A HREF="#trajectory">trajectory</A>) ;
+<I>basiccurve </I>: <A HREF="#curve_with_surface_normal">curve_with_surface_normal</A>;
+<I>its_toolaxis </I>:  OPTIONAL <A HREF="#bounded_curve">bounded_curve</A>;
+<I>its_contact_type </I>:  OPTIONAL <A HREF="#contact_type">contact_type</A>;
+END_ENTITY ;
+
+TYPE <A NAME="curve_with_surface_normal">curve_with_surface_normal </A>= SELECT ( bounded_pcurve , curve_with_normal_vector ) ;
+END_TYPE ;
+
+ENTITY <A NAME="curve_with_normal_vector">curve_with_normal_vector </A>;
+<I>basiccurve </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+<I>surface_normal </I>: <A HREF="#bounded_curve">bounded_curve</A>;
+END_ENTITY ;
+
+TYPE <A NAME="contact_type">contact_type </A>= ENUMERATION OF ( side , front ) ;
+END_TYPE ;
+
+ENTITY <A NAME="axis_trajectory">axis_trajectory </A>
+SUBTYPE OF ( <A HREF="#trajectory">trajectory</A>) ;
+<I>axis_list </I>: LIST [ 1 : ? ] OF identifier ;
+<I>commands </I>: LIST [ 1 : ? ] OF bounded_curve ;
+END_ENTITY ;
+
+ENTITY <A NAME="parameterised_path">parameterised_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#approach_lift_path">approach_lift_path</A>, <A HREF="#connector">connector</A>) ) 
+SUBTYPE OF ( <A HREF="#toolpath">toolpath</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="connector">connector </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#connect_secplane">connect_secplane</A>, <A HREF="#connect_direct">connect_direct</A>) ) 
+SUBTYPE OF ( <A HREF="#parameterised_path">parameterised_path</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="connect_secplane">connect_secplane </A>
+SUBTYPE OF ( <A HREF="#connector">connector</A>) ;
+<I>up_dir </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+<I>down_dir </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="connect_direct">connect_direct </A>
+SUBTYPE OF ( <A HREF="#connector">connector</A>) ;
+END_ENTITY ;
+
+ENTITY <A NAME="approach_lift_path">approach_lift_path </A>ABSTRACT 
+SUPERTYPE OF ( ONEOF ( <A HREF="#ap_lift_path_angle">ap_lift_path_angle</A>, <A HREF="#ap_lift_path_tangent">ap_lift_path_tangent</A>) ) 
+SUBTYPE OF ( <A HREF="#parameterised_path">parameterised_path</A>) ;
+<I>fix_point </I>: <A HREF="#cartesian_point">cartesian_point</A>;
+<I>fix_point_dir </I>:  OPTIONAL <A HREF="#direction">direction</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_lift_path_angle">ap_lift_path_angle </A>
+SUBTYPE OF ( <A HREF="#approach_lift_path">approach_lift_path</A>) ;
+<I>angle </I>: <A HREF="#plane_angle_measure">plane_angle_measure</A>;
+<I>benddist </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+
+ENTITY <A NAME="ap_lift_path_tangent">ap_lift_path_tangent </A>
+SUBTYPE OF ( <A HREF="#approach_lift_path">approach_lift_path</A>) ;
+<I>radius </I>: <A HREF="#positive_length_measure">positive_length_measure</A>;
+END_ENTITY ;
+RULE dependent_instantiable_representation_item F O R ( r e p r e s e n t a t i o n _ i t e m ) ; W H E R E W R 1 : S I Z E O F ( Q U E R Y ( r i < * r e p r e s e n t a t i o n _ i t e m | N O T ( S I Z E O F ( U S E D I N ( r i , ' ' ) ) > = 1 ) ) ) = 0 ; END_RULE ; RULE dependent_instantiable_shape_representation F O R ( s h a p e _ r e p r e s e n t a t i o n ) ; W H E R E W R 1 : S I Z E O F ( Q U E R Y ( s r < * s h a p e _ r e p r e s e n t a t i o n | N O T ( S I Z E O F ( U S E D I N ( s r , ' ' ) ) > = 1 ) ) ) = 0 ; END_RULE ; RULE geometric_representation_item_3d F O R ( g e o m e t r i c _ r e p r e s e n t a t i o n _ i t e m ) ; W H E R E W R 1 : 0 ; END_RULE ; END_SCHEMA ;
+</PRE></BODY></HTML>

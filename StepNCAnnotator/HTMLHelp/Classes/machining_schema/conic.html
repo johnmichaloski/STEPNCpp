@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> conic </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="conic">conic </A></H1><P>A conic is a planar curve which could be produced by intersecting a plane with a cone. A conic curve is defined in terms of its intrinsic geometric properties rather than being described in terms of other geometry. A conic entity always has a placement coordinate system defined by axis2 placement; the parametric representation is defined in terms of this placement coordinate system.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#conic">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>position </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>The location and orientation of the conic. Further details of the interpretation of this attribute are given for the individual subtypes. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY conic 
+SUPERTYPE  OF ( ONEOF (<A HREF="circle.html">circle</A> ,<A HREF="ellipse.html">ellipse</A> ,<A HREF="hyperbola.html">hyperbola</A> ,<A HREF="parabola.html">parabola</A> ) )
+SUBTYPE  OF (<A HREF="curve.html">curve</A> );
+ position : <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

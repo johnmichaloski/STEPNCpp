@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> two5d_milling_strategy </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="two5d_milling_strategy">two5d_milling_strategy </A></H1><P>This is the base class of all strategies used for creating 2½D milling toolpaths<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#two5d_milling_strategy">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>overlap </TD>
+<TD><A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A> </TD>
+<TD>The overlap in the path between two neighbouring cutting movements as percentage of the tool diameter. </TD></TR>
+<TR><TD>allow_multiple_passes </TD>
+<TD> BOOLEAN </TD>
+<TD>Optional flag only for roughing workingsteps. If true, this is the standard roughing operation with multiple passes, i. e. several layers of material are removed sequentially, taking into account the maximum cutting depth. If false, this is the special roughing operation for pre-cast features with one pass. Default is true. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY two5d_milling_strategy  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="unidirectional.html">unidirectional</A> ,<A HREF="bidirectional.html">bidirectional</A> ,<A HREF="contour_parallel.html">contour_parallel</A> ,<A HREF="bidirectional_contour.html">bidirectional_contour</A> ,<A HREF="contour_bidirectional.html">contour_bidirectional</A> ,<A HREF="contour_spiral.html">contour_spiral</A> ,<A HREF="center_milling.html">center_milling</A> ,<A HREF="explicit.html">explicit</A> ) );
+ overlap : OPTIONAL <A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A>;
+ allow_multiple_passes : OPTIONAL  BOOLEAN;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

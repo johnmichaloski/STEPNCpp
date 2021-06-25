@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> swept_surface </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="swept_surface">swept_surface </A></H1><P>A swept surface is one that is constructed by sweeping a curve along another curve<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#swept_surface">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>swept_curve </TD>
+<TD><A HREF="../machining_schema/curve.html#curve">curve</A> </TD>
+<TD>The curve to be swept in defining the surface. If the swept curve is a pcurve, it is the image of this curve in 3D geometric space which is swept, not the parameter space curve. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY swept_surface 
+SUPERTYPE  OF ( ONEOF (<A HREF="surface_of_linear_extrusion.html">surface_of_linear_extrusion</A> ,<A HREF="surface_of_revolution.html">surface_of_revolution</A> ) )
+SUBTYPE  OF (<A HREF="surface.html">surface</A> );
+ swept_curve : <A HREF="../machining_schema/curve.html#curve">curve</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

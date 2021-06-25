@@ -1,0 +1,694 @@
+// NiStep.idl : IDL source for NiStep
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (NiStep.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+interface IAttributeList;
+interface IAttribute;
+interface INode;
+interface IStepPath;
+interface  INodeList;
+
+
+typedef struct 
+{
+	double x;
+	double y;
+	double z;
+} Vector3d;
+
+typedef enum  {
+	unknown_ = 0,	/* 0 catches uninit. errors */
+	special_=1,	/* placeholder, given meaning by it's owner, */
+	this_=2,
+
+	integer_=3,
+	real_=4,
+	string_=5,
+	binary_=6,
+	boolean_=7,
+	logical_=8,
+
+	/* formals-only */
+	number_=9,
+	generic_=10,
+
+	/* aggregates */
+	aggregate_=11,	/* as a formal */
+	array_=12,
+	bag_=13,
+	set_=14,
+	list_=15,
+	list_item_=16,/* not real, just for easier computation */
+
+	oneof_=17,
+
+	/* while they are really used for different */
+	/* purposes, it might be worth considering */
+	/* collapsing entity_ and entity_list_ */
+	entity_=18,	/* single entity */
+	entity_list_=19,	/* linked list of entities */
+	enumeration_=20,
+	select_=21,
+	reference_=22,	/* something only defined by a base type, i.e., a */
+	/* type reference */
+	query_=23,
+	op_=24,		/* something with an operand */
+	inverse_=25,	/* is? an inverse */
+
+	identifier_=26,	/* simple identifier in an expression */
+	attribute_=27,	/* attribute reference (i.e., expr->u.variable) */
+	derived_=28,/*?*/
+	funcall_=29,	/* a function call and actual parameters */
+	//	selection_=30,
+	self_=31,
+	vardef_=32,
+	typereference_=33,
+	underlying_type_=34,
+	constant_=35,
+	index_=36,
+	rename_=37,
+	typelist_=38,
+	typemultilist_=39,
+	nulltype_=-1
+} StepNodeType;
+
+[
+	object,
+	uuid(F7365B20-1F6C-4310-8E36-A1A2D443BFEC),
+	dual,
+	nonextensible,
+	helpstring("INode Interface"),
+	pointer_default(unique)
+]
+	/** 
+		COM interface for STEP Variable instance or Step Node. 
+	*/
+
+interface INode : IDispatch{
+
+
+	[id(1), helpstring("method isSimpleType")] 
+	HRESULT IsSimpleType([out,retval] VARIANT_BOOL* flag);
+
+	[id(2), helpstring("method isListType")] 
+	HRESULT IsListType([out,retval] VARIANT_BOOL* flag);
+
+	[propget, id(3), helpstring("property Name")] 
+	HRESULT Name([out, retval] BSTR* pVal);
+
+
+	[propget, id(4), helpstring("property Classname")] 
+	HRESULT Classname([out, retval] BSTR* pVal);
+
+	
+	[propget, id(5), helpstring("property Type")] 
+	HRESULT Type([out, retval] StepNodeType* pVal);
+
+
+	[propget, id(6), helpstring("property ListType")] 
+	HRESULT ListType([out, retval] StepNodeType* pVal);
+
+
+	[propget, id(7), helpstring("property ListClassname")] 
+	HRESULT ListClassname([out, retval] BSTR* pVal);
+
+
+	[id(8), helpstring("method GetVarString")] 
+	HRESULT GetVarString([out, retval] BSTR* pVal);
+
+
+	[id(9), helpstring("method SetVarString")] 
+	HRESULT SetVarString([in] BSTR bstrVal);
+
+
+	[id(10), helpstring("method SelectNode")] 
+	HRESULT SelectNode([in] BSTR bstrVal, [out, retval] INode ** ppNode);
+
+
+	[id(11), helpstring("method GetAttributeValue")] 
+	HRESULT GetAttributeValue([in] BSTR attrname, [in] VARIANT vDefault, [out, retval] VARIANT * pVal);
+
+	[id(12), helpstring("method GetAttribute")] 
+	HRESULT GetAttribute([in] BSTR attrname,  [out, retval] IAttribute ** pVal);
+
+	[id(13), helpstring("gets an attributes enumeration associated with this Step Node")] 
+	HRESULT GetAttributeList([out, retval] IAttributeList ** pVal);
+
+	[id(15), helpstring("method isSimpleListType")] 
+	HRESULT IsSimpleListType([out,retval] VARIANT_BOOL* flag);
+
+
+	[id(16), helpstring("method GetAttributeClassname")] 
+	HRESULT GetAttributeClassname([in] BSTR bstrPath, [out, retval] BSTR * pBstrClassname);
+
+	
+	[id(25), helpstring("method IsKindOf")] 
+	HRESULT IsKindOf([in] BSTR bstrClassname, [out, retval] VARIANT_BOOL* flag);
+
+
+	[id(26), helpstring("AddAttribute used to create an attribute instance with a given classname(s)")] 
+	HRESULT AddAttribute([in] BSTR bstrPath, [out, retval] VARIANT_BOOL* flag);
+
+
+	[id(27), helpstring("ToVector returns 3D vector of doubles")] 
+	HRESULT ToVector([in] BSTR bstrPath, [out,  retval] Vector3d* pVector);
+
+	[id(28), helpstring("Transforms  list Step  Node into INodeList enumeration")] 
+	HRESULT GetNodeList([out, retval] INodeList ** pVal);
+
+	[id(29), helpstring("Selects a Step Node List given an SPATH describing a step variable branch, and returns a IStepNodeList enumeration.")]
+	HRESULT  SelectNodeList([in] BSTR bstrPath, [out, retval] INodeList ** ppNodeList);
+
+	[id(30), helpstring("Given an SPATH describing a step variable branch, sets the value ata a given node.")] 
+	HRESULT SetAttributeValue([in] BSTR bstrPath, [in] VARIANT vValue, [out, retval] VARIANT_BOOL* flag);
+
+	[id(31), helpstring("Given an SPATH describing a step variable branch, sets the value at a a given node.")] 
+	HRESULT SetAttributeString([in] BSTR bstrPath, [in] BSTR vStrValue, [out, retval] VARIANT_BOOL* flag);
+ 
+
+	[id(32), helpstring("Given an SPATH describing a step variable branch, sets attribute's node.")] 
+	HRESULT SetAttributeNode([in] BSTR bstrPath, [in] INode * pNode, [out, retval] VARIANT_BOOL* flag);
+
+
+	[id(33), helpstring("Given an SPATH describing a step attribute branch, create, set and return attribute's node.")] 
+	HRESULT CreateAttributeNode([in] BSTR spath, [in] BSTR classname, [out, retval]  INode** ppNode);
+
+
+	[id(34), helpstring("Navigates Step Node branch  to return list Step Node returned as INodeList enumeration")] 
+	HRESULT GetAttributeNodeList([in] BSTR bstrPath,  [out, retval] INodeList ** pNodeList);
+	
+
+	[id(35), helpstring("DoesPathExist")] 
+	HRESULT DoesPathExist([in] BSTR bstrPath, [out, retval] VARIANT_BOOL* flag);
+
+};
+	/** 
+		COM interface for STEP Variable. The STEP community uses the term Attribute to describe class variables.
+		The interface is defined with this term although the term variable is also used.
+	*/
+[
+	object,
+	uuid(B5D46B94-56BE-4F4A-8CFE-E9DD1F79C42B),
+	dual,
+	nonextensible,
+	helpstring("IVariable Interface"),
+	pointer_default(unique)
+]
+interface IAttribute : IDispatch{
+
+	/** COM method to determine if Variable is simple type.	Simple StepNodeType types are: string_,  integer_, real_, boolean_, number_, logical_, enumeration_.
+	@param[out] flag pointer to variant bool, true if  simple, false otherwise.
+	*/
+
+	[id(1), helpstring("method IsSimpleType")] HRESULT IsSimpleType([out,retval] VARIANT_BOOL* flag);
+	
+	/** COM method to determine if Variable is list type. List StepNodeType types are: list_,  bag_, array_, set_.
+	@param[out] flag pointer to variant bool, true if  simple, false otherwise.
+	*/
+	[id(2), helpstring("method IsListType")] HRESULT IsListType([out,retval] VARIANT_BOOL* flag);
+
+	/** COM property for Step Variable Name, such as its_id. @param[out] pVal pointer to bstring pointer to store name.*/
+	[propget,id(3), helpstring("property name")] HRESULT Name([out, retval] BSTR* pVal);
+	
+	/** COM property for Step Variable's default express schema classname. @param[out] pVal pointer to bstring pointer to store classname.*/
+	[propget, id(4), helpstring("property classname")] HRESULT Classname([out, retval] BSTR* pVal);
+	
+	/** COM property for Step Variable's express schema type. @param[out] pVal pointer to StepNodeType to store type.*/
+	[propget, id(5), helpstring("property type")] HRESULT Type([out, retval] StepNodeType* pVal);
+
+	/** COM property for Step Variable list's express schema type. Variable's type is list. @param[out] pVal pointer to StepNodeType to store  list type.*/
+	[propget, id(6), helpstring("property listType")] HRESULT ListType([out, retval] StepNodeType* pVal);
+
+	/** COM property for Step Variable's list classname. @param[out] pVal pointer to bstring pointer to store list classname.*/
+	[propget, id(7), helpstring("property Step Variable's list classname")] HRESULT ListClassname([out, retval] BSTR* pVal);
+	
+	/** COM method that returns variable's value as string. @param[out] pVal pointer to bstring to store true if it is false otherwise.*/
+	[id(8), helpstring("returns variable's value as string")] 
+	HRESULT GetVarString([out, retval] BSTR* pVal);
+
+	/**
+	* Returns the Step Node pointer for the given variable. NULL if none.
+	* @param  ppNode  pointer to INode pointer to store node.
+	*/
+	[id(9), helpstring("method GetStepNode")] 
+	HRESULT GetStepNode([out, retval] INode ** ppNode);
+
+	[propget, id(12), helpstring("property Atom")] HRESULT Atom([out, retval] LONG * pVal);
+	[propput, id(12), helpstring("property Atom")] HRESULT Atom([in] LONG pVal);
+
+	/**
+	* Returns the pointer for the StepNode containing this variable definition. 
+	* @param  ppNode  pointer to INode pointer to store node.
+	*/
+	[id(13), helpstring("method Owner")] 
+	HRESULT Owner([out, retval] INode ** ppNode);
+
+	/**
+	* Clears (nulls) the Step Node pointer for the given variable.
+	*/
+	[id(14), helpstring("method Clear")] 
+	HRESULT Clear();
+
+	/** COM property giving a list variable's dimension, 1D, 2D, etc. 
+	Returns E_INVALIDARG if not  a list variable.
+	@param[out] pVal pointer to store size.
+	*/
+	[propget, id(15), helpstring("property Dimension")] 
+	HRESULT Dimension([out, retval] LONG * pVal);
+
+	/** COM method to determine if Step Variable type is simple list type (int, real, string etc). 
+	@param[out] flag pointer to variant bool, store true if it, false otherwise.
+	*/
+	[id(16), helpstring("Determines if Variable type is simple list type (int, real, string etc)")] 
+	HRESULT IsSimpleListType([out,retval] VARIANT_BOOL* flag);
+
+	/**
+	* Sets the Step Node pointer for the given variable. 
+	* @param  pNode  INode pointer to store into variable.
+	*/
+	[id(17), helpstring("Sets the Step Node pointer for the given variable")] 
+	HRESULT SetStepNode([in] INode * pNode);
+
+	/**
+	* Clones the current variable branch, this variable and all children under it. 
+	* @param  pTo  IAttribute pointer to store cloned branch.
+	*/
+	[id(18), helpstring("Clones the current variable branch, this variable and all children under it")] 
+	HRESULT Clone([in] IAttribute * pTo);
+
+	/**
+	* Return variable inheritance list as an attribute list. Returns E_INVALIDARG if variable not list type.
+	* @param  pVal  pointer to IAttributeList list pointer to store list.
+	*/
+	[id(19), helpstring("method GetInheritedAttributeList for special nodes")] 
+	HRESULT GetInheritedAttributeList([out, retval] IAttributeList ** pVal);
+
+	/**
+	* Return list variable value as INodeList enumeration. Returns E_INVALIDARG if variable not list type.
+	* @param  pNodeList  pointer to node list pointer to store list.
+	*/
+	[id(20), helpstring("Return list variable value as INodeList enumeration")] 	
+	HRESULT GetNodeList([out, retval] INodeList ** pNodeList);
+
+	/** COM method to determine if Step Node express class name is a simple type (int, real, string etc). 
+	fails if invalid classname.
+	@param[in] bstrClassname class to test.
+	@param[out] flag pointer to variant bool to store true if it is false otherwise.
+	*/
+	[id(21), helpstring("COM method to determine if Step Node express class name is a simple type (int, real, string etc). 	fails if invalid classname")] 
+	HRESULT IsASimpleType([in] BSTR bstrClassname, [out,retval] VARIANT_BOOL* flag);
+
+	/**
+	* Creates a step node of the given Express classname type, sets the variable to this node, and return new attribute's node.
+	* @param  classname  bstr classname to create and store into final spath variable.
+	* @param  ppNode  pointer to pointer to store newly created step node.
+	*/	
+	[id(33), helpstring("create and set attribute's node.")] 
+	HRESULT CreateNode([in] BSTR classname, [out, retval] INode ** ppNode);
+
+
+	/**
+	* Returns bstring XML representation of the current STEPNC instance tree.
+	* @param  bstrString  pointer to store XML.
+	*/
+	[id(34), helpstring("Returns bstring XML representation of the given STEPNC variable instance tree")] 
+	HRESULT ToXmlString([out,retval] BSTR* bstrString);
+
+	/**
+	* Parses bstring XML representation to create a STEPNC instance tree into the attribute's node.
+	* @param  bstrString   XML string representing step instance tree.
+	*/
+	[id(35), helpstring("Returns bstring XML representation of the given STEPNC variable instance tree")] 
+	HRESULT FromXmlString([in] BSTR bstrString);
+
+	/**
+	* Type checks the bstring XML representation against the the given STEPNC variable instance definition.
+	* @param[in] bstrString   XML string representing step instance tree.
+	* @param[out] flag pointer to variant bool to store true type check matches, false otherwise.
+	*/
+	[id(36), helpstring("Type checks the bstring XML representation against the the given STEPNC variable instance definition")] 
+	HRESULT TypeCheckXmlString([in] BSTR bstrString, [out,retval] VARIANT_BOOL *bResult);
+
+
+};
+
+	/** 
+		COM interface for STEPNC instance tree. 
+	*/
+[
+	object,
+	uuid(7C5F41C5-8D02-468C-8282-908895DA7720),
+	dual,
+	nonextensible,
+	helpstring("IStepPath Interface"),
+	pointer_default(unique)
+]
+interface IStepPath : IDispatch{
+
+	/**
+	* Parses a Express Part 21 file given as a string and loads into STEPNC instance tree.
+	* @param  bstrStep  Part 21 file loaded into bstring.
+	* @param  isSuccessful  returns variant_true if parsed correctly.
+	*/	
+	[id(1), helpstring("Parses a Express Part 21 file given as a string and loads into STEPNC instance tree")] 
+	HRESULT loadStep([in] BSTR bstrStep, [out,retval] VARIANT_BOOL* isSuccessful);
+
+	/**
+	* Open, reads and parses a Express Part 21 file and loads into STEPNC instance tree.
+	* @param  bstrFilename  Part 21 filename bstring.
+	* @param  isSuccessful  returns variant_true if parsed correctly.
+	*/	
+	[id(2), helpstring("Open, reads and parses a Express Part 21 file and loads into STEPNC instance tree")] 
+	HRESULT loadFile([in]BSTR bstrFilename, [out,retval] VARIANT_BOOL* isSuccessful);
+
+
+
+	/**
+	* Parses the current STEPNC instance tree for semantic errors, such as missing non-optional values.
+	* @param  stringsafearray  pointer to Variant in which to store bstr safearray .
+	*/
+
+	[id(4), helpstring("method Verify")] 
+	HRESULT Verify([out,retval] VARIANT * stringsafearray);
+
+	/**
+	* Returns Step Node Root (project)  of the STEPNC instance tree.
+	* @param  ppNode  pointer to INode pointer to store node.
+	*/
+	[id(5), helpstring("Returns Step Node Root (project)  of the STEPNC instance tree")] 
+	HRESULT GetRoot([out,retval] INode ** ppNode);
+
+	/**
+	* Returns Variable pointer to the Root  of the STEPNC instance tree.
+	* @param  ppAttribute  pointer to IAttribute pointer to store node.
+	*/
+	[id(6), helpstring("Returns Variable pointer to the Root  of the STEPNC instance treee")] 
+	HRESULT GetRootAttribute([out,retval]  IAttribute ** ppAttribute);
+
+	/**
+	* Returns Attribute list pointer containing the Root of the STEPNC instance tree.
+	* @param  ppAttributeList  pointer to IAttributeList pointer to store node.
+	*/
+	[id(7), helpstring("Returns Attribute list pointer containing the Root of the STEPNC instance tree")] 
+	HRESULT GetRootAttributeList([out,retval]  IAttributeList ** ppAttributeList);
+
+	/**
+	* Given an STEPNC Express classname, create a new instance.
+	* returns E_INVALIDARG if class does not exist.
+	* @param  classname  bstr classname to create.
+	* @param  ppNode  pointer to pointer to store newly created step node.
+	*/
+	[id(8), helpstring("Given an STEPNC Express classname, create a new instance")] 
+	HRESULT CreateNode([in] BSTR classname, [out,retval] INode ** ppNode);
+
+	/** COM method to determine if STEPNC Express  class name is a simple type (int, real, string etc). 
+	fails if invalid classname.
+	@param[in] bstrClassname class to test.
+	@param[out] flag pointer to variant bool to store true if it is false otherwise.
+	*/
+	[id(9), helpstring("determine if STEPNC Express  class name is a simple type (int, real, string etc)")] 
+	HRESULT IsASimpleType([in] BSTR bstrClassname, [out,retval] VARIANT_BOOL* flag);
+
+	/** COM method to determine if Express type is simple list type (int, real, string etc). 
+	@param[in] bstrClassname type to determine if simple list type.
+	@param[out] flag pointer to variant bool, store true if it, false otherwise.
+	*/
+	[id(10), helpstring("determine if Express class type is simple list type (int, real, string etc)")] 
+	HRESULT IsASimpleListType([in] BSTR bstrClassname, [out,retval] VARIANT_BOOL* flag);
+
+	/**
+	* Return a list of bstrings describing all the supertypes which derive from the given class.
+	* @param  bstrClassname  input class to determine supertypes.
+	* @param  stringsafearray  pointer to Variant in which to store bstr safearray .
+	*/
+	[id(11), helpstring("Return a list of bstrings describing all the supertypes which derive from the given class.")] 
+	HRESULT GetClassSupertypeHierarchy([in] BSTR bstrClassname, [out,retval] VARIANT * stringsafearray);
+	
+	/**
+	* Clears the STEP NC instance tree.
+	*/
+	[id(12), helpstring("Clears the STEP NC instance tree")] 
+	HRESULT clearStep();
+
+	/**
+	* Returns Step Node  instance to the root the STEPNC header tree.
+	* @param  ppNode  pointer to INode pointer to store node.
+	*/
+	[id(13), helpstring("Returns Step Node  instance to the root the STEPNC header tree.")] 
+	HRESULT GetP21Header([out,retval]  INode ** ppNode);
+
+	/**
+	* Returns Variable pointer to root the STEPNC header tree.
+	* @param  ppAttribute  pointer to IAttribute pointer to store node.
+	*/
+	[id(14), helpstring("Returns Variable pointer to root the STEPNC header tree")] 
+	HRESULT GetP21HeaderAttribute([out,retval]  IAttribute ** ppAttribute);
+
+	/**
+	* Returns Attribute list pointer containing the Root of the STEPNC header tree.
+	* @param  ppAttributeList  pointer to IAttributeList pointer to store node.
+	*/
+	[id(15), helpstring("Returns Attribute list pointer containing the Root of the STEPNC header tree")] 
+	HRESULT GetP21HeaderAttributeList([out,retval]  IAttributeList ** ppAttributeList);
+
+	/**
+	* Saves the STEPNC header and STEPNC instance tree as a STEP Part21 representation in a given file.
+	* @param  bstrFilename  filename in which to store Part21 representation.
+	* @param  isSuccessful  pointer to IAttributeList pointer to store node.
+	*/
+	[id(16), helpstring("Saves the STEPNC header and STEPNC instance tree as a STEP Part21 representation in a given file")] 
+	HRESULT saveFile([in]BSTR bstrFilename, [out,retval] VARIANT_BOOL* isSuccessful);
+
+	/**
+	* Creates a new, empty STEP NC instance tree except for the root node, which is returned.
+	* @param  ppNode  pointer to INode pointer to store new root node.
+	*/
+	[id(17), helpstring("Creates a new, empty STEP NC instance tree except for the root node, which is returned")] 
+	HRESULT CreateNewProject([out,retval] INode ** ppNode);
+
+	/**
+	* Reads a STEP Part21 representation from the given file, and returns a hyperlinked html representation.
+	* @param  bstrFilename  filename in which to read Part21 representation.
+	* @param  bstrHtml  pointer to store  hyperlinked HTML.
+	*/
+	[id(18), helpstring("Reads a STEP Part21 representation from the given file, and returns a hyperlinked html representation")] 
+	HRESULT TranslateP21ToHtml([in] BSTR bstrFilename, [out,retval] BSTR * bstrHtml);
+
+};
+
+
+[
+	object,
+	uuid(71DCBB22-2655-426E-B2E9-295DA937C3C3),
+	dual,
+	nonextensible,
+	helpstring("IAttributeList Interface"),
+	pointer_default(unique)
+]
+interface IAttributeList : IDispatch{
+	[propget, id(1), helpstring("method item")] HRESULT item([in] LONG index, [out,retval] IAttribute ** listItem);
+	[propget, id(2), helpstring("property length")] HRESULT length([out, retval] LONG* pVal);
+	[id(3), helpstring("method reset")] HRESULT reset(void);
+	[id(4), helpstring("method nextAttribute")] HRESULT nextAttribute([out,retval] IAttribute ** nextItem);
+	[propget, id(5), helpstring("property _newEnum")] HRESULT _newEnum([out, retval] IUnknown ** pVal);
+	[id(6), helpstring("method item")] HRESULT back([out,retval] IAttribute ** listItem);
+	[id(7), helpstring("size")] HRESULT size([out, retval] LONG* pVal);
+};
+[
+	object,
+	uuid(A2860F1F-8647-4EC3-B22B-24F50F96B016),
+	dual,
+	nonextensible,
+	helpstring("INodeList Interface"),
+	pointer_default(unique)
+]
+interface INodeList : IDispatch{
+	[id(1), helpstring("method IsSimpleType")] HRESULT IsSimpleType([out,retval] VARIANT_BOOL* flag);
+	[id(2), helpstring("method IsListType")] HRESULT IsListType([out,retval] VARIANT_BOOL* flag);
+	[propget,id(3), helpstring("property name")] HRESULT Name([out, retval] BSTR* pVal);
+	[propget, id(4), helpstring("property classname")] HRESULT Classname([out, retval] BSTR* pVal);
+	[propget, id(5), helpstring("property type")] HRESULT Type([out, retval] StepNodeType* pVal);
+	[propget, id(6), helpstring("property listType")] HRESULT ListType([out, retval] StepNodeType* pVal);
+	[propget, id(7), helpstring("property listClassname")] HRESULT ListClassname([out, retval] BSTR* pVal);
+
+	[propget, id(10), helpstring("method item")] HRESULT item([in] LONG index, [out,retval] INode ** listItem);
+	[propget, id(11), helpstring("property length")] HRESULT length([out, retval] LONG* pVal);
+	[id(12), helpstring("method reset")] HRESULT reset(void);
+	[id(13), helpstring("method nextAttribute")] HRESULT nextNode([out,retval] INode ** nextItem);
+	[propget, id(14), helpstring("property _newEnum")] HRESULT _newEnum([out, retval] IUnknown ** pVal);
+	[id(15), helpstring("method item")] HRESULT back([out,retval] INode ** listItem);
+	[id(16), helpstring("size")] HRESULT size([out, retval] LONG* pVal);
+	
+	[id(17), helpstring("push_back create Step Class and stores at back of the Step Node list")] 
+	HRESULT push_back([in] BSTR bstrClassname,[in] BSTR bstrName, [out,retval] INode ** newListItem);
+
+	
+	/** COM method to determine if Step List  is simple list type (int, real, string etc). @param[out] pVal pointer to variant bool to store true if it is false otherwise.*/
+	[id(20), helpstring("method isSimpleListType")] 
+	HRESULT IsSimpleListType([out,retval] VARIANT_BOOL* flag);
+
+	/**
+	* Deletes the  child node from the Node list described by the Node pointer. 
+	* Must be node list or returns E_FAIL;
+	* @param  pNode in pointer to store COM Node pointer.
+	*/
+	[id(21), helpstring("method DeleteChild")] 
+	HRESULT DeleteChild([in] INode * pNode);
+
+	/**
+	* Returns the list index matching the given attribute descriptor. Must be node list or returns E_FAIL;
+	* @param  pAttr attribute COM pointer
+	* @param  pVal pointer to long to store index.
+	*/
+	[id(22), helpstring("Returns the  node  matching the given  list attribute")] 
+	HRESULT GetIndex([in] IAttribute * pNode, [out, retval] LONG * pVal);
+
+	/**
+	* Returns a t/f if classname described by bstring is simple list type. 
+	* @param  bstrVal  classname described by bstring
+	* @param  flag pointer to boolean variant to store flag.
+	*/
+	[id(23), helpstring("method isASimpleListType")] 
+	HRESULT IsASimpleListType([in] BSTR bstrVal, [out,retval] VARIANT_BOOL* flag);
+
+
+	/**
+	* swaps two items in a Step node list. 
+	* Must be step node list or returns E_FAIL;
+	* Index1 Must be valid index or returns E_INVALIDARG;
+	* Index2 Must be valid index or returns E_INVALIDARG;
+	* @param  index1  valid index into list.
+	* @param  index2  valid index into list.
+	*/
+	[id(24), helpstring("method SwapListItems")] 
+	HRESULT SwapListItems([in] LONG index1, [in] LONG index);
+
+	/**
+	* Stores  INode list item into given index position. 
+	* Must be node list or returns E_FAIL;
+	* Must be valid index or returns E_INVALIDARG;
+	* @param  nVal  index into list.
+	* @param  pNode  COM Node pointer to put into list at index nVal.
+	*/
+	[id(25), helpstring("method SetListItem, stepnode must be listtype. Index must in existing list range.")] 
+	HRESULT SetListItem([in] LONG nVal,[in] INode * pNode);
+
+	/** COM method that returns Simple list variable's value as string. @param[in] bstrDelimiter as field separator @param[out] pVal pointer to bstring to store value.*/
+	[id(26), helpstring("returns Simple list variable's value as string")] 
+	HRESULT GetListVarString([in] BSTR bstrDelimiter, [out, retval] BSTR* pVal);
+
+
+	/** COM method that set a STEP node variable using input string.
+	@param[in] bstrDelimiter as field separator
+	@param[in] bstr bstring containg value to store.*/
+	[id(27), helpstring("method SetListVarString")] 
+	HRESULT SetListVarString([in] BSTR bstrVal, [in]BSTR  bstrDelimiter);
+
+	[id(28), helpstring("get INode pointer")] 
+	HRESULT GetStepNode([out,retval] INode ** ppNode);
+
+	/**
+	* get the attributes associated with this Step Node. List can be zero length. Will create a new  IAttributeList COM instance to return.
+	* @param  pVal  pointer to attribute list pointer to store list.
+	*/
+	[id(29), helpstring("gets an attributes enumeration associated with this Step Node")] 
+	HRESULT GetAttributeList([out, retval] IAttributeList ** pVal);
+
+};
+
+[
+	object,
+	uuid(41048A68-9CCF-4EC7-82BB-415BD36625F8),
+	dual,
+	nonextensible,
+	helpstring("IHelpInfo Interface"),
+	pointer_default(unique)
+]
+interface IHelpInfo : IDispatch{
+	[id(1), helpstring("method GetVariableDescription")] 
+	HRESULT GetVariableDescription([in] BSTR classname, [in] BSTR variablename, [out, retval] BSTR * pVal);
+	[id(2), helpstring("method GetAttributeValue")] 
+	HRESULT GetClassDescription([in] BSTR classname, [out, retval] BSTR * pVal);
+};
+[
+	object,
+	uuid(2328777F-0034-4253-84A0-58CD1E4271A1),
+	dual,
+	nonextensible,
+	helpstring("IPart21Header Interface"),
+	pointer_default(unique)
+]
+interface IPart21Header : IDispatch{
+};
+[
+	uuid(D36EF86D-25FB-4D81-8C40-B279AABEC145),
+	version(1.0),
+	helpstring("NiStep 1.0 Type Library")
+]
+library NiStepLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(8FC9FCDD-3859-4753-972C-77C172944511),
+		helpstring("StepPath Class")
+	]
+	coclass StepPath
+	{
+		[default] interface IStepPath;
+	};
+	[
+		uuid(158E69A1-EFCB-4E9E-8A13-07E19D3E01CB),
+		helpstring("StepNode Class")
+	]
+	coclass Node
+	{
+		[default] interface INode;
+	};
+
+	[
+		uuid(B93FE105-1C8B-48AD-83C2-675965F9A34C),
+		helpstring("Attribute Class")
+	]
+	coclass Attribute
+	{
+		[default] interface IAttribute;
+	};
+	[
+		uuid(CA9E9828-9808-4EEA-A050-82C63CD6B300),
+		helpstring("AttributeList Class")
+	]
+	coclass AttributeList
+	{
+		[default] interface IAttributeList;
+	};
+	[
+		uuid(0CD0DE93-C09D-4259-81CC-F73C40A2F8D0),
+		helpstring("NodeList Class")
+	]
+	coclass NodeList
+	{
+		[default] interface INodeList;
+	};
+	[
+		uuid(EE4E8779-2476-46A6-9CD8-9CD48CF499A3),
+		helpstring("HelpInfo Class")
+	]
+	coclass HelpInfo
+	{
+		[default] interface IHelpInfo;
+	};
+	[
+		uuid(F2F2F428-B6B9-49C3-93F8-984B73D9B085),
+		helpstring("Part21Header Class")
+	]
+	coclass Part21Header
+	{
+		[default] interface IPart21Header;
+	};
+};
+

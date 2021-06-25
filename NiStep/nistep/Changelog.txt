@@ -1,0 +1,179 @@
+CHANGELOG
+
+
+Thu 08/27/09 04:50:58 PM
+* finished "archive" reading XML tools><tool>...<tool><tool> </tools>
+
+Wed 08/26/09 09:11:22 AM
+* no easy way to serialize xml elements
+
+Tue 08/25/09 09:31:24 PM
+
+* work on using functor to print out string vector 
+used template to add char delimiter
+* XML serialize of  Mastercam Tool - works 
+   need <Tool> </Tool> or MSXML won't parse string
+
+
+Mon 08/24/09 09:31:24 PM
+
+* make our xml random access archive from boost archive. 
+
+Thu 08/20/09 09:43:17 PM
+
+* Boost serialization:
+
+http://www.cs.brown.edu/~jwicks/boost/libs/serialization/doc/wrappers.html
+
+http://www.fnord.ca/articles/xml.html  
+
+GAVE UP: lots of code and abstraction layers for not what I want. Errors etc. 
+THIS WORKS FOR WCHAR:
+#include <boost/config.hpp> 
+#include <boost/archive/binary_oarchive.hpp> 
+#include <boost/archive/binary_iarchive.hpp> 
+#include <boost/serialization/map.hpp> 
+#include <boost/serialization/string.hpp> 
+
+
+	std::map<std::wstring, std::wstring> t; 
+	std::ofstream ofs ("test.dat", std::ios::trunc | std::ios::binary ); 
+	boost::archive::binary_oarchive oa(ofs); 
+	assert (ofs.good()); 
+	t[L"asd"]=L"test"; 
+	oa << t; 
+	ofs.close(); 
+	
+/////////////////////////////////////////
+WORKS:
+#include <boost/archive/text_oarchive.hpp>
+	std::ofstream ofs ("test.txt", std::ios::trunc ); 
+	//boost::archive::binary_oarchive oa(ofs); 
+	boost::archive::text_oarchive oa(ofs); 
+	
+			ar & a & b & str;
+
+22 serialization::archive 5 0 0 2 3 11 H e l l o   w o r l d 
+///////////////////////////////////////////////////////////////
+AND NO LIB TO LINK TO!
+
+		ar & BOOST_SERIALIZATION_NVP(a)
+			& BOOST_SERIALIZATION_NVP(b)
+			& BOOST_SERIALIZATION_NVP(str);
+	 oa <<BOOST_SERIALIZATION_NVP(t); 
+
+class T1
+{
+public:
+	int a;
+	float b;
+	std::wstring str;
+	T1()
+	{ 
+		a=2;
+	   b =3.0;
+	   str=_T("Hello world");
+	}
+		friend class boost::serialization::access;
+    template<class archive>
+    void serialize(archive& ar, const unsigned int version)
+    {
+		ar & BOOST_SERIALIZATION_NVP(a)
+			& BOOST_SERIALIZATION_NVP(b)
+			& BOOST_SERIALIZATION_NVP(str);
+	}
+
+};
+//////////////////////////////////////////////////
+	T1 t;
+	std::ifstream ifs ("test.txt", std::ios::in ); 
+	//boost::archive::binary_oarchive oa(ofs); 
+	boost::archive::xml_iarchive ia(ifs); 
+	assert (ifs.good()); 
+	//t[L"asd"]=L"test"; 
+	 ia >>BOOST_SERIALIZATION_NVP(t); 
+	//oa << t; 
+	ifs.close(); 
+	
+//#define BOOST_SERIALIZATION_NO_LIB 
+//#define BOOST_WARCHIVE_SOURCE
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/nvp.hpp>
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
+
+
+template <typename T> inline T GetXmlValue(MSXML2::IXMLDOMElementPtr  node, LPCTSTR item, T tDefault)
+{
+	MSXML2::IXMLDOMElementPtr  subnode= node->selectSingleNode( item);
+	T t = tDefault;
+	if(subnode==NULL)
+		return t;
+	_bstr_t bstrText = subnode->text;
+	try {
+		t =  (T)  _variant_t(bstrText);
+	}catch(...)
+	{
+		return t;
+	}
+	return t;
+}
+
+
+	friend class boost::serialization::access;
+    template<class archive>
+    void serialize(archive& ar, const unsigned int version)
+    {
+        using boost::serialization::make_nvp;
+        ar & make_nvp(_T("Number"), _nNumber);
+#if 0
+        ar & make_nvp("Type", _nType);
+        ar & make_nvp("Radiustype", _nRadiustype);
+        ar & make_nvp("Diameter", _dDiameter);
+        ar & make_nvp("Cornerradius", _dCornerradius);
+        ar & make_nvp("Threadsperinch", _dThreadsperinch);
+        ar & make_nvp("Tipangle", _dTipangle);
+        ar & make_nvp("DiameterOffsetNumber", _dDiameterOffsetNumber);
+		ar & make_nvp("LengthOffsetNumber", _nLengthOffsetNumber);
+		ar & make_nvp("Feedrate", _dFeedrate);
+		ar & make_nvp("Plungerate", _dPlungerate);
+		ar & make_nvp("Retractrate", _dRetractrate);
+		ar & make_nvp("SpindleSpeed", _dSpindleSpeed);
+		ar & make_nvp("FeedisSurfaceFinish", _bFeedisSurfaceFinish);
+		ar & make_nvp("PlungeisSurfaceFinish", _bPlungeisSurfaceFinish);
+		ar & make_nvp("Coolant", _nCoolant);
+		ar & make_nvp("NumberFlutes", _nNumberFlutes);
+		ar & make_nvp("Comment", _sComment);
+		ar & make_nvp("Metric", _bMetric);
+		ar & make_nvp("Slot", _nSlot);
+		ar & make_nvp("PilotDiameter", _dPilotDiameter);
+		ar & make_nvp("FluteLength", _dFluteLength);
+		ar & make_nvp("OverallLength", _dOverallLength);
+		ar & make_nvp("ShoulderLength", _dShoulderLength);
+		ar & make_nvp("ArborDiameter", _dArborDiameter);
+		ar & make_nvp("HolderDiameter", _dHolderDiameter);
+		ar & make_nvp("SpindleRot", _dSpindleRot);
+		ar & make_nvp("FpPercentToolRev", _dFpPercentToolRev);
+		ar & make_nvp("ManufacturerToolCode", _nManufacturerToolCode);
+#endif
+	}
+	
+		MastercamTool tools;
+
+	std::string filename = "C:\\Program Files\\NIST\\proj\\TestFiles\\ISO14649 Tests\\Tom K 14649\\tool.xml";
+  // open the archive
+    ifstream ifs(filename.c_str());
+	if(!ifs.bad())
+	{
+
+	boost::archive::text_iarchive ia(ifs);
+    //boost::archive::xml_wiarchive ia(ifs);
+
+    // restore the schedule from the archive
+    ia >> tools;
+
+Tue 08/11/09 05:24:26 PM
+
+* allow blank XML entries to skipped

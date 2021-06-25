@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> circular_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="circular_path">circular_path </A></H1><P>The cicular_path is a type of path that is a direction of travel along an arc of constant radius around the Z-axis of the feature.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#circular_path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The constant distance from an axis for the circular_path </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY circular_path  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="complete_circular_path.html">complete_circular_path</A> ,<A HREF="partial_circular_path.html">partial_circular_path</A> ) )
+SUBTYPE  OF (<A HREF="travel_path.html">travel_path</A> );
+ radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

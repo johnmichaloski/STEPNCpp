@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> representation_context </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="representation_context">representation_context </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#representation_context">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>context_identifier </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>context_type </TD>
+<TD><A HREF="../machining_schema/text.html#text">text</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY representation_context ;
+ context_identifier : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ context_type : <A HREF="../machining_schema/text.html#text">text</A>;
+ INVERSE r e p r e s e n t a t i o n s _ i n _ c o n t e x t : S E T [ 1 : ? ] O F r e p r e s e n t a t i o n F O R c o n t e x t _ o f _ i t e m s ;END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

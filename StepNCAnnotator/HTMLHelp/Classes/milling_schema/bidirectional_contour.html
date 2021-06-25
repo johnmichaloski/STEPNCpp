@@ -1,0 +1,34 @@
+<HTML><HEAD><TITLE> bidirectional_contour </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="bidirectional_contour">bidirectional_contour </A></H1><P>Milling of the contour in bidirectional fashion first, then one final contour-parallel path on the very outside of the feature.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#bidirectional_contour">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feed_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>Feed direction of the first toolpath of the milling operation. The attribute first_cutmode, if given, takes precedence over this attribute. </TD></TR>
+<TR><TD>stepover_direction </TD>
+<TD><A HREF="../milling_schema/left_or_right.html#left_or_right">left_or_right</A> </TD>
+<TD>Stepover direction of the zigzag operation. </TD></TR>
+<TR><TD>rotation_direction </TD>
+<TD><A HREF="../machining_schema/rot_direction.html#rot_direction">rot_direction</A> </TD>
+<TD>Direction of the spiral (clockwise or counterclockwise) for the final cut as seen from the top of the feature. The default is counterclockwise. The attribute spiral_cutmode, if given, takes precedence over this attribute. </TD></TR>
+<TR><TD>spiral_cutmode </TD>
+<TD><A HREF="../milling_schema/cutmode_type.html#cutmode_type">cutmode_type</A> </TD>
+<TD>Specifies whether conventional or climb cutting should be used on the final cut. Default is conventional. The cutmode refers to the functional walls of the contour which are produced by side milling, i. e. the outer contour of pocket and possible bosses. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY bidirectional_contour 
+SUBTYPE  OF (<A HREF="two5d_milling_strategy.html">two5d_milling_strategy</A> );
+ feed_direction : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ stepover_direction : OPTIONAL <A HREF="../milling_schema/left_or_right.html#left_or_right">left_or_right</A>;
+ rotation_direction : OPTIONAL <A HREF="../machining_schema/rot_direction.html#rot_direction">rot_direction</A>;
+ spiral_cutmode : OPTIONAL <A HREF="../milling_schema/cutmode_type.html#cutmode_type">cutmode_type</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

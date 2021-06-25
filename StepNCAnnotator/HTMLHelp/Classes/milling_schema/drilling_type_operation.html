@@ -1,0 +1,39 @@
+<HTML><HEAD><TITLE> drilling_type_operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="drilling_type_operation">drilling_type_operation </A></H1><P>This is the base class for all operations concerned with drilling a hole, reaming, sinking, etc. It is a subtype of entity milling_machining_operation. Cutting of a thread is included here also. The base class provides all necessary attributes to describe technology and strategy for drilling type operations. In case of pre-cast holes, the predrilling can be operated before the finish drilling by means of specifying a drilling depth (and an appropriate tool) which is smaller than that of the feature. Subsequent drilling operations can specify the attribute previous_diameter appropriately to allow for the already removed material. The start point is given by the inherited attributes retract_plane and cut_start_point. If cut_start_point is omitted, the centre of the underlying feature will be used instead. From there the tool will advance with drilling feed along the local z axis. Using the prescribed strategy, the tool will drill to the depth of the associated feature, for through holes applying an inherited attribute overcut_length. For pre-drilling operations, the attribute cutting_depth can be used to reduce the depth of a cut to an amount smaller than the hole’s depth. On retract, the tool will return to the retract plane using the drilling feed, or – if specified – the feed_on_retract given by drilling_type_strategy.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#drilling_type_operation">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>cutting_depth </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The depth of the cut of this operation, which may differ from the depth of the hole as such. The NC controller will not check if cutting_depth violates the boundaries of the associated hole feature. If omitted, the total depth of the feature will be drilled. In case of center drilling operation, the cutting_depth is measured from the lowest point of the cutting tip to the highest point of the hole. In other cases, it is measured from the starting point of cylindrical part of the tool.(Or, tapered cylindrical part in case of tapered drill.) </TD></TR>
+<TR><TD>previous_diameter </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>If the operation is performed on a pre-drilled or pre-cast hole, this value, if given, specifies the diameter of the existing hole. It thus describes the amount of material which the tool as to remove and is for information only. </TD></TR>
+<TR><TD>dwell_time_bottom </TD>
+<TD><A HREF="../machining_schema/time_measure.html#time_measure">time_measure</A> </TD>
+<TD>Possible dwell time at the bottom of the hole. </TD></TR>
+<TR><TD>feed_on_retract </TD>
+<TD><A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A> </TD>
+<TD>Feed used for retract to the retract_plane as ratio of the drilling feed. If not specified, the drilling feed is used. </TD></TR>
+<TR><TD>its_machining_strategy </TD>
+<TD><A HREF="../milling_schema/drilling_type_strategy.html#drilling_type_strategy">drilling_type_strategy</A> </TD>
+<TD>Description of the strategy to be used when executing the operation. In case the attribute its_toolpath of the supertype operation is specified, the strategy is for information only. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY drilling_type_operation  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="drilling_operation.html">drilling_operation</A> ,<A HREF="boring_operation.html">boring_operation</A> ,<A HREF="back_boring.html">back_boring</A> ,<A HREF="tapping.html">tapping</A> ,<A HREF="thread_drilling.html">thread_drilling</A> ) )
+SUBTYPE  OF (<A HREF="milling_machining_operation.html">milling_machining_operation</A> );
+ cutting_depth : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ previous_diameter : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ dwell_time_bottom : OPTIONAL <A HREF="../machining_schema/time_measure.html#time_measure">time_measure</A>;
+ feed_on_retract : OPTIONAL <A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A>;
+ its_machining_strategy : OPTIONAL <A HREF="../milling_schema/drilling_type_strategy.html#drilling_type_strategy">drilling_type_strategy</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

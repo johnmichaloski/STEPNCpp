@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> catalogue_thread </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="catalogue_thread">catalogue_thread </A></H1><P>A catalogue_thread is a type of thread that is defined by a document containing the information to create threads on a workpiece.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#catalogue_thread">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>documentation </TD>
+<TD><A HREF="../machining_schema/specification.html#specification">specification</A> </TD>
+<TD>Specification of the document that defines information pertaining to a thread. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY catalogue_thread 
+SUBTYPE  OF (<A HREF="thread.html">thread</A> );
+ documentation : <A HREF="../machining_schema/specification.html#specification">specification</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

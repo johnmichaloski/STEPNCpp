@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="5">
+<t class_id="0" tracking_level="0" version="0">
+	<Number>-858993460</Number>
+	<Type>-858993460</Type>
+	<Radiustype>-858993460</Radiustype>
+	<Diameter>-9.2559631349317831e+061</Diameter>
+	<Cornerradius>-9.2559631349317831e+061</Cornerradius>
+	<Threadsperinch>-9.2559631349317831e+061</Threadsperinch>
+	<Tipangle>-9.2559631349317831e+061</Tipangle>
+	<DiameterOffsetNumber>-9.2559631349317831e+061</DiameterOffsetNumber>
+	<LengthOffsetNumber>-858993460</LengthOffsetNumber>
+	<Feedrate>-9.2559631349317831e+061</Feedrate>
+	<Plungerate>-9.2559631349317831e+061</Plungerate>
+	<Retractrate>-9.2559631349317831e+061</Retractrate>
+	<SpindleSpeed>-9.2559631349317831e+061</SpindleSpeed>
+	<FeedisSurfaceFinish>-858993460</FeedisSurfaceFinish>
+	<PlungeisSurfaceFinish>-858993460</PlungeisSurfaceFinish>
+	<Coolant>-858993460</Coolant>
+	<NumberFlutes>-858993460</NumberFlutes>
+	<Comment></Comment>
+	<Metric>-858993460</Metric>
+	<Slot>-858993460</Slot>
+	<PilotDiameter>-9.2559631349317831e+061</PilotDiameter>
+	<FluteLength>-9.2559631349317831e+061</FluteLength>
+	<OverallLength>-9.2559631349317831e+061</OverallLength>
+	<ShoulderLength>-9.2559631349317831e+061</ShoulderLength>
+	<ArborDiameter>-9.2559631349317831e+061</ArborDiameter>
+	<HolderDiameter>-9.2559631349317831e+061</HolderDiameter>
+	<SpindleRot>-9.2559631349317831e+061</SpindleRot>
+	<FpPercentToolRev>-9.2559631349317831e+061</FpPercentToolRev>
+	<ManufacturerToolCode>-858993460</ManufacturerToolCode>
+</t>

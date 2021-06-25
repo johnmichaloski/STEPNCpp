@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> conical_hole_bottom </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="conical_hole_bottom">conical_hole_bottom </A></H1><P>A hole with a conical bottom, as manufactured with a standard drill. A conical bottom is a constant decrease in diameter until the diameter is ‘zero’, or until it becomes tangent to a tip radius.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#conical_hole_bottom">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>tip_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The angle of the tip. </TD></TR>
+<TR><TD>tip_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Optional attribute for specification of a tip radius. Default is zero. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY conical_hole_bottom 
+SUBTYPE  OF (<A HREF="blind_bottom_condition.html">blind_bottom_condition</A> );
+ tip_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ tip_radius : OPTIONAL <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

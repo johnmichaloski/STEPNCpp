@@ -1,0 +1,41 @@
+<HTML><HEAD><TITLE> project </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="project">project </A></H1><P>Each part programme, i.e. data model, based on ISO14649 must include exactly one top-level entity, called project. The project indicates the workplan to be executed upon interpretation of this model (as several workplans might be included), and it may also provide the workpiece(s) upon which actions are to be performed.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#project">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_id </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>The project’s identifier. It shall be unique within the part programme. </TD></TR>
+<TR><TD>main_workplan </TD>
+<TD><A HREF="../machining_schema/workplan.html#workplan">workplan</A> </TD>
+<TD>The top-level workplan in this model. </TD></TR>
+<TR><TD>its_workpieces </TD>
+<TD> SET [ 0 : ? ] OF workpiece </TD>
+<TD>The workpieces upon which actions are to be performed. </TD></TR>
+<TR><TD>its_owner </TD>
+<TD><A HREF="../machining_schema/person_and_address.html#person_and_address">person_and_address</A> </TD>
+<TD>Optional information on the owner of the project. </TD></TR>
+<TR><TD>its_release </TD>
+<TD><A HREF="../machining_schema/date_and_time.html#date_and_time">date_and_time</A> </TD>
+<TD>Optional date and time reference of the project. </TD></TR>
+<TR><TD>its_status </TD>
+<TD><A HREF="../machining_schema/approval.html#approval">approval</A> </TD>
+<TD>Optional attribute to indicate the current status of the project. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY project ;
+ its_id : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ main_workplan : <A HREF="../machining_schema/workplan.html#workplan">workplan</A>;
+ its_workpieces :  SET [ 0 : ? ] OF workpiece;
+ its_owner : OPTIONAL <A HREF="../machining_schema/person_and_address.html#person_and_address">person_and_address</A>;
+ its_release : OPTIONAL <A HREF="../machining_schema/date_and_time.html#date_and_time">date_and_time</A>;
+ its_status : OPTIONAL <A HREF="../machining_schema/approval.html#approval">approval</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

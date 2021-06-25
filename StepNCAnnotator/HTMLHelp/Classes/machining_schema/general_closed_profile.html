@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> general_closed_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="general_closed_profile">general_closed_profile </A></H1><P>A general_closed_profile is a type of closed_profile that is an enclosed area bounded by a arbitrary shape. The orientation is defined by the explicit geometry of the shape.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#general_closed_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>closed_profile_shape </TD>
+<TD><A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A> </TD>
+<TD>A bounded curve that defines the arbitrary shape of the profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY general_closed_profile 
+SUBTYPE  OF (<A HREF="closed_profile.html">closed_profile</A> );
+ closed_profile_shape : <A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

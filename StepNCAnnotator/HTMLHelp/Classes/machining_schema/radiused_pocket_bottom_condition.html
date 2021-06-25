@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> radiused_pocket_bottom_condition </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="radiused_pocket_bottom_condition">radiused_pocket_bottom_condition </A></H1><P>The pocket has a radiused bottom. As opposed to the use of the attribute planar_radius of the machining feature, which may be used to specify a fillet, the entire bottom surface will be continuously curved.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#radiused_pocket_bottom_condition">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>floor_radius_center </TD>
+<TD><A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A> </TD>
+<TD>Center of the radius of the pocket floor. It is defined within the features coordinate system. </TD></TR>
+<TR><TD>floor_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Radius of the pocket floor. The radius creates a portion of a sphere on the pocket floor. Concave or convex behaviour depends upon the position of floor_radius_center. Note that the diameter of the sphere must span at least the perimeter of the pocket floor, or the result will be undefined. Note that the depth of the pocket is determined by the combination of floor_radius_center and floor_radius </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY radiused_pocket_bottom_condition 
+SUBTYPE  OF (<A HREF="pocket_bottom_condition.html">pocket_bottom_condition</A> );
+ floor_radius_center : <A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A>;
+ floor_radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

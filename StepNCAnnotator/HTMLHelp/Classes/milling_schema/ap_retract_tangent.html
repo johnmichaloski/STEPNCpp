@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> ap_retract_tangent </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="ap_retract_tangent">ap_retract_tangent </A></H1><P>The movement is heading towards the start or from the end point in a curve. The motion start or ends in the retract plane valid for the current operation. If the specified radius for this motion is smaller than the distance to the retract plane as specified in the attribute retract_plane of the current operation, the remaining path will be executed in linear motion perpendicular to the retract plane.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#ap_retract_tangent">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The radius of the approach or retract movement. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY ap_retract_tangent 
+SUBTYPE  OF (<A HREF="air_strategy.html">air_strategy</A> );
+ radius : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

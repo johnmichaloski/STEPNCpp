@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> rational_b_spline_curve </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="rational_b_spline_curve">rational_b_spline_curve </A></H1><P>A rational b spline curve is a piecewise parametric ratio­ nal curve described in terms of control points and basis functions. This subtype is instantiated with one of the other subtypes of b spline curve which explicitly or implicitly provide the knot values used to define the basis functions.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#rational_b_spline_curve">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>weights_data </TD>
+<TD> LIST [ 2 : ? ] OF REAL </TD>
+<TD>The supplied values of the weights. See the derived attribute weights. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY rational_b_spline_curve 
+SUBTYPE  OF (<A HREF="b_spline_curve.html">b_spline_curve</A> );
+ weights_data :  LIST [ 2 : ? ] OF REAL;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

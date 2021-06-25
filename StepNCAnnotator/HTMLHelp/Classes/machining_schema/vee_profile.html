@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> vee_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="vee_profile">vee_profile </A></H1><P>A V profile is a type of open profile that is a shape bounded by two lines that connect at a point and extend infinitely. The enclosed angle is less than 180 degrees.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#vee_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>profile_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>Size of the blend radius at the point of the V or where the two sides come together. </TD></TR>
+<TR><TD>profile_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The size of the angle between the two sides of the V profile. </TD></TR>
+<TR><TD>tilt_angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The size of the angle between one side of the V profile and the surrounding workpiece surface. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY vee_profile 
+SUBTYPE  OF (<A HREF="open_profile.html">open_profile</A> );
+ profile_radius : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ profile_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ tilt_angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

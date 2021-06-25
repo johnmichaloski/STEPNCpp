@@ -1,0 +1,21 @@
+<HTML><HEAD><TITLE> process_model_list </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="process_model_list">process_model_list </A></H1><P>For each workingstep, one or more process models may be started. These are modules for process control like chatter avoidance, thermal compensation, etc.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#process_model_list">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_list </TD>
+<TD> LIST [ 1 : ? ] OF process_model </TD>
+<TD>List of process models for the current workingstep </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY process_model_list ;
+ its_list :  LIST [ 1 : ? ] OF process_model;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

@@ -1,0 +1,495 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: A Quick and Dirty Guide to CVS
+Date: Mon, 10 Aug 2009 13:54:54 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CA19C2.23E80B00"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5579
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CA19C2.23E80B00
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.cs.umb.edu/~srevilak/cvs.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>A Quick and Dirty Guide to CVS</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dwindows-1252">
+<META content=3Dsrevilak name=3Dauthor>
+<META content=3D"A Quick and Dirty Guide to CVS" name=3Dtitle>
+<META content=3D"MSHTML 6.00.6000.16735" name=3DGENERATOR>
+<META=20
+content=3D"CVS, version control, checkin, checkout, commit, update, =
+diff, repository"=20
+name=3Dkeywords><LINK =
+href=3D"http://www.cs.umb.edu/~srevilak/stylesheet.css"=20
+type=3Dtext/css rel=3Dstylesheet></HEAD>
+<BODY>
+<H1>A Quick and Dirty Guide to CVS</H1>
+<H3>Contents</H3>
+<UL>
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#overview">Overview</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#environment">Setting up =
+
+  Your Environment</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#syntax">General Syntax=20
+  of CVS commands</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#checkout">Checking =
+Files=20
+  Out</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#editing">Editing=20
+  Files</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#update">Refreshing =
+Local=20
+  Copies</A>=20
+  <LI><A href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#status">Seeing =
+What's=20
+  Changed</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#commit">Committing=20
+  Changes</A>=20
+  <LI><A href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#add">Adding =
+Files</A>=20
+  <LI><A href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#merge">Merging =
+
+  Revisions</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#conflicts">Resolving=20
+  Conflicts</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#backout">Backing out a=20
+  Bad Commit</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#delete">Deleting=20
+  Files</A>=20
+  <LI><A href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#other">Other =
+Useful=20
+  Commands</A>=20
+  <LI><A =
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#branches">Branching</A> =
+
+  </LI></UL>
+<H3><A name=3Doverview>Overview</A></H3>
+<P>Like RCS, CVS is a version control system. Unlike RCS, it allows =
+multiple=20
+developers to work on a file at the same time; the <B>C</B> in CVS =
+stands for=20
+"concurrent".=20
+<P>This document is a simple introduction from a user's point of view. =
+It assume=20
+that a repository already exists. That is to say, someone has already =
+run <A=20
+href=3D"http://ximbiot.com/cvs/manual/feature/cvs_2.html#SEC23"><B>cvs=20
+init</B></A>, to initialize the repository, and <A=20
+href=3D"http://ximbiot.com/cvs/manual/feature/cvs_3.html#SEC42"><B>cvs=20
+import</B></A> to add the first group of files.=20
+<P>As a general reference, the main CVS manual is available online at <A =
+
+href=3D"http://ximbiot.com/cvs/manual/feature">http://ximbiot.com/cvs/man=
+ual/feature</A>.=20
+
+<H3><A name=3Denvironment>Setting up Your Environment</A></H3>
+<P>Before using CVS, you'll need to set up a environment variables. =
+<PRE>setenv CVSROOT /path/to/cvsroot          # C-shell syntax
+CVSROOT=3D/path/to/cvsroot; export CVSROOT # Bourne syntax
+</PRE>
+<P>CVSROOT should be the directory path to the repository. Place these =
+in your=20
+.cshrc, .profile, or where ever you normally put such things.=20
+<P>Another useful variable is <B>CVSEDITOR</B>. When ever you commit =
+files, cvs=20
+will invoke this program and allow you to provide comments about the =
+change you=20
+are making. As a personal preference, I like "emacs -nw --no-init-file"=20
+<H3><A name=3Dsyntax>General Syntax of CVS commands</A></H3>
+<P>CVS commands take the following form <PRE>cvs <I>cvs-options</I> =
+subcommand <I>subcommand-options</I>
+</PRE>
+<P><I>subcommand</I> is the thing you are asking cvs to do -- check =
+files in,=20
+check files out, do diffs, etc. To see the syntax of a given command =
+<PRE>cvs -H <I>subcommand</I>
+</PRE><B>cvs --help</B> will tell you how to get a list of what the =
+different=20
+subcommands are.=20
+<H3><A name=3Dcheckout>Checking Files Out</A></H3>
+<P>When working with CVS, there are 2 copies of files that you need to =
+be=20
+concerned with:=20
+<OL>
+  <LI>The repository, which is visible to everyone=20
+  <LI>Local copies, which are visible to you </LI></OL>
+<P>Before doing anything else, you'll need to checkout a local copy of =
+the=20
+repository files. Here's an example: <PRE>$ cvs checkout mymodule
+cvs checkout: Updating mymodule
+U mymodule/file1
+
+$ ls
+total 1
+   1 mymodule/
+</PRE>
+<P>So what just happened? "mymodule" is a module in the repository. =
+Checking the=20
+module out placed a local copy in the current directory. Changes can be =
+made to=20
+files here, then put back (committed) to the repository.=20
+<P>Modules are really just directories underneath $CVSROOT. In other =
+words: <PRE>$ ls $CVSROOT
+total 2
+   1 CVSROOT/     1 mymodule/
+</PRE>
+<P>CVSROOT contains configuration and administrative files used by CVS. =
+We won't=20
+worry about that now.=20
+<H3><A name=3Dediting>Editing Files</A></H3>
+<P>Editing files is easy - once you have local copies, just edit them. =
+None of=20
+your changes will be visible to other users until after you've committed =
+them.=20
+<P>If you mess up a local copy of a file, starting over is easy. Delete =
+the=20
+file, and use <B>cvs update</B> to get a fresh copy from the repository. =
+
+<H3><A name=3Dupdate>Refreshing Local Copies</A></H3>
+<P>If you're working with a group of developers, remember that they're =
+making=20
+changes too. Periodically, you'll want to update your working copies. =
+This is=20
+done with the <B>cvs update</B> command. <PRE>$ cvs update -P -d
+cvs update: Updating .
+U file1
+</PRE>
+<P>Above, we see that someone had modified file1, and the copy in the =
+current=20
+directory was out of date; cvs updated file1 to the current version. The =
+flags=20
+to update are optional. -P "prunes" directories that are empty, and -d =
+tells cvs=20
+to include any new directories that aren't in your local workspace (the =
+default=20
+behavior is only to include directories that you have checked out). Once =
+you=20
+have a local copy, <B>cvs checkout</B> and <B>cvs update -d</B> are more =
+or less=20
+equivalent.=20
+<P>update can also take arguments, if you want to update specific =
+directories,=20
+or specific files with a directory. If no arguments are given, cvs =
+recursively=20
+updates the directory tree rooted at the current directory.=20
+<H3><A name=3Dstatus>Seeing What's Changed</A></H3>
+<P>To see if someone has changed a particular file, use <B>cvs =
+status</B>. <PRE>$ cvs status file1
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+File: file1             Status: Up-to-date
+
+   Working revision:    1.2     Thu Oct 10 14:49:15 2002
+   Repository revision: 1.2     /home/srevilak/c/mymodule/file1,v
+   Sticky Tag:          (none)
+   Sticky Date:         (none)
+   Sticky Options:      (none)
+</PRE>
+<P>"Up-to-date" means that the file is current.=20
+<P>To get a quick look at everything, the following command is handy: =
+<PRE>$ cvs -n update
+</PRE>
+<P>The -n option tells cvs "don't change the disk". Where local files =
+don't=20
+match the repository copies, you'll see the name of the file and a =
+status code=20
+(<B>M</B> for locally modified, <B>?</B> for something that's not in the =
+
+repository, and so fourth).=20
+<H3><A name=3Dcommit>Committing Changes</A></H3>
+<P>Okay, you've done some work and you're happy with the results. To =
+incorporate=20
+your changes into the repository, use <B>cvs commit</B>. <PRE>$ cvs =
+commit <I>filename</I>
+</PRE>
+<P>CVS will invoke CVSEDITOR so that you can make comments. Once you =
+quit the=20
+editor, the changes will be put back into the repository.=20
+<P>Commit comments should be a short description of what you did, enough =
+to=20
+allow other developers to look at the file's log and get a sense of =
+what's been=20
+done to it. The GNU folks have an entire article dedicated to the =
+subject of=20
+documenting changes: <A=20
+href=3D"http://www.gnu.org/prep/standards/html_node/Change-Logs.html#Chan=
+ge-Logs">http://www.gnu.org/prep/standards/html_node/Change-Logs.html#Cha=
+nge-Logs</A>.=20
+
+<H3><A name=3Dadd>Adding Files and Directories</A></H3>
+<P>Files and directories are added with the <B>cvs add</B> command. To =
+add a=20
+directory: <PRE>mkdir newdir
+cvs add newdir
+</PRE>
+<P>To add a file <PRE># create the file, edit it
+cvs add newfile
+cvs commit newfile
+</PRE>
+<P>To add a binary file <PRE>cvs add -kb newfile
+cvs commit newfile
+</PRE>
+<P>-kb tells cvs that the file is a binary file, and that it shouldn't =
+try to=20
+expand tags (such as $Id: A Quick and Dirty Guide to CVS.mht,v 1.1.1.1 2009/08/10 17:54:55 michalos Exp $.) that appear in the file's body. CVS =
+understands many=20
+of the same tags that RCS does. See <A=20
+href=3D"http://ximbiot.com/cvs/manual/feature/cvs_12.html#SEC100">http://=
+ximbiot.com/cvs/manual/feature/cvs_12.html#SEC100</A>,=20
+or the <B>co(1)</B> manpage.=20
+<H3><A name=3Dmerge>Merging Revisions</A></H3>
+<P>Normally, it's best to edit files in the directory that you're using =
+for=20
+checkouts. This way, cvs will automatically take care of merging in =
+changes,=20
+just by running <CODE>cvs update</CODE>. However, in some cases that =
+might not=20
+always be possible.=20
+<P><B>Hypothetical Situation</B>: you took a copy of =
+<CODE>Myfile.java</CODE>=20
+home, and did some work on it. In the meantime, your fellow developers =
+have=20
+committed changes to the file. The dilemna - you'd like to incorporate =
+what=20
+you've done, but your copy of the file is now out of date. Of course, =
+you also=20
+don't want to undo work that others have done. Here's a way to deal with =
+this=20
+situation.=20
+<OL>
+  <LI>Find out what revision your copy of the file is based on. This =
+will be the=20
+  revision number in the <CODE>$Id: A Quick and Dirty Guide to CVS.mht,v 1.1.1.1 2009/08/10 17:54:55 michalos Exp $</CODE> or <CODE>$Revision: 1.1.1.1 $</CODE> =
+tags. If=20
+  you can't determine the revision, this approach won't work, and you'll =
+need to=20
+  do a manual merge.=20
+  <LI>Run <CODE>cvs update</CODE> to refresh your repository copy.=20
+  <LI>Run <CODE>cvs log MyFile.java</CODE> (in the appropriate =
+directory) to get=20
+  the revision number of the copy that you just checked out of the =
+repository.=20
+  </LI></OL>
+<P>For the sake of illustration, lets say that the copy of=20
+<CODE>MyFile.java</CODE> that you were working on at home is revision =
+1.6, and=20
+the current repository version is 1.10.=20
+<P>Copy the <CODE>MyFile.java</CODE> that you worked on at home to your =
+checkout=20
+directory. We now have the following arrangement:=20
+<UL>
+  <LI>Repository version is 1.10, which you've just checked out. As far =
+as cvs=20
+  is concerned, your local copy is up to date.=20
+  <LI>The actual file in your checkout area is revision 1.6 + changes.=20
+  <LI>You're missing the differences from 1.7 - 1.10. (Note: this is why =
+you=20
+  don't want to commit the file yet. Doing so would <U>remove</U> =
+anything done=20
+  between 1.7 and 1.10). </LI></UL>
+<P>To pick up the modifications made from 1.7 - 1.10, you need to merge: =
+<PRE>cvs update -j 1.7 -j 1.10 MyFile.java
+</PRE>
+<P>In cvs-speak, this means "take the changes from revision 1.7 through =
+revision=20
+1.10, and apply them to the local copy of the file." Assuming that there =
+were no=20
+merge conflicts, examine the results: <PRE>cvs diff -w MyFile.java
+</PRE>
+<P>Make sure it compiles, then commit.=20
+<P>If things didn't go well, you'll need to examine the results and <A=20
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#conflicts">resolve any=20
+conflicts</A> that happened as a result of the merge.=20
+<P>On a related note, <CODE>update -j ...</CODE> can also be used to <A=20
+href=3D"http://www.cs.umb.edu/~srevilak/cvs.html#backout">back out a bad =
+
+commit</A>, simply by reversing the revision order.=20
+<H3><A name=3Dconflicts>Resolving Conflicts</A></H3>
+<P>Eventually, something like this will happen: <PRE>$ cvs commit =
+foo.java
+cvs commit: Up-to-date check failed for `foo.java'
+cvs [commit aborted]: correct above errors first!
+</PRE>
+<P>Here, you've made changes to the foo.java, but someone else has =
+already=20
+committed a new version to the repository (eg - the repository version =
+has a=20
+higher number than your local copy). Before you can commit the file, =
+you'll need=20
+to update your working copy.=20
+<P>If you and the other developer were working on different areas of the =
+file,=20
+cvs is pretty intelligent about merging the changes together; it might =
+see that=20
+the last set of modifications are in lines 75-100, and your changes are =
+in lines=20
+12-36. In this situation, the file can be patched and your work is =
+unaffected.=20
+<P>However, if the two of you changed the same area of the file it's =
+possible to=20
+have conflicts: <PRE>$ cvs update foo.java
+RCS file: /home/srevilak/c/mymodule/foo.java,v
+retrieving revision 1.1
+retrieving revision 1.2
+Merging differences between 1.1 and 1.2 into foo.java
+rcsmerge: warning: conflicts during merge
+cvs update: conflicts found in foo.java
+C foo.java
+</PRE>
+<P>Oh dear! What do we do now? The answer is "fix the merge". Two things =
+have=20
+been done to help you with this.=20
+<OL>
+  <LI>A pre-merge copy of the file has been made. <PRE>$ ls -a .#*
+   1 .#foo.java.1.1
+</PRE>However, being a dotfile, it's presence isn't immediately obvious=20
+  <LI>cvs has inserted a conflict marker in your working copy. =
+<PRE>&lt;&lt;&lt;&lt;&lt;&lt;&lt; foo.java
+  static final int MYCONST =3D 3;
+=3D=3D=3D=3D=3D=3D=3D
+  static final int MYCONST =3D 2;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.2
+</PRE></LI></OL>
+<P>The conflict lies between the rows of greater than and less than =
+signs. The=20
+thing to do now is decide what version is right, remove the conflict =
+markers,=20
+and commit the file.=20
+<H3><A name=3Dbackout>Backing out a Bad Commit</A></H3>
+<P>Let's suppose that you've commited a file, but this ended up breaking =
+
+something horribly. Here's how to undo your commit:=20
+<OL>
+  <LI>Get the version number from after the commit. You can use an $Id: A Quick and Dirty Guide to CVS.mht,v 1.1.1.1 2009/08/10 17:54:55 michalos Exp $ =
+tag=20
+  within the file, or cvs status. Let's say that the new version is 1.5. =
+
+  <LI>Get the version number from before the commit. Typically, this =
+will be one=20
+  lower than the current version. Let's say that the old version is 1.4. =
+
+</LI></OL>
+<P>Now do this: <PRE>cvs update -j 1.5 -j 1.4 <I>filename</I>
+cvs commit <I>filename</I>
+</PRE>
+<P>The above is an example of a <B>merge</B>. You've asked cvs to take =
+the=20
+difference between versions 1.5 and 1.4 and apply them to your working =
+copy. The=20
+ordering of version numbers is significant - think of it as removing =
+changes, or=20
+going backward in version history.=20
+<H3><A name=3Ddelete>Deleting Files</A></H3>
+<P>To get rid of files, use <B>cvs delete</B>: <PRE>rm <I>filename</I>   =
+      # must remove working copy first
+cvs delete <I>filename</I>
+cvs commit
+</PRE>
+<P>CVS uses a "lazy" system for file deletion; delete just changes the =
+way that=20
+the file is stored in the repository. It's still possible to undelete =
+the file,=20
+or to check out revisions that existed before the file was deleted. =
+However, the=20
+file will no longer appear when you do checkouts or updates.=20
+<P>Because of this, it's not possible to delete a directory entirely. =
+However,=20
+one can use the -P flag with cvs checkout and cvs update to prevent =
+empty=20
+directories from being retrieved.=20
+<H3><A name=3Dother>Other Useful Commands</A></H3>
+<P>There are a variety of other useful cvs commands. Here are a few =
+examples:=20
+<DIV class=3Dindent>
+<TABLE cellSpacing=3D0 cellPadding=3D1 border=3D1>
+  <TBODY>
+  <TR>
+    <TD noWrap><B>cvs diff</B> filename</TD>
+    <TD>Shows differences between your local copy of <I>filename</I> and =
+the=20
+      repository version that <I>filename</I> was based on. </TD></TR>
+  <TR>
+    <TD noWrap><B>cvs diff -r 1.2</B> filename</TD>
+    <TD>Shows differences between your local copy of <I>filename</I> and =
+
+      version 1.2 of <I>filename</I>. </TD></TR>
+  <TR>
+    <TD noWrap><B>cvs diff -r 1.2 -r 1.3</B> filename</TD>
+    <TD>Shows differences between versions 1.2 and 1.3. (regardless of =
+what=20
+      version your local copy is). </TD></TR>
+  <TR>
+    <TD noWrap><B>cvs log</B> filename</TD>
+    <TD>Show the commit log for <I>filename</I> (like rlog does with =
+rcs).=20
+  </TD></TR>
+  <TR>
+    <TD noWrap><B>cvs annotate</B> filename</TD>
+    <TD>Shows each line of <I>filename</I>, prefixed with the version =
+number=20
+      where the line was added, and the name of the person who added it. =
+Useful=20
+      for seeing who made a particular set of changes.=20
+</TD></TR></TBODY></TABLE></DIV>
+<H3><A name=3Dbranches>Branching</A></H3>
+<P>Branching is a process that allows different versions of a file to be =
+
+developed in parallel. The cvs manual gives a visual representation =
+here: <A=20
+href=3D"http://ximbiot.com/cvs/manual/feature/cvs_5.html#SEC60">http://xi=
+mbiot.com/cvs/manual/feature/cvs_5.html#SEC60</A>.=20
+
+<P><I>[srevilak - I'll hold off on this section until it's needed. Why=20
+complicate things prematurely ;] <BR>
+<HR>
+<I>$Id: A Quick and Dirty Guide to CVS.mht,v 1.1.1.1 2009/08/10 17:54:55 michalos Exp $<BR><A=20
+href=3D"http://www.cs.umb.edu/~srevilak/contact.html">contact</A>=20
+</I></I></BODY></HTML>
+
+------=_NextPart_000_0000_01CA19C2.23E80B00
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.cs.umb.edu/~srevilak/stylesheet.css
+
+BODY {
+	BACKGROUND: white
+}
+DT {
+	FONT-WEIGHT: bold
+}
+H2 {
+	BACKGROUND: #eeeeee
+}
+H3 {
+	BORDER-TOP: black thin solid; MARGIN-TOP: 2em; BACKGROUND: #eeeeee; =
+BORDER-BOTTOM: black thin solid
+}
+PRE {
+	MARGIN-LEFT: 2em
+}
+.indent {
+	MARGIN-LEFT: 2em
+}
+.small {
+	DISPLAY: inline; FONT-SIZE: 75%; FONT-STYLE: italic
+}
+
+------=_NextPart_000_0000_01CA19C2.23E80B00--

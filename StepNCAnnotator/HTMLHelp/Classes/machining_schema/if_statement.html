@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> if_statement </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="if_statement">if_statement </A></H1><P>The if statement runs an executable if a given condition is fulfilled; it may include an alternative option.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#if_statement">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>condition </TD>
+<TD><A HREF="../machining_schema/boolean_expression.html#boolean_expression">boolean_expression</A> </TD>
+<TD>Expression to be tested based on the rules given below. </TD></TR>
+<TR><TD>true_branch </TD>
+<TD><A HREF="../machining_schema/executable.html#executable">executable</A> </TD>
+<TD>Executable to be executed if the condition evaluates to be true. </TD></TR>
+<TR><TD>false_branch </TD>
+<TD><A HREF="../machining_schema/executable.html#executable">executable</A> </TD>
+<TD>Executable to be executed if the condition evaluates to be false. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY if_statement 
+SUBTYPE  OF (<A HREF="program_structure.html">program_structure</A> );
+ condition : <A HREF="../machining_schema/boolean_expression.html#boolean_expression">boolean_expression</A>;
+ true_branch : <A HREF="../machining_schema/executable.html#executable">executable</A>;
+ false_branch : OPTIONAL <A HREF="../machining_schema/executable.html#executable">executable</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

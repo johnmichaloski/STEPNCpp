@@ -1,0 +1,35 @@
+<HTML><HEAD><TITLE> bottom_and_side_milling </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="bottom_and_side_milling">bottom_and_side_milling </A></H1><P>Entity to describe a combined bottom and side milling process.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#bottom_and_side_milling">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>axial_cutting_depth </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The cutting depth in the direction of the tool. See plane milling. </TD></TR>
+<TR><TD>radial_cutting_depth </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The cutting depth perpendicular to the tool, used in side milling. See side milling. </TD></TR>
+<TR><TD>allowance_side </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The allowance is a layer of material which will be left on side of the surface defined by the associated manufacturing feature. </TD></TR>
+<TR><TD>allowance_bottom </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The allowance is a layer of material which will be left on top of the plane surface defined by the associated manufacturing feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY bottom_and_side_milling  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="bottom_and_side_rough_milling.html">bottom_and_side_rough_milling</A> ,<A HREF="bottom_and_side_finish_milling.html">bottom_and_side_finish_milling</A> ) )
+SUBTYPE  OF (<A HREF="two5d_milling_operation.html">two5d_milling_operation</A> );
+ axial_cutting_depth : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ radial_cutting_depth : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ allowance_side : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ allowance_bottom : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

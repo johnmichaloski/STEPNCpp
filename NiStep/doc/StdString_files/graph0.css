@@ -1,0 +1,24 @@
+.mstheme {
+	separator-image: url(cdrule.gif); list-image-1: url(cdbull1.gif); list-image-2: url(cdbull2.gif); list-image-3: url(cdbull3.gif); nav-banner-image: url(cdbnr.gif); navbutton-horiz-normal: url(cdhb.gif); navbutton-horiz-pushed: url(cdshb.gif); navbutton-vert-normal: url(cdvb.gif); navbutton-vert-pushed: url(cdsvb.gif); navbutton-home-normal: url(cdhome.gif); navbutton-next-normal: url(cdnext.gif); navbutton-prev-normal: url(cdprev.gif); navbutton-up-normal: url(cdup.gif)
+}
+.mstheme-bannertxt {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-horiz-navtxt {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-vert-navtxt {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxthome {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxtnext {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxtprev {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxtup {
+	VERTICAL-ALIGN: middle; COLOR: rgb(0,0,0); FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}

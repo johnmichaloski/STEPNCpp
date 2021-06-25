@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> placement </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="placement">placement </A></H1><P>A placement locates a geometric item with respect to the coordinate system of its geometric context. It locates the item to be defined and, in the case of the axis placement subtypes, gives its orientation.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#placement">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>location </TD>
+<TD><A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A> </TD>
+<TD>The geometric position of a reference point, such as the centre of a circle, of the item to be located. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY placement 
+SUPERTYPE  OF (<A HREF="axis2_placement_3d.html">axis2_placement_3d</A> )
+SUBTYPE  OF (<A HREF="geometric_representation_item.html">geometric_representation_item</A> );
+ location : <A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

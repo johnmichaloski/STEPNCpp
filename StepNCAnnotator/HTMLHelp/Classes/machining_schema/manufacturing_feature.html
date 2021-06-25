@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> manufacturing_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="manufacturing_feature">manufacturing_feature </A></H1><P>This entity is the supertype of all manufacturing features. When considering 2½D-manufacturing, features are of type two5D_manufacturing_feature and may be holes, pockets, etc. When considering freeform manufacturing, regions are used in the same sense. The manufacturing feature describes the feature as such, e.g. by its geometric properties. It does not give any instruction on how the workpiece is manufactured. Such process related information is contained only in the operations and depends on the manufacturing method. The methods are described in the technology specific parts of ISO 14649. For example, plunging into a pocket, roughing the pocket and finishing the pocket bottom may all be individual operations, as well as the finishing of a portion of a freeform surface.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#manufacturing_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_id </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>Each feature has an unique identifier. </TD></TR>
+<TR><TD>its_workpiece </TD>
+<TD><A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A> </TD>
+<TD>The workpiece which the feature is part of. </TD></TR>
+<TR><TD>its_operations </TD>
+<TD> SET [ 0 : ? ] OF machining_operation </TD>
+<TD>A set of all operations associated with the feature required for the manufacturing of the feature. Note that the operations are not necessarily executed immediately after each other. Only the workplan determines the final order of operations of all operations included in a given programme, and manufacturing will typically not occur feature by feature but rather according to technological criteria like minimised tool change. However, it should be guaranteed by the CAM system (or by the controller, if the order of execution is determined by an intelligent CNC) that the order given in this attribute is never violated. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY manufacturing_feature  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="region.html">region</A> ,<A HREF="two5d_manufacturing_feature.html">two5d_manufacturing_feature</A> ,<A HREF="transition_feature.html">transition_feature</A> ) );
+ its_id : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ its_workpiece : <A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A>;
+ its_operations :  SET [ 0 : ? ] OF machining_operation;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

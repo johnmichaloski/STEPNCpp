@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> plane_milling </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="plane_milling">plane_milling </A></H1><P>Entity to describe the milling of a plane. This is the supertype for roughing and finishing operations.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#plane_milling">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>axial_cutting_depth </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The cutting depth in the direction of the tool axis. This can be given to specify a maximal cutting depth smaller than the material removal required by the feature’s depth. As a result, several layers will be manufactured. If omitted, the selected cutting depth will be implementation dependent. </TD></TR>
+<TR><TD>allowance_bottom </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The allowance is a layer of material which will be left on top of the plane surface defined by the associated manufacturing feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY plane_milling  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="plane_rough_milling.html">plane_rough_milling</A> ,<A HREF="plane_finish_milling.html">plane_finish_milling</A> ) )
+SUBTYPE  OF (<A HREF="two5d_milling_operation.html">two5d_milling_operation</A> );
+ axial_cutting_depth : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ allowance_bottom : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

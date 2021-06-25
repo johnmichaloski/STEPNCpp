@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> machined_surface </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="machined_surface">machined_surface </A></H1><P>The physical surface of machining_feature where the surface_texture_parameter will be applied.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#machined_surface">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_machining_feature </TD>
+<TD><A HREF="../machining_schema/machining_feature.html#machining_feature">machining_feature</A> </TD>
+<TD>The physical shape of the workpiece where the machined_surface belongs. </TD></TR>
+<TR><TD>surface_element </TD>
+<TD><A HREF="../machining_schema/bottom_or_side.html#bottom_or_side">bottom_or_side</A> </TD>
+<TD>The selection of the location of the machined_surface in reference to its_machining_feature </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY machined_surface ;
+ its_machining_feature : <A HREF="../machining_schema/machining_feature.html#machining_feature">machining_feature</A>;
+ surface_element : <A HREF="../machining_schema/bottom_or_side.html#bottom_or_side">bottom_or_side</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

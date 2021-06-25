@@ -1,0 +1,27 @@
+<HTML><HEAD><TITLE> face_surface </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="face_surface">face_surface </A></H1><P>A face surface is a subtype of face in which the geometry is defined by an associated surface. The portion of the surface used by the face shall be embeddable in the plane as an open disk, possibly with holes. However, the union of the face with the edges and vertices of its bounding loops need not be embeddable in the plane. It may, for example, cover an entire sphere or torus. As both a face and a geometric surface have defined normal directions, a BOOLEAN flag (the orientation attribute) is used to indicate whether the surface normal agrees with (TRUE) or is opposed to (FALSE) the face normal direction. The geometry associated with any component of the loops of the face shall be consistent with the surface geometry, in the sense that the domains of all the vertex points and edge curves are contained in the face geometry surface. A surface may be referenced by more than one face surface.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#face_surface">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>face_geometry </TD>
+<TD><A HREF="../machining_schema/surface.html#surface">surface</A> </TD>
+<TD>The surface which defines the internal shape of the face. This surface may be unbounded. The domain of the face is defined by this surface and the bounding loops in the inherited attribute SELFnface.bounds. </TD></TR>
+<TR><TD>same_sense </TD>
+<TD> BOOLEAN </TD>
+<TD>This flag indicates whether the sense of the surface normal agrees with (TRUE), or opposes (FALSE), the sense of the topological normal to the face. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY face_surface 
+SUPERTYPE  OF (<A HREF="advanced_face.html">advanced_face</A> )
+SUBTYPE  OF (<A HREF="face.html">face</A>,<A HREF="geometric_representation_item.html">geometric_representation_item</A> );
+ face_geometry : <A HREF="../machining_schema/surface.html#surface">surface</A>;
+ same_sense :  BOOLEAN;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

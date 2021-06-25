@@ -1,0 +1,1669 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="000StepNC++">
+<param name="Local" value="000StepNC++.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="address">
+<param name="Local" value="Classes\machining_schema\address.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="advanced_brep_shape_representation">
+<param name="Local" value="Classes\machining_schema\advanced_brep_shape_representation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="advanced_face">
+<param name="Local" value="Classes\machining_schema\advanced_face.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ahead_or_behind">
+<param name="Local" value="Classes\machining_schema\ahead_or_behind.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="and_expression">
+<param name="Local" value="Classes\machining_schema\and_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="angle_taper">
+<param name="Local" value="Classes\machining_schema\angle_taper.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ap_lift_path_angle">
+<param name="Local" value="Classes\machining_schema\ap_lift_path_angle.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ap_lift_path_tangent">
+<param name="Local" value="Classes\machining_schema\ap_lift_path_tangent.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="approach_lift_path">
+<param name="Local" value="Classes\machining_schema\approach_lift_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="approval">
+<param name="Local" value="Classes\machining_schema\approval.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="approval_status">
+<param name="Local" value="Classes\machining_schema\approval_status.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="assignment">
+<param name="Local" value="Classes\machining_schema\assignment.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="axis1_placement">
+<param name="Local" value="Classes\machining_schema\axis1_placement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="axis2_placement_3d">
+<param name="Local" value="Classes\machining_schema\axis2_placement_3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="axis_trajectory">
+<param name="Local" value="Classes\machining_schema\axis_trajectory.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b_spline_curve">
+<param name="Local" value="Classes\machining_schema\b_spline_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b_spline_curve_form">
+<param name="Local" value="Classes\machining_schema\b_spline_curve_form.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b_spline_curve_with_knots">
+<param name="Local" value="Classes\machining_schema\b_spline_curve_with_knots.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b_spline_surface">
+<param name="Local" value="Classes\machining_schema\b_spline_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b_spline_surface_form">
+<param name="Local" value="Classes\machining_schema\b_spline_surface_form.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b_spline_surface_with_knots">
+<param name="Local" value="Classes\machining_schema\b_spline_surface_with_knots.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bezier_curve">
+<param name="Local" value="Classes\machining_schema\bezier_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bezier_surface">
+<param name="Local" value="Classes\machining_schema\bezier_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="binary_boolean_expression">
+<param name="Local" value="Classes\machining_schema\binary_boolean_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="blind_bottom_condition">
+<param name="Local" value="Classes\machining_schema\blind_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="block">
+<param name="Local" value="Classes\machining_schema\block.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="boolean_expression">
+<param name="Local" value="Classes\machining_schema\boolean_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="boss">
+<param name="Local" value="Classes\machining_schema\boss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bottom_or_side">
+<param name="Local" value="Classes\machining_schema\bottom_or_side.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bounded_curve">
+<param name="Local" value="Classes\machining_schema\bounded_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bounded_pcurve">
+<param name="Local" value="Classes\machining_schema\bounded_pcurve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bounded_surface">
+<param name="Local" value="Classes\machining_schema\bounded_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bounding_geometry_select">
+<param name="Local" value="Classes\machining_schema\bounding_geometry_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="calendar_date">
+<param name="Local" value="Classes\machining_schema\calendar_date.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cartesian_point">
+<param name="Local" value="Classes\machining_schema\cartesian_point.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="catalogue_thread">
+<param name="Local" value="Classes\machining_schema\catalogue_thread.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="chamfer">
+<param name="Local" value="Classes\machining_schema\chamfer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="channel">
+<param name="Local" value="Classes\machining_schema\channel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circle">
+<param name="Local" value="Classes\machining_schema\circle.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circular_closed_profile">
+<param name="Local" value="Classes\machining_schema\circular_closed_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circular_closed_shape_profile">
+<param name="Local" value="Classes\machining_schema\circular_closed_shape_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circular_offset">
+<param name="Local" value="Classes\machining_schema\circular_offset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circular_omit">
+<param name="Local" value="Classes\machining_schema\circular_omit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circular_path">
+<param name="Local" value="Classes\machining_schema\circular_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="circular_pattern">
+<param name="Local" value="Classes\machining_schema\circular_pattern.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="closed_pocket">
+<param name="Local" value="Classes\machining_schema\closed_pocket.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="closed_profile">
+<param name="Local" value="Classes\machining_schema\closed_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="closed_shell">
+<param name="Local" value="Classes\machining_schema\closed_shell.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_equal">
+<param name="Local" value="Classes\machining_schema\comparison_equal.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_expression">
+<param name="Local" value="Classes\machining_schema\comparison_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_greater">
+<param name="Local" value="Classes\machining_schema\comparison_greater.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_greater_equal">
+<param name="Local" value="Classes\machining_schema\comparison_greater_equal.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_less">
+<param name="Local" value="Classes\machining_schema\comparison_less.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_less_equal">
+<param name="Local" value="Classes\machining_schema\comparison_less_equal.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparison_not_equal">
+<param name="Local" value="Classes\machining_schema\comparison_not_equal.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="complete_circular_path">
+<param name="Local" value="Classes\machining_schema\complete_circular_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="composite_curve">
+<param name="Local" value="Classes\machining_schema\composite_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="composite_curve_segment">
+<param name="Local" value="Classes\machining_schema\composite_curve_segment.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="compound_feature">
+<param name="Local" value="Classes\machining_schema\compound_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="compound_feature_select">
+<param name="Local" value="Classes\machining_schema\compound_feature_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="conic">
+<param name="Local" value="Classes\machining_schema\conic.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="conical_hole_bottom">
+<param name="Local" value="Classes\machining_schema\conical_hole_bottom.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="connect_direct">
+<param name="Local" value="Classes\machining_schema\connect_direct.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="connect_secplane">
+<param name="Local" value="Classes\machining_schema\connect_secplane.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="connected_face_set">
+<param name="Local" value="Classes\machining_schema\connected_face_set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="connector">
+<param name="Local" value="Classes\machining_schema\connector.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="contact_type">
+<param name="Local" value="Classes\machining_schema\contact_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="coordinated_universal_time_offset">
+<param name="Local" value="Classes\machining_schema\coordinated_universal_time_offset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="counterbore_hole">
+<param name="Local" value="Classes\machining_schema\counterbore_hole.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="countersunk_hole">
+<param name="Local" value="Classes\machining_schema\countersunk_hole.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="curve">
+<param name="Local" value="Classes\machining_schema\curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="curve_with_normal_vector">
+<param name="Local" value="Classes\machining_schema\curve_with_normal_vector.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="curve_with_surface_normal">
+<param name="Local" value="Classes\machining_schema\curve_with_surface_normal.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cutter_contact_trajectory">
+<param name="Local" value="Classes\machining_schema\cutter_contact_trajectory.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cutter_location_trajectory">
+<param name="Local" value="Classes\machining_schema\cutter_location_trajectory.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cutting_component">
+<param name="Local" value="Classes\machining_schema\cutting_component.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cutting_edge_technological_data">
+<param name="Local" value="Classes\machining_schema\cutting_edge_technological_data.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cutting_tool">
+<param name="Local" value="Classes\machining_schema\cutting_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="date">
+<param name="Local" value="Classes\machining_schema\date.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="date_and_time">
+<param name="Local" value="Classes\machining_schema\date_and_time.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="day_in_month_number">
+<param name="Local" value="Classes\machining_schema\day_in_month_number.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="day_in_week_number">
+<param name="Local" value="Classes\machining_schema\day_in_week_number.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="day_in_year_number">
+<param name="Local" value="Classes\machining_schema\day_in_year_number.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="defined_thread">
+<param name="Local" value="Classes\machining_schema\defined_thread.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="definitional_representation">
+<param name="Local" value="Classes\machining_schema\definitional_representation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="descriptive_parameter">
+<param name="Local" value="Classes\machining_schema\descriptive_parameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="diameter_taper">
+<param name="Local" value="Classes\machining_schema\diameter_taper.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dimension_count">
+<param name="Local" value="Classes\machining_schema\dimension_count.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="direction">
+<param name="Local" value="Classes\machining_schema\direction.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="display_message">
+<param name="Local" value="Classes\machining_schema\display_message.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="edge">
+<param name="Local" value="Classes\machining_schema\edge.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="edge_curve">
+<param name="Local" value="Classes\machining_schema\edge_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="edge_loop">
+<param name="Local" value="Classes\machining_schema\edge_loop.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="edge_round">
+<param name="Local" value="Classes\machining_schema\edge_round.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="elementary_surface">
+<param name="Local" value="Classes\machining_schema\elementary_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ellipse">
+<param name="Local" value="Classes\machining_schema\ellipse.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="executable">
+<param name="Local" value="Classes\machining_schema\executable.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="face">
+<param name="Local" value="Classes\machining_schema\face.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="face_bound">
+<param name="Local" value="Classes\machining_schema\face_bound.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="face_outer_bound">
+<param name="Local" value="Classes\machining_schema\face_outer_bound.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="face_surface">
+<param name="Local" value="Classes\machining_schema\face_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="feedstop">
+<param name="Local" value="Classes\machining_schema\feedstop.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fitting_type">
+<param name="Local" value="Classes\machining_schema\fitting_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="flat_hole_bottom">
+<param name="Local" value="Classes\machining_schema\flat_hole_bottom.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="flat_slot_end_type">
+<param name="Local" value="Classes\machining_schema\flat_slot_end_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="flat_with_radius_hole_bottom">
+<param name="Local" value="Classes\machining_schema\flat_with_radius_hole_bottom.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_closed_profile">
+<param name="Local" value="Classes\machining_schema\general_closed_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_outside_profile">
+<param name="Local" value="Classes\machining_schema\general_outside_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_path">
+<param name="Local" value="Classes\machining_schema\general_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_pattern">
+<param name="Local" value="Classes\machining_schema\general_pattern.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_pocket_bottom_condition">
+<param name="Local" value="Classes\machining_schema\general_pocket_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_profile">
+<param name="Local" value="Classes\machining_schema\general_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_profile_floor">
+<param name="Local" value="Classes\machining_schema\general_profile_floor.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="general_shape_profile">
+<param name="Local" value="Classes\machining_schema\general_shape_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="geometric_representation_context">
+<param name="Local" value="Classes\machining_schema\geometric_representation_context.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="geometric_representation_item">
+<param name="Local" value="Classes\machining_schema\geometric_representation_item.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hole_bottom_condition">
+<param name="Local" value="Classes\machining_schema\hole_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hour_in_day">
+<param name="Local" value="Classes\machining_schema\hour_in_day.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hyperbola">
+<param name="Local" value="Classes\machining_schema\hyperbola.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="identifier">
+<param name="Local" value="Classes\machining_schema\identifier.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="if_statement">
+<param name="Local" value="Classes\machining_schema\if_statement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="in_process_geometry">
+<param name="Local" value="Classes\machining_schema\in_process_geometry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="knot_type">
+<param name="Local" value="Classes\machining_schema\knot_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="label">
+<param name="Local" value="Classes\machining_schema\label.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="length_measure">
+<param name="Local" value="Classes\machining_schema\length_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="limits_and_fits">
+<param name="Local" value="Classes\machining_schema\limits_and_fits.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="line">
+<param name="Local" value="Classes\machining_schema\line.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="linear_path">
+<param name="Local" value="Classes\machining_schema\linear_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="linear_profile">
+<param name="Local" value="Classes\machining_schema\linear_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="local_time">
+<param name="Local" value="Classes\machining_schema\local_time.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loop">
+<param name="Local" value="Classes\machining_schema\loop.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loop_slot_end_type">
+<param name="Local" value="Classes\machining_schema\loop_slot_end_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machine_functions">
+<param name="Local" value="Classes\machining_schema\machine_functions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machined_surface">
+<param name="Local" value="Classes\machining_schema\machined_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machining_feature">
+<param name="Local" value="Classes\machining_schema\machining_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machining_operation">
+<param name="Local" value="Classes\machining_schema\machining_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machining_tool">
+<param name="Local" value="Classes\machining_schema\machining_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machining_workingstep">
+<param name="Local" value="Classes\machining_schema\machining_workingstep.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="manifold_solid_brep">
+<param name="Local" value="Classes\machining_schema\manifold_solid_brep.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="manufacturing_feature">
+<param name="Local" value="Classes\machining_schema\manufacturing_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="material">
+<param name="Local" value="Classes\machining_schema\material.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="minute_in_hour">
+<param name="Local" value="Classes\machining_schema\minute_in_hour.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="month_in_year_number">
+<param name="Local" value="Classes\machining_schema\month_in_year_number.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="multiple_arity_boolean_expression">
+<param name="Local" value="Classes\machining_schema\multiple_arity_boolean_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nc_constant">
+<param name="Local" value="Classes\machining_schema\nc_constant.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nc_function">
+<param name="Local" value="Classes\machining_schema\nc_function.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nc_variable">
+<param name="Local" value="Classes\machining_schema\nc_variable.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ngon_profile">
+<param name="Local" value="Classes\machining_schema\ngon_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="non_sequential">
+<param name="Local" value="Classes\machining_schema\non_sequential.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="not_expression">
+<param name="Local" value="Classes\machining_schema\not_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="numeric_parameter">
+<param name="Local" value="Classes\machining_schema\numeric_parameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="offset_vector">
+<param name="Local" value="Classes\machining_schema\offset_vector.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="open_pocket">
+<param name="Local" value="Classes\machining_schema\open_pocket.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="open_profile">
+<param name="Local" value="Classes\machining_schema\open_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="open_shell">
+<param name="Local" value="Classes\machining_schema\open_shell.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="open_slot_end_type">
+<param name="Local" value="Classes\machining_schema\open_slot_end_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="operation">
+<param name="Local" value="Classes\machining_schema\operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="optional_stop">
+<param name="Local" value="Classes\machining_schema\optional_stop.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="or_expression">
+<param name="Local" value="Classes\machining_schema\or_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ordinal_date">
+<param name="Local" value="Classes\machining_schema\ordinal_date.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="oriented_edge">
+<param name="Local" value="Classes\machining_schema\oriented_edge.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="parabola">
+<param name="Local" value="Classes\machining_schema\parabola.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="parallel">
+<param name="Local" value="Classes\machining_schema\parallel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="parameter_value">
+<param name="Local" value="Classes\machining_schema\parameter_value.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="parameterised_path">
+<param name="Local" value="Classes\machining_schema\parameterised_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="partial_area_definition">
+<param name="Local" value="Classes\machining_schema\partial_area_definition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="partial_circular_path">
+<param name="Local" value="Classes\machining_schema\partial_circular_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="partial_circular_profile">
+<param name="Local" value="Classes\machining_schema\partial_circular_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="partial_circular_shape_profile">
+<param name="Local" value="Classes\machining_schema\partial_circular_shape_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="path">
+<param name="Local" value="Classes\machining_schema\path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pcurve">
+<param name="Local" value="Classes\machining_schema\pcurve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pcurve_or_surface">
+<param name="Local" value="Classes\machining_schema\pcurve_or_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="person">
+<param name="Local" value="Classes\machining_schema\person.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="person_and_address">
+<param name="Local" value="Classes\machining_schema\person_and_address.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="placement">
+<param name="Local" value="Classes\machining_schema\placement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="planar_face">
+<param name="Local" value="Classes\machining_schema\planar_face.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="planar_pocket_bottom_condition">
+<param name="Local" value="Classes\machining_schema\planar_pocket_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="planar_profile_floor">
+<param name="Local" value="Classes\machining_schema\planar_profile_floor.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane">
+<param name="Local" value="Classes\machining_schema\plane.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane_angle_measure">
+<param name="Local" value="Classes\machining_schema\plane_angle_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plus_minus_value">
+<param name="Local" value="Classes\machining_schema\plus_minus_value.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pocket">
+<param name="Local" value="Classes\machining_schema\pocket.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pocket_bottom_condition">
+<param name="Local" value="Classes\machining_schema\pocket_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="point">
+<param name="Local" value="Classes\machining_schema\point.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="polyline">
+<param name="Local" value="Classes\machining_schema\polyline.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="positive_length_measure">
+<param name="Local" value="Classes\machining_schema\positive_length_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="positive_ratio_measure">
+<param name="Local" value="Classes\machining_schema\positive_ratio_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pressure_measure">
+<param name="Local" value="Classes\machining_schema\pressure_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="profile">
+<param name="Local" value="Classes\machining_schema\profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="profile_feature">
+<param name="Local" value="Classes\machining_schema\profile_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="profile_floor">
+<param name="Local" value="Classes\machining_schema\profile_floor.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="profile_select">
+<param name="Local" value="Classes\machining_schema\profile_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="program_stop">
+<param name="Local" value="Classes\machining_schema\program_stop.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="program_structure">
+<param name="Local" value="Classes\machining_schema\program_structure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="project">
+<param name="Local" value="Classes\machining_schema\project.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="property_parameter">
+<param name="Local" value="Classes\machining_schema\property_parameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="quasi_uniform_curve">
+<param name="Local" value="Classes\machining_schema\quasi_uniform_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="quasi_uniform_surface">
+<param name="Local" value="Classes\machining_schema\quasi_uniform_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="radiused_pocket_bottom_condition">
+<param name="Local" value="Classes\machining_schema\radiused_pocket_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="radiused_slot_end_type">
+<param name="Local" value="Classes\machining_schema\radiused_slot_end_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rapid_movement">
+<param name="Local" value="Classes\machining_schema\rapid_movement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ratio_measure">
+<param name="Local" value="Classes\machining_schema\ratio_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rational_b_spline_curve">
+<param name="Local" value="Classes\machining_schema\rational_b_spline_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rational_b_spline_surface">
+<param name="Local" value="Classes\machining_schema\rational_b_spline_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rectangular_closed_profile">
+<param name="Local" value="Classes\machining_schema\rectangular_closed_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rectangular_closed_shape_profile">
+<param name="Local" value="Classes\machining_schema\rectangular_closed_shape_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rectangular_offset">
+<param name="Local" value="Classes\machining_schema\rectangular_offset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rectangular_omit">
+<param name="Local" value="Classes\machining_schema\rectangular_omit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rectangular_open_shape_profile">
+<param name="Local" value="Classes\machining_schema\rectangular_open_shape_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rectangular_pattern">
+<param name="Local" value="Classes\machining_schema\rectangular_pattern.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="region">
+<param name="Local" value="Classes\machining_schema\region.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="region_projection">
+<param name="Local" value="Classes\machining_schema\region_projection.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="region_surface_list">
+<param name="Local" value="Classes\machining_schema\region_surface_list.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="replicate_feature">
+<param name="Local" value="Classes\machining_schema\replicate_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="representation">
+<param name="Local" value="Classes\machining_schema\representation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="representation_context">
+<param name="Local" value="Classes\machining_schema\representation_context.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="representation_item">
+<param name="Local" value="Classes\machining_schema\representation_item.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="restricted_area_select">
+<param name="Local" value="Classes\machining_schema\restricted_area_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="return_home">
+<param name="Local" value="Classes\machining_schema\return_home.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="right_circular_cylinder">
+<param name="Local" value="Classes\machining_schema\right_circular_cylinder.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rot_direction">
+<param name="Local" value="Classes\machining_schema\rot_direction.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rot_speed_measure">
+<param name="Local" value="Classes\machining_schema\rot_speed_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="round_hole">
+<param name="Local" value="Classes\machining_schema\round_hole.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rounded_end">
+<param name="Local" value="Classes\machining_schema\rounded_end.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rounded_u_profile">
+<param name="Local" value="Classes\machining_schema\rounded_u_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rvalue">
+<param name="Local" value="Classes\machining_schema\rvalue.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="second_in_minute">
+<param name="Local" value="Classes\machining_schema\second_in_minute.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="selective">
+<param name="Local" value="Classes\machining_schema\selective.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="set_mark">
+<param name="Local" value="Classes\machining_schema\set_mark.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="setup">
+<param name="Local" value="Classes\machining_schema\setup.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="setup_instruction">
+<param name="Local" value="Classes\machining_schema\setup_instruction.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape_profile">
+<param name="Local" value="Classes\machining_schema\shape_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape_representation">
+<param name="Local" value="Classes\machining_schema\shape_representation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape_tolerance">
+<param name="Local" value="Classes\machining_schema\shape_tolerance.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="slot">
+<param name="Local" value="Classes\machining_schema\slot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="slot_end_type">
+<param name="Local" value="Classes\machining_schema\slot_end_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solid_model">
+<param name="Local" value="Classes\machining_schema\solid_model.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="specification">
+<param name="Local" value="Classes\machining_schema\specification.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="specification_usage_constraint">
+<param name="Local" value="Classes\machining_schema\specification_usage_constraint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="speed_measure">
+<param name="Local" value="Classes\machining_schema\speed_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="speed_name">
+<param name="Local" value="Classes\machining_schema\speed_name.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="spherical_cap">
+<param name="Local" value="Classes\machining_schema\spherical_cap.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="spherical_hole_bottom">
+<param name="Local" value="Classes\machining_schema\spherical_hole_bottom.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="spherical_surface">
+<param name="Local" value="Classes\machining_schema\spherical_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="square_u_profile">
+<param name="Local" value="Classes\machining_schema\square_u_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="step">
+<param name="Local" value="Classes\machining_schema\step.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="surface">
+<param name="Local" value="Classes\machining_schema\surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="surface_of_linear_extrusion">
+<param name="Local" value="Classes\machining_schema\surface_of_linear_extrusion.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="surface_of_revolution">
+<param name="Local" value="Classes\machining_schema\surface_of_revolution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="surface_texture_parameter">
+<param name="Local" value="Classes\machining_schema\surface_texture_parameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="swept_surface">
+<param name="Local" value="Classes\machining_schema\swept_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="taper_select">
+<param name="Local" value="Classes\machining_schema\taper_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="technology">
+<param name="Local" value="Classes\machining_schema\technology.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tee_profile">
+<param name="Local" value="Classes\machining_schema\tee_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="text">
+<param name="Local" value="Classes\machining_schema\text.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="thread">
+<param name="Local" value="Classes\machining_schema\thread.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="three_axes">
+<param name="Local" value="Classes\machining_schema\three_axes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="through_bottom_condition">
+<param name="Local" value="Classes\machining_schema\through_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="through_pocket_bottom_condition">
+<param name="Local" value="Classes\machining_schema\through_pocket_bottom_condition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="through_profile_floor">
+<param name="Local" value="Classes\machining_schema\through_profile_floor.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="time_measure">
+<param name="Local" value="Classes\machining_schema\time_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tolerance_select">
+<param name="Local" value="Classes\machining_schema\tolerance_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toleranced_length_measure">
+<param name="Local" value="Classes\machining_schema\toleranced_length_measure.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_body">
+<param name="Local" value="Classes\machining_schema\tool_body.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_direction">
+<param name="Local" value="Classes\machining_schema\tool_direction.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_length_probing">
+<param name="Local" value="Classes\machining_schema\tool_length_probing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_probing">
+<param name="Local" value="Classes\machining_schema\tool_probing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_radius_probing">
+<param name="Local" value="Classes\machining_schema\tool_radius_probing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_reference_point">
+<param name="Local" value="Classes\machining_schema\tool_reference_point.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toolpath">
+<param name="Local" value="Classes\machining_schema\toolpath.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toolpath_feature">
+<param name="Local" value="Classes\machining_schema\toolpath_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toolpath_list">
+<param name="Local" value="Classes\machining_schema\toolpath_list.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toolpath_speed">
+<param name="Local" value="Classes\machining_schema\toolpath_speed.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toolpath_speedprofile">
+<param name="Local" value="Classes\machining_schema\toolpath_speedprofile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="toolpath_type">
+<param name="Local" value="Classes\machining_schema\toolpath_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="topological_region">
+<param name="Local" value="Classes\machining_schema\topological_region.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="topological_representation_item">
+<param name="Local" value="Classes\machining_schema\topological_representation_item.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="touch_probe">
+<param name="Local" value="Classes\machining_schema\touch_probe.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="touch_probing">
+<param name="Local" value="Classes\machining_schema\touch_probing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trajectory">
+<param name="Local" value="Classes\machining_schema\trajectory.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="transition_code">
+<param name="Local" value="Classes\machining_schema\transition_code.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="transition_feature">
+<param name="Local" value="Classes\machining_schema\transition_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="travel_path">
+<param name="Local" value="Classes\machining_schema\travel_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trimmed_curve">
+<param name="Local" value="Classes\machining_schema\trimmed_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trimming_preference">
+<param name="Local" value="Classes\machining_schema\trimming_preference.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trimming_select">
+<param name="Local" value="Classes\machining_schema\trimming_select.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="two5d_manufacturing_feature">
+<param name="Local" value="Classes\machining_schema\two5d_manufacturing_feature.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="two_axes">
+<param name="Local" value="Classes\machining_schema\two_axes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="unary_boolean_expression">
+<param name="Local" value="Classes\machining_schema\unary_boolean_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="uniform_curve">
+<param name="Local" value="Classes\machining_schema\uniform_curve.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="uniform_surface">
+<param name="Local" value="Classes\machining_schema\uniform_surface.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vector">
+<param name="Local" value="Classes\machining_schema\vector.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vector_or_direction">
+<param name="Local" value="Classes\machining_schema\vector_or_direction.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vee_profile">
+<param name="Local" value="Classes\machining_schema\vee_profile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vertex">
+<param name="Local" value="Classes\machining_schema\vertex.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vertex_loop">
+<param name="Local" value="Classes\machining_schema\vertex_loop.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vertex_point">
+<param name="Local" value="Classes\machining_schema\vertex_point.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="wait_for_mark">
+<param name="Local" value="Classes\machining_schema\wait_for_mark.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="week_in_year_number">
+<param name="Local" value="Classes\machining_schema\week_in_year_number.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="week_of_year_and_day_date">
+<param name="Local" value="Classes\machining_schema\week_of_year_and_day_date.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="while_statement">
+<param name="Local" value="Classes\machining_schema\while_statement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="woodruff_slot_end_type">
+<param name="Local" value="Classes\machining_schema\woodruff_slot_end_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="workingstep">
+<param name="Local" value="Classes\machining_schema\workingstep.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="workpiece">
+<param name="Local" value="Classes\machining_schema\workpiece.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="workpiece_complete_probing">
+<param name="Local" value="Classes\machining_schema\workpiece_complete_probing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="workpiece_probing">
+<param name="Local" value="Classes\machining_schema\workpiece_probing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="workpiece_setup">
+<param name="Local" value="Classes\machining_schema\workpiece_setup.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="workplan">
+<param name="Local" value="Classes\machining_schema\workplan.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="xor_expression">
+<param name="Local" value="Classes\machining_schema\xor_expression.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="year_number">
+<param name="Local" value="Classes\machining_schema\year_number.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="adaptive_control">
+<param name="Local" value="Classes\milling_schema\adaptive_control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="air_strategy">
+<param name="Local" value="Classes\milling_schema\air_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="along_path">
+<param name="Local" value="Classes\milling_schema\along_path.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ap_retract_angle">
+<param name="Local" value="Classes\milling_schema\ap_retract_angle.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ap_retract_tangent">
+<param name="Local" value="Classes\milling_schema\ap_retract_tangent.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="approach_retract_strategy">
+<param name="Local" value="Classes\milling_schema\approach_retract_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="back_boring">
+<param name="Local" value="Classes\milling_schema\back_boring.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="backside_counterbore">
+<param name="Local" value="Classes\milling_schema\backside_counterbore.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="backside_countersink">
+<param name="Local" value="Classes\milling_schema\backside_countersink.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ball_endmill">
+<param name="Local" value="Classes\milling_schema\ball_endmill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bidirectional">
+<param name="Local" value="Classes\milling_schema\bidirectional.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bidirectional_contour">
+<param name="Local" value="Classes\milling_schema\bidirectional_contour.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="boring">
+<param name="Local" value="Classes\milling_schema\boring.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="boring_operation">
+<param name="Local" value="Classes\milling_schema\boring_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="boring_tool">
+<param name="Local" value="Classes\milling_schema\boring_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bottom_and_side_finish_milling">
+<param name="Local" value="Classes\milling_schema\bottom_and_side_finish_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bottom_and_side_milling">
+<param name="Local" value="Classes\milling_schema\bottom_and_side_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bottom_and_side_rough_milling">
+<param name="Local" value="Classes\milling_schema\bottom_and_side_rough_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bullnose_endmill">
+<param name="Local" value="Classes\milling_schema\bullnose_endmill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="center_drill">
+<param name="Local" value="Classes\milling_schema\center_drill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="center_drilling">
+<param name="Local" value="Classes\milling_schema\center_drilling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="center_milling">
+<param name="Local" value="Classes\milling_schema\center_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="combined_drill_and_reamer">
+<param name="Local" value="Classes\milling_schema\combined_drill_and_reamer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="combined_drill_and_tap">
+<param name="Local" value="Classes\milling_schema\combined_drill_and_tap.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="contour_bidirectional">
+<param name="Local" value="Classes\milling_schema\contour_bidirectional.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="contour_parallel">
+<param name="Local" value="Classes\milling_schema\contour_parallel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="contour_spiral">
+<param name="Local" value="Classes\milling_schema\contour_spiral.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="counter_sinking">
+<param name="Local" value="Classes\milling_schema\counter_sinking.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="counterbore">
+<param name="Local" value="Classes\milling_schema\counterbore.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="countersink">
+<param name="Local" value="Classes\milling_schema\countersink.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cutmode_type">
+<param name="Local" value="Classes\milling_schema\cutmode_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dovetail_mill">
+<param name="Local" value="Classes\milling_schema\dovetail_mill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="drill">
+<param name="Local" value="Classes\milling_schema\drill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="drilling">
+<param name="Local" value="Classes\milling_schema\drilling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="drilling_operation">
+<param name="Local" value="Classes\milling_schema\drilling_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="drilling_type_operation">
+<param name="Local" value="Classes\milling_schema\drilling_type_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="drilling_type_strategy">
+<param name="Local" value="Classes\milling_schema\drilling_type_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="endmill">
+<param name="Local" value="Classes\milling_schema\endmill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="exchange_pallet">
+<param name="Local" value="Classes\milling_schema\exchange_pallet.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="explicit">
+<param name="Local" value="Classes\milling_schema\explicit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="facemill">
+<param name="Local" value="Classes\milling_schema\facemill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="five_axes_const_tilt_yaw">
+<param name="Local" value="Classes\milling_schema\five_axes_const_tilt_yaw.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="five_axes_var_tilt_yaw">
+<param name="Local" value="Classes\milling_schema\five_axes_var_tilt_yaw.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="freeform_operation">
+<param name="Local" value="Classes\milling_schema\freeform_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="freeform_strategy">
+<param name="Local" value="Classes\milling_schema\freeform_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hand">
+<param name="Local" value="Classes\milling_schema\hand.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="index_pallet">
+<param name="Local" value="Classes\milling_schema\index_pallet.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="index_table">
+<param name="Local" value="Classes\milling_schema\index_table.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="leading_line_strategy">
+<param name="Local" value="Classes\milling_schema\leading_line_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="left_or_right">
+<param name="Local" value="Classes\milling_schema\left_or_right.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="load_tool">
+<param name="Local" value="Classes\milling_schema\load_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_cutter">
+<param name="Local" value="Classes\milling_schema\milling_cutter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_cutting_tool">
+<param name="Local" value="Classes\milling_schema\milling_cutting_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_machine_functions">
+<param name="Local" value="Classes\milling_schema\milling_machine_functions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_machining_operation">
+<param name="Local" value="Classes\milling_schema\milling_machining_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_technology">
+<param name="Local" value="Classes\milling_schema\milling_technology.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_tool_body">
+<param name="Local" value="Classes\milling_schema\milling_tool_body.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_tool_dimension">
+<param name="Local" value="Classes\milling_schema\milling_tool_dimension.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_type_operation">
+<param name="Local" value="Classes\milling_schema\milling_type_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="multistep_drilling">
+<param name="Local" value="Classes\milling_schema\multistep_drilling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pathmode_type">
+<param name="Local" value="Classes\milling_schema\pathmode_type.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane_cc_strategy">
+<param name="Local" value="Classes\milling_schema\plane_cc_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane_cl_strategy">
+<param name="Local" value="Classes\milling_schema\plane_cl_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane_finish_milling">
+<param name="Local" value="Classes\milling_schema\plane_finish_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane_milling">
+<param name="Local" value="Classes\milling_schema\plane_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plane_rough_milling">
+<param name="Local" value="Classes\milling_schema\plane_rough_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plunge_helix">
+<param name="Local" value="Classes\milling_schema\plunge_helix.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plunge_ramp">
+<param name="Local" value="Classes\milling_schema\plunge_ramp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plunge_strategy">
+<param name="Local" value="Classes\milling_schema\plunge_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plunge_toolaxis">
+<param name="Local" value="Classes\milling_schema\plunge_toolaxis.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plunge_zigzag">
+<param name="Local" value="Classes\milling_schema\plunge_zigzag.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="process_model">
+<param name="Local" value="Classes\milling_schema\process_model.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="process_model_list">
+<param name="Local" value="Classes\milling_schema\process_model_list.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="reamer">
+<param name="Local" value="Classes\milling_schema\reamer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="reaming">
+<param name="Local" value="Classes\milling_schema\reaming.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="side_finish_milling">
+<param name="Local" value="Classes\milling_schema\side_finish_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="side_mill">
+<param name="Local" value="Classes\milling_schema\side_mill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="side_milling">
+<param name="Local" value="Classes\milling_schema\side_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="side_rough_milling">
+<param name="Local" value="Classes\milling_schema\side_rough_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="spade_drill">
+<param name="Local" value="Classes\milling_schema\spade_drill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="stroke_connection_strategy">
+<param name="Local" value="Classes\milling_schema\stroke_connection_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="t_slot_mill">
+<param name="Local" value="Classes\milling_schema\t_slot_mill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tap">
+<param name="Local" value="Classes\milling_schema\tap.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tapered_drill">
+<param name="Local" value="Classes\milling_schema\tapered_drill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tapered_endmill">
+<param name="Local" value="Classes\milling_schema\tapered_endmill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tapered_reamer">
+<param name="Local" value="Classes\milling_schema\tapered_reamer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tapered_tap">
+<param name="Local" value="Classes\milling_schema\tapered_tap.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tapping">
+<param name="Local" value="Classes\milling_schema\tapping.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="thread_drilling">
+<param name="Local" value="Classes\milling_schema\thread_drilling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="thread_mill">
+<param name="Local" value="Classes\milling_schema\thread_mill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="threading_tool">
+<param name="Local" value="Classes\milling_schema\threading_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="three_axes_tilted_tool">
+<param name="Local" value="Classes\milling_schema\three_axes_tilted_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tolerances">
+<param name="Local" value="Classes\milling_schema\tolerances.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tool_direction_for_milling">
+<param name="Local" value="Classes\milling_schema\tool_direction_for_milling.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="twist_drill">
+<param name="Local" value="Classes\milling_schema\twist_drill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="two5d_milling_operation">
+<param name="Local" value="Classes\milling_schema\two5d_milling_operation.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="two5d_milling_strategy">
+<param name="Local" value="Classes\milling_schema\two5d_milling_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="unidirectional">
+<param name="Local" value="Classes\milling_schema\unidirectional.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="unload_tool">
+<param name="Local" value="Classes\milling_schema\unload_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="user_defined_tool">
+<param name="Local" value="Classes\milling_schema\user_defined_tool.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="uv_strategy">
+<param name="Local" value="Classes\milling_schema\uv_strategy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="woodruff_keyseat_mill">
+<param name="Local" value="Classes\milling_schema\woodruff_keyseat_mill.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="machining_schema">
+<param name="Local" value="Schemas\machining_schema.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="milling_schema">
+<param name="Local" value="Schemas\milling_schema.html">
+</OBJECT>
+</UL>
+</BODY></HTML>

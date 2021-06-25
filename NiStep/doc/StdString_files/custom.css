@@ -1,0 +1,207 @@
+.mstheme-bannertxt A:active {
+	COLOR: #000000
+}
+.mstheme-bannertxt A:link {
+	COLOR: #000000
+}
+.mstheme-bannertxt A:visited {
+	COLOR: #000000
+}
+.mstheme-bannertxt-g {
+	FONT-SIZE: 24pt; BACKGROUND-IMAGE: url(cdbnr.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-bannertxt-g A:active {
+	COLOR: #000000
+}
+.mstheme-bannertxt-g A:link {
+	COLOR: #000000
+}
+.mstheme-bannertxt-g A:visited {
+	COLOR: #000000
+}
+.mstheme-bannertxt-s {
+	FONT-SIZE: 24pt; VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-bannertxt-s A:active {
+	COLOR: #000000
+}
+.mstheme-bannertxt-s A:link {
+	COLOR: #000000
+}
+.mstheme-bannertxt-s A:visited {
+	COLOR: #000000
+}
+.mstheme-horiz-navtxt A:active {
+	COLOR: #000000
+}
+.mstheme-horiz-navtxt A:link {
+	COLOR: #000000
+}
+.mstheme-horiz-navtxt A:visited {
+	COLOR: #000000
+}
+.mstheme-horiz-navtxt-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdhb.gif); VERTICAL-ALIGN: middle; COLOR: #808080; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-horiz-navtxt-g A:active {
+	COLOR: #808080
+}
+.mstheme-horiz-navtxt-g A:link {
+	COLOR: #808080
+}
+.mstheme-horiz-navtxt-g A:visited {
+	COLOR: #808080
+}
+.mstheme-horiz-navtxt-gs {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdshb.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-horiz-navtxt-gs A:active {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.mstheme-horiz-navtxt-gs A:link {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.mstheme-horiz-navtxt-gs A:visited {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.mstheme-navtxthome A:active {
+	COLOR: #000000
+}
+.mstheme-navtxthome A:link {
+	COLOR: #000000
+}
+.mstheme-navtxthome A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxthome-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdhome.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxthome-g A:active {
+	COLOR: #000000
+}
+.mstheme-navtxthome-g A:link {
+	COLOR: #000000
+}
+.mstheme-navtxthome-g A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxtnext A:active {
+	COLOR: #000000
+}
+.mstheme-navtxtnext A:link {
+	COLOR: #000000
+}
+.mstheme-navtxtnext A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxtnext-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdnext.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxtnext-g A:active {
+	COLOR: #000000
+}
+.mstheme-navtxtnext-g A:link {
+	COLOR: #000000
+}
+.mstheme-navtxtnext-g A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxtprev A:active {
+	COLOR: #000000
+}
+.mstheme-navtxtprev A:link {
+	COLOR: #000000
+}
+.mstheme-navtxtprev A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxtprev-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdprev.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxtprev-g A:active {
+	COLOR: #000000
+}
+.mstheme-navtxtprev-g A:link {
+	COLOR: #000000
+}
+.mstheme-navtxtprev-g A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxtup A:active {
+	COLOR: #000000
+}
+.mstheme-navtxtup A:link .mstheme-navtxtup A:visited {
+	COLOR: #000000
+}
+.mstheme-navtxtup-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdup.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-navtxtup-g A:active {
+	COLOR: #000000
+}
+.mstheme-navtxtup-g A:link {
+	COLOR: #000000
+}
+.mstheme-navtxtup-g A:visited {
+	COLOR: #000000
+}
+.mstheme-topbar-font A:active {
+	COLOR: #000000
+}
+.mstheme-topbar-font A:link {
+	COLOR: #000000
+}
+.mstheme-topbar-font A:visited {
+	COLOR: #000000
+}
+.mstheme-topbar-font-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdglb.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-topbar-font-g A:active {
+	COLOR: #000000
+}
+.mstheme-topbar-font-g A:link {
+	COLOR: #000000
+}
+.mstheme-topbar-font-g A:visited {
+	COLOR: #000000
+}
+.mstheme-vert-navtxt A:active {
+	COLOR: #000000
+}
+.mstheme-vert-navtxt A:link {
+	COLOR: #000000
+}
+.mstheme-vert-navtxt A:visited {
+	COLOR: #000000
+}
+.mstheme-vert-navtxt-g {
+	FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdvb.gif); VERTICAL-ALIGN: middle; COLOR: #808080; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-vert-navtxt-g A:active {
+	COLOR: #808080
+}
+.mstheme-vert-navtxt-g A:link {
+	COLOR: #808080
+}
+.mstheme-vert-navtxt-g A:visited {
+	COLOR: #808080
+}
+.mstheme-vert-navtxt-gs {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND-IMAGE: url(cdsvb.gif); VERTICAL-ALIGN: middle; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica; TEXT-ALIGN: center
+}
+.mstheme-vert-navtxt-gs A:active {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.mstheme-vert-navtxt-gs A:link {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.mstheme-vert-navtxt-gs A:visited {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.table_txt {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana
+}
+.table_txt TD {
+	FONT-SIZE: 10pt
+}

@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> rational_b_spline_surface </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="rational_b_spline_surface">rational_b_spline_surface </A></H1><P>A rational b spline surface is a piecewise parametric rational surface described in terms of control points, associated weight values and basis func­ tions. It is instantiated with any of the other subtypes of b spline surface, which provide explicit or implicit knot values from which the basis functions are defined.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#rational_b_spline_surface">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>weights_data </TD>
+<TD> LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF REAL </TD>
+<TD>The weights associated with the control points in the rational case. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY rational_b_spline_surface 
+SUBTYPE  OF (<A HREF="b_spline_surface.html">b_spline_surface</A> );
+ weights_data :  LIST [ 2 : ? ] OF LIST [ 2 : ? ] OF REAL;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

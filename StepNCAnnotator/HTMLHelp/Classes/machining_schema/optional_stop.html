@@ -1,0 +1,15 @@
+<HTML><HEAD><TITLE> optional_stop </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="optional_stop">optional_stop </A></H1><P>This function is used to stop executing the NC program until the operator presses the start button. The optional stop permits the user to guide the tool. The controller has to consider the changed axis positions etc. after the optional stop is released. However, it is only effective under the condition that the operating mode “optional stop” is enabled on the NC controllers operating panel.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#optional_stop">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY optional_stop 
+SUBTYPE  OF (<A HREF="nc_function.html">nc_function</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

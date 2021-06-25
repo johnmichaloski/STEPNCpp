@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> milling_machining_operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="milling_machining_operation">milling_machining_operation </A></H1><P>This is the base class of all operations described in this part of ISO 14649. It is a subtype of entity machining_operation defined in ISO 14649-10. In case that feedrate_per_tooth of its_technology is chosen, number_of_teeth of its_tool_body of its_tool should be given.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#milling_machining_operation">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>overcut_length </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The overcut on the open side(s) of the feature. It is not allowed for manufacturing of features which are bounded by material on all sides, i. e. pockets. In case of round_hole, this attribute is allowed only for through-bottom holes. If the cutting_depth of drilling_type_operation specifies a conflicting value, overcut_ length is ignored. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY milling_machining_operation  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="milling_type_operation.html">milling_type_operation</A> ,<A HREF="drilling_type_operation.html">drilling_type_operation</A> ) )
+SUBTYPE  OF (<A HREF="../machining_schema/machining_operation.html">machining_operation </A> );
+ overcut_length : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

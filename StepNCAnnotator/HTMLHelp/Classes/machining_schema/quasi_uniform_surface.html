@@ -1,0 +1,15 @@
+<HTML><HEAD><TITLE> quasi_uniform_surface </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="quasi_uniform_surface">quasi_uniform_surface </A></H1><P>This is a special type of b spline surface in which the knots are evenly spaced, and except for the first and last, have multiplicity 1. Suitable default values for the knots and knot multiplicities are derived in this case. A B­spline is quasi­uniform if and only if the knots are of multiplicity (degree + 1) at the ends, of multiplicity 1 elsewhere, and they differ by a positive constant from the preceding knot. In this subtype the knot spacing is 1.0, starting from 0.0.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#quasi_uniform_surface">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY quasi_uniform_surface 
+SUBTYPE  OF (<A HREF="b_spline_surface.html">b_spline_surface</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

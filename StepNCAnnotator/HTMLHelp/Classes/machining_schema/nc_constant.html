@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> nc_constant </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="nc_constant">nc_constant </A></H1><P>The nc_constant is used to assign a constant value to an attribute. Its value is determined by the NC-Program and cannot be modified within the process.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#nc_constant">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_name </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>Name of the constant. It shall be unique within the program. </TD></TR>
+<TR><TD>its_value </TD>
+<TD>number </TD>
+<TD>The value of the nc_constant. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY nc_constant ;
+ its_name : <A HREF="../machining_schema/label.html#label">label</A>;
+ its_value : OPTIONAL number;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

@@ -1,0 +1,39 @@
+<HTML><HEAD><TITLE> b_spline_curve </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="b_spline_curve">b_spline_curve </A></H1><P>A B­spline curve is a piecewise parametric polynomial or rational curve described in terms of control points and basis functions. The B­spline curve has been selected as the most stable format to represent all types of polynomial or rational parametric curves. With appropriate attribute values it is capable of representing single span or spline curves of explicit polynomial, rational, B'ezier or B­spline type. The b spline curve has three special subtypes where the knots and knot multiplicities can be derived to provide simple default capabilities.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#b_spline_curve">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>degree </TD>
+<TD> INTEGER </TD>
+<TD>The algebraic degree of the basis functions. </TD></TR>
+<TR><TD>control_points_list </TD>
+<TD> LIST [ 2 : ? ] OF cartesian_point </TD>
+<TD>The list of control points for the curve. </TD></TR>
+<TR><TD>curve_form </TD>
+<TD><A HREF="../machining_schema/b_spline_curve_form.html#b_spline_curve_form">b_spline_curve_form</A> </TD>
+<TD>Used to identify particular types of curve; it is for information only. </TD></TR>
+<TR><TD>closed_curve </TD>
+<TD> LOGICAL </TD>
+<TD>Indication of whether the curve is closed; it is for information only. </TD></TR>
+<TR><TD>self_intersect </TD>
+<TD> LOGICAL </TD>
+<TD>Flag to indicate whether the curve self­intersects or not; it is for information only. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY b_spline_curve 
+SUPERTYPE  OF ( ONEOF (<A HREF="uniform_curve.html">uniform_curve</A> ,<A HREF="b_spline_curve_with_knots.html">b_spline_curve_with_knots</A> ,<A HREF="quasi_uniform_curve.html">quasi_uniform_curve</A> ,<A HREF="bezier_curve.html">bezier_curve</A> ) ANDOR<A HREF="rational_b_spline_curve.html">rational_b_spline_curve</A> )
+SUBTYPE  OF (<A HREF="bounded_curve.html">bounded_curve</A> );
+ degree :  INTEGER;
+ control_points_list :  LIST [ 2 : ? ] OF cartesian_point;
+ curve_form : <A HREF="../machining_schema/b_spline_curve_form.html#b_spline_curve_form">b_spline_curve_form</A>;
+ closed_curve :  LOGICAL;
+ self_intersect :  LOGICAL;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

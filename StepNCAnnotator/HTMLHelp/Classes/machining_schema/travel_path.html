@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> travel_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="travel_path">travel_path </A></H1><P>A travel_path is a continuous set of curves that define a direction of travel. These curves do not intersect or duplicate themselves. A travel_path may have its own orientation in reference to the local coordinate system of the machining_feature which requires it as a part of a feature definition.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#travel_path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>placement </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>Specification where to locate the travel_path in referencmanufacturing_feature. If not given, the orientation ismanufacturing_feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY travel_path  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="general_path.html">general_path</A> ,<A HREF="linear_path.html">linear_path</A> ,<A HREF="circular_path.html">circular_path</A> ) );
+ placement : OPTIONAL <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

@@ -1,0 +1,480 @@
+
+
+
+
+Option Compare Database
+
+
+Dim conDatabase As ADODB.Connection
+Dim strSQL As String
+Sub macro1()
+Set conDatabase = CurrentProject.Connection
+'strSQL = "DROP TABLE  tblCustomers;"
+'conDatabase.Execute strSQL
+
+strSQL = "CREATE TABLE tblCustomers (CustomerID INTEGER NOT NULL," & _
+"[Last Name] TEXT(50) NOT NULL," & _
+"[First Name] TEXT(50) NOT NULL,Phone TEXT(10),Email TEXT(50), PRIMARY KEY  (CustomerID))"
+
+conDatabase.Execute strSQL
+
+End Sub
+
+
+
+Open vb editor, Hit F5, select macro1
+
+DROP TABLE IF EXISTS `accountsection`;
+CREATE TABLE IF NOT EXISTS `accountsection` (
+  `sectionid` int(11) NOT NULL default '0',
+  `sectionname` text collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`sectionid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+
+DROP TABLE IF EXISTS `banktrans`;
+CREATE TABLE IF NOT EXISTS `banktrans` (
+  `banktransid` bigint(20) NOT NULL auto_increment,
+  `type` smallint(6) NOT NULL default '0',
+  `transno` bigint(20) NOT NULL default '0',
+  `bankact` int(11) NOT NULL default '0',
+  `ref` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `amountcleared` double NOT NULL default '0',
+  `exrate` double NOT NULL default '1',
+  `transdate` date NOT NULL default '0000-00-00',
+  `banktranstype` varchar(30) collate latin1_general_ci NOT NULL default '',
+  `amount` double NOT NULL default '0',
+  `currcode` char(3) collate latin1_general_ci NOT NULL default '',
+  PRIMARY KEY  (`banktransid`),
+  KEY `BankAct` (`bankact`,`ref`),
+  KEY `TransDate` (`transdate`),
+  KEY `TransType` (`banktranstype`),
+  KEY `Type` (`type`,`transno`),
+  KEY `CurrCode` (`currcode`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+
+
+
+
+Parse Part 21 File:
+Parse using boost spirit into parse tree.
+1st pass: read #, and determine symbol. Lookup symbol - entity or typedef?
+		  create obj, store into std::map<#,obj ptr>.
+
+2nd pass: start at 1st item, go through each created object, match variables, and object # references.
+
+
+
+==========================================================================================
+
+//				cppImplFile<<StrFormat("\tvars.push_back(new CVarDef(\"%s\" ,(StepNodeType) %d, (DWORD) &(this->%s::vars),\"%s\"));\n", 
+				cppImplFile<<StrFormat("\tvars.push_back(new CVarDef(\"%s\" ,(StepNodeType) %d, (DWORD) (%s *) this,\"%s\"));\n", 
+
+appendChild 
+ Appends a new child as the last child of this node.
+ 
+cloneNode 
+ Clones a new node.
+ 
+getAttribute 
+ Gets the value of the attribute.
+ 
+getAttributeNode 
+ Gets the attribute node.
+ 
+getElementsByTagName 
+ Returns a list of all descendant elements that match the supplied name.
+ 
+hasChildNodes 
+ Provides a fast way to determine whether a node has children.
+ 
+insertBefore 
+ Inserts a child node to the left of the specified node or at the end of the list.
+ 
+normalize 
+ Normalizes all descendant elements by combining two or more adjacent text nodes into one unified text node.
+ 
+removeAttribute 
+ Removes or replaces the named attribute.
+ 
+removeAttributeNode 
+ Removes the specified attribute from this element.
+ 
+removeChild 
+ Removes the specified child node from the list of children and returns it.
+ 
+replaceChild 
+ Replaces the specified old child node with the supplied new child node.
+ 
+selectNodes*
+ Applies the specified pattern-matching operation to this node's context and returns the list of matching nodes as IXMLDOMNodeList.
+ 
+selectSingleNode*
+ Applies the specified pattern-matching operation to this node's context and returns the first matching node.
+ 
+setAttribute 
+ Sets the value of the named attribute.
+ 
+setAttributeNode 
+ Sets or updates the supplied attribute node on this element.
+ 
+transformNode*
+ Processes this node and its children using the supplied XSL Transformations (XSLT) style sheet and returns the resulting transformation.
+ 
+transformNodeToObject*
+ Processes this node and its children using the supplied (XSLT) style sheet and returns the resulting transformation in the supplied object.
+ 
+
+
+	struct _Procedure;
+	struct _Function;
+	struct _Rule;
+	struct _Entity;
+	struct _Schema;
+	struct _Express;
+	struct _Increment;
+	struct _TypeHead ;
+	
+HRESULT Define(char *name, GenericPtr obj, _Symbol *sym,char type)
+{
+	DictionaryEntry e, *e2;
+
+	e.key = name;
+	e.data = (char *) obj;
+	e.symbol = sym;
+	e.type = type;
+
+	if (0 == (e2 = HASHsearch(&e,HASH_INSERT))) 
+		return(0);
+
+	if (sym->filename == e2->symbol->filename) {
+		ERRORreport_with_symbol(ERROR_duplicate_decl,sym,name,e2->symbol->line);
+	} else {
+		ERRORreport_with_symbol(ERROR_duplicate_decl_diff_file,sym,name,e2->symbol->line,e2->symbol->filename);
+	}
+	errc = ERROR_subordinate_failed;
+	return(1);
+}
+};
+struct _Scope 
+	{
+		_Symbol		symbol;
+		char		type;		/* see above */
+		ClientData	clientData;	/* user may use this for any purpose */
+		int		search_id;	/* key to avoid searching this scope twice */
+		Dictionary	symbol_table;
+		_Scope	*superscope;
+		union {
+			/*		struct Constant *constant;*/
+			_Procedure *proc;
+			_Function *func;
+			_Rule *rule;
+			_Entity *entity;
+			_Schema *schema;
+			_Express *express;
+			_Increment *incr;
+			_TypeHead *type;
+			/* no, query owns a scope rather than scope owning a query */
+			/*		struct Query *query;*/
+		} u;
+		_Linked_List * where;		/* optional where clause */
+	};
+typedef _Scope * Scope;; ISO 10303-21:1994
+
+alphabet = reverse_solidus 'P' upper reverse_solidus .
+apostrophe = '''' .
+arbitrary = reverse_solidus 'X' reverse_solidus hex_one .
+binary = '"' ( '0' | '1' | '2' | '3' ) { hex } '"' .
+character = space | digit | lower | upper | special | reverse_solidus | apostrophe .
+complex_entity_instance = entity_instance_name '=' [ scope ] subsuper_record ';' .
+control_directive = page | alphabet | extended2 | extended4 | arbitrary .
+data_section = 'DATA' ';' entity_instance_list 'ENDSEC' ';' .
+digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' .
+end_extended = reverse_solidus 'X0' reverse_solidus .
+entity_instance = simple_entity_instance | complex_entity_instance .
+entity_instance_list = entity_instance { entity_instance } .
+entity_instance_name = '#' digit { digit } .
+enumeration = '.' upper { upper | digit } '.' .
+exchange_file = 'ISO-10303-21' ';' header_section data_section 'END-ISO-10303-21' ';' .
+export_list = '/' entity_instance_name { ',' entity_instance_name } '/' .
+extended2 = reverse_solidus 'X2' reverse_solidus hex_two { hex_two } end_extended .
+extended4 = reverse_solidus 'X4' reverse_solidus hex_four { hex_four } end_extended .
+header_entity = keyword '(' [ parameter_list ] ')' ';' .
+header_entity_list = header_entity { header_entity } .
+header_section = 'HEADER' ';' header_entity header_entity header_entity [ header_entity_list ] 'ENDSEC' ';' .
+hex = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' .
+hex_four = hex_two hex_two .
+hex_one = hex hex .
+hex_two = hex_one hex_one .
+integer = [ sign ] digit { digit } .
+keyword = user_defined_keyword | standard_keyword .
+list = '(' [ parameter { ',' parameter } ] ')' .
+lower = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' .
+non_q_char = special | digit | space | lower | upper .
+omitted_parameter = '*' .
+page = reverse_solidus 'S' reverse_solidus character .
+parameter = typed_parameter | untyped_parameter | omitted_parameter .
+parameter_list = parameter { ',' parameter } .
+real = [ sign ] digit { digit } '.' { digit } [ 'E' [ sign ] digit { digit } ] .
+reverse_solidus = '\' .
+scope = '&' 'SCOPE'  entity_instance_list 'ENDSCOPE' [ export_list ] .
+sign = '+' | '-' .
+simple_entity_instance = entity_instance_name '=' [ scope ] simple_record ';' .
+simple_record = keyword '(' [ parameter_list ] ')' .
+simple_record_list = simple_record { simple_record } .
+space = ' ' .
+special = '!' | '"' | '*' | '$' | '%' | '&' | '.' | '#' | '+' | ',' | '-' | '(' | ')' | '?' | '/' | ':' | ';' | '<' | '=' | '>' | '@' | '[' | ']' | '{' | '|' | '}' | '^' | '`' .
+standard_keyword = upper { upper | digit } .
+string = '''' { non_q_char | apostrophe apostrophe | reverse_solidus reverse_solidus | control_directive } '''' .
+subsuper_record = '(' simple_record_list ')' .
+typed_parameter = keyword '(' parameter ')' .
+untyped_parameter = '$' | integer | real | string | entity_instance_name | enumeration | binary | list .
+upper   = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' .
+user_defined_keyword = '!' upper { upper | digit } .
+===========================================================
+
+
+
+add_like_op     ::=  '+' | '-' | OR | XOR 
+binary_literal  ::=  '%' bit { bit } 
+bit        ::=  '0' | '1' 
+character  ::=  digit | letter | special 
+digit      ::=  '0' | 'l' | '2' | '3' | '4' | '5' | '6
+              | '7' | '8' | '9' 
+digits     ::=  digit { digit } 
+integer_literal  ::=  digits 
+letter  ::=  'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' |
+             'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' |
+             'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' |
+             'v' | 'w' | 'x' | 'y' | 'z' 
+logical_literal  ::=  FALSE | TRUE | UNKNOWN 
+lparen_not_star  ::=  '(' not_star 
+multiplication_like_op  ::=  '*' | '/' | DIV | 
+                             MOD | AND 
+not_lparen_star  ::=  not_paren_star | ')' 
+not_paren_star  ::=  letter | digit |
+                     not_paren_star_special 
+not_paren_star_special ::= '!' | '@' | '\#' | '$' |
+                           '%' | '^' | '&' | '_' |
+                           '-' | '+' | '=' | '{' |
+                           '}' | '[' | ']' | '~' |
+                           ':' | ';' | '"' | '''' |
+                           '<' | '>' | ',' | '.' |
+                           '?' | '/' | '|' | '\'
+not_rparen  ::=  not_paren_star | '*' | '(' 
+not_star  ::=  not_paren_star | '(' | ')' 
+real_literal  ::=  digits '.' [ digits ]
+                   [ 'e' [ sign ] digits ] 
+rel_op  ::=  '<' | '>' | '<=' | '>=' | '<>' | '=' |
+              ':<>:' | :=: 
+sign  ::=  '+' | '-' 
+simple_id  ::=  letter { letter | digit | '_' } 
+special  ::=  not_paren_star_special | '*' | '(' | ')' 
+star_not_rparen  ::=  '*' not_rparen 
+string_literal  ::=  \ q { character | \ s | \ o } \ q 
+actual_parameter_list  ::=  '(' parameter 
+                            { ',' parameter } ')' 
+aggregate_initializer  ::= '[' [ element 
+                           { ',' element } ] ']' 
+aggregate_source  ::=  expression 
+aggregate_type  ::=  AGGREGATE [ ':' type_label ] 
+                     OF parameter_type 
+aggregation_types  ::=  array_type | bag_type |
+                        list_type | set_type 
+algorithm_head  ::=  { declaration } [ constant_decl ]
+                     [ local_decl ] 
+alias_id  ::=  simple_id 
+alias_ref  ::=  alias_id 
+alias_stmt  ::=  ALIAS alias_id FOR general_ref 
+                 { qualifier } ';' { stmt } 
+                 END_ALIAS ';' 
+array_type  ::=  ARRAY '[' bound_spec ']' 
+                 OF ( OPTIONAL ] [ UNIQUE ] base_type 
+assignment_stmt  ::=  general_ref { qualifier } 
+                        ':-' expression ';' 
+attribute_decl  ::=  attribute_id | 
+                     referenced_attribute 
+attribute_id  ::=  simple_id 
+attribute_qualifier  ::=  '.' attribute_ref 
+attribute_ref  ::=  attribute_id 
+bag_type  ::=  BAG [ bound_spec ] OF base_type 
+base_type  ::=  aggregation_types | simple_types | 
+                named_types 
+binary_type  ::=  BINARY [ '(' width ')' [ FIXED ] ] 
+boolean_type  ::=  BOOLEAN 
+bound_l  ::=  simple_expression 
+bound_2  ::=  simple_expression 
+bound_spec  ::=  '[' bound_l ':' bound_2 ']' 
+built_in_constant  ::=  CONST_E | PI | SELF | '?' 
+built_in_function  ::=  ABS | ACOS | ASIN | ATAN | 
+                        BLENGTH | COS | EXISTS | EXP |
+                        FORMAT | HIBOUND | HIINDEX |
+                        LENGTH | LOBOUND | LOINDEX |
+                        LOG | LOG2 | LOG10 | NVL |
+                        ODD | ROLESOF | SIN | SIZEOF |
+                        SQRT | TAN | TYPEOF | USEDIN |
+                        VALUE 
+built_in_procedure  ::=  INSERT | REMOVE 
+case_action  ::=  case_label { ',' case_label } 
+                  ':' stmt 
+case_label  ::=  expression 
+case_stmt  ::=  CASE selector OF { case_action }
+                [ OTHERWISE ':' stmt ] END_CASE ';' 
+compound_stmt  ::=  BEGIN { stmt } END ';' 
+conformant_aggregate  ::=  conformant_type  
+                           [ bound_spec ] 
+                           OF parameter_type 
+conformant_type  ::=  ARRAY | BAG | LIST | SET 
+constant_decl  ::=  CONSTANT { constant_body } 
+                    END_CONSTANT ';' 
+constant_body  ::=  constant_id ':' base_type ':=' 
+                    expression ';' 
+constant_factor  ::=  built_in_constant | constant_ref 
+constant_id  ::=  simple_id 
+constant_ref  ::=  constant_id 
+declaration  ::=  entity_block | function_block |
+                  procedure_block | type_decl 
+derived_attr  ::=  attribute_decl ':' base_type ':-' 
+                   expression ';' 
+derive_clause  ::=  DERIVE { derived_attr } 
+element  ::=  expression [ ':' repetition ] 
+embedded_remark  ::=  '(*' { not_lparen_star | 
+                      lparen_not_star | 
+                      star_not_rparen | 
+                       embedded_remark } '*)' 
+entity_block  ::=  entity_head entity_body 
+                   END_ENTITY ';' 
+entity_body  ::=  { explicit_attr } [ derive_clause ]
+                  [ inverse clause ] [ unique_clause ]
+                  [ where_clause ] 
+entity_head  ::=  ENTITY entity_id [ subsuper ] ';' 
+entity_id  ::=  simple_id 
+entity_init  ::=  entity_ref '(' [ expression { ','
+                  expression } ] ')' 
+entity_or_rename  ::=  entity_ref [ AS entity_id ] 
+entity_ref  ::=  entity_id 
+enumeration_id  ::=  simple_id 
+enumeration_ref  ::=  [ type_ref '.' ] enumeration_id 
+enumeration_type  ::=  ENUMERATION OF '(' 
+                       enumeration_id { ',' 
+                       enumeration_id } ')' 
+escape_stmt  ::=  ESCAPE ';' 
+explicit_attr  ::=  attribute_decl { ',' 
+                    attribute_decl } ':' [ OPTIONAL ]
+                    base_type ';' 
+expression  ::=  simple_expression [ rel_op_extended 
+                 simple_expression ] 
+factor  ::=  simple_factor [ '**' simple_factor ] 
+formal_parameter  ::=  parameter_id { ',' parameter_id
+                       } ':' parameter_type 
+function_block  ::=  function_head algorithm_head {
+                     stmt } END_FUNCTION ';' 
+function_call  ::=  ( built_in_function |
+                      function_ref ) 
+                    [ actual_parameter_list ] 
+function_head  ::=  FUNCTION function_id [ '(' 
+                    formal_parameter { ';' 
+                    formal_parameter } ')' ] ';' 
+                    parameter_type ';' 
+function_id  ::=  simple_id 
+function_ref  ::=  function_id 
+general_ref  ::=  alias_ref | parameter_ref | 
+                  variable_ref 
+generic_type  ::=  GENERIC [ ':' type_label ] 
+group_qualifier  ::=  '' entity_ref 
+if_stmt  ::=  IF expression THEN stmt { stmt } 
+              [ ELSE { stmt } ] END_IF ';' 
+increment  ::=  simple_expression 
+increment_control  ::=  variable_id ':=' bound_l TO 
+                        bound_2 [ BY increment ] 
+index  ::=  simple_expression 
+index_qualitier  ::=  '(' index ']' 
+initializer  ::=  aggregate_initializer | 
+                  subsuper_init 
+integer_type  ::=  INTEGER 
+interface_specification  ::=  reference_clause | 
+                              use_clause 
+interval  ::=  '{' bound_l interval_op interval_item 
+                   interval_op bound_2 '}' 
+interval_item  ::=  simple_expression 
+interval_op  ::=  '<' | '<=" 
+inverse_attr  ::=  attribute_id " :' [ ( SET | BAG ) [ bound_spec ] OF ] entity_ref FOR attribute_ref ';' 
+inverse_clause="INVERSE" { inverse_attr } 
+label ::="simple_id" 
+labelled_attrib_list ::="[" label ':' ] referenced_attribute { ',' referenced_attribute } 
+labelled_expression ::="[" label ' : ' ] 
+expression list_type ::="LIST" [ bound_spec ] OF [ UNIQUE ] base_type 
+literal ::="binary_literal" | integer_literal | logical_literal | real_literal | string_literal local_decl ::="LOCAL" { local_variable } END LOCAL ';' 
+local_variable ::="variable_id" { ',' variable_id } ':' parameter_type [ ':=" expression ] " ;' logical_expression ::="expression" logical_type ::="LOGICAL" 
+named_types ::="entity_ref" | type_ref 
+null_stmt ::=";" 
+number_type ::="NUMBER" 
+one_of ::="ONEOF" '(' supertype_expression { ',' supertype_expression } ')' 
+parameter ::="expression" parameter_id ::="simple_id" 
+parameter_ref ::="parameter_id" 
+parameter_type ::="aggregate_type" | conformant_aggregate | generic_type | base_type 
+precision_spec ::="simple_expression" 
+procedure_block ::="procedure_head" algorithm_head { stmt } END_PROCEDURE ';' 
+procedure_call_stmt ::="(" built_in_procedure | procedure_ref ) [ actual_parameter_list ] ';' 
+procedure_head ::="PROCEDURE" procedure_id [ '(' [ VAR ] formal_parameter { ';' [ VAR ] formal_parameter } ')' ] ';' 
+procedure_id ::="simple_id" 
+procedure_ref ::="procedure_id" 
+qualifier ::="attribute_qualitier" | group_qualifier | index_qualifier | subcomponent_qualifier qualifiable_factor ::="attribute_ref" | constant_factor | function_call | general_ref 
+qualified_attribute ::="SELF" group_qualifier attribute_qualifier 
+query_expression ::="QUERY" '(' variable_id '<*' aggregate_source '|' logical_expressian ') 
+real_type ::="REAL" [ '(' precision_spec ')' ] 
+reference_clause ::="REFERENCE" FROM schema_ref [ '(' resource_or_rename { ',' resource_or_rename } ')' ] ';' 
+referenced_attribute ::="attribute_ref" | qualified_attribute 
+rel_op_extended ::="rel_op" | IN | LIKE remark ::="embedded_remark" | tail_remark 
+rename_id ::="entity_id" | function_id | procedure_id | type_id 
+repeat_control ::="[" increment_control ] [ while_control ] [ until_control ) 
+repeat_stmt ::="REPEAT" repeat_control ';' { stmt } END_REPEAT ';' 
+repetition ::="simple_expression" 
+resource_or_rename ::="resource_ref" [ AS rename_id ) 
+resource_ref ::="constant_ref" | entity_ref | function_ref | procedure_ref | type_ref 
+return_stmt ::="RETURN" [ '(' expression ')' ] ';' 
+rule_block ::="rule_head" algorithm_head { stmt } where_clause END_RULE ';' 
+rule_head ::="RULE" rule_id FOR '(' entity_ref { ',' entity_ref } ');' 
+rule_id ::="simple_id" schema_block ::="SCHEMA" schema_id ';' schema_body END_SCHEMA ';' 
+schema_body ::="{" interface_specification } [ constant_decl ] { declaration | rule_block }
+schema_id ::="simple_id" schema_ref ::="schema_id" 
+select_type ::="SELECT" '(' named_types { ',' named_types } ')' 
+selector ::="expression" set_type ::="SET" [ bound_spec ] OF base_type 
+simple_expression ::="term" { add_like_op term } 
+simple_factor ::="enumeration_ref" | initializer | interval | literal | qualifiable_factor { qualifier } | query_expression | '(' expression ')' | unary_op simple_factor 
+simple_types ::="binary_type" | boolean_type | integer_type | logical_type | number_tyge | real_type | string_type 
+skip_stmt ::="SKIP" ';' 
+stmt ::="alias_stmt" | assignment_stmt | case_stmt | compound_stmt | escape_stmt | if_stmt | null_stmt | procedure_call_stmt | repeat_stmt | return_stmt | skip_stmt string_type ::="STRING" [ '(' width ')' [ FIXED ] ] subcomponent_qualifier ::="(" index ':' index ')' 
+subsuper ::="[" supertype_declaration ] [ subtype_declaration ] subsuper_init ::="entity_init" { '||' entity_init } subtype_declaration ::="SUBTYPE" OF '(' entity_ref { ',' entity_ref } ')' supertype_declaration ::="(" ABSTRACT SUPERTYPE ) | ( [ ABSTRACT ] SUPERTYPE OF '(' supertype_expression ')' ) 
+supertype_expression ::="supertype_factor" { ( AND | ANDOR ) supertype_factor } supertype_factor ::="entity_ref" | one_of | '(' supertype_expression ')' tail_remark ::="--" { a | s } n term ::="factor" { multiplication_like_op factor } type_decl ::="TYPE" type_id '=" underlying_type " ;' [ where_clause ] END_TYPE ';' 
+type_id ::="simple_id" 
+type_label ::="simple_id" 
+type_ref ::="type_id" 
+unary_op ::="+" | '-' | NOT 
+underlying_type ::="enumeration_type" | select_type | aggregation_types | simple_types | type_ref 
+unique_clause ::="UNIQUE" labelled_attrib_list ';' { labelled_attrib_list ';' } 
+until_control ::="UNTIL" expression 
+use_clause ::="USE" FROM schema_ref [ '(' entity_or_rename { ',' entity_or_rename } ')' ] ';' 
+variable_id ::="simple_id" variable_ref ::="variable_id" 
+where_clause ::="WHERE" labelled_expression ';' { labelled_expression ';' } 
+while_control ::="WHILE" expression width ::="simple_expression" 
+
+
+
+
+
+
+#else
+			if(var->Type()==reference_)
+			{
+				type_enum t = _symbols.FindVarType(var->m_sClassname);
+				if(t==entity_ || t== select_)
+				{
+					cppImplFile<<StrFormat("\t%s = new %s();\n", var->Name(), var->m_sClassname );
+					continue;
+				}
+
+			}
+			if(!(var->Type()==entity_ || var->Type()==select_ ))
+				continue;
+			cppImplFile<<StrFormat("\t%s = new %s();\n", var->Name(), var->m_sClassname );

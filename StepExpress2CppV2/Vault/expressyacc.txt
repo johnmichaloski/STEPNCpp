@@ -1,0 +1,682 @@
+
+
+
+action_body		: action_body_item_rep statement_rep
+			;
+
+/* this should be rewritten to force order, see comment on next production */
+action_body_item	: declaration
+			| constant_decl
+			| local_decl
+			;
+
+action_body_item_rep	: /* NULL item */
+			| action_body_item action_body_item_rep
+			;
+
+
+actual_parameters	: TOK_LEFT_PAREN expression_list TOK_RIGHT_PAREN
+			| TOK_LEFT_PAREN TOK_RIGHT_PAREN
+			;
+
+aggregate_initializer	: TOK_LEFT_BRACKET TOK_RIGHT_BRACKET
+			| TOK_LEFT_BRACKET aggregate_init_body TOK_RIGHT_BRACKET
+			;
+
+aggregate_init_element	: expression
+/*
+			| expression TOK_COLON expression
+*/
+			;
+
+aggregate_init_body	: aggregate_init_element
+			| aggregate_init_element TOK_COLON expression
+			| aggregate_init_body TOK_COMMA aggregate_init_element
+			| aggregate_init_body TOK_COMMA aggregate_init_element TOK_COLON expression
+			;
+
+aggregate_type		: TOK_AGGREGATE TOK_OF parameter_type
+			| TOK_AGGREGATE TOK_COLON TOK_IDENTIFIER TOK_OF
+			  parameter_type
+			;
+
+aggregation_type	: array_type
+			| bag_type
+			| list_type
+			| set_type
+			;
+
+alias_statement		: TOK_ALIAS TOK_IDENTIFIER TOK_FOR general_ref semicolon
+			;
+
+array_type		: TOK_ARRAY index_spec TOK_OF optional_or_unique
+			  attribute_type
+			;
+
+/* this is anything that can be assigned to */
+assignable		: assignable qualifier
+			| identifier
+			;
+
+assignment_statement	: assignable TOK_ASSIGNMENT expression semicolon
+			;
+
+attribute_type		: aggregation_type
+			| basic_type
+			| defined_type
+			;
+
+explicit_attr_list	: /* NULL body */
+			| explicit_attr_list explicit_attribute
+			;
+
+bag_type		: TOK_BAG limit_spec TOK_OF attribute_type
+			| TOK_BAG TOK_OF attribute_type
+			;
+
+basic_type		: TOK_BOOLEAN
+			| TOK_INTEGER precision_spec
+			| TOK_REAL precision_spec
+			| TOK_NUMBER
+			| TOK_LOGICAL
+			| TOK_BINARY precision_spec optional_fixed
+			| TOK_STRING precision_spec optional_fixed
+			;
+
+block_list		: /*NULL*/
+			| block_list block_member
+			;
+
+block_member		: declaration
+			| include_directive
+			| rule_decl
+			;
+
+by_expression		: /* NULL by_expression */
+			| TOK_BY expression
+			;
+
+cardinality_op		: TOK_LEFT_CURL expression TOK_COLON expression TOK_RIGHT_CURL
+			;
+
+case_action		: case_labels TOK_COLON statement
+			;
+
+case_action_list	: /* no case_actions */
+			| case_action_list case_action
+/*			| error
+			  { ERROR(ERROR_empty_case);
+			    $$ = LISTcreate(); }*/
+			;
+
+case_block		: case_action_list case_otherwise
+			;
+
+case_labels		: expression
+			| case_labels TOK_COMMA expression
+/*			| case_labels error
+			  { ERROR(ERROR_comma_expected);
+			    $$ = $1; }
+			| case_labels error
+			  { ERROR(ERROR_comma_expected); }
+			  expression
+			  { yyerrok;
+			    $$ = $1; }
+			| case_labels TOK_COMMA error
+			  { ERROR(ERROR_case_labels);
+			    $$ = $1; }*/
+			;
+
+case_otherwise		: /* no otherwise clause */
+			| TOK_OTHERWISE TOK_COLON statement
+			;
+
+case_statement		: TOK_CASE expression TOK_OF case_block TOK_END_CASE
+			  semicolon
+			;
+
+compound_statement	: TOK_BEGIN statement_rep TOK_END semicolon
+			;
+
+constant		: TOK_PI
+			| TOK_E
+			;
+
+constant_body		: identifier TOK_COLON attribute_type TOK_ASSIGNMENT
+				expression semicolon
+			;
+
+constant_body_list	: /* NULL */
+			| constant_body constant_body_list
+			;
+
+constant_decl		:
+			  TOK_CONSTANT constant_body_list TOK_END_CONSTANT
+			  	semicolon
+			;
+
+declaration		: entity_decl
+			| function_decl
+			| procedure_decl
+			| type_decl
+			;
+
+derive_decl		: /* NULL body */
+			| TOK_DERIVE derived_attribute_rep
+			;
+
+derived_attribute	: attribute_decl TOK_COLON attribute_type initializer semicolon
+			;
+
+derived_attribute_rep	: derived_attribute
+			| derived_attribute_rep derived_attribute
+			;
+
+entity_body		: explicit_attr_list derive_decl inverse_clause
+			  unique_clause where_rule_OPT
+			;
+
+entity_decl		: entity_header subsuper_decl semicolon
+			  entity_body TOK_END_ENTITY semicolon
+			;
+
+
+entity_header		: TOK_ENTITY TOK_IDENTIFIER
+			;
+
+enumeration_type	: TOK_ENUMERATION TOK_OF nested_id_list
+			;
+
+escape_statement	: TOK_ESCAPE semicolon
+			;
+
+attribute_decl		: TOK_IDENTIFIER
+			| TOK_SELF TOK_BACKSLASH TOK_IDENTIFIER TOK_DOT TOK_IDENTIFIER
+			;
+
+attribute_decl_list	: attribute_decl
+			| attribute_decl_list TOK_COMMA attribute_decl
+			;
+
+optional		: /*NULL*/
+			| TOK_OPTIONAL
+			;
+
+explicit_attribute	: attribute_decl_list TOK_COLON optional
+			  attribute_type semicolon
+			;
+
+
+express_file		: 
+			  schema_decl_list
+			;
+
+schema_decl_list	: schema_decl
+			| schema_decl_list schema_decl
+			;
+
+expression		: simple_expression
+			| expression TOK_AND expression
+			| expression TOK_OR expression
+			| expression TOK_XOR expression
+			| expression TOK_LESS_THAN expression
+			| expression TOK_GREATER_THAN expression
+			| expression TOK_EQUAL expression
+			| expression TOK_LESS_EQUAL expression
+			| expression TOK_GREATER_EQUAL expression
+			| expression TOK_NOT_EQUAL expression
+			| expression TOK_INST_EQUAL expression
+			| expression TOK_INST_NOT_EQUAL expression
+			| expression TOK_IN expression
+			| expression TOK_LIKE expression
+			| simple_expression cardinality_op simple_expression
+			;
+
+simple_expression	: unary_expression
+			| simple_expression TOK_CONCAT_OP simple_expression
+			| simple_expression TOK_EXP simple_expression
+			| simple_expression TOK_TIMES simple_expression
+			| simple_expression TOK_DIV simple_expression
+			| simple_expression TOK_REAL_DIV simple_expression
+			| simple_expression TOK_MOD simple_expression
+			| simple_expression TOK_PLUS simple_expression
+			| simple_expression TOK_MINUS simple_expression			;
+
+expression_list		: expression
+			| expression_list TOK_COMMA expression
+			;
+
+var			: /*NULL*/
+			| TOK_VAR
+			;
+
+formal_parameter	: var id_list TOK_COLON parameter_type
+			;
+
+formal_parameter_list	: /* no parameters */
+			| TOK_LEFT_PAREN formal_parameter_rep TOK_RIGHT_PAREN
+			;
+
+formal_parameter_rep	: formal_parameter
+			| formal_parameter_rep semicolon formal_parameter
+			;
+
+parameter_type		: basic_type
+			| conformant_aggregation
+			| defined_type
+			| generic_type
+			;
+
+function_call		: function_id actual_parameters
+			;
+
+function_decl		: function_header action_body TOK_END_FUNCTION
+			  semicolon
+			;
+
+function_header		: TOK_FUNCTION
+
+			;
+
+function_id		: TOK_IDENTIFIER
+			| TOK_BUILTIN_FUNCTION
+			;
+
+conformant_aggregation	: aggregate_type
+			| TOK_ARRAY TOK_OF optional_or_unique parameter_type
+			| TOK_ARRAY index_spec TOK_OF optional_or_unique parameter_type
+			| TOK_BAG TOK_OF parameter_type
+			| TOK_BAG index_spec TOK_OF parameter_type
+			| TOK_LIST TOK_OF unique parameter_type
+			| TOK_LIST index_spec TOK_OF unique parameter_type
+			| TOK_SET TOK_OF parameter_type
+			| TOK_SET index_spec TOK_OF parameter_type
+			;
+
+generic_type		: TOK_GENERIC
+			| TOK_GENERIC TOK_COLON TOK_IDENTIFIER
+			;
+
+id_list			: TOK_IDENTIFIER
+			| id_list TOK_COMMA TOK_IDENTIFIER
+			;
+
+identifier		: TOK_SELF
+			| TOK_QUESTION_MARK
+			| TOK_IDENTIFIER
+			;
+
+if_statement		: TOK_IF expression TOK_THEN statement_rep
+			  TOK_END_IF semicolon
+			| TOK_IF expression TOK_THEN statement_rep
+			  TOK_ELSE statement_rep TOK_END_IF semicolon			;
+
+include_directive	: TOK_INCLUDE TOK_STRING_LITERAL semicolon
+			;
+
+increment_control	: TOK_IDENTIFIER TOK_ASSIGNMENT expression TOK_TO
+			  expression by_expression
+			;
+
+index_spec		: TOK_LEFT_BRACKET expression TOK_COLON expression
+			  TOK_RIGHT_BRACKET
+			;
+
+initializer		: TOK_ASSIGNMENT expression
+			;
+
+rename			: TOK_IDENTIFIER
+			| TOK_IDENTIFIER TOK_AS TOK_IDENTIFIER
+			;
+
+rename_list		: rename
+			| rename_list TOK_COMMA rename
+			;
+
+parened_rename_list	: TOK_LEFT_PAREN rename_list TOK_RIGHT_PAREN
+			;
+
+reference_clause	: TOK_REFERENCE TOK_FROM TOK_IDENTIFIER semicolon
+			| TOK_REFERENCE TOK_FROM TOK_IDENTIFIER 
+			  parened_rename_list semicolon
+			;
+
+use_clause		: TOK_USE TOK_FROM TOK_IDENTIFIER semicolon
+			| TOK_USE TOK_FROM TOK_IDENTIFIER
+			  parened_rename_list semicolon
+			;
+
+interface_specification	: use_clause
+			| reference_clause
+			;
+
+interface_specification_list	: /*NULL*/
+			| interface_specification_list interface_specification
+			;
+
+interval		: TOK_LEFT_CURL simple_expression rel_op
+			  simple_expression rel_op simple_expression
+			  right_curl
+			;
+
+set_or_bag_of_entity	: defined_type
+			| TOK_SET TOK_OF defined_type
+			| TOK_SET limit_spec TOK_OF defined_type
+			| TOK_BAG limit_spec TOK_OF defined_type
+			| TOK_BAG TOK_OF defined_type
+			;
+
+inverse_attr_list	: inverse_attr
+			| inverse_attr_list inverse_attr
+			;
+
+inverse_attr		: TOK_IDENTIFIER TOK_COLON set_or_bag_of_entity
+				TOK_FOR TOK_IDENTIFIER semicolon
+			;
+
+inverse_clause		: /*NULL*/
+			| TOK_INVERSE inverse_attr_list
+			;
+
+limit_spec		: TOK_LEFT_BRACKET expression TOK_COLON
+			  expression TOK_RIGHT_BRACKET
+			;
+
+list_type		: TOK_LIST limit_spec TOK_OF unique attribute_type
+			| TOK_LIST TOK_OF unique attribute_type
+			;
+
+literal			: TOK_INTEGER_LITERAL
+			| TOK_REAL_LITERAL
+			| TOK_STRING_LITERAL
+			| TOK_STRING_LITERAL_ENCODED
+			| TOK_LOGICAL_LITERAL
+			| TOK_BINARY_LITERAL
+			| constant
+			;
+
+local_initializer	: TOK_ASSIGNMENT expression
+			;
+
+local_variable		: id_list TOK_COLON parameter_type semicolon
+			| id_list TOK_COLON parameter_type local_initializer semicolon
+			;
+
+local_body		: /* no local_variables */
+			| local_variable local_body
+			;
+
+local_decl		: TOK_LOCAL local_body TOK_END_LOCAL semicolon
+			;
+
+defined_type		: TOK_IDENTIFIER
+			;
+
+defined_type_list		: defined_type
+			| defined_type_list TOK_COMMA defined_type
+			;
+
+nested_id_list		: TOK_LEFT_PAREN id_list TOK_RIGHT_PAREN
+			;
+
+oneof_op		: TOK_ONEOF
+			;
+
+optional_or_unique	: /* NULL body */
+			| TOK_OPTIONAL
+			| TOK_UNIQUE
+			| TOK_OPTIONAL TOK_UNIQUE
+			| TOK_UNIQUE TOK_OPTIONAL
+			;
+
+optional_fixed		: /* nuthin' */
+			| TOK_FIXED
+			;
+
+precision_spec		: /* no precision specified */
+			| TOK_LEFT_PAREN expression TOK_RIGHT_PAREN
+			;
+
+
+proc_call_statement	: procedure_id actual_parameters semicolon
+			| procedure_id semicolon
+			;
+
+procedure_decl		: procedure_header action_body TOK_END_PROCEDURE
+			  semicolon
+			;
+
+procedure_header	: TOK_PROCEDURE
+			  formal_parameter_list semicolon
+			;
+
+procedure_id		: TOK_IDENTIFIER
+			| TOK_BUILTIN_PROCEDURE
+			;
+
+group_ref		: TOK_BACKSLASH TOK_IDENTIFIER
+			;
+
+qualifier		: TOK_DOT TOK_IDENTIFIER
+			| TOK_BACKSLASH TOK_IDENTIFIER
+			| TOK_LEFT_BRACKET simple_expression TOK_RIGHT_BRACKET
+			| TOK_LEFT_BRACKET simple_expression TOK_COLON
+					   simple_expression TOK_RIGHT_BRACKET
+			;
+
+query_expression	: TOK_QUERY TOK_LEFT_PAREN
+			  TOK_IDENTIFIER TOK_ALL_IN expression
+			  TOK_SUCH_THAT
+			  expression TOK_RIGHT_PAREN
+			;
+
+rel_op			: TOK_LESS_THAN
+			| TOK_GREATER_THAN
+			| TOK_EQUAL
+			| TOK_LESS_EQUAL
+			| TOK_GREATER_EQUAL
+			| TOK_NOT_EQUAL
+			| TOK_INST_EQUAL
+			| TOK_INST_NOT_EQUAL
+			;
+
+repeat_statement	: TOK_REPEAT increment_control
+				while_control until_control semicolon
+			  statement_rep TOK_END_REPEAT semicolon
+			| TOK_REPEAT while_control until_control semicolon
+			  statement_rep TOK_END_REPEAT semicolon
+			;
+
+return_statement	: TOK_RETURN semicolon
+			| TOK_RETURN TOK_LEFT_PAREN expression TOK_RIGHT_PAREN
+			  semicolon
+			;
+
+right_curl		: TOK_RIGHT_CURL
+			;
+
+rule_decl		: rule_header action_body where_rule TOK_END_RULE semicolon
+			;
+
+rule_formal_parameter	: TOK_IDENTIFIER
+			;
+
+rule_formal_parameter_list	: rule_formal_parameter
+			| rule_formal_parameter_list TOK_COMMA rule_formal_parameter
+			;
+
+rule_header		: TOK_RULE
+			;
+
+schema_body		: interface_specification_list
+						block_list
+			| interface_specification_list constant_decl
+						block_list
+			;
+
+schema_decl		: schema_header schema_body TOK_END_SCHEMA
+			  semicolon
+			| include_directive
+			;
+
+schema_header		: TOK_SCHEMA TOK_IDENTIFIER semicolon
+
+			;
+
+select_type		: TOK_SELECT TOK_LEFT_PAREN defined_type_list
+			  TOK_RIGHT_PAREN
+			;
+
+semicolon		: TOK_SEMICOLON
+			;
+
+set_type		: TOK_SET limit_spec TOK_OF attribute_type
+			| TOK_SET TOK_OF attribute_type
+			;
+
+skip_statement		: TOK_SKIP semicolon
+			;
+
+statement		: alias_statement
+			| assignment_statement
+			| case_statement
+			| compound_statement
+			| escape_statement
+			| if_statement
+			| proc_call_statement
+			| repeat_statement
+			| return_statement
+			| skip_statement
+			;
+
+statement_rep		: /* no statements */
+			| /* ignore null statement */
+			  semicolon statement_rep
+			| statement statement_rep
+			;
+
+/* if the actions look backwards, remember the declaration syntax:  */
+/* <entity> SUPERTYPE OF <subtype1> ... SUBTYPE OF <supertype1> ... */
+
+subsuper_decl		: /* NULL body */
+			| supertype_decl
+			| subtype_decl
+			| supertype_decl subtype_decl
+			;
+
+subtype_decl		: TOK_SUBTYPE TOK_OF TOK_LEFT_PAREN defined_type_list
+			  TOK_RIGHT_PAREN
+			;
+
+supertype_decl		: TOK_ABSTRACT TOK_SUPERTYPE
+			| TOK_SUPERTYPE TOK_OF TOK_LEFT_PAREN
+			  supertype_expression TOK_RIGHT_PAREN
+			| TOK_ABSTRACT TOK_SUPERTYPE TOK_OF TOK_LEFT_PAREN
+			  supertype_expression TOK_RIGHT_PAREN
+			;
+
+supertype_expression	: supertype_factor
+			| supertype_expression TOK_AND supertype_factor
+			| supertype_expression TOK_ANDOR supertype_factor
+			;
+
+supertype_expression_list	: supertype_expression
+			| supertype_expression_list TOK_COMMA supertype_expression
+			;
+
+supertype_factor	: identifier
+			| oneof_op TOK_LEFT_PAREN supertype_expression_list
+				TOK_RIGHT_PAREN
+			| TOK_LEFT_PAREN supertype_expression TOK_RIGHT_PAREN
+			;
+
+type			: aggregation_type
+			| basic_type
+			| defined_type
+			| select_type
+			;
+
+type_item_body		: enumeration_type
+			| type 
+			;
+
+type_item		: TOK_IDENTIFIER TOK_EQUAL  type_item_body  semicolon
+			;
+
+type_decl		: TOK_TYPE type_item where_rule_OPT  TOK_END_TYPE semicolon
+			;
+
+
+general_ref		: assignable group_ref
+			| assignable
+			;
+
+unary_expression	: aggregate_initializer
+			| unary_expression qualifier
+			| literal
+			| function_call
+			| identifier
+			| TOK_LEFT_PAREN expression TOK_RIGHT_PAREN
+			| interval
+			| query_expression
+			| TOK_NOT unary_expression
+			| TOK_PLUS unary_expression		%prec TOK_NOT
+			| TOK_MINUS unary_expression		%prec TOK_NOT
+			;
+
+unique			: /* look for optional UNIQUE */
+			| TOK_UNIQUE
+			;
+
+qualified_attr		: TOK_IDENTIFIER
+			| TOK_SELF TOK_BACKSLASH TOK_IDENTIFIER TOK_DOT TOK_IDENTIFIER
+			;
+
+qualified_attr_list	: qualified_attr
+			| qualified_attr_list TOK_COMMA qualified_attr
+			;
+
+labelled_attrib_list	: qualified_attr_list semicolon
+			| TOK_IDENTIFIER TOK_COLON qualified_attr_list semicolon
+			;
+
+/*
+labelled_attrib_list	: /* these could be unary_expression_lists instead */
+			  /* of expression_lists if there is a parse prob */
+/*			  expression_list semicolon
+			  { LISTadd_first($1,(Generic)EXPRESSION_NULL);
+			    $$ = $1;}
+			| TOK_IDENTIFIER TOK_COLON expression_list semicolon
+			  { LISTadd_first($3,(Generic)$1);
+			    $$ = $3;}
+			;
+*/
+
+/* returns a list */
+labelled_attrib_list_list	:
+			  labelled_attrib_list
+			| labelled_attrib_list_list labelled_attrib_list
+			;
+
+unique_clause		=  *(nique clause is always optional */
+			| TOK_UNIQUE labelled_attrib_list_list
+			;
+
+until_control		: /* NULL */
+			| TOK_UNTIL expression
+			;
+
+where_clause		: expression semicolon
+			| TOK_IDENTIFIER TOK_COLON expression semicolon
+			;
+
+where_clause_list	: where_clause
+			| where_clause_list where_clause
+			;
+
+where_rule		: TOK_WHERE where_clause_list	;
+
+where_rule_OPT		: /* NULL body: no where rule */	| where_rule			;
+
+while_control		: /* NULL */	| TOK_WHILE expression			;
+

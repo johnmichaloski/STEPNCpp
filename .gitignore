@@ -1,0 +1,16 @@
+*.~*~
+*.pyc
+.catkin_workspace
+*build/
+*devel/
+*Log/
+*.log
+Log_*
+install
+Todo.txt
+debug/
+*.so*
+docs/
+*.user.*
+*.pro.user.*
+*.so*

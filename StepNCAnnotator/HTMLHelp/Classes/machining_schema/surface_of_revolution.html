@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> surface_of_revolution </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="surface_of_revolution">surface_of_revolution </A></H1><P>A surface of revolution is the surface obtained by rotating a curve one complete revolution about an axis.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#surface_of_revolution">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>axis_position </TD>
+<TD><A HREF="../machining_schema/axis1_placement.html#axis1_placement">axis1_placement</A> </TD>
+<TD>A point on the axis of revolution and the direction of the axis of revolution. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY surface_of_revolution 
+SUBTYPE  OF (<A HREF="swept_surface.html">swept_surface</A> );
+ axis_position : <A HREF="../machining_schema/axis1_placement.html#axis1_placement">axis1_placement</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

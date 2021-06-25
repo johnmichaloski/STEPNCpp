@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> b_spline_curve_with_knots </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="b_spline_curve_with_knots">b_spline_curve_with_knots </A></H1><P>This is the type of b spline curve for which the knot values are explicitly given. This subtype shall be used to represent non­uniform B­spline curves and may be used for other knot types.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#b_spline_curve_with_knots">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>knot_multiplicities </TD>
+<TD> LIST [ 2 : ? ] OF INTEGER </TD>
+<TD>The multiplicities of the knots. This list defines the number of times each knot in the knots list is to be repeated in constructing the knot array. </TD></TR>
+<TR><TD>knots </TD>
+<TD> LIST [ 2 : ? ] OF parameter_value </TD>
+<TD>The list of distinct knots used to define the B­spline basis functions. </TD></TR>
+<TR><TD>knot_spec </TD>
+<TD><A HREF="../machining_schema/knot_type.html#knot_type">knot_type</A> </TD>
+<TD>The description of the knot type. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY b_spline_curve_with_knots 
+SUBTYPE  OF (<A HREF="b_spline_curve.html">b_spline_curve</A> );
+ knot_multiplicities :  LIST [ 2 : ? ] OF INTEGER;
+ knots :  LIST [ 2 : ? ] OF parameter_value;
+ knot_spec : <A HREF="../machining_schema/knot_type.html#knot_type">knot_type</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

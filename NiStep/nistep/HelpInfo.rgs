@@ -1,0 +1,26 @@
+HKCR
+{
+	NiStep.HelpInfo.1 = s 'HelpInfo Class'
+	{
+		CLSID = s '{EE4E8779-2476-46A6-9CD8-9CD48CF499A3}'
+	}
+	NiStep.HelpInfo = s 'HelpInfo Class'
+	{
+		CLSID = s '{EE4E8779-2476-46A6-9CD8-9CD48CF499A3}'
+		CurVer = s 'NiStep.HelpInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {EE4E8779-2476-46A6-9CD8-9CD48CF499A3} = s 'HelpInfo Class'
+		{
+			ProgID = s 'NiStep.HelpInfo.1'
+			VersionIndependentProgID = s 'NiStep.HelpInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D36EF86D-25FB-4D81-8C40-B279AABEC145}'
+		}
+	}
+}

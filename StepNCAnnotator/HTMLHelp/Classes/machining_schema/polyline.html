@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> polyline </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="polyline">polyline </A></H1><P>A polyline is a bounded curve of n \Gamma 1 linear segments, defined by a list of n points,<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#polyline">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>points </TD>
+<TD> LIST [ 2 : ? ] OF cartesian_point </TD>
+<TD>The cartesian points defining the polyline. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY polyline 
+SUBTYPE  OF (<A HREF="bounded_curve.html">bounded_curve</A> );
+ points :  LIST [ 2 : ? ] OF cartesian_point;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

@@ -1,0 +1,21 @@
+<HTML><HEAD><TITLE> channel </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="channel">channel </A></H1><P>his entity is used to identify the channel when multiple channel operation is engaged. It is currently a primitive implementation and cannot be used for machine independent programs. Further attributes, like special kinematical descriptions, can be added to this entity in the future. For simple synchronisation, the NC functions set_mark and wait_for_mark can be used.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#channel">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_id </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>The identification of the channel. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY channel ;
+ its_id : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

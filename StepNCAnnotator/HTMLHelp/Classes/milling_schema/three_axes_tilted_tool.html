@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> three_axes_tilted_tool </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="three_axes_tilted_tool">three_axes_tilted_tool </A></H1><P>In this mode of operation, the tool is tilted, so the tool direction is not parallel to any of the three machine axes. However, the tool is clamped to fix the tool angle and motion is still only in the three linear axes. Unlike five_axes_var_tilt_yaw the tilt and/or yaw angles are not variable.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#three_axes_tilted_tool">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>tool_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The direction of the tool in absolute machine co-ordinates. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY three_axes_tilted_tool 
+SUBTYPE  OF (<A HREF="tool_direction_for_milling.html">tool_direction_for_milling</A> );
+ tool_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

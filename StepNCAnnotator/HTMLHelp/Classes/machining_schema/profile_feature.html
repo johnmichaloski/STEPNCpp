@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> profile_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="profile_feature">profile_feature </A></H1><P>A profile feature is a volume of material removed from the boundary shape of a workpiece. This is an abstract supertype of general outside profile and shape profile.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#profile_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>profile_swept_shape </TD>
+<TD><A HREF="../machining_schema/linear_path.html#linear_path">linear_path</A> </TD>
+<TD>An 2D line, when combined with a profile, which creates the shape of the profile feature. The placement of the linear path shall be the same as the profile feature. The direction of linear shall be with the Z-axis toward the direction of travel of the profile boundary. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY profile_feature  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="general_outside_profile.html">general_outside_profile</A> ,<A HREF="shape_profile.html">shape_profile</A> ) )
+SUBTYPE  OF (<A HREF="machining_feature.html">machining_feature</A> );
+ profile_swept_shape : <A HREF="../machining_schema/linear_path.html#linear_path">linear_path</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

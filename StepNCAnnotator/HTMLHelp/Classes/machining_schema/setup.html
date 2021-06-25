@@ -1,0 +1,33 @@
+<HTML><HEAD><TITLE> setup </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="setup">setup </A></H1><P>This entity includes information concerning the location of the workpieces’ coordinate systems. As one setup might include several workpieces of which each one might have its own coordinate system there is one more hierarchical level of frame of reference: By the setup’s attribute its_origin a cartesian coordinate system is defined relative to the machine coordinate system. It is the frame of reference for the location of each workpiece related to the setup. The setup’s origin is only valid within this particular setup and is not referenced by any other setup.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#setup">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_id </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>The identification of the setup. </TD></TR>
+<TR><TD>its_origin </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>Position and orientation of the setup’s cartesian coordinate system relative to the machine coordinate system. </TD></TR>
+<TR><TD>its_secplane </TD>
+<TD><A HREF="../machining_schema/elementary_surface.html#elementary_surface">elementary_surface</A> </TD>
+<TD>The security plane for the whole setup. On or above this plane, i. e. for z values greater than those of the elementary_surface, a safe movement of the tool without danger of collision is possible. The dimensions given are relative coordinates as measured from the origin of the setup </TD></TR>
+<TR><TD>its_workpiece_setup </TD>
+<TD> LIST [ 0 : ? ] OF workpiece_setup </TD>
+<TD>Each workpiece which is included within the setup and which will be machined within the respective workplan is listed with its placement and additional informations for its setup. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY setup ;
+ its_id : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ its_origin : OPTIONAL <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+ its_secplane : <A HREF="../machining_schema/elementary_surface.html#elementary_surface">elementary_surface</A>;
+ its_workpiece_setup :  LIST [ 0 : ? ] OF workpiece_setup;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

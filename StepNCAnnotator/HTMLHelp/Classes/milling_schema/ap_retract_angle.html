@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> ap_retract_angle </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="ap_retract_angle">ap_retract_angle </A></H1><P>The movement is heading towards the start or from the end point in an angle to the surface. For plane milling, this may typically be an angle of 0 degrees in order to move straight from outside the workpiece into the material.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#ap_retract_angle">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Approach or lift angle versus the surface in the end point of the approach or the start point of the lift, respectively. </TD></TR>
+<TR><TD>travel_length </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The length of the angular approach. After travel_length has been reached, the tool will proceed to the retract plane using the shortest connection and vice versa. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY ap_retract_angle 
+SUBTYPE  OF (<A HREF="air_strategy.html">air_strategy</A> );
+ angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ travel_length : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

@@ -1,0 +1,1832 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: CVS Cheatsheet
+Date: Mon, 10 Aug 2009 13:58:59 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CA19C2.B5D845C0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5579
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CA19C2.B5D845C0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns=3D"http://www.w3.org/TR/REC-html40" xmlns:v =3D=20
+"urn:schemas-microsoft-com:vml" xmlns:o =3D=20
+"urn:schemas-microsoft-com:office:office" xmlns:w =3D=20
+"urn:schemas-microsoft-com:office:word"><HEAD><TITLE>CVS =
+Cheatsheet</TITLE>
+<META content=3D"CVS Cheatsheet" name=3DTitle>
+<META content=3D"CVS cheatsheet" name=3DKeywords>
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8">
+<META content=3DWord.Document name=3DProgId>
+<META content=3D"MSHTML 6.00.6000.16735" name=3DGENERATOR>
+<META content=3D"Microsoft Word 11" name=3DOriginator><LINK=20
+href=3D"../Development/sites/cd/cvs/cvs_cheatsheet_files/filelist.xml"=20
+rel=3DFile-List><LINK=20
+href=3D"../Development/sites/cd/cvs/cvs_cheatsheet_files/editdata.mso"=20
+rel=3DEdit-Time-Data><!--[if !mso]>
+<STYLE>v\:* {
+	BEHAVIOR: url(#default#VML)
+}
+o\:* {
+	BEHAVIOR: url(#default#VML)
+}
+w\:* {
+	BEHAVIOR: url(#default#VML)
+}
+.shape {
+	BEHAVIOR: url(#default#VML)
+}
+</STYLE>
+<![endif]--><!--[if gte mso 9]><xml>=0A=
+ <o:DocumentProperties>=0A=
+  <o:Author>Greg White</o:Author>=0A=
+  <o:Keywords>CVS cheatsheet</o:Keywords>=0A=
+  <o:Template>Normal</o:Template>=0A=
+  <o:LastAuthor>Greg White</o:LastAuthor>=0A=
+  <o:Revision>2</o:Revision>=0A=
+  <o:TotalTime>1</o:TotalTime>=0A=
+  <o:Created>2005-02-17T02:41:00Z</o:Created>=0A=
+  <o:LastSaved>2005-02-17T02:42:00Z</o:LastSaved>=0A=
+  <o:Pages>2</o:Pages>=0A=
+  <o:Words>1958</o:Words>=0A=
+  <o:Characters>11163</o:Characters>=0A=
+  <o:Company>SLAC</o:Company>=0A=
+  <o:Lines>93</o:Lines>=0A=
+  <o:Paragraphs>22</o:Paragraphs>=0A=
+  <o:CharactersWithSpaces>13708</o:CharactersWithSpaces>=0A=
+  <o:Version>11.256</o:Version>=0A=
+ </o:DocumentProperties>=0A=
+ <o:OfficeDocumentSettings>=0A=
+  <o:AllowPNG/>=0A=
+ </o:OfficeDocumentSettings>=0A=
+</xml><![endif]--><!--[if gte mso 9]><xml>=0A=
+ <w:WordDocument>=0A=
+  <w:Zoom>BestFit</w:Zoom>=0A=
+  <w:ActiveWritingStyle Lang=3D"EN-US" VendorID=3D"6" DLLVersion=3D"2" =
+NLCheck=3D"0">3</w:ActiveWritingStyle>=0A=
+ </w:WordDocument>=0A=
+<</xml><![endif]-->
+<STYLE>@font-face {
+	font-family: Times New Roman;
+}
+@font-face {
+	font-family: Courier New;
+}
+@font-face {
+	font-family: Arial Unicode MS;
+}
+@page Section1 {size: 8.5in 11.0in; margin: 1.0in 1.25in 1.0in 1.25in; =
+mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; }
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+LI.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+DIV.MSONORMAL {
+	mso-bidi-font-family: "Times New Roman"
+}
+P.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+LI.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+DIV.MSOPLAINTEXT {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+CODE {
+	mso-bidi-font-family: "Arial Unicode MS"
+}
+P.MsoNormal {
+	FONT-SIZE: 10pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-style-parent: ""; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan
+}
+LI.MsoNormal {
+	FONT-SIZE: 10pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-style-parent: ""; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan
+}
+DIV.MsoNormal {
+	FONT-SIZE: 10pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-style-parent: ""; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 24pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: =
+0in; FONT-FAMILY: Times; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan; =
+mso-outline-level: 1; mso-font-kerning: 18.0pt
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: =
+0in; FONT-STYLE: italic; FONT-FAMILY: Times; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan; =
+mso-outline-level: 2; mso-style-next: Normal
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: =
+0in; FONT-FAMILY: Times; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan; =
+mso-outline-level: 3; mso-style-next: Normal
+}
+H4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: =
+0in; FONT-FAMILY: Times; mso-margin-top-alt: auto; =
+mso-margin-bottom-alt: auto; mso-pagination: widow-orphan; =
+mso-outline-level: 4; mso-style-next: Normal
+}
+A:link {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+SPAN.MsoHyperlink {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+A:visited {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+SPAN.MsoHyperlinkFollowed {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+P.MsoPlainText {
+	FONT-SIZE: 12pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; =
+mso-pagination: widow-orphan
+}
+LI.MsoPlainText {
+	FONT-SIZE: 12pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; =
+mso-pagination: widow-orphan
+}
+DIV.MsoPlainText {
+	FONT-SIZE: 12pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; =
+mso-pagination: widow-orphan
+}
+P {
+	FONT-SIZE: 10pt; MARGIN-LEFT: 0in; MARGIN-RIGHT: 0in; FONT-FAMILY: =
+Times; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; =
+mso-pagination: widow-orphan
+}
+CODE {
+=09
+}
+TABLE.MsoNormalTable {
+	FONT-SIZE: 10pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""
+}
+SPAN.msonormal0 {
+	mso-style-name: msonormal
+}
+DIV.Section1 {
+	page: Section1
+}
+</STYLE>
+<!--[if gte mso 9]><xml>=0A=
+ <o:shapedefaults v:ext=3D"edit" spidmax=3D"1029"/>=0A=
+</xml><![endif]--><!--[if gte mso 9]><xml>=0A=
+ <o:shapelayout v:ext=3D"edit">=0A=
+  <o:idmap v:ext=3D"edit" data=3D"1"/>=0A=
+ </o:shapelayout></xml><![endif]--></HEAD>
+<BODY lang=3DEN-US style=3D"tab-interval: .5in" vLink=3Dblue link=3Dblue =
+bgColor=3Dwhite=20
+xml:lang=3D"EN-US">
+<DIV class=3DSection1>
+<TABLE=20
+style=3D"WIDTH: 100%; mso-cellspacing: 1.5pt; mso-padding-alt: 0in 0in =
+0in 0in"=20
+cellPadding=3D0 width=3D"100%" border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 46.6pt">
+    <TD=20
+    style=3D"PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; =
+PADDING-BOTTOM: 0.75pt; WIDTH: 16.42%; PADDING-TOP: 0.75pt; HEIGHT: =
+46.6pt"=20
+    width=3D"16%">
+      <P class=3DMsoNormal style=3D"TEXT-ALIGN: center" =
+align=3Dcenter><A=20
+      href=3D"http://www.slac.stanford.edu/detailed.html"><SPAN=20
+      style=3D"TEXT-DECORATION: none; text-underline: none"><IMG =
+height=3D99=20
+      alt=3D"Stanford Linear Accelerator Center"=20
+      =
+src=3D"http://www.slac.stanford.edu/grp/cd/soft/images/slac_seal_small.jp=
+g"=20
+      width=3D103 border=3D0 v:shapes=3D"_x0000_i1025"></SPAN></A><SPAN=20
+      style=3D"FONT-SIZE: 12pt; FONT-FAMILY: 'Arial Unicode =
+MS'"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; =
+PADDING-BOTTOM: 0.75pt; WIDTH: 65.66%; PADDING-TOP: 0.75pt; HEIGHT: =
+46.6pt"=20
+    width=3D"65%">
+      <DIV align=3Dcenter>
+      <TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in =
+0in 0in 0in"=20
+      cellSpacing=3D0 cellPadding=3D0 border=3D0>
+        <TBODY>
+        <TR>
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 381.9pt; PADDING-TOP: 0in"=20
+          vAlign=3Dbottom width=3D382>
+            <P class=3DMsoNormal style=3D"TEXT-ALIGN: center" =
+align=3Dcenter><SPAN=20
+            style=3D"COLOR: silver">ESD Software Engineering=20
+            Group<o:p></o:p></SPAN></P></TD></TR>
+        <TR style=3D"HEIGHT: 41.35pt">
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 381.9pt; PADDING-TOP: 0in; HEIGHT: 41.35pt"=20
+          vAlign=3Dbottom width=3D382>
+            <H1 style=3D"TEXT-ALIGN: center" align=3Dcenter>CVS=20
+        Cheat-sheet</H1></TD></TR></TBODY></TABLE></DIV>
+      <P class=3DMsoNormal><o:p></o:p></P></TD>
+    <TD=20
+    style=3D"PADDING-RIGHT: 0.75pt; PADDING-LEFT: 0.75pt; =
+PADDING-BOTTOM: 0.75pt; WIDTH: 17.14%; PADDING-TOP: 0.75pt; HEIGHT: =
+46.6pt"=20
+    vAlign=3Dtop width=3D"17%">
+      <TABLE=20
+      style=3D"MARGIN-LEFT: 0.45pt; WIDTH: 96.45pt; BORDER-COLLAPSE: =
+collapse; mso-padding-alt: 0in 0in 0in 0in"=20
+      cellSpacing=3D0 cellPadding=3D0 width=3D96 border=3D0>
+        <TBODY>
+        <TR style=3D"HEIGHT: 18.65pt">
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 96.45pt; PADDING-TOP: 0in; HEIGHT: 18.65pt"=20
+          vAlign=3Dbottom width=3D96>
+            <P class=3DMsoNormal style=3D"MARGIN-LEFT: 0.35pt"><A=20
+            href=3D"http://www.slac.stanford.edu/detailed.html">SLAC=20
+            Detailed</A></P></TD></TR>
+        <TR style=3D"HEIGHT: 18.65pt">
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 96.45pt; PADDING-TOP: 0in; HEIGHT: 18.65pt"=20
+          vAlign=3Dbottom width=3D96>
+            <P class=3DMsoNormal><A=20
+            href=3D"http://www.slac.stanford.edu/slac/compute.html">SLAC =
+
+            Computing</A></P></TD></TR>
+        <TR style=3D"HEIGHT: 18.65pt">
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 96.45pt; PADDING-TOP: 0in; HEIGHT: 18.65pt"=20
+          vAlign=3Dbottom width=3D96>
+            <P class=3DMsoNormal><A=20
+            =
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/index.html">Software</A>=
+</P></TD></TR>
+        <TR style=3D"HEIGHT: 18.65pt">
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 96.45pt; PADDING-TOP: 0in; HEIGHT: 18.65pt"=20
+          vAlign=3Dbottom width=3D96>
+            <P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+            style=3D"FONT-FAMILY: 'Times New Roman'"><A=20
+            =
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/detailed.html">Software =
+
+            Detailed</A></SPAN></P></TD></TR>
+        <TR style=3D"HEIGHT: 18.65pt">
+          <TD=20
+          style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; =
+PADDING-BOTTOM: 0in; WIDTH: 96.45pt; PADDING-TOP: 0in; HEIGHT: 18.65pt"=20
+          vAlign=3Dbottom width=3D96>
+            <P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+            style=3D"FONT-FAMILY: 'Times New Roman'"><A=20
+            =
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/index.html">CVS</A><=
+/SPAN></P></TD></TR></TBODY></TABLE>
+      <P class=3DMsoNormal><o:p></o:p></P></TD></TR></TBODY></TABLE>
+<P class=3DMsoNormal style=3D"MARGIN-LEFT: 0.5in; MARGIN-RIGHT: =
+0.5in">This page=20
+outlines some of the common CVS commands as they may be used in the SLAC =
+ESD=20
+Software Group.&nbsp;See the <A =
+href=3D"http://www.cvshome.org/docs/manual/">CVS=20
+Manual</A> for more, in particular <A=20
+href=3D"http://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_10.html">Multi=
+ple=20
+Developers (chapter 10)</A> and the <A=20
+href=3D"https://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC11=
+2">Guide=20
+to CVS Commands (appendix A)</A>.</P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN-LEFT: 0.5in; MARGIN-RIGHT: 0.5in">Contents:&nbsp;<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+checkout">checkout</A>,=20
+<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+add">add</A>,=20
+<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+commit">commit</A>,=20
+<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+update">update</A>,=20
+<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+release">release</A>,=20
+<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+import">import</A>.=20
+<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+_Real-world_examples">Real-world=20
+Examples</A> <BR>See Also: &nbsp;<A=20
+href=3D"http://dotat.at/writing/cvs-guidelines.html">How to Undelete a =
+file</A>=20
+(see section 6.2 at that URL).</P>
+<DIV class=3DMsoNormal=20
+style=3D"MARGIN-TOP: 0in; MARGIN-LEFT: 0.5in; MARGIN-RIGHT: 0.5in; =
+TEXT-ALIGN: center"=20
+align=3Dcenter>
+<HR align=3Dcenter width=3D"100%" SIZE=3D2>
+</DIV>
+<H2>Common CVS Command Summary</H2>
+<H3 style=3D"MARGIN-TOP: 0in"><A id=3Dcheckout name=3Dcheckout></A>cvs =
+<A=20
+href=3D"https://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC12=
+3">checkout</A>&nbsp;The=20
+way you reserve files in CVS that you want to edit.</H3>
+<P class=3DMsoNormal><SPAN style=3D"COLOR: black">To check out a =
+subdirectory tree,=20
+cd to the directory in your working space into which you want cvs to =
+place the=20
+directory it checks out. Use =E2=80=9Ccvs checkout=E2=80=9D giving the =
+name of the directory in=20
+the cvs repository you want to checkout, where the name you give is a =
+directory=20
+under CVSROOT, presently $CD_SOFT/cvs (eg app/alh, script). The =
+directory you=20
+give, and all subdirectories, will be placed in your working=20
+directory.<o:p></o:p></SPAN></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 15.2pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; BACKGROUND: #f3f3f3 0% 50%; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: 39px; WIDTH: 27.05pt; PADDING-TOP: 0in; BORDER-BOTTOM: =
+39px; HEIGHT: 15.2pt"=20
+    vAlign=3Dtop width=3D27>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; BACKGROUND: #f3f3f3 0% 50%; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: medium none; WIDTH: 555.35pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 15.2pt"=20
+    vAlign=3Dtop width=3D555 colSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'"><B>cvs=20
+      checkout [options] modules...</B></SPAN><SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 0.2in">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 27.05pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+0.2in"=20
+    vAlign=3Dtop width=3D27 rowSpan=3D3>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black">Egs<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 274.8pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D275>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs checkout=20
+      edu<SPAN style=3D"COLOR: black"><o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 280.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D281>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Checks out =
+everything under=20
+      edu, placing an edu directory, plus all subordinate=20
+      subdirectories,&nbsp;in the working =
+dir.<o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 24pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 274.8pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D275>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs checkout=20
+      app/alh<SPAN style=3D"COLOR: =
+black"><o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 280.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D281>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Checks out =
+everything under=20
+      app/alh placing an app directory in your working directory, but =
+only the=20
+      alh subdirectory of app.<o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 24pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 274.8pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D275>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs co=20
+      =
+package/aida/common/script/MakefileAida.sun4<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 280.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D281>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Checks out only =
+the single=20
+      file MakefileAida.sun4, creating=20
+      </SPAN>package/aida/common/script/MakefileAida.sun4 in the working =
+
+      directory, containing that one file.<SPAN=20
+      style=3D"COLOR: =
+black"><o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><BR><BR>
+<H3><A id=3Dadd name=3Dadd></A>cvs <A=20
+href=3D"http://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_7.html#SEC66">=
+add</A>&nbsp;Add=20
+new files to an existing directory under CVS control.</H3>
+<P class=3DMsoNormal>The cvs add command tells CVS to add the given file =
+to its=20
+list of files that should be tracked in the working directory. The file =
+is not=20
+created in the repository until you CVS commit the file or the directory =
+it's=20
+in. The file must be in the local directory when you cvs add it; that =
+is, you=20
+can=E2=80=99t cp and cvs add with one command by giving a full pathname =
+of the file. To=20
+add a whole new directory hierarchy to the source repository (for =
+example, files=20
+received from a third-party vendor), use the<A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/cvs/cvs_cheatsheet.html#=
+import">=20
+cvs <CODE><SPAN=20
+style=3D"FONT-FAMILY: 'Arial Unicode =
+MS'">impor</SPAN></CODE></A><CODE><SPAN=20
+style=3D"FONT-FAMILY: 'Arial Unicode MS'">t</SPAN></CODE> command =
+instead. See CVS=20
+Manual section <A=20
+href=3D"http://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC138=
+">A.12=20
+import--Import sources into CVS, using vendor =
+branches</A>.<o:p></o:p></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 15.2pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; BACKGROUND: #f3f3f3 0% 50%; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: 39px; WIDTH: 27.05pt; PADDING-TOP: 0in; BORDER-BOTTOM: =
+39px; HEIGHT: 15.2pt"=20
+    vAlign=3Dtop width=3D27>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; BACKGROUND: #f3f3f3 0% 50%; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: medium none; WIDTH: 555.35pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 15.2pt"=20
+    vAlign=3Dtop width=3D555 colSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'"><B>cvs=20
+      add</B></SPAN><SPAN style=3D"FONT-FAMILY: 'Courier New'">=20
+      <B>[</B></SPAN><CODE><SPAN=20
+      style=3D"FONT-FAMILY: 'Arial Unicode =
+MS'"><B>-k</B></SPAN></CODE><SPAN=20
+      style=3D"FONT-FAMILY: 'Courier New'"><B> kflag] =
+[</B></SPAN><CODE><SPAN=20
+      style=3D"FONT-FAMILY: 'Arial Unicode =
+MS'"><B>-m</B></SPAN></CODE><SPAN=20
+      style=3D"FONT-FAMILY: 'Courier New'"><B> message] files =
+...</B></SPAN><SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 0.2in">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 27.05pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+0.2in"=20
+    vAlign=3Dtop width=3D27>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black">Egs<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 274.8pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D275>
+      <P class=3DMsoNormal><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cvs add=20
+      myfile.c<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 280.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D281>
+      <P class=3DMsoNormal>Schedule <VAR>myfile.c </VAR>&nbsp;to be =
+added to the=20
+      repository<SPAN=20
+style=3D"COLOR: =
+black"><o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><BR><BR>
+<H3><A id=3Dcommit name=3Dcommit></A>cvs <A=20
+href=3D"https://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC12=
+6">commit</A>&nbsp;Put=20
+your changes in CVS</H3>
+<P class=3DMsoNormal>The commit command is used to place the changes you =
+made to=20
+files in your local working directory back into the CVS repository. Note =
+that it=20
+is usually a good idea to run <I>cvs update</I><SPAN =
+style=3D"FONT-STYLE: normal">=20
+on your checked out files </SPAN><I>before</I><SPAN style=3D"FONT-STYLE: =
+normal">=20
+running the cvs commit, so that cvs can alert you to possible conflicts =
+between=20
+your changes and changes that may have been made to the repository since =
+you did=20
+your cvs checkout.&nbsp; See <A =
+href=3D"http://www.cvshome.org/docs/manual">CVS=20
+Manual</A> =E2=80=9CBringing a file Up to =
+Date=E2=80=9D.<o:p></o:p></SPAN></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 12.35pt">
+    <TD=20
+    style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: =
+#f3f3f3 0% 50%; PADDING-BOTTOM: 0in; WIDTH: 27.05pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 12.35pt"=20
+    vAlign=3Dtop width=3D27>
+      <P class=3DMsoNormal>&nbsp;<SPAN=20
+    style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: =
+#f3f3f3 0% 50%; PADDING-BOTTOM: 0in; WIDTH: 561.65pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 12.35pt"=20
+    vAlign=3Dtop width=3D562 colSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'"><B>cvs commit=20
+      [-lnRf] [-m 'log_message' | -F file] [-r revision] [files...]<SPAN =
+
+      style=3D"COLOR: black"><o:p></o:p></SPAN></B></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 13.9pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: 39px; WIDTH: 27.05pt; =
+PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D27 rowSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black">Egs<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 278.55pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D279>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs=20
+      commit<SPAN style=3D"COLOR: =
+black"><o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 283.1pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D283>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Commit =
+everything from the=20
+      working directory down.<o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 23.15pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 278.55pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 23.15pt"=20
+    vAlign=3Dtop width=3D279>
+      <P class=3DMsoNormal><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cvs commit =
+=E2=80=93m "add test=20
+      suite"&nbsp;=20
+      =
+package/aida/common/script/MakefileAida.sun4<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 283.1pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 23.15pt"=20
+    vAlign=3Dtop width=3D283>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Commit only the =
+file given,=20
+      and give the comment in the command line rather than start an=20
+      editor.<o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><BR><BR>
+<H3><A id=3Dupdate name=3Dupdate></A>cvs&nbsp; <A=20
+href=3D"https://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC15=
+4">update</A>&nbsp;Bring=20
+a checkout up to date with the repository</H3>
+<P class=3DMsoNormal>The cvs update command is used to merge changes =
+that have=20
+been made to a repository into files that have been checked out. Note =
+that it is=20
+reverse operation from the one we normally do on VMS, we only ever merge =
+changes=20
+made <I>from a checkout into</I><SPAN style=3D"FONT-STYLE: normal"> the =
+CMS=20
+repository. Since in cvs the norm is to checkout whole directory trees, =
+cvs=20
+update is the way you find out if anyone has checked stuff in on to of =
+you. In=20
+particular its a good idea to run cvs update on your checked out files =
+before=20
+running the cvs commit.&nbsp; See <A=20
+href=3D"http://www.cvshome.org/docs/manual">CVS Manual</A> =
+=E2=80=9CBringing a file Up to=20
+Date=E2=80=9D.<o:p></o:p></SPAN></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 12.35pt">
+    <TD=20
+    style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: =
+#f3f3f3 0% 50%; PADDING-BOTTOM: 0in; WIDTH: 27.05pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 12.35pt"=20
+    vAlign=3Dtop width=3D27>
+      <P class=3DMsoNormal>&nbsp;<SPAN=20
+    style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: =
+#f3f3f3 0% 50%; PADDING-BOTTOM: 0in; WIDTH: 561.65pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 12.35pt"=20
+    vAlign=3Dtop width=3D562 colSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'"><B>cvs update=20
+      [-ACdflPpR] [-I name] [-j rev [-j rev]] [-k kflag] [-r tag|-D =
+date] [-W=20
+      spec] files...<SPAN=20
+    style=3D"COLOR: black"><o:p></o:p></SPAN></B></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 13.9pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: 39px; WIDTH: 27.05pt; =
+PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D27 rowSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black">Egs<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 278.55pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D279>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs update =E2=80=93dA=20
+      package/aida/common/script<SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 283.1pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D283>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Bring working =
+dir specified=20
+      up to date with the repository (merge changes made to the =
+repository into=20
+      the local files).<o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 23.15pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 278.55pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 23.15pt"=20
+    vAlign=3Dtop width=3D279>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs update =E2=80=93A=20
+      package/aida/common/script<SPAN=20
+      style=3D"COLOR: =
+black">/MakefileAida.sun4<o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 283.1pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 23.15pt"=20
+    vAlign=3Dtop width=3D283>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Bring just the =
+named file=20
+      up-to-date with the=20
+repository<o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><BR><BR>
+<H3><A id=3Drelease name=3Drelease></A>cvs <A=20
+href=3D"https://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC15=
+0">release</A>&nbsp;To=20
+relinquish your interest in a branch of the repository</H3>
+<P class=3DMsoNormal>The release command is used only to tell cvs you =
+are no=20
+longer interested in the part of the repository you checked out. CVS =
+release=20
+will alert you to whether you have left any modified files in your local =
+working=20
+directory, and then confirm the release. If you confirm, it will make a =
+note in=20
+the history file. Note, the CVS release command is not used to put files =
+into=20
+the repository like the phonetically similar CMS =
+replace.&nbsp;<o:p></o:p></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 12.35pt">
+    <TD=20
+    style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: =
+#f3f3f3 0% 50%; PADDING-BOTTOM: 0in; WIDTH: 27.05pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 12.35pt"=20
+    vAlign=3Dtop width=3D27>
+      <P class=3DMsoNormal>&nbsp;<SPAN=20
+    style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: =
+#f3f3f3 0% 50%; PADDING-BOTTOM: 0in; WIDTH: 561.65pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 12.35pt"=20
+    vAlign=3Dtop width=3D562 colSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'"><B>cvs release=20
+      [-d] directories...<SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></B></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 13.9pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: 39px; WIDTH: 27.05pt; =
+PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D27 rowSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: =
+black">Egs<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 278.55pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D279>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs release=20
+      package/aida/common/script<SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 283.1pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 13.9pt"=20
+    vAlign=3Dtop width=3D283>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Tell CVS that =
+you=E2=80=99re no=20
+      longer interested in package/aida/common/script.=20
+  <o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 23.15pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; WIDTH: 278.55pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 39px; HEIGHT: 23.15pt"=20
+    vAlign=3Dtop width=3D279>
+      <P class=3DMsoNormal><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cvs release =
+=E2=80=93d=20
+      </SPAN><SPAN=20
+      style=3D"FONT-FAMILY: 'Courier =
+New'">package/aida/common/script<SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; PADDING-LEFT: =
+5.4pt; PADDING-BOTTOM: 0in; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 23.15pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">Tell CVS that =
+you=E2=80=99re no=20
+      longer interested in package/aida/common/script.and tell cvs to =
+delete=20
+      your working copy of this directory=20
+  tree.<o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><BR><BR>
+<H3 style=3D"MARGIN-TOP: 0in"><A id=3Dimport name=3Dimport></A>cvs<A=20
+href=3D"https://www.cvshome.org/docs/manual/cvs-1.11.19/cvs_16.html#SEC14=
+0">=20
+import</A>&nbsp;The way you create a new directory or tree of =
+directories in=20
+CVS.</H3>
+<P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN style=3D"COLOR: =
+black">You=20
+use a cvs import command when you want to add a whole directory to CVS. =
+CVS=20
+import is not used to add a bunch of files to an existing directory - =
+for that=20
+use "cvs add" (see above). Before getting into the command itself, first =
+pick a=20
+place in the existing cvs tree where you want to add your stuff. For =
+this=20
+example, let's say you wanted to add a directory of "tool" files to cvs =
+at the=20
+new directory "common/tool", so its reference directory would be=20
+$CD_SOFT/ref/common/tool/. The argument you would have to give to the =
+cvs import=20
+command will be "common/tool". The argument is always the full pathname, =
+after=20
+the $CD_SOFT/cvs part, of the root of the directory you want to create, =
+even if=20
+some of the intermediate directories already exist (in this case, =
+"common/"=20
+already exists). <o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+style=3D"COLOR: black"><o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN-TOP: 0in"><SPAN style=3D"COLOR: =
+black">cvs import=20
+always imports all the files, and all subdirectories, in the working=20
+directory<B> from which it is being run</B>. That is, it imports a =
+directory=20
+tree into the place specified by the argumetk. So, be careful<FONT=20
+color=3D#ff0000> not</FONT> to do something like cd to a directory which =
+contains=20
+the <B>root</B></SPAN><SPAN style=3D"COLOR: black"> of a directory tree =
+which you=20
+want to import and then issue cvs import giving as the argument the=20
+leaf-of-directory-tree you want to import, e.g. cd ~/work (containing=20
+common/tool) and then cvs import common/to.ol. That would create=20
+$CD_SOFT/cvs/common/tool/common/tool/!! If you only want to import<EM> a =
+single=20
+directory</EM>, then the root and the leaf are the same directory, so =
+you can=20
+use a sequence of commands as in example 1) below. But if you really =
+want to=20
+import more than one directory, you have to use a sequence like that in =
+example=20
+2. <o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN-TOP: 0in"><SPAN style=3D"COLOR: =
+black">Also be=20
+careful not to import a directory system that contains a subdirectory =
+that is=20
+itself the result of a CVS checkout, because that subdirectory will =
+contain a=20
+CVS subdirectory. This is very messy to clean up. You shouldn't ever =
+want to=20
+anyway, because cvs import must always be run from the directory whose =
+files you=20
+want to import, and always takes the fully qualified cvs module name as =
+the=20
+argument. <o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN-BOTTOM: 0pt"><SPAN style=3D"COLOR: =
+black">The two=20
+other arguments to cvs import are the "vendor tag", and the "release"=20
+tag:</SPAN></P>
+<UL type=3Ddisc>
+  <LI class=3DMsoNormal=20
+  style=3D"mso-list: l0 level1 lfo3; tab-stops: list .5in">&nbsp;"vendor =
+tag" is a=20
+  free form text string you're supposed to use to identify the vendor of =
+
+  software. Since it's a CVS tag, it should be all upper case and not =
+have any=20
+  special charatcters save the "_" (like no "." or "-"). Our standard =
+for this=20
+  tag is "CD_SOFT", when we're the vendors.=20
+  <LI class=3DMsoNormal=20
+  style=3D"mso-list: l0 level1 lfo3; tab-stops: list =
+.5in">&nbsp;"release tag", is=20
+  also a free form text string you're supposed to use to identify the =
+release of=20
+  the software you're putting in CVS. For EPICS software, we use a =
+release tag=20
+  like "R3_13_6", for all other software, for the initial release, we =
+use=20
+  "R1_0". </LI></UL>
+<P style=3D"MARGIN-TOP: 0in"><STRONG><SPAN=20
+style=3D"FONT-FAMILY: 'Times New Roman'">After you have done the cvs =
+import, be=20
+sure to go to the corresponding reference area and do the initial cvs=20
+checkout.</SPAN></STRONG><o:p></o:p></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><o:p></o:p></P>
+<TABLE=20
+style=3D"MARGIN-LEFT: 2pt; BORDER-COLLAPSE: collapse; mso-padding-alt: =
+0in 0in 0in 0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 15.2pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 0in; BORDER-TOP: 39px; =
+PADDING-LEFT: 0in; BACKGROUND: #f3f3f3 0% 50%; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: 39px; WIDTH: 25pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 15.2pt"=20
+    vAlign=3Dtop width=3D25>
+      <P class=3DMsoNormal><B>Eg</B><SPAN=20
+      style=3D"FONT-FAMILY: 'Courier =
+New'"><B><o:p></o:p></B></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 0.75pt inset; PADDING-RIGHT: 5.4pt; =
+BORDER-TOP: 0.75pt inset; PADDING-LEFT: 5.4pt; BACKGROUND: #f3f3f3; =
+PADDING-BOTTOM: 0in; BORDER-LEFT: medium none; WIDTH: 708.05pt; =
+PADDING-TOP: 0in; BORDER-BOTTOM: 0.75pt inset; HEIGHT: 15.2pt"=20
+    vAlign=3Dtop width=3D708 colSpan=3D2>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'"><B>cvs import=20
+      [options] directory-name vendor-tag release-tag</B></SPAN><SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 0.2in">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 0in; BORDER-TOP: medium =
+none; PADDING-LEFT: 0in; PADDING-BOTTOM: 0in; BORDER-LEFT: 39px; WIDTH: =
+25pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D25>
+      <P class=3DMsoNormal>1<SPAN=20
+      style=3D"FONT-FAMILY: 'Courier New'"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 0.75pt inset; PADDING-RIGHT: 5.4pt; =
+BORDER-TOP: medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: medium none; WIDTH: 335.9pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 0.75pt inset; HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D336>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      ~/work/common/tool </SPAN></P>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs <SPAN=20
+      style=3D"COLOR: black">import common/tool CD_SOFT=20
+      R1_0<o:p></o:p></SPAN></SPAN></P>
+      <P class=3DMsoNormal style=3D"MARGIN-BOTTOM: 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cd=20
+      $CD_SOFT/ref<o:p></o:p></SPAN></P>
+      <P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cvs checkout=20
+      common/tool<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 199.3pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 0.2in"=20
+    vAlign=3Dtop width=3D199>
+      <P style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Times New Roman'">Say=20
+      ~/work/common/tool is the directory where all the tool files are. =
+All the=20
+      files in that directory will be imported (unless they're in the =
+CVSIGNORE=20
+      set).</SPAN><SPAN style=3D"COLOR: black"><o:p></o:p></SPAN></P>
+      <P style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Times New =
+Roman'"><o:p></o:p></SPAN></P>
+      <P style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Times New Roman'">Imports all =
+the files=20
+      from your working directory, into cvs/common/tool. </SPAN><SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></P>
+      <P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black">Creates the initial checkout of the =
+directory you=20
+      just created in cvs.<o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 24pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 0.75pt inset; PADDING-RIGHT: 0in; BORDER-TOP: =
+medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 0in; BORDER-LEFT: medium =
+none; WIDTH: 25pt; PADDING-TOP: 0in; BORDER-BOTTOM: 0.75pt inset; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D25>
+      <P class=3DMsoNormal>2<SPAN=20
+      style=3D"FONT-FAMILY: 'Courier New'"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 0.75pt inset; PADDING-RIGHT: 5.4pt; =
+BORDER-TOP: medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: medium none; WIDTH: 335.9pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 0.75pt inset; HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D336>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      ~/work</SPAN></P>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs <SPAN=20
+      style=3D"COLOR: black">import app/myapp CD_SOFT=20
+      R1_0<o:p></o:p></SPAN></SPAN></P>
+      <P class=3DMsoNormal style=3D"MARGIN-BOTTOM: 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cd=20
+      $CD_SOFT/ref<o:p></o:p></SPAN></P>
+      <P class=3DMsoNormal style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Courier New'">cvs checkout=20
+      app/myapp<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 199.3pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D199>
+      <P style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Times New Roman'">Say ~/work =
+is the=20
+      <B>root</B></SPAN><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Times New Roman'"> directory =
+of where=20
+      all the files are of a new application are. All the files and all =
+the=20
+      subdirectories in that directory will be imported into =
+cvs/app/myapp=20
+      (unless they're in the CVSIGNORE set).</SPAN><SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></P>
+      <P class=3DMsoNormal><SPAN=20
+      style=3D"COLOR: black; FONT-FAMILY: 'Times New Roman'">Imports all =
+the files=20
+      from ~/work, into cvs/app/myapp. </SPAN><SPAN=20
+      style=3D"COLOR: black"><o:p></o:p></SPAN></P></TD></TR>
+  <TR style=3D"HEIGHT: 24pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 0.75pt inset; PADDING-RIGHT: 0in; BORDER-TOP: =
+medium none; PADDING-LEFT: 0in; PADDING-BOTTOM: 0in; BORDER-LEFT: medium =
+none; WIDTH: 25pt; PADDING-TOP: 0in; BORDER-BOTTOM: 0.75pt inset; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D25>
+      <P class=3DMsoNormal>3<SPAN=20
+      style=3D"FONT-FAMILY: 'Courier New'"><o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 0.75pt inset; PADDING-RIGHT: 5.4pt; =
+BORDER-TOP: medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; =
+BORDER-LEFT: medium none; WIDTH: 335.9pt; PADDING-TOP: 0in; =
+BORDER-BOTTOM: 0.75pt inset; HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D336>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs import=20
+      <SPAN style=3D"COLOR: black">-m "initial import" =
+...&nbsp;app/myapp CD_SOFT=20
+      R1_0<o:p></o:p></SPAN></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; WIDTH: 199.3pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; =
+HEIGHT: 24pt"=20
+    vAlign=3Dtop width=3D199>
+      <P class=3DMsoNormal><SPAN style=3D"COLOR: black">As above, but =
+gave a comment=20
+      on the command line rather than making cvs start an editor and =
+asking for=20
+      the comment=20
+interactively.<o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><BR><BR>
+<H2><A id=3D_Real-world_examples =
+name=3D_Real-world_examples></A>Real-world=20
+examples</H2>
+<H3>Modifying a single file in a single directory</H3>
+<P class=3DMsoNormal>In this example we modify a single makefile in the =
+AIDA=20
+script area. It is checked out, modified, and checked back =
+in.<o:p></o:p></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: 39px; WIDTH: =
+361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      tmp<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: medium none; =
+PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Move to the directory in which you want to=20
+  work</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs co=20
+      =
+package/aida/common/script/MakefileAida.sun4<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Cvs checkout the file you want to work =
+with</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      package/aida/common/script<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Change dir to dir of </P></TD></TR>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">Emacs=20
+      MakefileAida.sun4 &amp;<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Edit file</P></TD></TR>
+  <TR style=3D"HEIGHT: 34.55pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+34.55pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      ../../../..<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 34.55pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Go back up to issue cvs update and commit, so =
+the=20
+      filename on which to act is the same as when it was checked =
+out.</P></TD></TR>
+  <TR style=3D"HEIGHT: 46.05pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+46.05pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs update -A=20
+      =
+package/aida/common/script/MakefileAida.sun4<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 46.05pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Verify that no-one has modified the file in =
+the=20
+      repository since you checked it out. CVS should reply simply =
+=E2=80=9CM=E2=80=9D meaning=20
+      you have modified the file.</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs commit=20
+      =
+package/aida/common/script/MakefileAida.sun4<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Update the repository with your modified=20
+file.</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs release=20
+      package/aida/common/script<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Relinquish interest</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.3pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.55pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.3pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">rm =
+=E2=80=93r=20
+      package<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.3pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Delete local package dir and all=20
+  sub-dirs.</P></TD></TR></TBODY></TABLE><BR><BR>
+<H3>Modifying an entire =E2=80=9Cpackage=E2=80=9D</H3>
+<P class=3DMsoNormal>In this example we checkout a whole sub-tree, add a =
+file=20
+copied in from elsewhere, modify it and another file, and check in the =
+whole=20
+directory tree. The sub-tree used for illustration is that containing =
+Aida, but=20
+this may be any sub-tree in the CD_SOFT repository. <o:p></o:p></P>
+<TABLE style=3D"BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 0in 0in =
+0in"=20
+cellSpacing=3D0 cellPadding=3D0 border=3D0>
+  <TBODY>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: 39px; WIDTH: =
+361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      tmp<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: 39px; =
+PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: medium none; =
+PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal><o:p></o:p></P></TD></TR>
+  <TR style=3D"HEIGHT: 23.05pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+23.05pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs co=20
+      package/aida<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 23.05pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Checkout Aida (cvs/package/aida and all =
+subordinate=20
+      directories)</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      package/aida/common/script<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Change dir to where you want to do some =
+work</P></TD></TR>
+  <TR style=3D"HEIGHT: 36.8pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+36.8pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cp =
+
+      /afs/slac/package/aida/common/script/aidapackagelist.txt=20
+      .<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 36.8pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Copy a new file to be added to CVS into the =
+checked out=20
+      area.</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs add=20
+      aidapackagelist.txt<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Tell CVS about the file you want to =
+add</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">emacs=20
+      aidapackagelist.txt<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Modify the added file</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">emacs=20
+      MakefileAida.sun4<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Modify another file that was already in this=20
+      directory</P></TD></TR>
+  <TR style=3D"HEIGHT: 34.55pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+34.55pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">cd =
+
+      ../../../..<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 34.55pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Go back up to the directory from which the =
+checkout was=20
+      made, in order to do the update verification and =
+commit.</P></TD></TR>
+  <TR style=3D"HEIGHT: 23.05pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+23.05pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs update =E2=80=93dA=20
+      package/aida<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 23.05pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Merge in updates that other developers have =
+done to=20
+      your local copy of package/aida. </P></TD></TR>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs=20
+      commit<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Update the CVS repository with your =
+changes</P></TD></TR>
+  <TR style=3D"HEIGHT: 46.05pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+46.05pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">&lt;gmake=20
+      aida&gt;<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 46.05pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Make aida. If it builds clean go on to the =
+next step,=20
+      if it doesn=E2=80=99t you can keep cvs committing modified =
+versions from the local=20
+      directory and re-updating the reference area until it does. =
+</P></TD></TR>
+  <TR style=3D"HEIGHT: 23.05pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+23.05pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier =
+New'">cvs release=20
+      package/aida<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 23.05pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Finally, when the reference area is rebuilt, =
+relinquish=20
+      package/aida.</P></TD></TR>
+  <TR style=3D"HEIGHT: 12.25pt">
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+39px; WIDTH: 361.9pt; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: =
+12.25pt"=20
+    vAlign=3Dtop width=3D362>
+      <P class=3DMsoNormal><SPAN style=3D"FONT-FAMILY: 'Courier New'">rm =
+=E2=80=93r=20
+      package<o:p></o:p></SPAN></P></TD>
+    <TD=20
+    style=3D"BORDER-RIGHT: 39px; PADDING-RIGHT: 5.4pt; BORDER-TOP: =
+medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: =
+medium none; PADDING-TOP: 0in; BORDER-BOTTOM: 39px; HEIGHT: 12.25pt"=20
+    vAlign=3Dtop>
+      <P class=3DMsoNormal>Clean-up local =
+workspace.</P></TD></TR></TBODY></TABLE>
+<DIV class=3DMsoNormal=20
+style=3D"MARGIN-TOP: 0in; MARGIN-LEFT: 2in; MARGIN-RIGHT: 2in; =
+TEXT-ALIGN: center"=20
+align=3Dcenter>
+<HR align=3Dcenter width=3D"97%" SIZE=3D2>
+</DIV>
+<P class=3DMsoNormal=20
+style=3D"MARGIN-TOP: 5pt; MARGIN-LEFT: 2in; MARGIN-RIGHT: 2in; =
+TEXT-ALIGN: center"=20
+align=3Dcenter><BR><SPAN style=3D"FONT-SIZE: 7.5pt"><A=20
+href=3D"http://www-group.slac.stanford.edu/cdsoft/home.html">ESD=20
+SoftwareEngineering</A> | <A=20
+href=3D"http://www.slac.stanford.edu/slac/compute.html">SLACComputing</A>=
+ | <A=20
+href=3D"http://www.slac.stanford.edu/detailed.html">SLACDetailed =
+Home</A></SPAN>=20
+<BR><SPAN style=3D"FONT-SIZE: 7.5pt"><A=20
+href=3D"http://www.slac.stanford.edu/comp/unix/package/epics/index.html">=
+EPICS=20
+atSLAC </A>| <A=20
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/pepii/index.html">PEPIIC=
+ontrols=20
+</A>| <A =
+href=3D"http://www.slac.stanford.edu/grp/cd/soft/nlcdev/index.html">NLC=20
+DevControls</A></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN-BOTTOM: 0pt; MARGIN-LEFT: 0.5in; MARGIN-RIGHT: =
+0.5in"><I>Owner:&nbsp;Greg=20
+White</I><SPAN style=3D"FONT-STYLE: normal"><BR></SPAN><I>Last =
+modified:&nbsp;=20
+Monday 12-Jan, 2004. Ron MacKenzie. Removed directions that said to =
+update the=20
+reference area. That is now done automatically for you. 28-Mar-2005, =
+Greg=20
+White:Clarify cvs import command help, or at least give more =
+help.</I></P>
+<P class=3DMsoNormal style=3D"MARGIN-TOP: =
+0in"><o:p></o:p></P></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01CA19C2.B5D845C0
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://www.slac.stanford.edu/grp/cd/soft/images/slac_seal_small.jpg
+
+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
+
+------=_NextPart_000_0000_01CA19C2.B5D845C0--

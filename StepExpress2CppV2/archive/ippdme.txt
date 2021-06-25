@@ -1,0 +1,753 @@
+Ini File Parse Succeeded 
+	 0 ID
+Production=input_file
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=cmd_num
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=ippdme_statement
+					 ExpressionID
+						 NONTERMINALID=event_num
+					 ExpressionID
+						 NONTERMINALID=ippdme_event_statement
+Production=zero
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=0
+Production=digit
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=0
+					 ExpressionID
+						 ONECHAR=1
+					 ExpressionID
+						 ONECHAR=2
+					 ExpressionID
+						 ONECHAR=3
+					 ExpressionID
+						 ONECHAR=4
+					 ExpressionID
+						 ONECHAR=5
+					 ExpressionID
+						 ONECHAR=6
+					 ExpressionID
+						 ONECHAR=7
+					 ExpressionID
+						 ONECHAR=8
+					 ExpressionID
+						 ONECHAR=9
+Production=int_val
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=int_const
+Production=ijkarg
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 TERMINALID=IJK
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=(
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=real_val
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=,
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=real_val
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=,
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=real_val
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=)
+Production=axis_get
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=axis_prop_item
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=(
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=)
+Production=axis_setprop
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=axis_prop_item
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=(
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=real_val
+				 Definition 19
+					 ExpressionID
+						 ONECHAR=)
+Production=axis_getprop_list
+			 DefinitionListID
+				 Definition 19
+					 ExpressionID
+Optional=
+							 ExpressionID
+								 NONTERMINALID=axis_getprop_list
+							 ExpressionID
+								 ONECHAR=,
+				 Definition 19
+					 ExpressionID
+						 NONTERMINALID=axis_getprop
+						 
+						 
+						 
+// assign_action assigns the parse result to the reference
+
+    struct assign_action
+    {
+        template<
+            typename T,
+            typename ValueT
+        >
+        void act(T& ref, ValueT const& value) const
+        {
+            ref = value;
+        }
+        
+        template<
+            typename T,
+            typename IteratorT
+        >
+        void act(
+            T& ref, 
+            IteratorT const& first, 
+            IteratorT const& last) const
+        {
+            typedef typename T::value_type value_type;
+            value_type vt(first, last);
+            ref = vt;
+        }
+    };
+Helper function example: assign_a function
+    // assign_a is a polymorphic helper function that generators an
+    // assign_actor based on ref_value_actor, assign_action and the 
+    // type of its argument.
+
+    template<typename T>
+    inline ref_value_actor<T, assign_action>
+    assign_a(T& ref)
+    {
+        return ref_value_actor<T, assign_action>(ref);
+    }
+
+
+
+
+/*ScanOnCircle(Cx, Cy, Cz, Sx, Sy, Sz, i, j, k, delta, sfa, StepW)*/
+<scanoncircle> ::=  ScanOnCircle '(' <real_val> ',' <real_val> ',' <real_val> ',' 
+                                     <real_val> ',' <real_val> ',' <real_val> ',' 
+						 <uniti> ',' <unitj> ',' <unitk> ',' 
+                                     <real_val> ',' <real_val> ',' <real_val> ')' ;
+
+<scanoncurvedensity> ::=  ScanOnCurveDensity '(' Dis    '(' <real_val>  ')' ','  
+								 Angle  '(' <real_val>  ')' ',' 
+								 AngleBaseLength'(' <real_val>  ')' ',' 
+								 AtNominals'(' <real_val>  ')'')' ;
+
+/* Note this mess could be condensed with {}+ , but not avaiable */
+<real_array_7> ::= [ <real_array_7> ',' ]    |  <real_val> ','  <real_val> ','  <real_val> ',' 
+								<real_val> ','  <real_val> ','  <real_val> ','  <real_val>   ;   
+<real_array_10> ::= [ <real_array_10> ',' ]  |  <real_val> ','  <real_val> ','  <real_val> ',' 
+								<real_val> ','  <real_val> ','  <real_val> ','  <real_val> ',' 
+								<real_val> ','  <real_val> ','  <real_val>  ;
+<real_array_13> ::= [ <real_array_13> ',' ]  |  <real_val> ','  <real_val> ','  <real_val> ',' 
+								<real_val> ','  <real_val> ','  <real_val> ','  <real_val> ',' 
+								<real_val> ','  <real_val> ','  <real_val> ','  <real_val> ',' 
+								<real_val> ','  <real_val> ','  <real_val>  ;
+
+<scanoncurve1> ::= ScanOnCurve '(' Closed '(' <bool>')' ',' 
+		Format '(' X '(' ')'','   Y '(' ')'','   Z'(' ')'','    IJK '(' ')'',' tag ')' ',' 
+		Data  '(' <real_array_7> ')';
+
+<scanoncurve2> ::= ScanOnCurve '(' Closed '(' <bool>')' ',' 
+		Format '(' X '(' ')'','   Y '(' ')'','   Z'(' ')'','    IJK '(' ')' ',' tag ',' pi ',' pj ',' pk ')' ',' 
+		Data  '(' <real_array_10> ')';
+
+<scanoncurve3> ::= ScanOnCurve '(' Closed '(' <bool> ')' ',' 
+		Format '(' X '(' ')'','   Y '(' ')'','   Z'(' ')'','    IJK '(' ')' ',' tag ',' 
+				pi ',' pj ',' pk ',' si ',' sj ',' sk  ')' ',' 
+		Data  '('  <real_array_13> ')';
+
+
+<scanoncurve> ::= <scanoncurve1> | <scanoncurve2> | <scanoncurve3>;
+    | ScanOnCircleHint '(' <displacement> ',' <form> ')'
+	| <scanoncircle>
+	| ScanOnLineHint '(' <angle> ',' <form> ')'
+	| ScanOnLine '(' <sx> ',' <sy> ',' <sz>  ',' <ex> ',' <ey> ',' <ez> ',' <uniti> ',' <unitj> ',' <unitk> ',' <stepw> ')'
+	| ScanOnCurveHint '(' <deviation> ',' <minradiusofcurvature> ')'
+	| <scanoncurvedensity> 
+	| <scanoncurve>  
+	| ScanOnHelix '(' <cx> ',' <cy> ',' <cz> ',' <sx> ',' <sy> ',' <sz> ',' <uniti> ',' <unitj> ',' <unitk> ','  <delta> ',' <sfa> ',' <stepw> ',' <pitch> ')'
+	| ScanUnknownHint  '(' <minradiusofcurvature>  ')'
+	| ScanUnknownDensity '(' Dis '(' <dis> ')' ',' Angle '(' <angle> ')' ',' AngleBaseLength'(' <anglebaselength> ')' ')'
+	| ScanInPlaneEndIsSphere '(' <sx> ',' <sy> ',' <sz> ',' <si> ',' <sj> ',' <sk> ',' 
+					     <ni> ',' <nj> ',' <nk> ',' <dx> ',' <dy> ',' <dz> ',' <stepw> ',' <ex> ',' <ey> ',' <ez> ',' 
+					     <real_val> /*Dia'*/  ',' <real_val> /*n*/ ',' <ei> ',' <ej> ',' <ek> ')'
+	| ScanInPlaneEndIsPlane'(' <sx> ',' <sy> ',' <sz> ',' <si> ',' <sj> ',' <sk> ',' 
+						<ni> ',' <nj> ',' <nk> ',' <dx> ',' <dy> ',' <dz> ',' <stepw> ',' 
+						<px> ',' <py> ',' <pz> ',' <pi> ',' <pj> ',' <pk> ',' <real_val> /*n*/ ',' <ei> ',' <ej> ',' <ek> ')'
+	| ScanInPlaneEndIsCyl '(' <sx> ',' <sy> ',' <sz> ',' <si> ',' <sj> ',' <sk> ',' 
+					  <ni> ',' <nj> ',' <nk> ',' <dx> ',' <dy> ',' <dz> ',' <stepw> ',' 
+					   <cx> ',' <cy> ',' <cz> ',' <ci> ',' <cj> ',' <ck> ',' 
+					   <real_val> /*d*/  ',' <real_val> /*n*/ ',' <ei> ',' <ej> ',' <ek> ')'
+	| ScanInCylEndIsSphere '(' <cx> ',' <cy> ',' <cz> ',' <ci> ',' <cj> ',' <ck> ',' 
+					   <sx> ',' <sy> ',' <sz> ',' <si> ',' <sj> ',' <sk> ',' 
+					   <dx> ',' <dy> ',' <dz> ',' <stepw> ','  <ex> ',' <ey> ',' <ez> ',' 
+						 <real_val> /*dia*/ ','  <real_val> /*n*/ ',' <ei> ',' <ej> ',' <ek> ')'
+ 	| ScanInCylEndIsPlane '(' <cx> ',' <cy> ',' <cz> ',' <ci> ',' <cj> ',' <ck> ',' 
+					   <sx> ',' <sy> ',' <sz> ',' <si> ',' <sj> ',' <sk> ',' 
+					   <dx> ',' <dy> ',' <dz> ',' <stepw> ','  
+					   <px> ',' <py> ',' <pz> ',' <pi> ',' <pj> ',' <pk> ',' <real_val> /*n*/ ',' <ei> ',' <ej> ',' <ek>
+
+real_val :
+	  real_const
+	;
+
+real_const :
+	  REAL_STRING
+	| INT_STRING
+	;
+
+dblquoted_string :
+	  DBLQUOTEDSTRING
+	;
+
+cmd_num :
+	  INT_STRING
+	;
+
+event_num :
+	  INT_STRING
+	;
+
+x0 :
+	  real_val
+	;
+
+y0 :
+	  real_val
+	;
+
+z0 :
+	  real_val
+	;
+
+theta :
+	  real_val
+	;
+
+psi :
+	  real_val
+	;
+
+phi :
+	  real_val
+	;
+
+uniti :
+	  real_val
+	;
+
+unitj :
+	  real_val
+	;
+
+unitk :
+	  real_val
+	;
+
+axis_prop_item :
+	  X
+	| Y
+	| Z
+	;
+
+axis_get :
+	  axis_prop_item '(' ')'
+	;
+
+axis_getprop :
+	  axis_prop_item '(' ')'
+	;
+
+axis_setprop :
+	  axis_prop_item '(' real_val ')'
+	;
+
+axis_getprop_list :
+	  axis_getprop
+	| axis_getprop_list ',' axis_getprop
+	;
+
+axis_setprop_list :
+	  axis_setprop
+	| axis_setprop_list ',' axis_setprop
+	;
+
+goto_field :
+	  Min
+	| Max
+	| Act
+	| Def
+	;
+
+gotopar_block :
+	  Speed
+	| Speed '.' goto_field
+	| Accel
+	| Accel '.' goto_field
+	;
+
+gotopar_item :
+	  GoToPar '.' gotopar_block
+	;
+
+gotopar_enum :
+	  GoToPar
+	| GoToPar '.' gotopar_block
+	;
+
+gotocmd :
+	  axis_setprop_list
+	| Tool '.' axis_setprop
+	;
+
+gotocmd_list :
+	  gotocmd
+	| gotocmd_list ',' gotocmd
+	;
+
+ptmeas_field :
+	  Min
+	| Max
+	| Act
+	| Def
+	;
+
+ptmeas_block :
+	  Speed
+	| Speed '.' ptmeas_field
+	| Accel
+	| Accel '.' ptmeas_field
+	| Approach
+	| Approach '.' ptmeas_field
+	| Search
+	| Search '.' ptmeas_field
+	| Retract
+	| Retract '.' ptmeas_field
+	;
+
+ptmeaspar :
+	  PtMeasPar '(' ')'
+	| PtMeasPar '.' ptmeas_block '(' ')'
+	;
+
+ptmeaspar_enum :
+	  PtMeasPar
+	| PtMeasPar '.' ptmeas_block
+	;
+
+ptmeaspar_item :
+	  PtMeasPar '.' ptmeas_block
+	;
+
+scanpar_field :
+	  Min
+	| Max
+	| Act
+	| Def
+	;
+
+scanpar_block :
+	  Speed
+	| Speed '.' scanpar_field
+	| Accel
+	| Accel '.' scanpar_field
+	| Retract
+	| Retract '.' scanpar_field
+	;
+
+scanpar :
+	  ScanPar '(' ')'
+	| ScanPar '.' scanpar_block '(' ')'
+	;
+
+scanpar_enum :
+	  ScanPar
+	| ScanPar '.' scanpar_block
+	;
+
+scanpar_item :
+	  ScanPar '.' scanpar_block
+	;
+
+part_prop_item :
+	  Temperature
+	| XpanCoefficient
+	| Approach
+	;
+
+part_enumprop_list :
+	  Part '(' ')'
+	| Part '.' part_prop_item '(' ')'
+	| part_enumprop_list ',' Part '(' ')'
+	| part_enumprop_list ',' Part '.' part_prop_item '(' ')'
+	;
+
+part_getprop_list :
+	  Part '.' part_prop_item '(' ')'
+	| part_getprop_list ',' Part '.' part_prop_item '(' ')'
+	;
+
+part_setprop_list :
+	  Part '.' part_prop_item '(' ')'
+	| Part '.' part_prop_item '(' real_const ')'
+	| part_setprop_list ',' Part '.' part_prop_item '(' ')'
+	| part_setprop_list ',' Part '.' part_prop_item '(' real_const ')'
+	;
+
+tool_string :
+	  DBLQUOTEDSTRING
+	;
+
+toolaxis_prop_item :
+	  A
+	| B
+	| C
+	;
+
+tool_get :
+	  Tool '.' toolaxis_prop_item '(' ')'
+	;
+
+tool_getlist :
+	  tool_get
+	| tool_getlist ',' tool_get
+	;
+
+tool_prop :
+	  ptmeaspar_item
+	| gotopar_item
+	| scanpar_item
+	| Name
+	| Id
+	| CollisionVolume
+	| Alignment
+	| AvrOffset
+	| Radius
+	| AlignmentVolume
+	| Collection
+	;
+
+tool_getprop :
+	  Tool '.' tool_prop '(' ')'
+	| FoundTool '.' tool_prop '(' ')'
+	;
+
+tool_getprop_list :
+	  tool_getprop
+	| tool_getprop_list ',' tool_getprop
+	;
+
+tool_setprop :
+	  Tool '.' tool_prop '(' real_const ')'
+	;
+
+tool_setprop_list :
+	  tool_setprop
+	| tool_setprop_list ',' tool_setprop
+	;
+
+tool_enum_prop :
+	  ptmeaspar_enum
+	| gotopar_enum
+	| scanpar_enum
+	| Name
+	| Id
+	| CollisionVolume
+	| Alignment
+	| AvrRadius
+	| AlignmentVolume
+	| Collection
+	;
+
+tool_enumprop :
+	  Tool '(' ')'
+	| Tool '.' tool_enum_prop '(' ')'
+	| FoundTool '(' ')'
+	| FoundTool '.' tool_enum_prop '(' ')'
+	;
+
+tool_enumprop_list :
+	  tool_enumprop
+	| tool_enumprop_list ',' tool_enumprop
+	;
+
+get_list_item :
+	  axis_getprop_list
+	| tool_getlist
+	;
+
+get_list :
+	  get_list_item
+	| get_list ',' get_list_item
+	;
+
+getprop_list_item :
+	  tool_getprop_list
+	| part_getprop_list
+	;
+
+getprop_list :
+	  getprop_list_item
+	| getprop_list ',' getprop_list_item
+	;
+
+enumprop_list_item :
+	  tool_enumprop_list
+	| part_enumprop_list
+	;
+
+enumprop_list :
+	  enumprop_list_item
+	| enumprop_list ',' enumprop_list_item
+	;
+
+setprop_list_item :
+	  tool_setprop_list
+	| part_setprop_list
+	;
+
+setprop_list :
+	  setprop_list_item
+	| setprop_list ',' setprop_list_item
+	;
+
+ptmeas_item :
+	  'X' '(' real_val ')'
+	| 'Y' '(' real_val ')'
+	| 'Z' '(' real_val ')'
+	| IJK '(' real_val ')'
+	;
+
+ptmeas_list :
+	  ptmeas_item
+	| ptmeas_list ',' ptmeas_item
+	;
+
+csytransformationname :
+	  DBLQUOTEDSTRING
+	;
+
+csytransformation :
+	  PartCsy
+	| JogDisplayCsy
+	| JogMoveCsy
+	| SensorCsy
+	| MoveableMachineCsy
+	| MultipleArmCsy
+	;
+
+coordsystem :
+	  MachineCsy
+	| MoveableMachineCsy
+	| MultipleArmCsy
+	| PartCsy
+	;
+
+on_ptmeas_report_param :
+	  axis_getprop
+	| IJK '(' ')'
+	| IJKAct '(' ')'
+	| ER '(' ')'
+	| Q '(' ')'
+	;
+
+on_ptmeas_report_list :
+	  on_ptmeas_report_param
+	| on_ptmeas_report_list ',' on_ptmeas_report_param
+	;
+
+on_move_report_item :
+	  TIME '(' real_val ')'
+	| DIS '(' real_val ')'
+	| gotopar_block
+	;
+
+on_move_report_list :
+	  on_move_report_item
+	| on_move_report_list ',' on_move_report_item
+	;
+
+lock_axis_prop_item :
+	  X
+	| Y
+	| Z
+	| A
+	| B
+	| C
+	| R
+	;
+
+lock_axis_prop_get :
+	  lock_axis_prop_item '(' ')'
+	;
+
+lock_axis_prop_get_list :
+	  lock_axis_prop_get
+	| lock_axis_prop_get_list ',' lock_axis_prop_get
+	;
+
+lock_position_prop_item :
+	  XFR
+	| YFR
+	| ZFR
+	| RFR
+	| PFR
+	;
+
+lock_position_prop_get :
+	  lock_position_prop_item '(' ')'
+	;
+
+lock_position_prop_get_list :
+	  lock_position_prop_get
+	| lock_position_prop_get_list ',' lock_position_prop_get
+	;
+
+enum_all_prop :
+	  EnumAllProp '(' enumprop_list ')'
+	;
+
+ippdme_statement :
+	  AlignTool '(' uniti ',' unitj ',' unitk ',' real_val ')'
+	| AlignTool '(' uniti ',' unitj ',' unitk ',' uniti ',' unitj ',' unitk ',' real_val ',' real_val ')'
+	| CenterPart '(' real_val ',' real_val ',' real_val ',' real_val ')'
+	| ChangeTool '(' tool_string ')'
+	| ClearAllErrors '(' ')'
+	| DeleteCoordSystem '(' dblquoted_string ')'
+	| DisableUser '(' ')'
+	| EnableUser '(' ')'
+	| EndSession '(' ')'
+	| enum_all_prop
+	| EnumAllProps '(' ')'
+	| EnumAllToolCollections '(' dblquoted_string ')'
+	| EnumCoordSystems '(' ')'
+	| EnumProp '(' enumprop_list ')'
+	| EnumToolCollection '(' dblquoted_string ')'
+	| EnumTools '(' ')'
+	| FindTool '(' tool_string ')'
+	| Get '(' get_list ')'
+	| GetChangeToolAction '(' dblquoted_string ')'
+	| GetCoordSystem '(' ')'
+	| GetCsyTransformation '(' csytransformation ')'
+	| GetDMEVersion '(' ')'
+	| GetErrorInfo '(' int_val ')'
+	| GetMachineClass '(' ')'
+	| GetNamedCsyTransformation '(' dblquoted_string ')'
+	| GetProp '(' getprop_list ')'
+	| GetXtdErrStatus '(' int_val ')'
+	| GoTo '(' gotocmd_list ')'
+	| Home '(' ')'
+	| IsAlignable '(' ')'
+	| IsHomed '(' ')'
+	| IsUserEnabled '(' ')'
+	| LoadCoordSystem '(' dblquoted_string ')'
+	| LockAxis '(' lock_axis_prop_get_list ')'
+	| LockPosition '(' lock_position_prop_get_list ')'
+	| OnPtMeasReport '(' on_ptmeas_report_list ')'
+	| OpenToolCollection '(' dblquoted_string ')'
+	| PtMeas '(' ptmeas_list ')'
+	| PtMeasSelfCenter '(' ')'
+	| PtMeasSelfCenterLocked '(' ')'
+	| ReQualify '(' ')'
+	| SaveActiveCoordSystem '(' ')'
+	| SaveNamedCsyTransformation '(' csytransformationname ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ')'
+	| SetCsyTransformation '(' x0 ',' y0 ',' z0 ',' theta ',' psi ',' phi ')'
+	| SetProp '(' setprop_list ')'
+	| SetTool '(' dblquoted_string ')'
+	| StartSession '(' ')'
+	| StopAllDaemons '(' ')'
+	| StopDaemon '(' event_num ')'
+	| TiltCenterPart '(' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ')'
+	| TiltPart '(' real_val ',' real_val ',' real_val ',' real_val ')'
+	;
+
+ippdme_event_statement :
+	  AbortE '(' ')'
+	| GetErrStatusE '(' ')'
+	| GetPropE '(' getprop_list ')'
+	| OnMoveReportE '(' on_move_report_list ')'
+	;
+
+
+
+ AbortE '(' ')'
+
+	| AlignTool '(' real_val ',' real_val ',' real_val ',' real_val ')'
+	| AlignTool '(' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ')'
+	| CenterPart '(' real_val ',' real_val ',' real_val ',' real_val ')'
+	| enum_all_prop
+	| EnumAllToolCollections '(' dblquoted_string ')'
+	| EnumProp '(' tool_prop_get_list ')'
+	| EnumToolCollection '(' dblquoted_string ')'
+	| Get '(' get_list ')'
+	| GetChangeToolAction '(' dblquoted_string ')'
+	| GetCsyTransformation '(' csytransformation ')'
+	| GetErrorInfo '(' int_val ')'
+	| GetNamedCsyTransformation '(' dblquoted_string ')'
+	| GetProp '(' get_prop_list ')'
+	| GetXtdErrStatus '(' int_val ')'
+	| GoTo '(' gotocmd_list ')'
+	| LoadCoordSystem '(' dblquoted_string ')'
+	| LockAxis '(' lock_axis_prop_get_list ')'
+	| LockPosition '(' lock_position_prop_get_list ')'
+	| OnPtMeasReport '(' on_ptmeas_report_list ')'
+	| OpenToolCollection '(' dblquoted_string ')'
+	| PtMeas '.' ptmeas_block '(' ')'
+	| SaveNamedCsyTransformation '(' csytransformationname ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ')'
+	| SetCsyTransformation '(' x0 ',' y0 ',' z0 ',' theta ',' psi ',' phi ')'
+	| SetProp '(' set_prop_list ')'
+	| StopDaemon '(' event_num ')'
+	| TiltCenterPart '(' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ',' real_val ')'
+	| TiltPart '(' real_val ',' real_val ',' real_val ',' real_val ')'
+
+
+
+
+         keyword
+                    =   keywords >> (eps_p - (alnum_p | '_')) >> *space_p
+                    ;   // make sure we recognize whole words only
+
+          voidcommands
+                    =   "AbortE", "ClearAllErrors", "DisableUser", "EnableUser", "EndSession", "EnumAllProps",
+                         "EnumCoordSystems", "EnumTools", "GetCoordSystem", "GetDMEVersion", "GetMachineClass", 
+                         "Home", "IsAlignable", "IsHomed", "IsUserEnabled", "PtMeas", "PtMeasSelfCenter", 
+                         "PtMeasSelfCenterLocked", "ReQualify", "SaveActiveCoordSystem", "StartSession", 
+                         "StopAllDaemons";
+
+         stringcommands
+                    =   "DeleteCoordSystem", "EnumAllToolCollections", "EnumToolCollection", 
+						"GetChangeToolAction", "GetNamedCsyTransformation", "LoadCoordSystem",
+                         "OpenToolCollection", "SetTool";
+

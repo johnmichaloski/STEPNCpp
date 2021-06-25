@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> parameterised_path </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="parameterised_path">parameterised_path </A></H1><P>This subtype of the toolpath entity is used to define help movements like connectors, approach and lift movements without giving the actual tool path. The movement is rather described by a movement type and its parameters. The CNC itself then has to calculate the resulting toolpath for the actual tool. This concept is especially useful when working with cutter contact trajectories for the milling operations. As cutter contact trajectories can only be used for motions on the workpiece surface itself there is a need for defining the connecting movements between the individual toolpaths in an indirect way. Also, the parameterised paths given here can be used to connect cutter contact and cutter location trajectories. Note that even though the parameterised paths are named for their most frequent use they can be used for any portion of a toolpath description just as any other form of toolpath. Their actual use is not indicated by the entity names but rather by the inherited its_type attribute.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#parameterised_path">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY parameterised_path  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="approach_lift_path.html">approach_lift_path</A> ,<A HREF="connector.html">connector</A> ) )
+SUBTYPE  OF (<A HREF="toolpath.html">toolpath</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

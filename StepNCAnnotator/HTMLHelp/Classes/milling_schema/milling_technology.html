@@ -1,0 +1,46 @@
+<HTML><HEAD><TITLE> milling_technology </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="milling_technology">milling_technology </A></H1><P>This entity defines the technological parameters of the milling operation. It is a subtype of entity technology defined in ISO 14649-10. Of the four alternatives for specifying speeds, exactly two must be given as indicated by the WHERE rules. If the attribute adaptive_control s invoked, some or all of these values may be ignored.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#milling_technology">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>cutspeed </TD>
+<TD><A HREF="../machining_schema/speed_measure.html#speed_measure">speed_measure</A> </TD>
+<TD>Cutting speed of the tool, the speed of spindle converted into a linear speed. </TD></TR>
+<TR><TD>spindle </TD>
+<TD><A HREF="../machining_schema/rot_speed_measure.html#rot_speed_measure">rot_speed_measure</A> </TD>
+<TD>Rotational speed of the tool. As defined for rot_speed_measure, positive values indicate tool rotation in mathematical positive direction of the c axis, i. e. counterclockwise motion if looking from the tool holder to the workpiece. Note that usual cutting tools require clockwise motion so the value of this attribute will typically be negative. </TD></TR>
+<TR><TD>feedrate_per_tooth </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Feed of the tool expressed as a distance. </TD></TR>
+<TR><TD>synchronize_spindle_with_feed </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, cutting speed and feed of the tool is synchronised. Therefore, the pitch of tap can be kept constant at the bottom of a hole when cutting speed is being decelerated and accelerated. </TD></TR>
+<TR><TD>inhibit_feedrate_override </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, the feedrate override through the operating panel or by adaptive control systems is not allowed. </TD></TR>
+<TR><TD>inhibit_spindle_override </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, the spindle speed override through the operating panel or by adaptive control systems is not allowed. </TD></TR>
+<TR><TD>its_adaptive_control </TD>
+<TD><A HREF="../milling_schema/adaptive_control.html#adaptive_control">adaptive_control</A> </TD>
+<TD>Any kind of vendor specific adaptive control strategy. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY milling_technology 
+SUBTYPE  OF (<A HREF="../machining_schema/technology.html">technology </A> );
+ cutspeed : OPTIONAL <A HREF="../machining_schema/speed_measure.html#speed_measure">speed_measure</A>;
+ spindle : OPTIONAL <A HREF="../machining_schema/rot_speed_measure.html#rot_speed_measure">rot_speed_measure</A>;
+ feedrate_per_tooth : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ synchronize_spindle_with_feed :  BOOLEAN;
+ inhibit_feedrate_override :  BOOLEAN;
+ inhibit_spindle_override :  BOOLEAN;
+ its_adaptive_control : OPTIONAL <A HREF="../milling_schema/adaptive_control.html#adaptive_control">adaptive_control</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

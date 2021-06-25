@@ -1,0 +1,43 @@
+<HTML><HEAD><TITLE> machining_operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="machining_operation">machining_operation </A></H1><P>Machining operations define the machining process for a limited area of the workpiece, i. e. the contents of a machining workingstep. For the feature to which they refer they specify, at a minimum, the tool to be used, and a set of technological parameters. This data forms an integral part of the operation and cannot be normally changed during its scope. However, for special operations, and if an explicit toolpath is provided in the inherited attribute its_toolpath, it is also possible to specify certain deviating parameters along portions of the toolpath. In this case, the data given in machining_operation serves as default data in case no specific technological information for a toolpath is provided. Note that any parameters or semantics specified by this operation or the associated feature will be overridden by the toolpath definition, even if the actions defined by the toolpath contradict the intuitive notion of this operation of the associated feature. In other words, you can even use a pocket operation to bore a hole. The first tool movement within a machining_operation will typically be an approach movement to the defined start point, allowing the machine to reach its operating speed. This can be either be defined explicitly in a toolpath, or by means of a parameterised path, or it can be defined within the strategy for the operation where the exact definition of the path is left to the NC controller. The last tool movement will typically be a retract or lift movement. The tool movement within the machining_operation, unless defined by an explicit toolpath, will be determined by the technology-dependent strategy and additional parameters as defined by subtypes of machining_operation. Machining_operation is the supertype for all technologies included in ISO 14649. For each of these technologies, specific machining strategies are defined in separate, technology depending parts. They may be used to instruct the NC controller on how to generate toolpaths if no toolpath is explicitly specified for this operation.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#machining_operation">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_id </TD>
+<TD><A HREF="../machining_schema/identifier.html#identifier">identifier</A> </TD>
+<TD>A unique identifier of the operation. </TD></TR>
+<TR><TD>retract_plane </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The height of a retract plane associated with this operation. This is not the security plane. The start and the end point of the operation – as discussed in Section 4.6.2.1 – shall be within z-direction at the length given by the attribute retract_plane. It is guaranteed that the approach movement from the retract plane to the first cut and the lift movement from the last cut to the retract plane are executed in cutting feed as specified for the operation. A change to rapid feed, e.g. to reach the security plane, can only occur above this plane, and only in the context of a new operation which should be of type rapid_movement. If not given, and if the inherited attribute its_toolpath is not given, the NC controller will determine an appropriate retract plane which may be the security plane. If its_toolpath is given, or if approach or retract strategies are given which do not make use of a retract plane, this attribute will be ignored. Depending on the type of operation, the attribute will be interpreted as follows: • For plane milling or drilling operations, retract_plane is the z coordinate of the retract plane from which the tool starts (for approach) and to which it is retracted (for retract movements). • For side milling, retract_plane indicates a distance perpendicular to the manufacutred surface. • For freeform milling, retract_plane is the distance between the workpiece surface and the retract plane which is oriented perpendicular to the surface normal in the first cutting point (for approach) or the last cutting point (for lift). </TD></TR>
+<TR><TD>start_point </TD>
+<TD><A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A> </TD>
+<TD>Optional starting point of the cutting process specified as tool centre point in the local xy plane. The z co-ordinate of start_point is determined depending on the type of operation: • For milling, the z co-ordinate is the depth of the first cut, excluding any plunge or approach movements. If an approach or plunge movement is used, the actual start point of the operation will be the start point of that approach or plunge movement which can be calculated based on this attribute. The start_point will be reached at the end of such approach or plunge. Thus the x and y co-ordinates of start_point not necessarily coincide with those of the start point of the operation, depending on the type of approach or plunge. • For drilling, the start_point is identical with the start point of the operation as no approach or plunge is foreseen here. Therefore, the z co-ordinate is given by the attribute retract_plane. If this attribute is given, the operation has a defined start point as discussed in Section 4.6.2.1, otherwise not. In the latter case, the NC controller will determine a reasonable default. If its_toolpath is given, or if start_point specifies a point violating the feature’s boundary or otherwise incompatible with the machining strategy, this attribute will be ignored. </TD></TR>
+<TR><TD>its_tool </TD>
+<TD><A HREF="../machining_schema/machining_tool.html#machining_tool">machining_tool</A> </TD>
+<TD>The tool which has to be used for this workingstep. For the definition of machining_tool, please refer to technology-specific parts of ISO 14649. It is important to understand that the tool data given describes the ideal required tool. If this attribute calls for a tool with diameter 10.0 mm, the NC controller may select a tool with diameter 9.983 mm provided that it has the ability for on-line tool correction and has the actual value of the tool stored in its tool memory data, and provided that the result of the operation remains within the given tolerances of the feature. (In other words, the NC controller is not allowed to select a 9.983 mm drill if the hole has the toleranced dimension 10.0-0.01 mm.) The possibility to find a suitable tool in the machine’s tool magazine is reduced the more details for the tool are specified. So only the technologically necessary parameters should be given. (In other words, do not specify a tool length if only the diameter is of importance.) If a tool id is specified, only an exact match can be selected. </TD></TR>
+<TR><TD>its_technology </TD>
+<TD><A HREF="../machining_schema/technology.html#technology">technology</A> </TD>
+<TD>The technological parameters of the machining operation, like spindle speed and feed of the tool. </TD></TR>
+<TR><TD>its_machine_functions </TD>
+<TD><A HREF="../machining_schema/machine_functions.html#machine_functions">machine_functions</A> </TD>
+<TD>Indicates the state of various machine functions, like coolant, chip removal, etc. to be applied during the time span of this operation. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY machining_operation  ABSTRACT
+SUPERTYPE 
+SUBTYPE  OF (<A HREF="operation.html">operation</A> );
+ its_id : <A HREF="../machining_schema/identifier.html#identifier">identifier</A>;
+ retract_plane : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ start_point : OPTIONAL <A HREF="../machining_schema/cartesian_point.html#cartesian_point">cartesian_point</A>;
+ its_tool : <A HREF="../machining_schema/machining_tool.html#machining_tool">machining_tool</A>;
+ its_technology : <A HREF="../machining_schema/technology.html#technology">technology</A>;
+ its_machine_functions : <A HREF="../machining_schema/machine_functions.html#machine_functions">machine_functions</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

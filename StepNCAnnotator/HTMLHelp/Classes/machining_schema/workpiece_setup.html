@@ -1,0 +1,37 @@
+<HTML><HEAD><TITLE> workpiece_setup </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="workpiece_setup">workpiece_setup </A></H1><P>This entity allows to specify for a workpiece its placement relative to the setup’s origin.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#workpiece_setup">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_workpiece </TD>
+<TD><A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A> </TD>
+<TD>affected workpiece </TD></TR>
+<TR><TD>its_origin </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>the workpiece’s cartesian system relative to the setup’s cartesian system. </TD></TR>
+<TR><TD>its_offset </TD>
+<TD><A HREF="../machining_schema/offset_vector.html#offset_vector">offset_vector</A> </TD>
+<TD>The translational and rotational offset of the actual workpiece compared to the position specified by its_origin. It is used to adjust the positions due to a measurement operation. The offset can be changed by a measurement operation </TD></TR>
+<TR><TD>its_restricted_area </TD>
+<TD><A HREF="../machining_schema/restricted_area_select.html#restricted_area_select">restricted_area_select</A> </TD>
+<TD>Area or volume within which tool-movements are forbidden due tocollisions. Generally used to avoid collisions with fixtures or machine parts. possible </TD></TR>
+<TR><TD>its_instructions </TD>
+<TD> LIST [ 0 : ? ] OF setup_instruction </TD>
+<TD>Contains optional setup instructions suchreference etc. as description or external documents </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY workpiece_setup ;
+ its_workpiece : <A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A>;
+ its_origin : <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+ its_offset : OPTIONAL <A HREF="../machining_schema/offset_vector.html#offset_vector">offset_vector</A>;
+ its_restricted_area : OPTIONAL <A HREF="../machining_schema/restricted_area_select.html#restricted_area_select">restricted_area_select</A>;
+ its_instructions :  LIST [ 0 : ? ] OF setup_instruction;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

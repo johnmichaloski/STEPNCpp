@@ -1,0 +1,579 @@
+
+Tooltip
+http://www.codeguru.com/cpp/controls/listview/tooltiptitletip/article.php/c909
+
+
+Problem with transition from list_ to bag_
+
+
+QUESTION:
+
+How can I set the EListT element classname?
+
+long (*nistSTVCompPosMin)[AXMAX]
+
+
+
+[material_identifier]
+High Carbon Steels 
+High Speed steels 
+Cast Cobalt Alloy 
+Carbides 
+Ceramics 
+Diamond 
+Cubic Boron Nitride
+
+
+
+const double RadDegFactor = 180.0 / PI;
+typedef DerivedUnit<Radian, RadDegFactor> Degree;
+
+template<typename BASE, const double & RATIO>
+class DerivedUnit
+{
+...
+};
+
+typedef UnitBase<float> Meter;
+typedef DerivedUnit<Meter, 1000.0> Kilometer;
+
+
+	Eplane_angle_measurePtr slope; 
+	Epocket_bottom_conditionPtr bottom_condition; 
+	Etoleranced_length_measurePtr planar_radius; 
+	Etoleranced_length_measurePtr orthogonal_radius; 
+	Eclosed_profilePtr feature_boundary; 
+	
+#128   = CLOSED_POCKET('I', #13, (#118), #122, #127, (), 0.000,  #27,   #44, #47   ???? );
+#27    = TOLERANCED_LENGTH_MEASURE(0.000, #26);
+#44    = TOLERANCED_LENGTH_MEASURE(3.175, #26);
+
+#47    = RECTANGULAR_CLOSED_PROFILE($, #45, #46);
+
+#65=     CLOSED_POCKET('I',#253, (#32),  #168, #148, (),     0., #131, #108, #109, #76);
+#131=PLANAR_POCKET_BOTTOM_CONDITION();  <==== this is an empty, not null, entity! Wrecks havoc with XML.
+#108=TOLERANCED_LENGTH_MEASURE(0.,#252);
+#109=TOLERANCED_LENGTH_MEASURE(3.175,#252);
+#76=RECTANGULAR_CLOSED_PROFILE($,#111,#110);
+
+> Is it possible to disable in place edit of some TreeView nodes while 
+> allowing it in others? If so, how?
+ // Knowledge Base Q130692 workaround
+00936   CEdit EditCtrl = m_TreeCtrl.GetEditControl();
+00937   m_TVEdit.SubclassWindow(EditCtrl.m_hWnd);
+00938   m_TVEdit.SetLimitText(MAX_PATH);
+
+TVN_KEYDOWN
+
+NM_RETURN (tree view) Notification
+Notifies a tree-view control's parent window that the control has the input focus and that the user has pressed the key. This notification is sent in the form of a WM_NOTIFY message. 
+
+Pointer to an NMTVDISPINFO structure. The item member of this structure is a TVITEM structure whose hItem, lParam, and pszText members contain valid information about the item that was edited. If label editing was canceled, the pszText member of the TVITEM structure is NULL; otherwise, pszText is the address of the edited text. 
+
+Handle the control's 'BeforeLabelEdit' event, check 'e.Node' and set 
+'e.CancelEdit' to 'True' to prevent the user from editing the node.
+
+ have written an article on this topic: 
+http://www.emoreau.com/Entries/Articles/2006/04/The-Treeview-control.aspx
+TVN_BEGINLABELEDIT 
+NOTIFY_HANDLER(IDC_TREE, TVN_BEGINLABELEDIT, OnTvnBeginLabelEditTree)
+
+http://www.geocities.com/SiliconValley/2060/articles/label-editing.html
+
+http://flinflon.brandonu.ca/Dueck/2002/62368/HowTo/Howto.htm
+
+http://www.ecs.syr.edu/faculty/fawcett/handouts/CSE778/WTL/DevelopMentor%20Code%20Samples/WTL%20Explorer/MainFrm.Cpp
+
+WND  hwndMainFrame;
+
+StringEx	CMainFrame::m_sStatus=L"Ready...";
+StringEx	CMainFrame::m_sError;
+void StatusMessage(StringEx msg)
+{
+	::SendMessage(hwndMainFrame, WM_COMMAND,ID_VIEW_STATUS_BAR, 0);
+	HandleMessages();
+	OutputDebugString(msg);
+	CMainFrame::m_sStatus=msg;
+}
+
+void ErrorMessage(StringEx msg)
+{
+	StatusMessage(msg);
+	CMainFrame::m_sError=msg;
+	::SendMessage(hwndMainFrame, WM_COMMAND,ID_VIEW_ERROR, 0);
+	HandleMessages();
+	OutputDebugString(msg);
+}
+Algorithm Implementations in C++   http://www.cs.sunysb.edu/~algorith/implement/C++.shtml 
+
+Feedrate of 0.03 and spindle speed of 16 RPM for Facing operation....
+
+#45= MILLING_TECHNOLOGY(0.030,.TCP.,$,16.000,$,.F.,.F.,.F.,$);
+
+speed_measure meters per second [m/sec]
+
+if you ahve finishing - how do you know if one or two passes... is the feature specified as the pocket
+finishing parameters for depth and side milling?
+
+
+========================================================================================================
+RetractPlane(dRetract);
+ReferencePlane(location.z);
+SafetyPlane(2); // _SDIS Safety clearance 2 mm 
+AbsDepth(vDepth.z);
+Length(dLength);
+Width(dWidth);
+CenterAbscissa(location.x);
+CenterOrdinate(location.y);   // y0
+CornerRadius(dCornerRadius);
+
+if(szMachineopClass.Find("rough")>=0)
+	CycleType(IFeatureCycle::Roughing);
+else
+	CycleType(IFeatureCycle::Finishing);
+
+CycleType(IFeatureCycle::Roughing);
+
+InfeedFeedrate(pocket->GetFeedrate());  // FIXME:
+MillingDirection(SiemensPocketBasicRectangular::G2); // FIXME: total guess climb vs conventional
+FinishFeed(pocket->GetFeedrate());			// FIXME: Feedrate for finishing
+FinishSpeed(pocket->GetSpindleSpeed());			//FIXME: Speed for finishing
+RelDepth(location.z-vDepth.z);
+========================================================================================================
+	struct ltstr
+	{
+		bool operator()(const char* s1, const char* s2) const
+		{
+			return strcmp(s1, s2) < 0;
+		}
+	};
+
+
+class FileTreeView :
+	public ATL::CWindowImpl<FileTreeView, WTL::CTreeViewCtrlEx>,
+	public hal::IniBase<FileTreeView>,
+	private boost::noncopyable
+{
+protected:
+	typedef FileTreeView thisClass;
+	typedef ATL::CWindowImpl<thisClass, WTL::CTreeViewCtrlEx> treeClass;
+	typedef hal::IniBase<thisClass> iniClass;
+
+	friend class treeClass;
+	
+public:	
+	thisClass() :
+		iniClass("treeviews/advFiles", "FileTreeView"),
+		update_lock_(0)
+	{}
+	
+	BEGIN_MSG_MAP_EX(thisClass)
+		MSG_WM_DESTROY(OnDestroy)
+
+		REFLECTED_NOTIFY_CODE_HANDLER(NM_RCLICK, OnRClick)
+		REFLECTED_NOTIFY_CODE_HANDLER(TVN_SELCHANGED, OnSelChanged)
+		
+		COMMAND_RANGE_HANDLER_EX(ID_HAL_FILE_PRIORITY_0, ID_HAL_FILE_PRIORITY_7, OnMenuPriority)
+		DEFAULT_REFLECTION_HANDLER()
+	END_MSG_MAP()
+	
+	HWND Create(HWND hWndParent, ATL::_U_RECT rect = NULL, LPCTSTR szWindowName = NULL,
+		DWORD dwStyle = 0, DWORD dwExStyle = 0,
+		ATL::_U_MENUorID MenuOrID = 0U, LPVOID lpCreateParam = NULL);
+	
+	LRESULT OnRClick(int i, LPNMHDR pnmh, BOOL&);
+	void OnMenuPriority(UINT, int, HWND);
+	
+	wpath focused() { return focused_; }
+	
+	void attach(boost::function<void ()> fn) const { selection_.connect(fn); }
+	
+	void signal() { selection_(); }
+	
+	void determineFocused();
+	
+protected:
+	void OnDestroy()
+	{
+	//	saveSettings();
+	}
+	
+	LRESULT OnSelChanged(int, LPNMHDR pnmh, BOOL&);
+	
+	mutable int update_lock_;
+	mutable hal::mutex_t mutex_;
+
+	friend class hal::mutex_update_lock<thisClass>;	
+	friend class hal::try_update_lock<thisClass>;		
+	
+	mutable boost::signal<void ()> selection_;
+	wpath focused_;
+
+private:
+	WTL::CMenu menu_;
+};
+
+template<typename T>
+class TreeViewManager
+{
+public:
+	TreeViewManager(T& t) :
+		tree_(t)
+	{}
+	
+	struct ValidTreeItem
+	{
+		ValidTreeItem() 
+		{}
+
+		ValidTreeItem(WTL::CTreeItem& t) :
+			valid(true),
+			treeItem(t)
+		{}
+		
+		bool valid;
+		WTL::CTreeItem treeItem;
+	};
+	
+	typedef std::map<wpath, ValidTreeItem> MapType;
+	
+	void EnsureValid(wpath p)
+	{		
+		wpath branchPath = p;
+		
+		MapType::iterator i = map_.find(branchPath);		
+		if (i == map_.end())
+		{
+			WTL::CTreeItem ti = tree_.GetRootItem();
+			
+			wpath branch;
+			foreach (wstring b, branchPath)
+			{
+				branch /= b;				
+				MapType::iterator j = map_.find(branch);
+				
+				if (j == map_.end())
+				{
+					WTL::CTreeItem tmp = ti.AddTail(b.c_str(), -1);
+					ti.Expand();
+					ti = tmp;
+					map_[branch] = ValidTreeItem(ti);
+				}
+				else
+				{
+					(*j).second.valid = true;
+					ti = (*j).second.treeItem;
+				}				
+			}
+		}
+		else
+		{
+			if (!(*i).second.valid)
+			{
+				(*i).second.valid = true;
+				EnsureValid(branchPath.branch_path());
+			}
+		}
+	}
+	
+	void InvalidateAll()
+	{
+		for(MapType::iterator i=map_.begin(), e=map_.end(); i!=e; ++i)
+		{
+			(*i).second.valid = false;
+		}
+	}
+	
+	void ClearInvalid()
+	{
+		for(MapType::iterator i=map_.begin(), e=map_.end(); i!=e; /**/)
+		{
+			if ((*i).second.valid)
+			{
+				++i;
+			}
+			else
+			{
+				(*i).second.treeItem.Delete();
+				map_.erase(i++);
+			}
+		}	
+	}
+	
+private:
+	T& tree_;
+	MapType map_;
+};
+	CTreeItem ti = GetSelectedItem(); 
+
+	//std::map<CString, IStepNodePtr> namedentities;
+	//CStringVector entities = Express::GetAllmachining_schemaEntities();
+	//entities += Express::GetAllmilling_schemaEntities();
+	//for(int i=0; i< entities.size(); i++)
+	//{
+	//	namedentities[entities[i]] = gClassGenerators.CreateClass(ExpDemangle(entities[i]), "");
+	//}
+	//CExpress2Sql sql(namedentities);
+	//sql.CreateSqlFile();
+	//CUnitTests tests;
+	//tests.NewRegression(::GetExeDirectory() + "testresults.txt");
+	//tests.TestList();
+
+
+
+static 	int OldWndProc;
+
+static 
+LRESULT CALLBACK Bug_Proc(HWND hWnd, UINT uMsg, WPARAM wParam,LPARAM lParam)
+{
+	switch(uMsg)
+	{
+	case WM_GETDLGCODE:
+		return DLGC_WANTALLKEYS;
+		break;
+	}
+	return CallWindowProc((WNDPROC)OldWndProc, hWnd, uMsg, wParam, lParam );
+}
+
+	CEdit edit = this->GetEditControl(); 
+	OldWndProc = ::GetWindowLong(edit.m_hWnd, GWL_WNDPROC);
+	::SetWindowLong(edit.m_hWnd,GWL_WNDPROC,(LONG)Bug_Proc);
+		REFLECTED_NOTIFY_CODE_HANDLER(TVN_KEYDOWN, OnKeydownnotify)
+
+
+
+
+#if 0
+	LPNMTVDISPINFO pTVDispInfo = reinterpret_cast<LPNMTVDISPINFO>(pNMHDR);
+	TVITEM Item;
+	Item.mask = TVIF_PARAM;
+	Item.hItem = pTVDispInfo->item.hItem;
+	GetItem(&Item);
+
+	if(ti.pszText==NULL)  //http://www.songho.ca/misc/treeview/treeview.html
+		return 1;
+
+	// look at http://www.codeguru.com/forum/archive/index.php/t-167541.html
+	// http://src.chromium.org/svn/trunk/src/chrome/views/tree_view.cc
+	// http://lib.blindness.org.tw/upload/VS2003/VSENARD1/KOREAN/ENAR/MSDN/Samples/VC/MFC/general/CmnCtrl1/mtreectl.cpp
+	if (pTVDispInfo->item.mask & TVIF_TEXT && pTVDispInfo->item.pszText)
+
+#endif
+
+
+void CSymbolTable::LoadFile(CString filename)
+{
+	m_file.clear();
+
+	if (filename.empty())
+	{
+		m_status = 1;
+		return;
+	}
+
+	FILE * fin = fopen(filename.c_str(),"rt");
+
+	if (fin)
+	{
+		fseek(fin,0, SEEK_END);
+		int filesize = ftell(fin);
+		fseek(fin,0, SEEK_SET);
+		char * buffer = (char *)calloc(filesize + 1, 1 );
+		fread(buffer, filesize, 1, fin);
+		fclose(fin);
+		int ec = ParseIniFile(buffer, m_file);
+		if (!ec)
+			m_status = 2;
+
+		free(buffer);
+	}
+	else
+	{
+		m_status = 1;
+		printf("Could not open input file %s\n", filename.c_str());
+	}
+}
+
+
+//#include <boost/regex.hpp>
+//#include <boost/archive/xml_oarchive.hpp>
+#include <boost/spirit.hpp>
+#include <boost/version.hpp>
+#include <boost/spirit/core.hpp>
+#include <boost/spirit/error_handling.hpp>
+
+#if BOOST_VERSION <= 103200
+#define BOOST_SPIRIT_NO_REGEX_LIB
+#endif
+
+#include <boost/spirit/tree/parse_tree.hpp>
+
+using namespace std;
+using namespace boost;
+using namespace boost::spirit;
+
+
+//  Here's our comment rule
+struct ini_skip_grammar : public grammar<ini_skip_grammar>
+{
+    template <typename ScannerT>
+    struct definition
+    {
+        definition(ini_skip_grammar const& /*self*/)
+        {
+            skip
+                =   blank_p
+                |   ";" >> *(anychar_p - '\n') >> '\n'     // C++ comment
+				|   "#" >> *(anychar_p - '\n') >> '\n'     // C++ comment
+               ;
+        }
+
+        rule<ScannerT> skip;
+        rule<ScannerT> const& start() const { return skip; }
+    };
+};
+
+struct  CIniParser :
+	public boost::spirit::grammar<CIniParser>
+{
+
+	CIniParser(void)
+	{
+		rule_names[SectionID]             = "Section";
+		rule_names[ParameterID]             = "Parameter";
+		rule_names[PropertyID]             = "Property";
+		rule_names[IndentifierID]             = "Identifier";
+		rule_names[DblQuotedStrID]			="QuotedString";
+
+	}
+	~CIniParser(void){}
+	//TypeNode spirit::symbols<double> var_table_t;
+	// var_table_t & vars;
+
+	std::map<parser_id, std::string> rule_names;
+	static const int SectionID = 1;
+	static const int PropertyID = 2;
+	static const int ParameterID = 3;
+	static const int IndentifierID = 4;
+	static const int DblQuotedStrID=5;
+	static const int InifileID=6;
+	static const int SectionHdrID=7;
+	template <typename ScannerT>
+	struct definition
+	{
+	public:
+
+		rule<ScannerT, parser_context<>, parser_tag<InifileID> > Inifile;
+		rule<ScannerT, parser_context<>, parser_tag<SectionHdrID> > SectionHdr;
+		rule<ScannerT, parser_context<>, parser_tag<SectionID> > Section;
+		rule<ScannerT, parser_context<>, parser_tag<ParameterID> > Parameter;
+		rule<ScannerT, parser_context<>, parser_tag<PropertyID> > Property;
+		rule<ScannerT, parser_context<>, parser_tag<IndentifierID> > Identifier;
+		rule<ScannerT, parser_context<>, parser_tag<DblQuotedStrID> > DblQuotedStr;
+		rule<ScannerT, parser_context<>, parser_tag<DblQuotedStrID> > STRING_LITERAL;
+		rule<ScannerT>  Start;
+
+		const boost::spirit::rule<ScannerT> &start() const { return Start; }
+
+		definition( CIniParser const &self )
+		{   
+			STRING_LITERAL		= inner_node_d[ chlit<>('\"') >> *( strlit<>("\\\"") | anychar_p - chlit<>('\"') ) >> chlit<>('\"')]; //[&write]
+			DblQuotedStr		= +STRING_LITERAL;	
+			SectionHdr			= leaf_node_d	['[' >>  +alnum_p  >> ']'] >>  '\n' ; 
+			Identifier			= lexeme_d	[ +alnum_p ];
+			Section				= SectionHdr >> *(Property | (*blank_p >> '\n')); 
+			Parameter			= leaf_node_d[ +alnum_p ] ;
+			Property			= Identifier >> '=' >>   (Parameter | STRING_LITERAL) >> '\n';
+			Inifile				= *Section; 
+			Start				= Inifile;
+
+
+			BOOST_SPIRIT_DEBUG_RULE(Identifier);
+			BOOST_SPIRIT_DEBUG_RULE(Parameter);
+			BOOST_SPIRIT_DEBUG_RULE(Section);
+			BOOST_SPIRIT_DEBUG_RULE(Property);
+			BOOST_SPIRIT_DEBUG_RULE(Inifile);
+
+		}
+	};
+};
+
+template<typename TreeIter>
+int evaluate(const TreeIter& i, CSymbolTable &symboltable)
+{
+	if(i->value.id() == CIniParser::InifileID)
+	{
+		for(TreeIter it = i->children.begin(); it!=i->children.end(); it++)
+		{
+			OutputDebugString("<SECTION>\n");
+				evaluate(it, symboltable);
+			OutputDebugString(StrFormat("</SECTION>\n"));
+		}
+
+	}
+	else if((i->value.id() == CIniParser::SectionID))
+	{
+		for(TreeIter it = i->children.begin(); it!=i->children.end(); it++)
+				evaluate(it, symboltable);
+	}
+	else if((i->value.id() == CIniParser::IndentifierID) )
+	{
+		OutputDebugString(StrFormat("%s=", string(i->value.begin(), i->value.end()).c_str()));
+
+	}
+	else if((i->value.id() == CIniParser::SectionHdrID) )
+	{
+		TreeIter it = i->children.begin();
+		std::string str=std::string(it->value.begin(), it->value.end()).c_str();
+		OutputDebugString(StrFormat("%s\n", str.c_str()));
+
+	}
+	else if((i->value.id() == CIniParser::PropertyID))
+	{
+		for(TreeIter it = i->children.begin(); it!=i->children.end(); it++)
+				evaluate(it, symboltable);
+	}
+	else if((i->value.id() == CIniParser::ParameterID))
+	{
+		OutputDebugString(StrFormat("\t%s\n", string(i->value.begin(), i->value.end()).c_str()));
+		for(TreeIter it = i->children.begin(); it!=i->children.end(); it++)
+				evaluate(it, symboltable);
+	}
+	else if(i->value.id() == CIniParser::DblQuotedStrID )
+	{
+		CString str;
+		for(TreeIter it = i->children.begin(); it!=i->children.end(); it++)
+			str+=string(it->value.begin(), it->value.end()).c_str();
+		
+		OutputDebugString(StrFormat("%s\n", str));
+
+	}
+	return 0;
+}
+ 
+
+
+void CSymbolTable::IniParseIt(CString filename)
+{
+
+//	  if (parse(str.c_str(), iniparser, blank_p).full)
+	CIniParser iniparser;
+	ini_skip_grammar skip;
+	CString str = ReadAFile(filename);
+	//Fstream outputfile(CString(GetExeDirectory() + "output.txt"));
+	//std::string str="[SECTION1]\n";
+	tree_parse_info<const char*> info =
+		pt_parse((LPCSTR) str, iniparser, skip);
+	if(info.full)
+	{
+		evaluate(info.trees.begin(), *this);
+		//tree_to_xml(outputfile.fp, info.trees, str.c_str(), iniparser.rule_names);
+		OutputDebugString("Ini File Parse Succeeded \n");
+	}
+	else
+	{
+			OutputDebugString(StrFormat("Ini File Parse  failed %s\n" , info.stop));
+
+	}
+
+}

@@ -1,0 +1,41 @@
+<HTML><HEAD><TITLE> drilling_type_strategy </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="drilling_type_strategy">drilling_type_strategy </A></H1><P>This is the specification of a dedicated strategy for drilling. For drilling, this mainly refers to a variation of cutting speed and feed along the movement of the tool.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#drilling_type_strategy">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>reduced_cut_at_start </TD>
+<TD><A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A> </TD>
+<TD>Reduced cutting speed at the beginning of the cut as a percentage of the programmed value. </TD></TR>
+<TR><TD>reduced_feed_at_start </TD>
+<TD><A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A> </TD>
+<TD>Reduced feed at the beginning of the cut as a percentage of the programmed value. </TD></TR>
+<TR><TD>depth_of_start </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Depth to which the reduced values at the start are valid. </TD></TR>
+<TR><TD>reduced_cut_at_end </TD>
+<TD><A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A> </TD>
+<TD>Reduced cutting speed at the end of the cut as a percentage of the programmed value. </TD></TR>
+<TR><TD>reduced_feed_at_end </TD>
+<TD><A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A> </TD>
+<TD>Reduced feed at the end of the cut as a percentage of the programmed value. </TD></TR>
+<TR><TD>depth_of_end </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Depth from which the reduced values at the end are valid. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY drilling_type_strategy ;
+ reduced_cut_at_start : OPTIONAL <A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A>;
+ reduced_feed_at_start : OPTIONAL <A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A>;
+ depth_of_start : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ reduced_cut_at_end : OPTIONAL <A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A>;
+ reduced_feed_at_end : OPTIONAL <A HREF="../machining_schema/positive_ratio_measure.html#positive_ratio_measure">positive_ratio_measure</A>;
+ depth_of_end : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

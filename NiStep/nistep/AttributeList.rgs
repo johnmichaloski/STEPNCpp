@@ -1,0 +1,26 @@
+HKCR
+{
+	NiStep.AttributeList.1 = s 'AttributeList Class'
+	{
+		CLSID = s '{CA9E9828-9808-4EEA-A050-82C63CD6B300}'
+	}
+	NiStep.AttributeList = s 'AttributeList Class'
+	{
+		CLSID = s '{CA9E9828-9808-4EEA-A050-82C63CD6B300}'
+		CurVer = s 'NiStep.AttributeList.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CA9E9828-9808-4EEA-A050-82C63CD6B300} = s 'AttributeList Class'
+		{
+			ProgID = s 'NiStep.AttributeList.1'
+			VersionIndependentProgID = s 'NiStep.AttributeList'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{D36EF86D-25FB-4D81-8C40-B279AABEC145}'
+		}
+	}
+}

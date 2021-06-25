@@ -1,0 +1,5777 @@
+SCHEMA combined_schema;
+
+CONSTANT
+dummy_tri : topological_representation_item := representation_item('')||
+            topological_representation_item();        
+ 
+dummy_gri : geometric_representation_item :=  representation_item('')||
+            geometric_representation_item();
+END_CONSTANT;
+
+
+(*SCHEMA support_resource_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* support_resource_schema                         ISO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+TYPE identifier = STRING;
+END_TYPE;
+
+TYPE label = STRING;
+END_TYPE;
+
+TYPE text = STRING;
+END_TYPE;
+
+FUNCTION bag_to_set 
+(the_bag : BAG OF GENERIC : intype) : SET OF GENERIC : intype;
+LOCAL
+    the_set: SET OF GENERIC : intype := [];
+END_LOCAL;
+IF SIZEOF (the_bag) > 0 THEN
+   REPEAT i := 1 to HIINDEX (the_bag);
+     the_set := the_set + the_bag [i];
+   END_REPEAT;
+END_IF;
+RETURN (the_set);
+END_FUNCTION;
+
+(*
+END_SCHEMA; (* support_resource_schema *)
+*)
+
+
+
+
+(*SCHEMA geometry_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* geometry_schema			                       ISO 10303-42 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+REFERENCE FROM support_resource_schema (
+		label
+		);
+
+REFERENCE FROM geometric_model_schema
+		(
+		solid_model
+		);
+
+REFERENCE FROM measure_schema (
+		length_measure,
+		parameter_value,
+		plane_angle_measure,
+		positive_ratio_measure,
+		positive_length_measure,
+		time_measure
+		);
+
+REFERENCE FROM topology_schema
+		(
+		edge_curve,
+		face_surface,
+		poly_loop,
+		topological_representation_item,
+		vertex_point
+		);
+
+
+REFERENCE FROM representation_schema
+		(
+		definitional_representation,
+		item_in_context,
+		representation,
+		representation_context,
+		representation_item,
+		using_representations
+		);
+*)	
+(*
+CONSTANT
+dummy_tri : topological_representation_item := representation_item('')||
+            topological_representation_item();        
+ 
+dummy_gri : geometric_representation_item :=  representation_item('')||
+            geometric_representation_item();
+END_CONSTANT;
+*)
+
+TYPE trimming_select = SELECT 
+    (cartesian_point, 
+    parameter_value);
+END_TYPE;
+
+TYPE trimming_preference = ENUMERATION OF 
+   (cartesian, parameter, unspecified);
+END_TYPE;
+
+TYPE transition_code = ENUMERATION OF 
+        (discontinuous,
+        continuous,
+        cont_same_gradient,
+        cont_same_gradient_same_curvature);
+END_TYPE;
+
+ENTITY trimmed_curve    (* c0 *)
+        SUBTYPE OF (bounded_curve); 
+        name        	      : label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+        basis_curve           : curve; 
+        trim_1                : SET[1:2] OF trimming_select; 
+        trim_2                : SET[1:2] OF trimming_select; 
+        sense_agreement       : BOOLEAN; 
+        master_representation : trimming_preference; 
+ WHERE 
+        WR1: ('MACHINING_SCHEMA.PARAMETER_VALUE' IN TYPEOF(trim_1[1])) OR 
+             ('MACHINING_SCHEMA.PARAMETER_VALUE' IN TYPEOF(trim_1[2]));
+        WR2: ('MACHINING_SCHEMA.PARAMETER_VALUE' IN TYPEOF(trim_2[1])) OR 
+             ('MACHINING_SCHEMA.PARAMETER_VALUE' IN TYPEOF(trim_2[2]));
+        WR3: ('MACHINING_SCHEMA.PARAMETER' IN TYPEOF(SELF.master_representation));
+END_ENTITY;
+
+ENTITY composite_curve  (* c0 *)
+        SUBTYPE OF (bounded_curve); 
+        name        	      : label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+        segments       : LIST [1:?] OF composite_curve_segment; 
+        self_intersect : LOGICAL; 
+ DERIVE 
+        n_segments     : INTEGER := SIZEOF(segments); 
+        closed_curve   : LOGICAL  
+                       := segments[n_segments].transition <> discontinuous; 
+ WHERE 
+        WR1: ((NOT closed_curve) AND (SIZEOF(QUERY(temp <* segments | 
+                     temp.transition = discontinuous)) = 1)) OR 
+                 ((closed_curve) AND (SIZEOF(QUERY(temp <* segments |  
+                     temp.transition = discontinuous)) = 0)); 
+END_ENTITY; 
+
+ENTITY composite_curve_segment;         (* c0 *)
+        transition    : transition_code; 
+        same_sense    : BOOLEAN; 
+        parent_curve  : curve; 
+ INVERSE 
+         using_curves  : BAG [1:?] OF composite_curve FOR segments; 
+ WHERE 
+        WR1 : ('MACHINING_SCHEMA.BOUNDED_CURVE' IN
+          TYPEOF(parent_curve)); 
+END_ENTITY;
+
+TYPE b_spline_curve_form = ENUMERATION OF (polyline_form, circular_arc, elliptic_arc, parabolic_arc, hyperbolic_arc, unspecified);
+END_TYPE;
+
+TYPE b_spline_surface_form = ENUMERATION OF (plane_surf, cylindrical_surf, conical_surf, spherical_surf, toroidal_surf, surf_of_revolution, ruled_surf, generalised_cone, quadric_surf, surf_of_linear_extrusion, unspecified);
+END_TYPE;
+
+TYPE dimension_count = INTEGER;
+WHERE
+WR1: SELF > 0;
+END_TYPE;
+
+TYPE knot_type = ENUMERATION OF (uniform_knots, quasi_uniform_knots, piecewise_bezier_knots, unspecified);
+END_TYPE;
+
+TYPE pcurve_or_surface = SELECT (pcurve, surface);
+END_TYPE;
+
+TYPE vector_or_direction = SELECT (vector, direction);
+END_TYPE;
+
+ENTITY axis1_placement	(* s1 *)
+SUBTYPE OF (placement);
+axis     : OPTIONAL direction;
+DERIVE
+z : direction := NVL(normalise(axis), dummy_gri ||
+                     direction([0.0,0.0,1.0]));
+WHERE
+WR1: SELF\geometric_representation_item.dim  = 3;
+END_ENTITY;
+
+ENTITY axis2_placement_3d	(* m0 *)
+SUBTYPE OF (placement);
+axis          : OPTIONAL direction;
+ref_direction : OPTIONAL direction;
+DERIVE
+p             : LIST [3:3] OF direction := build_axes(axis, ref_direction);
+WHERE
+WR1: SELF\placement.location.dim = 3;
+WR2: (NOT (EXISTS (axis))) OR (axis.dim = 3);
+WR3: (NOT (EXISTS (ref_direction))) OR (ref_direction.dim = 3);
+WR4: (NOT (EXISTS (axis))) OR (NOT (EXISTS (ref_direction))) OR
+     (cross_product(axis,ref_direction).magnitude > 0.0);
+END_ENTITY;
+
+ENTITY bezier_curve	(* c1 *)
+SUBTYPE OF (b_spline_curve);
+END_ENTITY;
+
+ENTITY bezier_surface	(* s1 *)
+SUBTYPE OF (b_spline_surface);
+END_ENTITY;
+
+ENTITY bounded_curve	(* c0 *)
+	SUPERTYPE OF (ONEOF(polyline, b_spline_curve, trimmed_curve,
+			    bounded_pcurve, composite_curve))
+	SUBTYPE OF (curve);
+	(* here the attribute name is missing. Therefore bounded_curve cannot be directly instantiated. *)
+	(* WZL-Parser does not support multiple inheritance, 03.06.2003 wj *)
+END_ENTITY;
+
+ENTITY bounded_pcurve	(* s0 *)
+	SUBTYPE OF (pcurve, bounded_curve);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	
+	WHERE
+	WR1: ('MACHINING_SCHEMA.BOUNDED_CURVE' IN
+	      TYPEOF(SELF\pcurve.reference_to_curve.items[1]));
+END_ENTITY;
+
+ENTITY bounded_surface	(* s0 *)
+SUPERTYPE OF (b_spline_surface)
+SUBTYPE OF (surface);
+END_ENTITY;
+
+ENTITY b_spline_curve	(* c0 *)
+	SUPERTYPE OF (ONEOF(uniform_curve, b_spline_curve_with_knots,
+			  quasi_uniform_curve, bezier_curve) ANDOR rational_b_spline_curve)
+	SUBTYPE OF (bounded_curve);
+	name        		: label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)	
+	degree			: INTEGER;
+	control_points_list	: LIST [2:?] OF cartesian_point;
+	curve_form:                 b_spline_curve_form;
+	closed_curve:               LOGICAL;
+	self_intersect:             LOGICAL;
+	DERIVE
+	upper_index_on_control_points  : INTEGER 
+				       := (SIZEOF(control_points_list) - 1);
+	control_points       : ARRAY [0:upper_index_on_control_points]
+			       OF cartesian_point 
+			     := list_to_array(control_points_list,0,
+				upper_index_on_control_points);
+	WHERE
+	WR1: ('MACHINING_SCHEMA.UNIFORM_CURVE' IN TYPEOF(self)) OR
+	     ('MACHINING_SCHEMA.QUASI_UNIFORM_CURVE' IN TYPEOF(self)) OR
+	     ('MACHINING_SCHEMA.BEZIER_CURVE' IN TYPEOF(self)) OR
+	     ('MACHINING_SCHEMA.B_SPLINE_CURVE_WITH_KNOTS' IN TYPEOF(self));
+END_ENTITY;
+
+ENTITY b_spline_curve_with_knots	(* c0 *)
+SUBTYPE OF (b_spline_curve);
+knot_multiplicities  : LIST [2:?] OF INTEGER;
+knots                : LIST [2:?] OF parameter_value;
+knot_spec            : knot_type;
+DERIVE
+upper_index_on_knots : INTEGER := SIZEOF(knots);
+WHERE
+WR1: constraints_param_b_spline(degree, upper_index_on_knots,
+                               upper_index_on_control_points,
+                               knot_multiplicities, knots);
+WR2: SIZEOF(knot_multiplicities) = upper_index_on_knots;
+END_ENTITY;
+
+ENTITY b_spline_surface	(* s0 *)
+SUPERTYPE OF (ONEOF(b_spline_surface_with_knots, uniform_surface,
+                   quasi_uniform_surface, bezier_surface) ANDOR rational_b_spline_surface)
+SUBTYPE OF (bounded_surface);
+u_degree             : INTEGER;
+v_degree             : INTEGER;
+control_points_list  : LIST [2:?] OF
+                       LIST [2:?] OF cartesian_point;
+surface_form         : b_spline_surface_form;
+u_closed             : LOGICAL;
+v_closed             : LOGICAL;
+self_intersect       : LOGICAL;
+DERIVE
+u_upper             : INTEGER := SIZEOF(control_points_list) - 1;
+v_upper             : INTEGER := SIZEOF(control_points_list[1]) - 1;
+control_points      : ARRAY [0:u_upper] OF ARRAY [0:v_upper] OF 
+                      cartesian_point 
+                    := make_array_of_array(control_points_list,
+                                           0,u_upper,0,v_upper);
+WHERE
+WR1: ('MACHINING_SCHEMA.UNIFORM_SURFACE' IN TYPEOF(SELF)) OR
+     ('MACHINING_SCHEMA.QUASI_UNIFORM_SURFACE' IN TYPEOF(SELF)) OR
+     ('MACHINING_SCHEMA.BEZIER_SURFACE' IN TYPEOF(SELF)) OR
+     ('MACHINING_SCHEMA.B_SPLINE_SURFACE_WITH_KNOTS' IN TYPEOF(SELF));
+END_ENTITY;
+
+ENTITY b_spline_surface_with_knots	(* s0 *)
+SUBTYPE OF (b_spline_surface);
+u_multiplicities  : LIST [2:?] OF INTEGER;
+v_multiplicities  : LIST [2:?] OF INTEGER;
+u_knots           : LIST [2:?] OF parameter_value;
+v_knots           : LIST [2:?] OF parameter_value;
+knot_spec         : knot_type;
+DERIVE
+knot_u_upper      : INTEGER := SIZEOF(u_knots);
+knot_v_upper      : INTEGER := SIZEOF(v_knots);
+WHERE
+WR1: constraints_param_b_spline(SELF\b_spline_surface.u_degree,
+                 knot_u_upper, SELF\b_spline_surface.u_upper,
+                             u_multiplicities, u_knots);
+WR2: constraints_param_b_spline(SELF\b_spline_surface.v_degree,
+                 knot_v_upper, SELF\b_spline_surface.v_upper,
+                             v_multiplicities, v_knots);
+WR3: SIZEOF(u_multiplicities) = knot_u_upper;
+  WR4: SIZEOF(v_multiplicities) = knot_v_upper;
+END_ENTITY;
+
+ENTITY cartesian_point	(* m0 c0 s0 *)
+SUBTYPE OF (point);
+coordinates  : LIST [1:3] OF length_measure;
+END_ENTITY;
+
+ENTITY circle	(* c1 *)
+SUBTYPE OF (conic);
+radius   : positive_length_measure;
+END_ENTITY;
+
+ENTITY conic	(* c1 *)
+	SUPERTYPE OF (ONEOF(circle, ellipse, hyperbola, parabola))
+	SUBTYPE OF (curve);
+	name        		: label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	position		: axis2_placement_3d;
+END_ENTITY;
+
+ENTITY curve	(* c0 *)
+	SUPERTYPE OF (ONEOF(line, conic, pcurve, bounded_curve))
+	SUBTYPE OF (geometric_representation_item);
+	(* attribute name is missing. Therfore curve should not be instantiated. Name has been shifted to the subtypes*)
+	(* WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+END_ENTITY;
+
+ENTITY direction	(* m0 *)
+	SUBTYPE OF (geometric_representation_item);
+	name        		: label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	direction_ratios 	: LIST [2:3] OF REAL;
+	WHERE
+	WR1: SIZEOF(QUERY(tmp <* direction_ratios | tmp <> 0.0)) > 0;
+END_ENTITY;
+
+ENTITY elementary_surface	(* m0 s0 *)
+SUPERTYPE OF (ONEOF(plane, spherical_surface))
+SUBTYPE OF (surface);
+position : axis2_placement_3d;
+END_ENTITY;
+
+ENTITY ellipse	(* c1 *)
+SUBTYPE OF (conic);
+semi_axis_1 : positive_length_measure;
+semi_axis_2 : positive_length_measure;
+END_ENTITY;
+
+ENTITY geometric_representation_context	(* m0 *)
+SUBTYPE OF (representation_context);
+coordinate_space_dimension : dimension_count;
+END_ENTITY;
+
+ENTITY geometric_representation_item	(* m0 *)
+SUPERTYPE OF (ONEOF(point, direction, placement, curve, surface, edge_curve, face_surface, vertex_point, solid_model, poly_loop))
+SUBTYPE OF (representation_item);
+DERIVE
+    dim : dimension_count := dimension_of(SELF);
+WHERE
+WR1: SIZEOF (QUERY (using_rep <* using_representations (SELF) |
+     NOT ('MACHINING_SCHEMA.GEOMETRIC_REPRESENTATION_CONTEXT' IN
+     TYPEOF (using_rep.context_of_items)))) = 0;
+END_ENTITY;
+
+ENTITY hyperbola	(* c1 *)
+SUBTYPE OF (conic);
+semi_axis      : positive_length_measure;
+semi_imag_axis : positive_length_measure;
+END_ENTITY;
+
+ENTITY line	(* c1 *)
+	SUBTYPE OF (curve);
+	name        		: label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	pnt : cartesian_point;
+	dir : vector;
+	WHERE
+	WR1: dir.dim  = pnt.dim;
+END_ENTITY;
+
+ENTITY oriented_surface	(* c1 *)
+SUBTYPE OF (surface);
+orientation : BOOLEAN;
+END_ENTITY;
+
+ENTITY parabola	(* c1 *)
+SUBTYPE OF (conic);
+focal_dist : length_measure;
+WHERE
+WR1: focal_dist <> 0.0;
+END_ENTITY;
+
+ENTITY pcurve	(* s0 *)
+	SUBTYPE OF (curve);
+	(* here the attribute name is missing as we had to decide whether we use bounded_pcureve or pcurve *)
+	(* WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+
+	basis_surface      : surface;
+	reference_to_curve : definitional_representation;
+	WHERE
+	WR1: SIZEOF(reference_to_curve\representation.items) = 1;
+	WR2: 'MACHINING_SCHEMA.CURVE' IN TYPEOF
+			 (reference_to_curve\representation.items[1]);
+	WR3: reference_to_curve\representation.items[1]\
+                        geometric_representation_item.dim =2;
+END_ENTITY;
+
+ENTITY placement	(* m0 *)
+	SUPERTYPE OF (axis2_placement_3d)
+	SUBTYPE OF (geometric_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	location : cartesian_point;
+END_ENTITY;
+
+ENTITY plane	(* m0 s0 *)
+SUBTYPE OF (elementary_surface);
+END_ENTITY;
+
+ENTITY point	(* m0 c0 s0 *)
+	SUPERTYPE OF (cartesian_point)
+	SUBTYPE OF (geometric_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+END_ENTITY;
+
+ENTITY polyline	(* c0 *)
+	SUBTYPE OF (bounded_curve);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	points : LIST [2:?] OF cartesian_point;
+END_ENTITY;
+
+ENTITY quasi_uniform_curve	(* c1 *)
+SUBTYPE OF (b_spline_curve);
+END_ENTITY;
+
+ENTITY quasi_uniform_surface	(* s1 *)
+SUBTYPE OF (b_spline_surface);
+END_ENTITY;
+
+ENTITY rational_b_spline_curve	(* c0 *)
+SUBTYPE OF (b_spline_curve);
+weights_data : LIST [2:?] OF REAL;
+DERIVE
+weights : ARRAY [0:upper_index_on_control_points] OF REAL
+        := list_to_array(weights_data,0,upper_index_on_control_points);
+WHERE
+WR1:  SIZEOF(weights_data) = SIZEOF(SELF\b_spline_curve.control_points_list);
+WR2:  curve_weights_positive(SELF);
+END_ENTITY;
+
+ENTITY rational_b_spline_surface	(* s0 *)
+SUBTYPE OF (b_spline_surface);
+weights_data : LIST [2:?] OF LIST [2:?] OF REAL;
+DERIVE
+weights       : ARRAY [0:u_upper] OF ARRAY [0:v_upper] OF REAL
+              := make_array_of_array(weights_data,0,u_upper,0,v_upper);
+WHERE
+WR1: (SIZEOF(weights_data) = SIZEOF(SELF\b_spline_surface.control_points_list))       AND (SIZEOF(weights_data[1]) = SIZEOF(SELF\b_spline_surface.control_points_list[1]));
+WR2: surface_weights_positive(SELF);
+END_ENTITY;
+
+ENTITY spherical_surface	(* s1 *)
+SUBTYPE OF (elementary_surface);
+radius   : positive_length_measure;
+END_ENTITY;
+
+ENTITY surface	(* m0 s0 *)
+	SUPERTYPE OF (ONEOF(swept_surface, elementary_surface, bounded_surface, oriented_surface)) 
+	SUBTYPE OF (geometric_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+END_ENTITY;
+
+ENTITY surface_of_linear_extrusion	(* s1 *)
+SUBTYPE OF (swept_surface);
+extrusion_axis      : vector;
+END_ENTITY;
+
+ENTITY surface_of_revolution	(* s1 *)
+SUBTYPE OF (swept_surface);
+axis_position       : axis1_placement;
+DERIVE
+axis_line : line := dummy_gri || curve() || line (axis_position.location,
+                    dummy_gri || vector(axis_position.z, 1.0));
+END_ENTITY;
+
+ENTITY swept_surface	(* s1 *)
+SUPERTYPE OF (ONEOF(surface_of_linear_extrusion, surface_of_revolution))
+SUBTYPE OF (surface);
+swept_curve : curve;
+END_ENTITY;
+
+ENTITY uniform_curve	(* c1 *)
+SUBTYPE OF (b_spline_curve);
+END_ENTITY;
+
+ENTITY uniform_surface	(* s1 *)
+SUBTYPE OF (b_spline_surface);
+END_ENTITY;
+
+ENTITY vector	(* c1 s1 *)
+	SUBTYPE OF (geometric_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	orientation : direction;
+	magnitude   : length_measure;
+	WHERE
+	WR1 : magnitude >= 0.0;
+END_ENTITY;
+
+RULE compatible_dimension FOR (cartesian_point, direction, representation_context,  geometric_representation_context);
+WHERE
+  -- ensure that the count of coordinates of each cartesian_point
+  -- matches the coordinate_space_dimension of each geometric_context in
+  -- which it is geometrically founded
+WR1: SIZEOF(QUERY(x <* cartesian_point| SIZEOF(QUERY
+       (y <* geometric_representation_context | item_in_context(x,y) AND
+       (HIINDEX(x.coordinates) <> y.coordinate_space_dimension))) > 0 )) =0;
+  -- ensure that the count of direction_ratios of each direction
+  -- matches the coordinate_space_dimension of each geometric_context in
+  -- which it is geometrically founded
+WR2: SIZEOF(QUERY(x <* direction | SIZEOF( QUERY
+       (y <* geometric_representation_context | item_in_context(x,y) AND
+       (HIINDEX(x.direction_ratios) <> y.coordinate_space_dimension)))
+       > 0 )) = 0;
+END_RULE;
+
+FUNCTION build_axes(axis, ref_direction : direction): LIST [3:3] OF direction;
+LOCAL
+d1, d2 : direction;
+END_LOCAL;
+d1 := NVL(normalise(axis), dummy_gri || direction([0.0,0.0,1.0]));
+d2 := first_proj_axis(d1, ref_direction);
+RETURN([d2, normalise(cross_product(d1,d2)).orientation, d1]);
+END_FUNCTION;
+
+FUNCTION constraints_param_b_spline(degree, up_knots, up_cp : INTEGER;
+                                          knot_mult : LIST OF INTEGER;
+knots : LIST OF parameter_value) : BOOLEAN;
+LOCAL
+result  : BOOLEAN := TRUE;
+k, sum  : INTEGER;
+END_LOCAL;
+(* Find sum of knot multiplicities. *)
+sum := knot_mult[1];
+REPEAT i := 2 TO up_knots;
+sum := sum + knot_mult[i];
+END_REPEAT;
+(* Check limits holding for all B-spline parametrisations *)
+IF (degree < 1) OR (up_knots < 2) OR (up_cp < degree) OR
+      (sum <> (degree + up_cp + 2)) THEN
+  result := FALSE;
+  RETURN(result);
+END_IF;
+k := knot_mult[1];
+IF (k < 1) OR (k > degree + 1) THEN
+  result := FALSE;
+  RETURN(result);
+END_IF;
+REPEAT i := 2 TO up_knots;
+  IF (knot_mult[i] < 1) OR (knots[i] <= knots[i-1]) THEN
+    result := FALSE;
+    RETURN(result);
+  END_IF;
+  k := knot_mult[i];
+  IF (i < up_knots) AND (k > degree) THEN
+    result := FALSE;
+    RETURN(result);
+  END_IF;
+  IF (i = up_knots) AND (k > degree + 1) THEN
+    result := FALSE;
+    RETURN(result);
+  END_IF;
+END_REPEAT;
+RETURN(result);
+END_FUNCTION;
+
+FUNCTION cross_product (arg1, arg2 : direction) : vector;
+LOCAL
+mag    : REAL;
+res    : direction;
+v1,v2  : LIST[3:3] OF REAL;
+result : vector;
+END_LOCAL;
+IF ( NOT EXISTS (arg1) OR (arg1.dim = 2)) OR
+  ( NOT EXISTS (arg2) OR (arg2.dim = 2)) THEN
+ RETURN(?);
+ELSE
+ BEGIN
+   v1  := normalise(arg1).direction_ratios;
+   v2  := normalise(arg2).direction_ratios;
+   res := dummy_gri || direction([(v1[2]*v2[3] - v1[3]*v2[2]),
+         (v1[3]*v2[1] - v1[1]*v2[3]), (v1[1]*v2[2] - v1[2]*v2[1])]);
+   mag := 0.0;
+   REPEAT i := 1 TO 3;
+     mag := mag + res.direction_ratios[i]*res.direction_ratios[i];
+   END_REPEAT;
+   IF (mag > 0.0) THEN
+     result := dummy_gri || vector(res, SQRT(mag));
+   ELSE
+     result := dummy_gri || vector(arg1, 0.0);
+   END_IF;
+   RETURN(result);
+ END;
+END_IF;
+END_FUNCTION;
+
+FUNCTION curve_weights_positive(b: rational_b_spline_curve) : BOOLEAN;
+LOCAL
+     result : BOOLEAN := TRUE;
+END_LOCAL;
+REPEAT i := 0 TO b.upper_index_on_control_points;
+  IF b.weights[i] <= 0.0  THEN
+    result := FALSE;
+    RETURN(result);
+  END_IF;
+END_REPEAT;
+RETURN(result);
+END_FUNCTION;
+
+FUNCTION dimension_of(item : geometric_representation_item): dimension_count;
+LOCAL
+x : SET OF representation;
+y : representation_context;
+END_LOCAL;
+-- Find the set of representation in which the item is used. 
+  x := using_representations(item);
+-- Determines the dimension_count of the 
+-- geometric_representation_context. Note that the 
+-- RULE compatible_dimension ensures that the context_of_items
+-- is of type geometric_representation_context and has
+-- the same dimension_count for all values of x.
+-- The SET x is non-empty since this is required by WR1 of
+-- representation_item.
+  y := x[1].context_of_items;
+RETURN (y\geometric_representation_context.coordinate_space_dimension);
+END_FUNCTION;
+
+FUNCTION dot_product(arg1, arg2 : direction) : REAL;
+LOCAL
+scalar : REAL;
+vec1, vec2: direction;
+ndim : INTEGER;
+END_LOCAL;
+IF NOT EXISTS (arg1) OR NOT EXISTS (arg2) THEN
+  scalar := ?;
+  (* When function is called with invalid data an indeterminate result
+  is returned *)
+ELSE
+  IF (arg1.dim <> arg2.dim) THEN
+    scalar := ?;
+  (* When function is called with invalid data an indeterminate result
+  is returned *)
+  ELSE
+    BEGIN
+      vec1   := normalise(arg1);
+      vec2   := normalise(arg2);
+      ndim   := arg1.dim;
+      scalar := 0.0;
+      REPEAT  i := 1 TO ndim;
+        scalar := scalar +
+                    vec1.direction_ratios[i]*vec2.direction_ratios[i];
+      END_REPEAT;
+    END;
+  END_IF;
+END_IF;
+RETURN (scalar);
+END_FUNCTION;
+
+FUNCTION first_proj_axis(z_axis, arg : direction) : direction;
+LOCAL
+x_axis : direction;
+v      : direction;
+z      : direction;
+x_vec  : vector;
+END_LOCAL;
+IF (NOT EXISTS(z_axis)) THEN
+  RETURN (?) ;
+ELSE
+  z := normalise(z_axis);
+  IF NOT EXISTS(arg) THEN
+    IF (z.direction_ratios <> [1.0,0.0,0.0]) THEN
+      v :=  dummy_gri || direction([1.0,0.0,0.0]);
+    ELSE
+      v := dummy_gri || direction([0.0,1.0,0.0]);
+    END_IF;
+  ELSE
+    IF  (arg.dim <> 3) THEN
+      RETURN (?) ;
+    END_IF;
+    IF ((cross_product(arg,z).magnitude) = 0.0) THEN
+      RETURN (?);
+    ELSE
+      v := normalise(arg);
+    END_IF;
+  END_IF;
+  x_vec := scalar_times_vector(dot_product(v, z), z);
+  x_axis := vector_difference(v, x_vec).orientation;
+  x_axis := normalise(x_axis);
+END_IF;
+RETURN(x_axis);
+END_FUNCTION;
+
+FUNCTION list_to_array(lis : LIST [0:?] OF GENERIC : T; low,u : INTEGER) : ARRAY OF GENERIC : T;
+LOCAL
+n   : INTEGER;
+res : ARRAY [low:u] OF GENERIC : T;
+END_LOCAL;
+n := SIZEOF(lis);
+IF (n <> (u-low +1)) THEN
+  RETURN(?);
+ELSE
+  res := [lis[1] : n];
+  REPEAT i := 2 TO n;
+    res[low+i-1] := lis[i];
+  END_REPEAT;
+  RETURN(res);
+END_IF;
+END_FUNCTION;
+
+FUNCTION make_array_of_array(lis : LIST[1:?] OF LIST [1:?] OF GENERIC : T; low1, u1, low2, u2 : INTEGER): ARRAY OF ARRAY OF GENERIC : T;
+LOCAL
+res   : ARRAY[low1:u1] OF ARRAY [low2:u2] OF GENERIC : T;
+END_LOCAL;
+(* Check input dimensions for consistency *)
+ IF (u1-low1+1) <> SIZEOF(lis) THEN
+   RETURN (?);
+ END_IF;
+ IF (u2 - low2 + 1 ) <> SIZEOF(lis[1]) THEN
+   RETURN (?) ;
+ END_IF;
+(* Initialise res with values from lis[1] *)
+ res := [list_to_array(lis[1], low2, u2) : (u1-low1 + 1)];
+ REPEAT i := 2 TO HIINDEX(lis);
+   IF (u2-low2+1) <> SIZEOF(lis[i]) THEN
+     RETURN (?);
+   END_IF;     
+   res[low1+i-1] := list_to_array(lis[i], low2, u2);
+ END_REPEAT; 
+RETURN (res);
+END_FUNCTION;
+
+FUNCTION normalise (arg : vector_or_direction) : vector_or_direction;
+LOCAL
+ndim   : INTEGER;
+v      : direction;
+result : vector_or_direction;
+vec    : vector;
+mag    : REAL;
+END_LOCAL;
+IF NOT EXISTS (arg) THEN
+  result := ?;
+  (* When function is called with invalid data a NULL result is returned *)
+ELSE
+  ndim := arg.dim;
+  IF 'MACHINING_SCHEMA.VECTOR' IN TYPEOF(arg) THEN
+    BEGIN
+          v := dummy_gri || direction(arg.orientation.direction_ratios);
+      IF arg.magnitude = 0.0 THEN
+        RETURN(?);
+      ELSE
+       vec := dummy_gri || vector (v, 1.0);
+      END_IF;
+    END;
+  ELSE
+    v := dummy_gri || direction (arg.direction_ratios);
+  END_IF;
+  mag := 0.0;
+  REPEAT  i := 1 TO ndim;
+    mag := mag + v.direction_ratios[i]*v.direction_ratios[i];
+  END_REPEAT;
+  IF mag > 0.0 THEN
+    mag := SQRT(mag);
+    REPEAT  i := 1 TO ndim;
+      v.direction_ratios[i] := v.direction_ratios[i]/mag;
+    END_REPEAT;
+    IF 'MACHINING_SCHEMA.VECTOR' IN TYPEOF(arg) THEN
+      vec.orientation := v;
+      result := vec;
+    ELSE
+      result := v;
+    END_IF;
+  ELSE
+    RETURN(?);
+  END_IF;
+END_IF;
+RETURN (result);
+END_FUNCTION;
+
+FUNCTION scalar_times_vector (scalar : REAL; vec : vector_or_direction)
+                                                 : vector;
+LOCAL
+v      : direction;
+mag    : REAL;
+result : vector;
+END_LOCAL;
+IF NOT EXISTS (scalar) OR NOT EXISTS (vec) THEN
+  RETURN (?) ;
+ ELSE
+  IF 'MACHINING_SCHEMA.VECTOR' IN TYPEOF (vec) THEN
+    v   := dummy_gri || direction(vec.orientation.direction_ratios);
+    mag := scalar * vec.magnitude;
+  ELSE
+    v   := dummy_gri || direction(vec.direction_ratios);
+    mag := scalar;
+  END_IF;
+  IF (mag < 0.0 ) THEN
+    REPEAT i := 1 TO SIZEOF(v.direction_ratios);
+      v.direction_ratios[i] := -v.direction_ratios[i];
+    END_REPEAT;
+    mag := -mag;
+  END_IF;
+  result := dummy_gri || vector(normalise(v), mag);
+END_IF;
+RETURN (result);
+END_FUNCTION;
+
+FUNCTION surface_weights_positive(b: rational_b_spline_surface) : BOOLEAN;
+LOCAL
+result        : BOOLEAN := TRUE;
+END_LOCAL;
+REPEAT i := 0 TO b.u_upper;
+  REPEAT j := 0 TO b.v_upper;
+    IF (b.weights[i][j] <= 0.0)  THEN
+      result := FALSE;
+      RETURN(result);
+    END_IF;
+  END_REPEAT;
+END_REPEAT;
+RETURN(result);
+END_FUNCTION;
+
+FUNCTION vector_difference(arg1, arg2 : vector_or_direction) : vector;
+LOCAL
+result          : vector;
+res, vec1, vec2 : direction;
+mag, mag1, mag2 : REAL;
+ndim            : INTEGER;
+END_LOCAL;
+IF ((NOT EXISTS (arg1)) OR (NOT EXISTS (arg2))) OR (arg1.dim <> arg2.dim)
+    THEN
+  RETURN (?) ;
+ ELSE
+  BEGIN
+    IF 'MACHINING_SCHEMA.VECTOR' IN TYPEOF(arg1) THEN
+      mag1 := arg1.magnitude;
+      vec1 := arg1.orientation;
+    ELSE
+      mag1 := 1.0;
+      vec1 := arg1;
+    END_IF;
+    IF 'MACHINING_SCHEMA.VECTOR' IN TYPEOF(arg2) THEN
+      mag2 := arg2.magnitude;
+      vec2 := arg2.orientation;
+    ELSE
+      mag2 := 1.0;
+      vec2 := arg2;
+    END_IF;
+    vec1 := normalise (vec1);
+    vec2 := normalise (vec2);
+    ndim := SIZEOF(vec1.direction_ratios);
+    mag := 0.0;
+    res := dummy_gri || direction(vec1.direction_ratios);
+    REPEAT i := 1 TO ndim;
+      res.direction_ratios[i] := mag1*vec1.direction_ratios[i] +
+                                 mag2*vec2.direction_ratios[i];
+      mag := mag + (res.direction_ratios[i]*res.direction_ratios[i]);
+    END_REPEAT;
+    IF (mag > 0.0 ) THEN
+    result := dummy_gri || vector( res, SQRT(mag));
+    ELSE
+      result := dummy_gri || vector( vec1,  0.0);
+    END_IF;
+  END;
+END_IF;
+RETURN (result);
+END_FUNCTION;
+
+
+(*
+END_SCHEMA; (* geometry_schema *)
+*)
+
+(*SCHEMA topology_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* topology_schema			                       ISO 10303-42 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+
+REFERENCE FROM support_resource_schema (
+		label
+		);
+
+
+REFERENCE FROM geometry_schema (	
+		geometric_representation_item,
+		surface,
+		curve,
+		point,
+		cartesian_point,
+		dummy_tri
+		);
+
+REFERENCE FROM representation_schema (
+		representation_item
+		);
+
+REFERENCE FROM aic_topologically_bounded_surface (
+		advanced_face
+		);
+
+REFERENCE FROM machining_schema (
+		topological_region	(* TODO: ist das richtig???? *)
+		);
+
+*)
+
+TYPE list_of_reversible_topology_item = LIST [0:?] of reversible_topology_item;
+END_TYPE;
+
+TYPE set_of_reversible_topology_item = SET [0:?] of reversible_topology_item;
+END_TYPE;
+
+TYPE reversible_topology = SELECT (reversible_topology_item); 
+   				(*list_of_reversible_topology_item,*) 
+   				(*set_of_reversible_topology_item);*)
+END_TYPE;
+
+TYPE reversible_topology_item = SELECT (edge, path, face, 
+    face_bound, closed_shell, open_shell);
+END_TYPE;
+
+TYPE shell = SELECT (open_shell, closed_shell);
+END_TYPE;
+
+ENTITY closed_shell	(* t0 *)
+SUBTYPE OF (connected_face_set);
+END_ENTITY;
+
+ENTITY connected_face_set	(* t0 *)
+	SUPERTYPE OF (ONEOF(open_shell, closed_shell))
+	SUBTYPE OF (topological_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	cfs_faces : SET [1:?] OF face;
+END_ENTITY;
+
+ENTITY edge	(* t0 *)
+	SUPERTYPE OF(ONEOF(edge_curve, oriented_edge))
+	SUBTYPE OF (topological_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	edge_start : vertex;
+	edge_end   : vertex;
+END_ENTITY;
+
+ENTITY edge_curve	(* t0 *)
+SUBTYPE OF(edge, geometric_representation_item);
+edge_geometry : curve;
+same_sense    : BOOLEAN;
+END_ENTITY;
+
+ENTITY edge_loop	(* t0 *)
+SUBTYPE OF (loop, path);
+DERIVE
+ne : INTEGER := SIZEOF(SELF\path.edge_list);
+WHERE
+WR1: (SELF\path.edge_list[1].edge_start) :=:
+     (SELF\path.edge_list[ne].edge_end);
+END_ENTITY;
+
+ENTITY face	(* t0 *)
+	SUPERTYPE OF(ONEOF(face_surface, oriented_face))
+	SUBTYPE OF (topological_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	bounds : SET[1:?] OF face_bound;
+	WHERE
+	WR1: NOT (mixed_loop_type_set(list_to_set(list_face_loops(SELF))));
+	WR2: SIZEOF(QUERY(temp <* bounds | 'MACHINING_SCHEMA.FACE_OUTER_BOUND' IN
+						   TYPEOF(temp))) <= 1;
+END_ENTITY;
+
+ENTITY face_bound	(* t1 *)
+	SUPERTYPE OF(face_outer_bound)
+	SUBTYPE OF(topological_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	bound       :  loop;
+	orientation :  BOOLEAN;
+END_ENTITY;
+
+ENTITY face_outer_bound	(* t1 *)
+SUBTYPE OF (face_bound);
+END_ENTITY;
+
+ENTITY face_surface	(* t0 *)
+SUPERTYPE OF(advanced_face)
+SUBTYPE OF(face, geometric_representation_item);
+face_geometry :  surface;
+same_sense    :  BOOLEAN;
+WHERE
+WR1: NOT ('MACHINING_SCHEMA.ORIENTED_SURFACE' IN TYPEOF(face_geometry));
+END_ENTITY;
+
+ENTITY loop	(* t0 *)
+	SUPERTYPE OF (ONEOF(vertex_loop, edge_loop, poly_loop))
+	SUBTYPE OF (topological_representation_item);
+	(* here the attribute name is missing. Therefore bounded_curve cannot be directly instantiated *)
+	(* WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+END_ENTITY;
+
+ENTITY open_shell	(* t0 *)
+SUPERTYPE OF (ONEOF(topological_region, oriented_open_shell))
+SUBTYPE OF (connected_face_set);
+END_ENTITY;
+
+ENTITY oriented_closed_shell	(* t1 *)
+  SUBTYPE OF (closed_shell);
+closed_shell_element : closed_shell;
+orientation          : BOOLEAN;
+DERIVE
+SELF\connected_face_set.cfs_faces : SET [1:?] OF face
+                                    := conditional_reverse(SELF.orientation,
+                                       SELF.closed_shell_element.cfs_faces);
+WHERE
+WR1: NOT ('MACHINING_SCHEMA.ORIENTED_CLOSED_SHELL' 
+             IN TYPEOF (SELF.closed_shell_element));
+END_ENTITY;
+
+ENTITY oriented_edge	(* t0 *)
+SUBTYPE OF (edge);
+edge_element : edge;
+orientation  : BOOLEAN;
+DERIVE
+SELF\edge.edge_start : vertex := boolean_choose (SELF.orientation,
+                                 SELF.edge_element.edge_start, SELF.edge_element.edge_end);
+SELF\edge.edge_end   : vertex := boolean_choose (SELF.orientation,
+SELF.edge_element.edge_end, SELF.edge_element.edge_start);
+WHERE
+WR1: NOT ('MACHINING_SCHEMA.ORIENTED_EDGE' IN TYPEOF (SELF.edge_element));
+END_ENTITY;
+
+ENTITY oriented_face	(* t1 *)
+SUBTYPE OF (face);
+face_element : face;
+orientation  : BOOLEAN;
+ DERIVE
+   SELF\face.bounds : SET[1:?] OF face_bound
+        := conditional_reverse(SELF.orientation,SELF.face_element.bounds);
+ WHERE
+   WR1: NOT ('MACHINING_SCHEMA.ORIENTED_FACE' IN TYPEOF (SELF.face_element));
+ END_ENTITY;
+
+
+ENTITY oriented_open_shell	(* t1 *)
+SUBTYPE OF (open_shell);
+open_shell_element : open_shell;
+orientation        : BOOLEAN;
+DERIVE
+SELF\connected_face_set.cfs_faces : SET [1:?] OF face
+                                  := conditional_reverse(SELF.orientation,
+                                     SELF.open_shell_element.cfs_faces);
+WHERE
+WR1: NOT ('MACHINING_SCHEMA.ORIENTED_OPEN_SHELL' 
+              IN TYPEOF (SELF.open_shell_element));
+END_ENTITY;
+
+
+ENTITY oriented_path	(* t1 *)
+  SUBTYPE OF (path);
+path_element : path;
+orientation  : BOOLEAN;
+ DERIVE
+SELF\path.edge_list : LIST [1:?] OF UNIQUE oriented_edge
+                    := conditional_reverse(SELF.orientation,
+                                 SELF.path_element.edge_list);
+ WHERE
+WR1: NOT ('MACHINING_SCHEMA.ORIENTED_PATH' IN TYPEOF (SELF.path_element));
+END_ENTITY;
+
+ENTITY path	(* t0 *)
+	SUPERTYPE OF (oneof(edge_loop, oriented_path))
+	SUBTYPE OF (topological_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+	edge_list  : LIST [1:?] OF UNIQUE oriented_edge;
+	WHERE
+	WR1: path_head_to_tail(SELF);
+END_ENTITY;
+
+ENTITY poly_loop	(* t0 *)
+SUBTYPE OF (loop, geometric_representation_item);
+polygon : LIST [3:?] OF UNIQUE cartesian_point;
+END_ENTITY;
+
+ENTITY topological_representation_item	(* t0 *)
+SUPERTYPE OF (ONEOF(face_bound, connected_face_set, edge, vertex, face,   
+              face_bound, (loop ANDOR path)))
+SUBTYPE OF (representation_item);
+END_ENTITY;
+
+ENTITY vertex	(* t0 *)
+SUBTYPE OF (topological_representation_item);
+name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+
+END_ENTITY;
+
+ENTITY vertex_loop	(* t1 *)
+SUBTYPE OF (loop);
+name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+loop_vertex : vertex;
+END_ENTITY;
+
+ENTITY vertex_point	(* t0 *)
+SUBTYPE OF(vertex, geometric_representation_item);
+vertex_geometry : point;
+END_ENTITY;
+
+FUNCTION boolean_choose (b:boolean; choice1, choice2:generic:item):generic:item;
+IF b THEN
+  RETURN (choice1);
+ELSE
+  RETURN (choice2);
+END_IF;
+END_FUNCTION;
+
+FUNCTION closed_shell_reversed (a_shell : closed_shell) :
+                                       oriented_closed_shell;
+  LOCAL
+    the_reverse : oriented_closed_shell;
+  END_LOCAL;
+   IF ('MACHINING_SCHEMA.ORIENTED_CLOSED_SHELL' IN TYPEOF (a_shell) ) THEN
+      the_reverse := dummy_tri ||
+                     connected_face_set (
+                        a_shell\connected_face_set.cfs_faces) ||
+                     closed_shell () || oriented_closed_shell(
+                        a_shell\oriented_closed_shell.closed_shell_element,
+                        NOT(a_shell\oriented_closed_shell.orientation));
+   ELSE
+      the_reverse := dummy_tri ||
+                    connected_face_set (
+                      a_shell\connected_face_set.cfs_faces) ||
+                    closed_shell () || oriented_closed_shell (a_shell, FALSE);
+   END_IF;
+   RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION conditional_reverse (p       : BOOLEAN;
+                               an_item : reversible_topology)
+                                       : reversible_topology;
+   IF p THEN
+     RETURN (an_item);
+   ELSE
+     RETURN (topology_reversed (an_item));
+   END_IF;
+END_FUNCTION;
+
+FUNCTION face_bound_reversed (a_face_bound : face_bound) : face_bound;
+   LOCAL
+     the_reverse : face_bound ;
+   END_LOCAL;
+   IF ('MACHINING_SCHEMA.FACE_OUTER_BOUND' IN TYPEOF (a_face_bound) ) THEN
+     the_reverse := dummy_tri ||
+                      face_bound(a_face_bound\face_bound.bound,
+                           NOT (a_face_bound\face_bound.orientation))
+                            || face_outer_bound() ;
+   ELSE
+     the_reverse := dummy_tri ||
+                face_bound(a_face_bound.bound, NOT(a_face_bound.orientation));
+   END_IF;
+  RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION face_reversed (a_face : face) : oriented_face;
+   LOCAL
+     the_reverse : oriented_face ;
+   END_LOCAL;
+   IF ('MACHINING_SCHEMA.ORIENTED_FACE' IN TYPEOF (a_face) ) THEN
+     the_reverse := dummy_tri ||
+       face(set_of_topology_reversed(a_face.bounds)) ||
+          oriented_face(a_face\oriented_face.face_element,
+                           NOT (a_face\oriented_face.orientation)) ;
+   ELSE
+     the_reverse := dummy_tri ||
+       face(set_of_topology_reversed(a_face.bounds)) ||
+                               oriented_face(a_face, FALSE) ;
+   END_IF;
+      RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION list_face_loops(f: face) : LIST[0:?] OF loop;
+LOCAL
+loops : LIST[0:?] OF loop := [];
+END_LOCAL;
+REPEAT i := 1 TO SIZEOF(f.bounds);
+  loops := loops +(f.bounds[i].bound);
+END_REPEAT;
+RETURN(loops);
+END_FUNCTION;
+
+FUNCTION edge_reversed (an_edge : edge) : oriented_edge;
+   LOCAL
+     the_reverse : oriented_edge;
+   END_LOCAL;
+   IF ('MACHINING_SCHEMA.ORIENTED_EDGE' IN TYPEOF (an_edge) ) THEN
+     the_reverse  := dummy_tri ||
+             edge(an_edge.edge_end, an_edge.edge_start) ||
+             oriented_edge(an_edge\oriented_edge.edge_element,
+                        NOT (an_edge\oriented_edge.orientation)) ;
+   ELSE
+     the_reverse := dummy_tri ||
+             edge(an_edge.edge_end, an_edge.edge_start) ||
+             oriented_edge(an_edge, FALSE);
+   END_IF;
+   RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION list_of_topology_reversed (a_list 
+                                  : list_of_reversible_topology_item)
+                                  : list_of_reversible_topology_item;
+   LOCAL
+     the_reverse : list_of_reversible_topology_item;
+   END_LOCAL;
+   the_reverse := [];
+   REPEAT i := 1 TO SIZEOF (a_list);
+     the_reverse := topology_reversed (a_list [i]) + the_reverse;
+   END_REPEAT;
+   RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION list_to_set(l : LIST [0:?] OF GENERIC:T) : SET OF GENERIC:T;
+LOCAL
+s : SET OF GENERIC:T := [];
+END_LOCAL;
+REPEAT i := 1 TO SIZEOF(l);
+  s := s + l[i];
+END_REPEAT;
+RETURN(s);
+END_FUNCTION;
+
+FUNCTION mixed_loop_type_set(l: SET[0:?] OF loop): LOGICAL;
+LOCAL
+poly_loop_type: LOGICAL;
+END_LOCAL;
+IF(SIZEOF(l) <= 1) THEN
+  RETURN(FALSE);
+END_IF;
+poly_loop_type := ('MACHINING_SCHEMA.POLY_LOOP' IN TYPEOF(l[1]));
+REPEAT i := 2 TO SIZEOF(l);
+  IF(('MACHINING_SCHEMA.POLY_LOOP' IN TYPEOF(l[i])) <> poly_loop_type) THEN
+     RETURN(TRUE);
+   END_IF;
+END_REPEAT;
+RETURN(FALSE);
+END_FUNCTION;
+
+FUNCTION open_shell_reversed ( a_shell : open_shell) :
+                                         oriented_open_shell;
+   LOCAL
+     the_reverse : oriented_open_shell;
+   END_LOCAL;
+   IF ('MACHINING_SCHEMA.ORIENTED_OPEN_SHELL' IN TYPEOF (a_shell) ) THEN
+     the_reverse := dummy_tri ||
+                    connected_face_set (
+                        a_shell\connected_face_set.cfs_faces) ||
+                    open_shell () || oriented_open_shell(
+                      a_shell\oriented_open_shell.open_shell_element,
+                        (NOT (a_shell\oriented_open_shell.orientation)));
+   ELSE
+     the_reverse := dummy_tri ||
+                    connected_face_set (
+                        a_shell\connected_face_set.cfs_faces) ||
+                    open_shell () ||  oriented_open_shell (a_shell, FALSE);
+   END_IF;
+   RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION path_head_to_tail(a_path : path) : BOOLEAN;
+LOCAL
+n : INTEGER;
+p : BOOLEAN := TRUE;
+END_LOCAL;
+n := SIZEOF (a_path.edge_list);
+REPEAT i := 2 TO n;
+  p := p AND (a_path.edge_list[i-1].edge_end :=:
+              a_path.edge_list[i].edge_start);
+END_REPEAT;
+RETURN (p);
+END_FUNCTION;
+
+FUNCTION path_reversed (a_path : path) : oriented_path;
+  LOCAL
+    the_reverse : oriented_path ;
+  END_LOCAL;
+  IF ('MACHINING_SCHEMA.ORIENTED_PATH' IN TYPEOF (a_path) ) THEN
+    the_reverse := dummy_tri ||
+       path(list_of_topology_reversed (a_path.edge_list)) ||
+          oriented_path(a_path\oriented_path.path_element,
+                          NOT(a_path\oriented_path.orientation)) ;
+  ELSE
+    the_reverse := dummy_tri ||
+                   path(list_of_topology_reversed (a_path.edge_list)) ||
+                       oriented_path(a_path, FALSE);
+  END_IF;
+  RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION set_of_topology_reversed (a_set : set_of_reversible_topology_item)
+                                          : set_of_reversible_topology_item;
+   LOCAL
+     the_reverse : set_of_reversible_topology_item;
+   END_LOCAL;
+   the_reverse := [];
+   REPEAT i := 1 TO SIZEOF (a_set);
+     the_reverse := the_reverse + topology_reversed (a_set [i]);
+   END_REPEAT;
+   RETURN (the_reverse);
+END_FUNCTION;
+
+FUNCTION shell_reversed (a_shell : shell) : shell;
+   IF ('MACHINING_SCHEMA.OPEN_SHELL' IN TYPEOF (a_shell) ) THEN
+     RETURN (open_shell_reversed (a_shell));
+   ELSE
+     IF ('MACHINING_SCHEMA.CLOSED_SHELL' IN TYPEOF (a_shell) ) THEN
+       RETURN (closed_shell_reversed (a_shell));
+     ELSE
+       RETURN (?);
+     END_IF;
+   END_IF;
+END_FUNCTION;
+
+FUNCTION topology_reversed (an_item : reversible_topology)
+                                     : reversible_topology;
+   IF ('MACHINING_SCHEMA.EDGE' IN TYPEOF (an_item)) THEN
+     RETURN (edge_reversed (an_item));
+   END_IF;
+   IF ('MACHINING_SCHEMA.PATH' IN TYPEOF (an_item)) THEN
+     RETURN (path_reversed (an_item));
+   END_IF;
+   IF ('MACHINING_SCHEMA.FACE_BOUND' IN TYPEOF (an_item)) THEN
+     RETURN (face_bound_reversed (an_item));
+   END_IF;
+   IF ('MACHINING_SCHEMA.FACE' IN TYPEOF (an_item)) THEN
+     RETURN (face_reversed (an_item));
+   END_IF;
+   IF ('MACHINING_SCHEMA.SHELL' IN TYPEOF (an_item)) THEN
+     RETURN (shell_reversed (an_item));
+   END_IF;
+   IF ('SET' IN TYPEOF (an_item)) THEN
+     RETURN (set_of_topology_reversed (an_item));
+   END_IF;
+   IF ('LIST' IN TYPEOF (an_item)) THEN
+     RETURN (list_of_topology_reversed (an_item));
+   END_IF;
+   RETURN (?);
+END_FUNCTION;
+
+(*
+END_SCHEMA; (*topology_schema*)
+*)
+
+(*SCHEMA geometric_model_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* geometric_model_schema	                       ISO 10303-42 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM support_resource_schema (
+		label
+		);
+
+REFERENCE FROM geometry_schema
+		(
+		axis1_placement,
+		axis2_placement_3d,
+		bounded_pcurve,
+		geometric_representation_item
+		);
+
+REFERENCE FROM measure_schema
+		(
+		time_measure,
+		length_measure,
+		parameter_value,
+		plane_angle_measure,
+		positive_ratio_measure,
+		positive_length_measure
+		);
+
+REFERENCE FROM topology_schema
+		(
+		closed_shell,
+		topological_representation_item
+		);
+*)
+		
+		
+ENTITY block	(* m1 *)
+   SUBTYPE OF (geometric_representation_item);
+   name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+   position : axis2_placement_3d;
+   x        : positive_length_measure;
+   y        : positive_length_measure;
+   z        : positive_length_measure;
+END_ENTITY;
+
+ENTITY faceted_brep	(* t0 *)
+SUBTYPE OF (manifold_solid_brep);
+END_ENTITY;
+
+ENTITY manifold_solid_brep	(* t0 *)
+SUPERTYPE OF (faceted_brep)
+SUBTYPE OF (solid_model);
+outer : closed_shell;
+END_ENTITY;
+
+ENTITY right_circular_cylinder	(* m1 *)
+   SUBTYPE OF (geometric_representation_item);
+   name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+   position   : axis1_placement;
+   height     : positive_length_measure;
+   radius     : positive_length_measure;
+END_ENTITY;
+
+ENTITY solid_model	(* t0 *)
+	SUPERTYPE OF (manifold_solid_brep)
+	SUBTYPE OF (geometric_representation_item);
+	name        :  label; (*added as WZL-Parser does not support multiple inheritance, 02.06.2003 wj *)
+END_ENTITY;
+
+(*
+END_SCHEMA; (*geometric_model_schema*)
+*)
+
+(*SCHEMA representation_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* representation_schema	                       ISO 10303-43 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+
+REFERENCE FROM geometry_schema
+		(
+		bounded_pcurve,
+		geometric_representation_item
+		);
+
+REFERENCE FROM support_resource_schema 
+		(
+		text,
+		label,
+		bag_to_set,
+		identifier
+		);
+
+REFERENCE FROM topology_schema
+		(
+		topological_representation_item		
+		);
+
+*)
+
+TYPE founded_item_select = SELECT
+(founded_item,
+representation_item);
+END_TYPE;
+
+ENTITY definitional_representation	(* s0 *)
+SUBTYPE OF (representation);
+END_ENTITY;
+
+ENTITY founded_item; 	(* t1 *)
+END_ENTITY;
+
+ENTITY mapped_item	(* t1 *)
+  SUBTYPE OF (representation_item);
+mapping_source : representation_map;
+mapping_target : representation_item;
+WHERE
+WR1: acyclic_mapped_representation(using_representations(SELF), [SELF]);
+END_ENTITY;
+
+ENTITY representation;
+name             : label;
+items            : SET[1:?] OF representation_item;
+context_of_items : representation_context;
+(* DERIVE
+id               : identifier := get_id_value (SELF);
+description      : text := get_description_value (SELF);
+WHERE
+WR1: SIZEOF (USEDIN (SELF, 'MACHINING_SCHEMA.' + 'ID_ATTRIBUTE.IDENTIFIED_ITEM'))
+       <= 1;
+WR2: SIZEOF (USEDIN (SELF, 'MACHINING_SCHEMA.' + 'DESCRIPTION_ATTRIBUTE.DESCRIBED_ITEM')) <= 1; *)
+END_ENTITY;
+
+ENTITY representation_context; 	(* t1 *)
+context_identifier : identifier;
+context_type       : text;
+INVERSE
+representations_in_context : SET [1:?] OF representation FOR context_of_items;
+END_ENTITY;
+
+ENTITY representation_item	(* c0 s0 *)
+	SUPERTYPE OF (ONEOF(geometric_representation_item, topological_representation_item, mapped_item));
+	(* name             : label; *)
+	(* WZL Parser dos not support multiple inheritance. *)
+	(* Therefore pcurve lost the attibute "name" instead of bounded_pcurve *)
+	(*           loop   lost the attibute "name" instead of path and edge_loop *)
+	WHERE
+	WR1: SIZEOF(using_representations(SELF)) > 0;
+END_ENTITY;
+
+ENTITY representation_map; 	(* t1 *)
+mapping_origin        : representation_item;
+mapped_representation : representation;
+INVERSE
+map_usage : SET[1:?] OF mapped_item FOR mapping_source;
+WHERE
+WR1: item_in_context(SELF.mapping_origin,
+     SELF.mapped_representation.context_of_items);
+END_ENTITY;
+
+FUNCTION acyclic_mapped_representation
+(parent_set   : SET OF representation;
+children_set : SET OF representation_item) : BOOLEAN;
+LOCAL
+  x,y : SET OF representation_item;
+END_LOCAL;
+-- Determine the subset of children_set that are mapped_items
+  x := QUERY(z <* children_set | 'MACHINING_SCHEMA.MAPPED_ITEM'
+    IN TYPEOF(z));
+-- Determine that the subset has elements
+  IF SIZEOF(x) > 0 THEN
+-- Check each element of the set
+  REPEAT i := 1 TO HIINDEX(x);
+   -- If the selected element maps a representation in the
+   -- parent_set, then return false
+    IF x[i]\mapped_item.mapping_source.mapped_representation
+      IN parent_set THEN
+      RETURN (FALSE);
+    END_IF;
+   -- Recursive check of the items of mapped_representation
+    IF NOT acyclic_mapped_representation
+      (parent_set +
+      x[i]\mapped_item.mapping_source.mapped_representation,
+      x[i]\mapped_item.mapping_source.mapped_representation.items) THEN
+      RETURN (FALSE);
+    END_IF;
+  END_REPEAT;
+END_IF;
+-- Determine the subset of children_set that are not
+-- mapped_items
+x := children_set - x;
+-- Determine that the subset has elements
+IF SIZEOF(x) > 0 THEN
+  -- For each element of the set:
+  REPEAT i := 1 TO HIINDEX(x);
+    -- Determine the set of representation_items referenced
+    y := QUERY(z <* bag_to_set( USEDIN(x[i], '')) |
+         'MACHINING_SCHEMA.REPRESENTATION_ITEM' IN TYPEOF(z));
+    -- Recursively check for an offending mapped_item
+    -- Return false for any errors encountered
+    IF NOT acyclic_mapped_representation(parent_set, y) THEN
+      RETURN (FALSE);
+    END_IF;
+  END_REPEAT;
+END_IF;
+-- Return true when all elements are checked and
+-- no error conditions found
+RETURN (TRUE);
+END_FUNCTION;
+
+FUNCTION item_in_context
+(item  : representation_item;
+ cntxt : representation_context) : BOOLEAN;
+LOCAL
+  y : BAG OF representation_item;
+END_LOCAL;
+-- If there is one or more representation using both the item
+-- and cntxt return true.
+IF SIZEOF(USEDIN(item,'MACHINING_SCHEMA.REPRESENTATION.ITEMS')
+  * cntxt.representations_in_context) > 0 THEN
+  RETURN (TRUE);
+  -- Determine the bag of representation_items that reference
+  -- item
+  ELSE y := QUERY(z <* USEDIN (item , '') |
+         'MACHINING_SCHEMA.REPRESENTATION_ITEM' IN TYPEOF(z));
+    -- Ensure that the bag is not empty
+    IF SIZEOF(y) > 0 THEN
+    -- For each element in the bag
+    REPEAT i := 1 TO HIINDEX(y);
+      -- Check to see it is an item in the input cntxt.
+      IF item_in_context(y[i], cntxt) THEN
+        RETURN (TRUE);
+      END_IF;
+    END_REPEAT;
+  END_IF;
+END_IF;
+-- Return false when all possible branches have been checked
+-- with no success.
+RETURN (FALSE);
+END_FUNCTION;
+
+FUNCTION using_items (item : founded_item_select;
+                    checked_items: SET OF founded_item_select)
+                  : SET OF founded_item_select;
+LOCAL
+  new_check_items    : SET OF founded_item_select;
+  result_items       : SET OF founded_item_select;
+  next_items         : SET OF founded_item_select;
+END_LOCAL;
+result_items := [];
+new_check_items := checked_items + item;
+-- Find the set of representation_items or founded_items
+-- in which item is used directly.
+next_items := QUERY(z <* bag_to_set( USEDIN(item , '')) |
+  ('MACHINING_SCHEMA.REPRESENTATION_ITEM' IN TYPEOF(z)) OR
+  ('MACHINING_SCHEMA.FOUNDED_ITEM'        IN TYPEOF(z)));
+-- If the set of next_items is not empty;
+IF SIZEOF(next_items) > 0 THEN
+  -- For each element in the set, find the using_items recursively
+  REPEAT i := 1 TO HIINDEX(next_items);
+    -- Check for loop in data model, i.e. one of the next_items
+    -- occurred earlier in the set of check_items;
+    IF NOT(next_items[i] IN new_check_items) THEN
+      result_items := result_items + next_items[i] +
+                      using_items(next_items[i],new_check_items);
+    END_IF;
+  END_REPEAT;
+END_IF;
+-- return the set of representation_items or founded_items
+-- in which the input item is used directly and indirectly.
+RETURN (result_items);
+END_FUNCTION;
+
+FUNCTION using_representations (item : founded_item_select)
+: SET OF representation;
+LOCAL
+  results            : SET OF representation;
+  result_bag         : BAG OF representation;
+  intermediate_items : SET OF founded_item_select;
+END_LOCAL;
+-- Find the representations in which the item is used and add to the
+-- results set.
+results := [];
+result_bag := USEDIN(item,'MACHINING_SCHEMA.REPRESENTATION.ITEMS');
+IF SIZEOF(result_bag) > 0 THEN
+  REPEAT i := 1 TO HIINDEX(result_bag);
+    results := results + result_bag[i];
+  END_REPEAT;
+END_IF;
+-- Find all representation_items or founded_items
+-- by which item is referenced directly or indirectly.
+intermediate_items := using_items(item,[]);
+-- If the set of intermediate items is not empty;
+IF SIZEOF(intermediate_items) > 0 THEN
+  -- For each element in the set, add the
+  -- representations of that element.
+  REPEAT i := 1 TO HIINDEX(intermediate_items);
+    result_bag := USEDIN(intermediate_items[i],
+                  'MACHINING_SCHEMA.REPRESENTATION.ITEMS');
+    IF SIZEOF(result_bag) > 0 THEN
+      REPEAT j := 1 TO HIINDEX(result_bag);
+        results := results + result_bag[j];
+      END_REPEAT;
+    END_IF;
+  END_REPEAT;
+END_IF;
+-- Return the set of representation in which the input item is
+-- used directly and indirectly (through intervening
+-- representation_items or founded items).
+RETURN (results);
+END_FUNCTION;
+
+(*
+END_SCHEMA; (*representation_schema*)
+*)
+
+
+(*SCHEMA approval_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* approval_schema								   ISO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM support_resource_schema 
+		(
+		label,
+		text
+		);
+
+*)
+
+ENTITY approval; 		(* m0 *)
+	status :                    approval_status;
+	level  :                    label;
+END_ENTITY;
+
+ENTITY approval_status; 	(* m0 *)
+	name :                      label;
+END_ENTITY;
+
+(*
+END_SCHEMA; (*approval_schema*)
+*)
+
+(*SCHEMA date_time_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* date_time_schema								   ISO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+ENTITY date_and_time; 	(* m0 *)
+	date_component :            date;
+	time_component :            local_time;
+END_ENTITY;
+
+ENTITY date 	(* m0 *)
+	SUPERTYPE OF (ONEOF (calendar_date, ordinal_date, week_of_year_and_day_date));
+	year_component :            year_number;
+END_ENTITY;
+
+ENTITY calendar_date 	(* m0 *)
+	SUBTYPE OF (date);
+	day_component   :           day_in_month_number;
+	month_component :           month_in_year_number;
+	WHERE
+	  WR1: valid_calendar_date (SELF);
+END_ENTITY;
+
+TYPE day_in_month_number = INTEGER;
+	WHERE
+	  WR1: {1 <= SELF <= 31};
+END_TYPE; 
+
+TYPE month_in_year_number = INTEGER;
+	WHERE
+	  WR1: { 1 <= SELF <= 12 };
+END_TYPE; 
+
+ENTITY ordinal_date 	(* m0 *)
+	SUBTYPE OF (date);
+	day_component : day_in_year_number;
+	WHERE
+	  WR1: (NOT leap_year(SELF.year_component) AND { 1 <= day_component <= 365 })
+	       OR
+	       (leap_year(SELF.year_component) AND { 1 <= day_component <= 366 });
+END_ENTITY; 
+
+TYPE day_in_year_number = INTEGER;
+	WHERE
+	  WR1: {1 <= SELF <= 366};
+END_TYPE; 
+
+ENTITY week_of_year_and_day_date 	(* m0 *)
+	SUBTYPE OF (date);
+	week_component :            week_in_year_number;
+	day_component  :            OPTIONAL day_in_week_number;
+END_ENTITY; 
+
+TYPE week_in_year_number = INTEGER;
+	WHERE
+	  WR1: { 1 <= SELF <= 53 };
+END_TYPE; 
+
+TYPE day_in_week_number = INTEGER;
+	WHERE
+	  WR1: { 1 <= SELF <= 7 };
+END_TYPE; -- day_in_week_number
+
+ENTITY local_time; 	(* m0 *)
+	hour_component   :          hour_in_day;
+	minute_component :          OPTIONAL minute_in_hour;
+	second_component :          OPTIONAL second_in_minute;
+	zone             :          coordinated_universal_time_offset;
+	WHERE
+	  WR1: valid_time (SELF);
+END_ENTITY;
+
+TYPE hour_in_day = INTEGER;
+	WHERE
+	  WR1: { 0 <= SELF < 24 };
+END_TYPE; 
+
+TYPE minute_in_hour = INTEGER;
+	WHERE
+	  WR1: { 0 <= SELF <= 59 };
+END_TYPE;
+
+TYPE second_in_minute = REAL;
+	WHERE
+	  WR1: { 0 <= SELF <= 60 };
+END_TYPE;
+
+ENTITY coordinated_universal_time_offset; 	(* m0 *)
+	hour_offset   :             INTEGER;
+	minute_offset :             OPTIONAL INTEGER;
+	sense         :             ahead_or_behind;
+	WHERE
+	  WR1: { 0 <= hour_offset <= 12 };
+	  WR2: { 0 <= minute_offset <= 59 };
+	  WR3: NOT ((hour_offset <> 0) AND (sense = exact));
+END_ENTITY;
+
+TYPE ahead_or_behind = ENUMERATION OF(ahead, exact, behind);
+END_TYPE;
+
+TYPE year_number = INTEGER;
+END_TYPE;
+
+FUNCTION valid_calendar_date (date : calendar_date) : LOGICAL;
+  CASE date.month_component OF
+    1  : RETURN({ 1 <= date.day_component <= 31 });
+    2  : BEGIN
+           IF (leap_year(date.year_component)) THEN
+             RETURN({ 1 <= date.day_component <= 29 });
+           ELSE
+             RETURN({ 1 <= date.day_component <= 28 });
+           END_IF;
+         END;
+    3  : RETURN({ 1 <= date.day_component <= 31 });
+    4  : RETURN({ 1 <= date.day_component <= 30 });
+    5  : RETURN({ 1 <= date.day_component <= 31 });
+    6  : RETURN({ 1 <= date.day_component <= 30 });
+    7  : RETURN({ 1 <= date.day_component <= 31 });
+    8  : RETURN({ 1 <= date.day_component <= 31 });
+    9  : RETURN({ 1 <= date.day_component <= 30 });
+    10 : RETURN({ 1 <= date.day_component <= 31 });
+    11 : RETURN({ 1 <= date.day_component <= 30 });
+    12 : RETURN({ 1 <= date.day_component <= 31 });
+  END_CASE;
+       RETURN (FALSE);
+END_FUNCTION;
+
+FUNCTION leap_year (year : year_number) : BOOLEAN;
+  IF ((((year MOD 4) = 0) AND ((year MOD 100) <> 0)) OR
+       ((year MOD 400) = 0)) THEN
+    RETURN(TRUE);
+  ELSE
+    RETURN(FALSE);
+  END_IF;
+END_FUNCTION;
+
+FUNCTION valid_time (time: local_time) : BOOLEAN;
+  IF EXISTS (time.second_component) THEN
+    RETURN (EXISTS (time.minute_component));
+  ELSE
+    RETURN (TRUE);
+  END_IF;
+END_FUNCTION;
+
+(*
+END_SCHEMA; (*date_time_schema*)
+*)
+
+
+(*SCHEMA person_organization_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* person_organization_schema					   ISO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM support_resource_schema
+		(
+		identifier,
+		label,
+		text
+		);
+*)
+
+ENTITY person; 	(* m0 *)
+	id            :             identifier;
+	last_name     :             OPTIONAL label;
+	first_name    :             OPTIONAL label;
+	middle_names  :             OPTIONAL LIST [1:?] OF label;
+	prefix_titles :             OPTIONAL LIST [1:?] OF label;
+	suffix_titles :             OPTIONAL LIST [1:?] OF label;
+	WHERE
+	  WR1: EXISTS(last_name) OR EXISTS(first_name);
+END_ENTITY;
+
+ENTITY address;	(* m0 *)
+	internal_location       :   OPTIONAL label;
+	street_number           :   OPTIONAL label;
+	street                  :   OPTIONAL label;
+	postal_box              :   OPTIONAL label;
+	town                    :   OPTIONAL label;
+	region                  :   OPTIONAL label;
+	postal_code             :   OPTIONAL label;
+	country                 :   OPTIONAL label;
+	facsimile_number        :   OPTIONAL label;
+	telephone_number        :   OPTIONAL label;
+	electronic_mail_address :   OPTIONAL label;
+	telex_number            :   OPTIONAL label;
+	WHERE
+	  WR1: EXISTS(internal_location)       OR
+	       EXISTS(street_number)           OR
+	       EXISTS(street)                  OR
+	       EXISTS(postal_box)              OR
+	       EXISTS(town)                    OR
+	       EXISTS(region)                  OR
+	       EXISTS(postal_code)             OR
+	       EXISTS(country)                 OR
+	       EXISTS(facsimile_number)        OR
+	       EXISTS(telephone_number)        OR
+	       EXISTS(electronic_mail_address) OR
+	       EXISTS(telex_number);
+END_ENTITY;
+
+(*
+END_SCHEMA; (*person_organization_schema*)
+*)
+
+
+(*SCHEMA measure_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* measure_schema									SO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+TYPE length_measure = REAL;
+END_TYPE;
+
+TYPE parameter_value = REAL;
+END_TYPE;
+
+TYPE plane_angle_measure = REAL;
+END_TYPE;
+
+TYPE positive_length_measure = length_measure;
+WHERE
+WR1: SELF > 0;
+END_TYPE;
+
+TYPE positive_ratio_measure = ratio_measure;
+WHERE
+WR1: SELF > 0;
+END_TYPE;
+
+TYPE ratio_measure = REAL;
+END_TYPE;
+
+TYPE time_measure = REAL;
+END_TYPE;
+
+(*
+END_SCHEMA; (*measure_schema*)
+*)
+
+
+(*SCHEMA product_property_representation_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* product_property_representation_schema          ISO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM representation_schema
+		(
+		representation
+		);
+*)
+
+ENTITY shape_representation	(* t1 *)
+SUBTYPE OF (representation);
+END_ENTITY;
+
+(*
+END_SCHEMA; (*product_property_representation_schema*)
+*)
+
+(*SCHEMA aic_topologically_bounded_surface;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* aic_topologically_bounded_surface	           ISO 10303-41 *)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM topology_schema(
+		face_surface
+		);
+*)
+
+ENTITY advanced_face	(* t0 *)
+SUBTYPE OF (face_surface);
+WHERE
+WR1 : SIZEOF (['MACHINING_SCHEMA.ELEMENTARY_SURFACE',
+     'MACHINING_SCHEMA.B_SPLINE_SURFACE',
+     'MACHINING_SCHEMA.SWEPT_SURFACE'] *
+      TYPEOF(face_geometry)) = 1;
+WR2 : SIZEOF(QUERY (elp_fbnds <* QUERY (bnds <* bounds |
+     'MACHINING_SCHEMA.EDGE_LOOP' IN TYPEOF(bnds.bound)) |
+      NOT (SIZEOF (QUERY (oe <* elp_fbnds.bound\path.edge_list |
+      NOT('MACHINING_SCHEMA.EDGE_CURVE' IN
+      TYPEOF(oe\oriented_edge.edge_element)))) = 0))) = 0;
+WR3 : SIZEOF(QUERY (elp_fbnds <* QUERY (bnds <* bounds |
+     'MACHINING_SCHEMA.EDGE_LOOP' IN TYPEOF(bnds.bound)) |
+      NOT (SIZEOF (QUERY (oe <* elp_fbnds.bound\path.edge_list |
+      NOT (SIZEOF (['MACHINING_SCHEMA.LINE',
+     'MACHINING_SCHEMA.CONIC',
+     'MACHINING_SCHEMA.POLYLINE',
+(*   'MACHINING_SCHEMA.SURFACE_CURVE',*)
+     'MACHINING_SCHEMA.B_SPLINE_CURVE'] *
+      TYPEOF(oe.edge_element\edge_curve.edge_geometry)) = 1 )
+      )) = 0))) = 0;
+WR4 : SIZEOF(QUERY (elp_fbnds <* QUERY (bnds <* bounds |
+     'MACHINING_SCHEMA.EDGE_LOOP' IN TYPEOF(bnds.bound)) |
+      NOT(SIZEOF(QUERY (oe <* elp_fbnds.bound\path.edge_list |
+      NOT(((('MACHINING_SCHEMA.VERTEX_POINT' IN
+      TYPEOF(oe\edge.edge_start)) AND
+     ( 'MACHINING_SCHEMA.CARTESIAN_POINT' IN
+      TYPEOF(oe\edge.edge_start\vertex_point.vertex_geometry)))) AND
+     (('MACHINING_SCHEMA.VERTEX_POINT' IN
+      TYPEOF(oe\edge.edge_end)) AND
+     ( 'MACHINING_SCHEMA.CARTESIAN_POINT' IN
+      TYPEOF(oe\edge.edge_end\vertex_point.vertex_geometry)))
+      ))) = 0))) = 0;
+WR5 : SIZEOF(QUERY (elp_fbnds <* QUERY (bnds <* bounds |
+     'MACHINING_SCHEMA.EDGE_LOOP' IN TYPEOF(bnds.bound)) |
+     'MACHINING_SCHEMA.ORIENTED_PATH' IN
+      TYPEOF(elp_fbnds.bound))) = 0;
+WR6 : (NOT ('MACHINING_SCHEMA.SWEPT_SURFACE' IN
+      TYPEOF(face_geometry))) OR
+     (SIZEOF (['MACHINING_SCHEMA.LINE',
+      'MACHINING_SCHEMA.CONIC',
+      'MACHINING_SCHEMA.POLYLINE',
+      'MACHINING_SCHEMA.B_SPLINE_CURVE'] *
+       TYPEOF(face_geometry\swept_surface.swept_curve)) = 1);
+WR7 : SIZEOF(QUERY (vlp_fbnds <* QUERY (bnds <* bounds |
+      'MACHINING_SCHEMA.VERTEX_LOOP' IN TYPEOF(bnds.bound)) |
+       NOT(('MACHINING_SCHEMA.VERTEX_POINT' IN
+       TYPEOF(vlp_fbnds\face_bound.bound\vertex_loop.loop_vertex)) AND
+      ('MACHINING_SCHEMA.CARTESIAN_POINT' IN
+       TYPEOF(vlp_fbnds\face_bound.bound\vertex_loop.
+       loop_vertex\vertex_point.vertex_geometry))
+      ))) = 0;
+WR8 : SIZEOF (QUERY (bnd <* bounds |
+      NOT (SIZEOF(['MACHINING_SCHEMA.EDGE_LOOP',
+      'MACHINING_SCHEMA.VERTEX_LOOP'] * TYPEOF(bnd.bound))
+      = 1))) = 0;
+(*
+WR9 : SIZEOF(QUERY (elp_fbnds <* QUERY (bnds <* bounds |
+     'MACHINING_SCHEMA.EDGE_LOOP' IN TYPEOF(bnds.bound)) |
+      NOT (SIZEOF (QUERY (oe <* elp_fbnds.bound\path.edge_list |
+     ('MACHINING_SCHEMA.SURFACE_CURVE' IN
+      TYPEOF(oe\oriented_edge.edge_element\edge_curve.edge_geometry))
+      AND (NOT (SIZEOF (QUERY (sc_ag <* oe.edge_element\edge_curve.edge_geometry\
+      surface_curve.associated_geometry |
+      NOT ('MACHINING_SCHEMA.PCURVE' IN
+      TYPEOF(sc_ag)))) = 0)))) = 0))) = 0;
+*)
+WR10 : ((NOT ('MACHINING_SCHEMA.SWEPT_SURFACE' IN
+       TYPEOF(face_geometry))) OR
+       ((NOT ('MACHINING_SCHEMA.POLYLINE' IN
+       TYPEOF(face_geometry\swept_surface.swept_curve))) OR
+       (SIZEOF(face_geometry\swept_surface.swept_curve\polyline.points)
+       >= 3))) AND
+       (SIZEOF (QUERY (elp_fbnds <* QUERY (bnds <* bounds |
+       'MACHINING_SCHEMA.EDGE_LOOP' IN TYPEOF(bnds.bound)) |
+       NOT (SIZEOF (QUERY (oe <* elp_fbnds.bound\path.edge_list |
+       ('MACHINING_SCHEMA.POLYLINE' IN
+       TYPEOF(oe\oriented_edge.edge_element\edge_curve.edge_geometry)) AND
+       (NOT (SIZEOF (oe\oriented_edge.edge_element\
+       edge_curve.edge_geometry\polyline.points) >= 3)))) = 0))) = 0);
+END_ENTITY;
+
+(*
+END_SCHEMA; (*aic_topologically_bounded_surface*)
+*)
+
+(*SCHEMA aic_advanced_brep;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* aic_advanced_brep					           ISO 10303-514*)
+(* Author:                                                      *)
+(* Contact:                                                     *)
+(* Version: 2000                                                *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM product_property_representation_schema
+		(
+		shape_representation
+		);
+*)
+
+ENTITY advanced_brep_shape_representation	(* t1 *)
+SUBTYPE OF (shape_representation);
+WHERE
+WR1: SIZEOF(QUERY ( it <* SELF.items | (NOT (SIZEOF([
+    'AIC_ADVANCED_BREP.MANIFOLD_SOLID_BREP',
+    'AIC_ADVANCED_BREP.FACETED_BREP',
+    'AIC_ADVANCED_BREP.MAPPED_ITEM',
+    'AIC_ADVANCED_BREP.AXIS2_PLACEMENT_3D'] * TYPEOF(it)) = 1)) )) = 0;
+WR2: SIZEOF(QUERY ( it <* SELF.items | (SIZEOF([
+    'AIC_ADVANCED_BREP.MANIFOLD_SOLID_BREP',
+    'AIC_ADVANCED_BREP.MAPPED_ITEM'] * TYPEOF(it)) = 1) )) > 0;
+(*
+WR3: SIZEOF(QUERY ( msb <* QUERY ( it <* SELF.items |
+    ('AIC_ADVANCED_BREP.MANIFOLD_SOLID_BREP' IN TYPEOF(it)) ) |
+    ( NOT (SIZEOF(QUERY ( csh <* msb_shells(msb) |
+     (NOT (SIZEOF(QUERY ( fcs <* csh\
+     connected_face_set.cfs_faces | (NOT (
+    'AIC_ADVANCED_BREP.ADVANCED_FACE' IN TYPEOF(fcs))) )) = 0)) ))  = 0)) )) = 0;
+*)
+WR4: SIZEOF(QUERY ( msb <* QUERY ( it <* items |
+    ( 'AIC_ADVANCED_BREP.MANIFOLD_SOLID_BREP' IN TYPEOF(it)) ) |
+    (  'AIC_ADVANCED_BREP.ORIENTED_CLOSED_SHELL' IN TYPEOF(msb\
+    manifold_solid_brep.outer)) )) = 0;
+(*
+WR5: SIZEOF(QUERY ( brv <* QUERY ( it <* items |
+    ( 'AIC_ADVANCED_BREP.BREP_WITH_VOIDS' IN TYPEOF(it)) ) | (NOT
+    (SIZEOF(QUERY ( csh <* brv\brep_with_voids.voids |
+    ( csh\oriented_closed_shell.orientation)))  = 0)) )) = 0;
+*)
+(*
+WR6: SIZEOF(QUERY ( mi <* QUERY ( it <* items |
+    ( 'AIC_ADVANCED_BREP.MAPPED_ITEM' IN TYPEOF(it)) ) | (NOT
+    ( 'AIC_ADVANCED_BREP.ADVANCED_BREP_SHAPE_REPRESENTATION' IN
+    TYPEOF(mi\mapped_item.mapping_source.mapped_representation))) )) = 0;
+*)
+END_ENTITY;
+
+(*
+END_SCHEMA; (*aic_advanced_brep*)
+*)
+
+
+
+(*SCHEMA machining_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* machining_schema		                           ISO 14649-10 *)
+(* Author: ISO TC184/SC1/WG7                                    *)
+(* Contact: j.wolf@wzl.rwth-aachen.de                           *)
+(* Version: 5 date: 2002-02-20                                  *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM support_resource_schema (
+	bag_to_set,
+	identifier,
+	label,
+	text
+	);
+
+REFERENCE FROM product_property_representation_schema (
+	shape_representation
+	);
+
+REFERENCE FROM approval_schema (
+	approval
+	);	
+
+REFERENCE FROM date_time_schema	(
+	date_and_time
+	);
+
+REFERENCE FROM topology_schema (
+	face,
+	open_shell
+	);	
+	
+REFERENCE FROM geometric_model_schema (
+	block,
+	right_circular_cylinder
+	);
+
+REFERENCE FROM aic_advanced_brep (
+	advanced_brep_shape_representation
+	);
+
+REFERENCE FROM geometry_schema (
+	axis2_placement_3d,
+	b_spline_curve,
+	bounded_curve,
+	bounded_pcurve,
+	bounded_surface,
+	cartesian_point,
+	dimension_of,
+	direction,
+	dummy_gri,
+	dummy_tri,
+	elementary_surface,
+	geometric_representation_item,
+	plane
+	);
+
+REFERENCE FROM measure_schema (
+	length_measure,
+	parameter_value,
+	plane_angle_measure,
+	positive_length_measure,
+	positive_ratio_measure,
+	time_measure
+	);
+		
+REFERENCE FROM person_organization_schema (
+	address,
+	person
+	);
+		
+REFERENCE FROM representation_schema (
+	representation_item
+	);			
+*)
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(* General types and definitions                                *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+(* ************************************************************ *)
+(* Measure units                                                *)
+(* ************************************************************ *)
+
+ENTITY toleranced_length_measure;	(* m1 *)
+theoretical_size:   positive_length_measure;
+implicit_tolerance: tolerance_select;
+END_ENTITY;
+
+TYPE tolerance_select = SELECT(plus_minus_value, limits_and_fits);
+END_TYPE;
+
+ENTITY plus_minus_value; 	(* m1 *)
+upper_limit:           positive_length_measure;
+lower_limit:           positive_length_measure;
+significant_digits:    INTEGER;
+END_ENTITY;
+
+ENTITY limits_and_fits; 	(* m1 *)
+deviation:             length_measure;
+grade:                 length_measure;
+its_fitting_type:      OPTIONAL fitting_type;
+END_ENTITY;
+
+TYPE fitting_type = ENUMERATION OF (shaft,hole);
+END_TYPE;
+
+TYPE speed_measure = REAL;
+END_TYPE;
+
+TYPE rot_speed_measure = REAL;
+END_TYPE;
+
+TYPE pressure_measure = REAL;
+END_TYPE;
+
+
+(* ************************************************************ *)
+(* Other general types                                          *)
+(* ************************************************************ *)
+
+TYPE rot_direction = ENUMERATION OF (cw,ccw);
+END_TYPE;
+
+TYPE shape_tolerance = length_measure;
+END_TYPE;
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(*  PROJECT                                                     *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+ENTITY project; 	(* m0 *)
+	its_id:          identifier;
+	main_workplan:   workplan;
+	its_workpieces:  SET [0:?] OF workpiece;
+	its_owner:	OPTIONAL person_and_address;
+	its_release:	OPTIONAL date_and_time;
+	its_status:      OPTIONAL approval;
+	(*
+	Informal proposition:
+	its_id shall be unique within the part programme.
+	*)
+END_ENTITY;
+
+ENTITY person_and_address; 	(* m0 *)
+	its_person:	person;
+	its_address:	OPTIONAL address;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(* Workpiece and manufacturing feature                          *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+ENTITY workpiece;	(* m1 *)
+	its_id:                  identifier;
+	its_material:            OPTIONAL material;
+	global_tolerance:        OPTIONAL shape_tolerance;
+	its_rawpiece:            OPTIONAL workpiece;
+	its_geometry:            OPTIONAL advanced_brep_shape_representation;
+	its_bounding_geometry:   OPTIONAL bounding_geometry_select;
+	clamping_positions:       SET [0:?] OF cartesian_point;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Material                                                     *)
+(* ************************************************************ *)
+
+ENTITY material;	(* m1 *)
+	standard_identifier:       label;
+	material_identifier:       label;
+	material_property:         SET [0:?] OF property_parameter;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Property parameter                                           *)
+(* ************************************************************ *)
+
+ENTITY property_parameter	(* m0 *)
+	SUPERTYPE OF (ONEOF (descriptive_parameter,numeric_parameter));
+	parameter_name:                label;
+END_ENTITY;
+
+ENTITY descriptive_parameter	(* m0 *)
+	SUBTYPE OF (property_parameter);
+	descriptive_string:            text;
+END_ENTITY;
+
+ENTITY numeric_parameter	(* m0 *)
+	SUBTYPE OF (Property_parameter);
+	its_parameter_value:		parameter_value;
+	its_parameter_unit:			label;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Bounding geometry                                            *)
+(* ************************************************************ *)
+
+TYPE bounding_geometry_select = SELECT (block, right_circular_cylinder,	(* m1 *)
+                                 advanced_brep_shape_representation);	(* t1 *)
+END_TYPE;
+
+(* ************************************************************ *)
+(* Manufacturing feature                                        *)
+(* ************************************************************ *)
+
+ENTITY manufacturing_feature	(* m1 *)
+	ABSTRACT SUPERTYPE OF (ONEOF(region, two5D_manufacturing_feature, transition_feature));
+	its_id:             identifier;
+	its_workpiece:      workpiece;
+	its_operations:     SET [0:?] OF machining_operation;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(* Catalogue of manufacturing feature                           *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+(* ************************************************************ *)
+(* Region                                                       *)
+(* ************************************************************ *)
+
+ENTITY region 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (region_surface_list, region_projection, topological_region))
+SUBTYPE OF (manufacturing_feature); 
+feature_placement: OPTIONAL axis2_placement_3d;
+END_ENTITY;
+
+ENTITY region_projection 	(* m1 *)
+SUBTYPE OF (region);
+proj_curve : bounded_curve;
+proj_dir   : direction;
+depth      : toleranced_length_measure;
+END_ENTITY;
+
+ENTITY region_surface_list 	(* m1 *)
+SUBTYPE OF (region);
+surface_list : LIST [1:?] OF bounded_surface;
+END_ENTITY;
+
+ENTITY topological_region	(* t0 t1 *)
+SUBTYPE OF (region, open_shell);
+WHERE
+WR1: SIZEOF(QUERY(it <* SELF.cfs_faces | NOT('MACHINING_SCHEMA.ADVANCED_FACE' IN TYPEOF(it)))) = 0;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* 2.5D manufacturing feature                                   *)
+(* ************************************************************ *)
+
+ENTITY two5D_manufacturing_feature 	(* m1 *)
+	ABSTRACT SUPERTYPE OF (ONEOF(machining_feature, replicate_feature, compound_feature))
+	SUBTYPE OF (manufacturing_feature);                             
+	feature_placement:        axis2_placement_3d;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Machining feature                                            *)
+(* ************************************************************ *)
+
+ENTITY machining_feature 	(* m1 *)
+	ABSTRACT SUPERTYPE OF (ONEOF(planar_face, pocket, slot, step, round_hole, toolpath_feature, profile_feature, boss, spherical_cap, rounded_end, thread))
+	SUBTYPE OF (two5D_manufacturing_feature);
+	depth:                      elementary_surface;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Planer face                                                  *)
+(* ************************************************************ *)
+
+ENTITY planar_face  	(* m1 *)
+SUBTYPE OF (machining_feature);
+course_of_travel:      linear_path; 
+removal_boundary:      linear_profile; 
+face_boundary:         OPTIONAL closed_profile;
+its_boss:                   SET [0:?] OF boss;
+(*
+Informal propositions:
+- The entire profile lies in the local xy plane. 
+- The profile is not self-intersecting.
+*)
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Pocket                                                       *)
+(* ************************************************************ *)
+
+ENTITY pocket 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF(closed_pocket, open_pocket))
+SUBTYPE OF (machining_feature);
+its_boss:                   SET [0:?] OF boss;
+slope:                      OPTIONAL plane_angle_measure;
+bottom_condition:           pocket_bottom_condition;
+planar_radius:	     OPTIONAL toleranced_length_measure;
+orthogonal_radius:          OPTIONAL toleranced_length_measure;
+END_ENTITY;
+
+ENTITY closed_pocket	(* m1 *)
+SUBTYPE OF (pocket);
+feature_boundary:           closed_profile;
+(*
+Informal propositions:
+- The entire profile lies in the feature's local xy plane. 
+- The profile is closed and not self-intersecting.
+*)
+END_ENTITY;
+
+ENTITY open_pocket 	(* m1 *)
+SUBTYPE OF (pocket);
+open_boundary:              open_profile; 
+wall_boundary:              OPTIONAL open_profile;
+(*
+Informal propositions:
+- The entire open_boundary profile lies in the local xy plane. 
+- The profile are is not self-intersecting.
+- Together the two open_profiles form a closed profile.
+- wall_boundary is for information only.
+*)
+END_ENTITY;
+
+ENTITY pocket_bottom_condition  	(* m1 *)
+ABSTRACT SUPERTYPE OF
+(ONEOF (through_pocket_bottom_condition, planar_pocket_bottom_condition, radiused_pocket_bottom_condition, general_pocket_bottom_condition));
+END_ENTITY;
+
+ENTITY through_pocket_bottom_condition  	(* m1 *)
+SUBTYPE OF (pocket_bottom_condition);
+END_ENTITY;
+
+ENTITY planar_pocket_bottom_condition 	(* m1 *)
+SUBTYPE OF (pocket_bottom_condition);
+END_ENTITY;
+
+ENTITY radiused_pocket_bottom_condition 	(* m1 *)
+SUBTYPE OF (pocket_bottom_condition);
+floor_radius_center:        cartesian_point;
+floor_radius:               toleranced_length_measure;
+END_ENTITY;
+
+ENTITY general_pocket_bottom_condition 	(* m1 *)
+SUBTYPE OF (pocket_bottom_condition);
+shape:                      region;
+WHERE
+WR1: SIZEOF(shape\manufacturing_feature.its_operations) = 0;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Slot                                                         *)
+(* ************************************************************ *)
+
+ENTITY slot	(* m1 *)
+SUBTYPE OF (machining_feature);
+course_of_travel:           travel_path;
+swept_shape:                open_profile;
+end_conditions:             LIST[0:2] OF slot_end_type;
+WHERE
+WR1: ( ( SIZEOF(QUERY (it <* SELF.end_conditions | 
+      ('MACHINING_SCHEMA.LOOP_SLOT_END_TYPE' IN TYPEOF(it)) )) = 1)
+    AND
+    (SIZEOF(end_conditions) = 1) )
+   OR
+   (SIZEOF(end_conditions) <> 1);
+(*
+Informal propositions:
+- The entire travel_path lies in the local xy plane. 
+- The travel_path is not self-intersecting.
+*)
+END_ENTITY;
+
+ENTITY slot_end_type  	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (woodruff_slot_end_type, radiused_slot_end_type, flat_slot_end_type, loop_slot_end_type, open_slot_end_type));
+END_ENTITY;
+
+ENTITY woodruff_slot_end_type  	(* m1 *)
+SUBTYPE OF (slot_end_type);
+radius:                     toleranced_length_measure;
+END_ENTITY;
+
+ENTITY radiused_slot_end_type  	(* m1 *)
+SUBTYPE OF (slot_end_type);
+END_ENTITY;
+
+ENTITY flat_slot_end_type 	(* m1 *)
+SUBTYPE OF (slot_end_type);
+corner_radius1:           toleranced_length_measure;
+corner_radius2:           toleranced_length_measure;
+END_ENTITY;
+
+ENTITY loop_slot_end_type 	(* m1 *)
+SUBTYPE OF (slot_end_type);
+END_ENTITY;
+
+ENTITY open_slot_end_type  	(* m1 *)
+SUBTYPE OF (slot_end_type);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Step                                                         *)
+(* ************************************************************ *)
+
+ENTITY step 	(* m1 *)
+SUBTYPE OF (machining_feature);
+open_boundary:          linear_path;
+wall_boundary:          OPTIONAL vee_profile; 
+its_boss:               SET[0:?] OF boss;
+(*
+Informal propositions:
+- The entire linear_path lies in the same plane. 
+*)
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Profile_feature                                              *)
+(* ************************************************************ *)
+ENTITY profile_feature 	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(general_outside_profile, shape_profile))
+SUBTYPE OF (machining_feature);
+   profile_swept_shape : linear_path;
+END_ENTITY;
+
+ENTITY general_outside_profile  	(* m1 *)
+SUBTYPE OF (profile_feature);
+feature_boundary:       profile;
+(*
+Informal propositions:
+- The entire profile lies in the local xy plane. 
+- The profile is not self-intersecting.
+*) 
+END_ENTITY;
+
+ENTITY shape_profile  	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(general_shape_profile,partial_circular_shape_profile, circular_closed_shape_profile,rectangular_open_shape_profile, rectangular_closed_shape_profile))
+SUBTYPE OF (profile_feature);
+floor_condition:         profile_select;
+removal_direction:       direction;
+END_ENTITY;
+
+TYPE profile_select = SELECT (through_profile_floor, profile_floor); 
+END_TYPE;
+
+ENTITY through_profile_floor; 	(* m1 *)
+END_ENTITY;
+
+ENTITY profile_floor  	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(general_profile_floor, planar_profile_floor)); 
+floor_radius :             OPTIONAL numeric_parameter;
+start_or_end :             BOOLEAN; 
+END_ENTITY; 
+
+ENTITY general_profile_floor  	(* m1 *)
+SUBTYPE OF (profile_floor);
+floor :                 face; 
+END_ENTITY; 
+
+ENTITY planar_profile_floor  	(* m1 *)
+SUBTYPE OF (profile_floor);
+floor :                plane;
+END_ENTITY; 
+
+ENTITY general_shape_profile  	(* m1 *) 
+SUBTYPE OF (shape_profile);
+profile_boundary :     profile; 
+END_ENTITY; 
+
+ENTITY partial_circular_shape_profile   	(* m1 *)
+SUBTYPE OF (shape_profile);
+open_boundary :        partial_circular_profile; 
+END_ENTITY; 
+
+ENTITY circular_closed_shape_profile   	(* m1 *)
+SUBTYPE OF (shape_profile);
+closed_boundary :      circular_closed_profile; 
+END_ENTITY; 
+
+ENTITY rectangular_open_shape_profile  	(* m1 *)
+SUBTYPE OF (shape_profile);
+open_boundary :        square_u_profile;
+END_ENTITY; 
+
+ENTITY rectangular_closed_shape_profile   	(* m1 *)
+SUBTYPE OF (shape_profile);
+closed_boundary :      rectangular_closed_profile; 
+END_ENTITY; 
+
+(* ************************************************************ *)
+(* Round hole                                                   *)
+(* ************************************************************ *)
+
+ENTITY round_hole 	(* m1 *)
+	SUBTYPE OF (machining_feature);
+	diameter:               toleranced_length_measure;
+	change_in_diameter:     OPTIONAL taper_select;
+	bottom_condition:       hole_bottom_condition;
+END_ENTITY;
+
+TYPE taper_select = SELECT (diameter_taper, angle_taper);
+END_TYPE;
+
+ENTITY diameter_taper; 	(* m1 *)
+	final_diameter: toleranced_length_measure;
+END_ENTITY;
+
+ENTITY angle_taper; 	(* m1 *)
+	angle: plane_angle_measure;
+END_ENTITY;
+
+ENTITY hole_bottom_condition 	(* m1 *)
+	ABSTRACT SUPERTYPE OF (ONEOF (blind_bottom_condition, through_bottom_condition));
+END_ENTITY;
+
+ENTITY through_bottom_condition 	(* m1 *)
+	SUBTYPE OF (hole_bottom_condition);
+END_ENTITY;
+
+ENTITY blind_bottom_condition 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF(flat_hole_bottom, flat_with_radius_hole_bottom, spherical_hole_bottom, conical_hole_bottom))
+SUBTYPE OF (hole_bottom_condition);
+END_ENTITY;
+
+ENTITY flat_hole_bottom 	(* m1 *)
+SUBTYPE OF (blind_bottom_condition);
+END_ENTITY;
+
+ENTITY flat_with_radius_hole_bottom 	(* m1 *)
+SUBTYPE OF (blind_bottom_condition);
+corner_radius: toleranced_length_measure;
+END_ENTITY;
+
+ENTITY spherical_hole_bottom 	(* m1 *)
+SUBTYPE OF (blind_bottom_condition);
+radius: toleranced_length_measure;
+END_ENTITY;
+
+ENTITY conical_hole_bottom 	(* m1 *)
+SUBTYPE OF (blind_bottom_condition);
+tip_angle:      plane_angle_measure;
+tip_radius:     OPTIONAL toleranced_length_measure;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Toolpath feature                                            *)
+(* ************************************************************ *)
+
+ENTITY toolpath_feature 	(* m1 *)
+SUBTYPE OF (machining_feature);
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Boss                                                         *)
+(* ************************************************************ *)
+
+ENTITY boss 	(* m1 *)
+	SUBTYPE OF(machining_feature);
+	its_boundary:               closed_profile;
+	slope:                      OPTIONAL plane_angle_measure;
+	(*
+	Informal propositions:
+	- The entire profile lies in the same plane.
+	- The profile is not self-intersecting.
+	*)
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Spherical_cap                                                *)
+(* ************************************************************ *)
+
+ENTITY spherical_cap 	(* m1 *)
+	SUBTYPE OF (machining_feature);
+	internal_angle:        numeric_parameter;
+	radius:                numeric_parameter;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Rounded_end                                                  *)
+(* ************************************************************ *)
+
+ENTITY rounded_end 	(* m1 *)
+	SUBTYPE OF (machining_feature);
+	course_of_travel:          linear_path; 
+	partial_circular_boundary: partial_circular_profile; 
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Compound feature                                             *)
+(* ************************************************************ *)
+
+ENTITY compound_feature 	(* m1 *)
+	SUPERTYPE OF (ONEOF(counterbore_hole, countersunk_hole))
+	SUBTYPE OF (two5D_manufacturing_feature);
+	elements: SET [2:?] OF compound_feature_select;
+	WHERE
+	WR1: SIZEOF(QUERY(e <* elements | SIZEOF(e\manufacturing_feature.its_operations) <> 0)) = 0;
+END_ENTITY;
+
+TYPE compound_feature_select = SELECT(
+machining_feature, transition_feature
+);
+END_TYPE;
+
+ENTITY counterbore_hole 	(* m1 *)
+SUBTYPE OF (compound_feature);
+WHERE
+WR1: SIZEOF(elements) =2;
+WR2: (SIZEOF(QUERY ( it <* SELF.elements |
+     (('MACHINING_SCHEMA.ROUND_HOLE' IN TYPEOF(it))) )) = 2);
+WR3: SELF.elements[1].diameter.theoretical_size <>
+     SELF.elements[2].diameter.theoretical_size;
+END_ENTITY;
+
+ENTITY countersunk_hole 	(* m1 *)
+  SUBTYPE OF (compound_feature);
+WHERE
+WR1: SIZEOF(elements) =2;
+WR2: (SIZEOF(QUERY ( it <* SELF.elements |
+     (('MACHINING_SCHEMA.ROUND_HOLE' IN TYPEOF(it))) )) = 2);
+WR3: SELF.elements[1].diameter.theoretical_size <>
+     SELF.elements[2].diameter.theoretical_size;
+WR4: NOT EXISTS(SELF.elements[1].change_in_diameter) AND
+     EXISTS(SELF.elements[2].change_in_diameter);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Replicate feature                                            *)
+(* ************************************************************ *)
+
+ENTITY replicate_feature 	(* m1 *)
+	ABSTRACT SUPERTYPE OF (ONEOF(rectangular_pattern, circular_pattern, general_pattern))
+	SUBTYPE OF (two5D_manufacturing_feature);
+	replicate_base_feature:     two5D_manufacturing_feature;
+END_ENTITY;
+
+ENTITY circular_pattern 	(* m1 *)
+SUBTYPE OF(replicate_feature);
+angle_increment:            plane_angle_measure;
+number_of_feature:          INTEGER;
+relocated_base_feature:     SET[0:?] OF circular_offset;
+missing_base_feature:       SET[0:?] OF circular_omit;
+base_feature_diameter:      OPTIONAL toleranced_length_measure;
+base_feature_rotation :     plane_angle_measure;
+END_ENTITY;
+
+ENTITY circular_offset; 	(* m1 *)
+angular_offset:             plane_angle_measure;
+index:                      INTEGER;
+END_ENTITY;
+
+ENTITY circular_omit; 	(* m1 *)
+index:                      INTEGER;
+END_ENTITY; 
+
+ENTITY rectangular_pattern 	(* m1 *)
+SUBTYPE OF(replicate_feature);
+spacing :                   toleranced_length_measure;
+its_direction :             direction;
+number_of_rows:             OPTIONAL INTEGER;
+number_of_columns:          INTEGER;
+row_spacing:                OPTIONAL toleranced_length_measure;
+row_layout_direction:       OPTIONAL direction;
+relocated_base_feature:     SET[0:?] OF rectangular_offset;
+missing_base_feature:       SET[0:?] OF rectangular_omit;
+WHERE
+ WR1: (
+       (SELF.number_of_rows > 1 ) 
+       AND EXISTS(SELF.row_spacing) 
+       AND EXISTS(SELF.row_layout_direction)
+       );
+END_ENTITY;
+
+ENTITY rectangular_offset; 	(* m1 *)
+offset_direction:   direction;
+offset_distance:    length_measure;
+row_index:          INTEGER;
+column_index:       INTEGER;
+END_ENTITY; -- rectangular_offset
+
+ENTITY rectangular_omit; 	(* m1 *)
+row_index:          INTEGER;
+column_index:       INTEGER;
+END_ENTITY; -- rectangular_omit
+
+ENTITY general_pattern 	(* m1 *)
+SUBTYPE OF(replicate_feature);
+replicate_locations:  LIST [2:?] OF axis2_placement_3d;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Transition feature                                           *)
+(* ************************************************************ *)
+
+ENTITY transition_feature 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF(chamfer, edge_round))
+SUBTYPE OF (manufacturing_feature);
+first_feature:              machining_feature;
+second_feature:             machining_feature;
+END_ENTITY;
+
+ENTITY chamfer 	(* m1 *)
+SUBTYPE OF (transition_feature);
+angle_to_plane:             plane_angle_measure;
+first_offset_amount:        toleranced_length_measure;
+END_ENTITY;
+
+ENTITY edge_round 	(* m1 *)
+SUBTYPE OF (transition_feature);
+radius:                     toleranced_length_measure;
+first_offset_amount:        OPTIONAL toleranced_length_measure;
+second_offset_amount:       OPTIONAL toleranced_length_measure;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Tread                                                        *)
+(* ************************************************************ *)
+
+ENTITY thread 	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(catalogue_thread, defined_thread))
+SUBTYPE OF(machining_feature);
+partial_profile:       partial_area_definition; 
+applied_shape:         SET[1:?] OF machining_feature; 
+inner_or_outer_thread: BOOLEAN; 
+qualifier:             OPTIONAL descriptive_parameter; 
+fit_class:             descriptive_parameter; 
+form:                  descriptive_parameter; 
+major_diameter:        length_measure; 
+number_of_threads:     numeric_parameter; 
+thread_hand:           descriptive_parameter; 
+ WHERE
+WR1: ('MACHINING_SCHEMA.ROUND_HOLE' IN TYPEOF(applied_shape)) OR 
+     ('MACHINING_SCHEMA.CIRCULAR_CLOSED_SHAPE_PROFILE' IN TYPEOF(applied_shape))  
+     OR ('MACHINING_SCHEMA.BOSS' IN TYPEOF(applied_shape));
+END_ENTITY;
+
+ENTITY partial_area_definition; 	(* m1 *)
+effective_length:      length_measure; 
+placement:             axis2_placement_3D; 
+maximum_length:        OPTIONAL length_measure; 
+END_ENTITY;
+
+ENTITY catalogue_thread 	(* m1 *) 
+SUBTYPE OF (thread);
+documentation:         specification; 
+END_ENTITY;
+
+ENTITY specification; 	(* m1 *)
+constraint:                SET [0:?] OF specification_usage_constraint;
+specification_id:          text;
+specification_description: OPTIONAL text;
+specification_class:       OPTIONAL text;
+END_ENTITY;
+
+ENTITY specification_usage_constraint; 	(* m1 *)
+element:               text;
+class_id:              text;
+END_ENTITY;
+
+ENTITY defined_thread 	(* m1 *) 
+SUBTYPE OF (thread);
+pitch_diameter:        length_measure; 
+minor_diameter:        OPTIONAL length_measure; 
+crest:                 OPTIONAL length_measure; 
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Profile                                                      *)
+(* ************************************************************ *)
+
+ENTITY profile	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(closed_profile, open_profile));
+placement:                  OPTIONAL axis2_placement_3d;
+END_ENTITY;
+
+ENTITY open_profile	(* m1 *)
+ABSTRACT SUPERTYPE OF
+(ONEOF (linear_profile, square_u_profile, rounded_u_profile, tee_profile, vee_profile, partial_circular_profile, general_profile))
+SUBTYPE OF(profile);
+END_ENTITY;
+
+ENTITY linear_profile	(* m1 *)
+SUBTYPE OF (open_profile);
+profile_length:        numeric_parameter;
+END_ENTITY;
+
+ENTITY square_u_profile 	(* m1 *)
+SUBTYPE OF (open_profile);
+width:                      toleranced_length_measure;
+first_radius:               toleranced_length_measure;
+first_angle:                plane_angle_measure;
+second_radius:              toleranced_length_measure;
+second_angle:               plane_angle_measure;
+END_ENTITY;
+
+ENTITY rounded_u_profile  	(* m1 *)
+SUBTYPE OF (open_profile);
+width:                      toleranced_length_measure;
+END_ENTITY;
+
+ENTITY tee_profile 	(* m1 *)
+SUBTYPE OF (open_profile);
+first_angle:                plane_angle_measure;
+second_angle:               plane_angle_measure;
+cross_bar_width:            toleranced_length_measure;
+cross_bar_depth:            toleranced_length_measure;
+radius:                     toleranced_length_measure;
+width:                      toleranced_length_measure;
+first_offset:               toleranced_length_measure;
+second_offset:              toleranced_length_measure;
+END_ENTITY;
+
+ENTITY vee_profile  	(* m1 *)
+SUBTYPE OF (open_profile);
+profile_radius:             toleranced_length_measure;
+profile_angle:              plane_angle_measure;
+tilt_angle:                 plane_angle_measure;
+END_ENTITY;
+
+ENTITY partial_circular_profile  	(* m1 *)
+SUBTYPE OF (open_profile);
+radius:               toleranced_length_measure;
+sweep_angle:          plane_angle_measure;
+END_ENTITY;
+
+ENTITY general_profile  	(* m1 *)
+SUBTYPE OF (open_profile);
+its_profile:                bounded_curve;
+(*
+Informal propositions:
+- The entire profile lies in the local yz plane. 
+- The profile is not self-intersecting.
+*)
+END_ENTITY;
+
+ENTITY closed_profile  	(* m1 *)
+ABSTRACT SUPERTYPE OF
+(ONEOF (rectangular_closed_profile, circular_closed_profile, ngon_profile, general_closed_profile))
+SUBTYPE OF(profile);
+END_ENTITY;
+ENTITY rectangular_closed_profile	(* m1 *) 
+SUBTYPE OF(closed_profile);
+profile_width:         toleranced_length_measure;
+profile_length:        toleranced_length_measure;
+END_ENTITY;
+
+ENTITY circular_closed_profile	(* m1 *)  
+SUBTYPE OF(closed_profile);
+diameter:              toleranced_length_measure;
+END_ENTITY;
+
+ENTITY ngon_profile	(* m1 *)  
+SUBTYPE OF(closed_profile);
+diameter:              toleranced_length_measure;
+number_of_sides:       INTEGER;
+circumscribed_or_across_flats: BOOLEAN;
+END_ENTITY;
+
+ENTITY general_closed_profile	(* m1 *)  
+SUBTYPE OF(closed_profile);
+closed_profile_shape:  bounded_curve;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Travel path                                                  *)
+(* ************************************************************ *)
+
+ENTITY travel_path	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(general_path, linear_path, circular_path));
+placement:                  OPTIONAL axis2_placement_3d;
+END_ENTITY;
+
+ENTITY general_path	(* m1 *)
+SUBTYPE OF(travel_path);
+swept_path:            bounded_curve;
+END_ENTITY;
+
+ENTITY linear_path	(* m1 *)
+SUBTYPE OF(travel_path);
+distance:              toleranced_length_measure;
+its_direction:         direction;
+END_ENTITY;
+
+ENTITY circular_path	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(complete_circular_path, partial_circular_path))
+SUBTYPE OF(travel_path);
+radius:                toleranced_length_measure;
+END_ENTITY;
+
+ENTITY complete_circular_path	(* m1 *)
+SUBTYPE OF(circular_path);
+END_ENTITY;
+
+ENTITY partial_circular_path	(* m1 *)
+SUBTYPE OF(circular_path);
+sweep_angle:           plane_angle_measure;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Surface texture parameter                                    *)
+(* ************************************************************ *)
+
+ENTITY surface_texture_parameter; 	(* m1 *)
+	its_value:				parameter_value;
+	parameter_name:			label;
+	measuring_method:		identifier;
+	parameter_index:		OPTIONAL identifier;
+	applied_surfaces:		SET [1:?] OF machined_surface;
+END_ENTITY;
+
+ENTITY machined_surface; 	(* m1 *)
+	its_machining_feature:	machining_feature;
+	surface_element:		bottom_or_side;
+END_ENTITY;
+
+TYPE bottom_or_side = ENUMERATION OF (bottom, side, bottom_and_side);
+END_TYPE;
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(* Executable                                                   *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+ENTITY executable	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF( workingstep, nc_function,
+                             program_structure));
+its_id:                     identifier;
+(*
+Informal proposition:
+its_id shall be unique within the part programme.
+*)
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Workingstep                                                  *)
+(* ************************************************************ *)
+
+ENTITY workingstep	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF (machining_workingstep, rapid_movement, touch_probing))
+SUBTYPE OF (executable);
+its_secplane :              elementary_surface;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Machining workingstep                                        *)
+(* ************************************************************ *)
+
+ENTITY machining_workingstep	(* m0 *)
+SUBTYPE OF (workingstep);
+its_feature:                manufacturing_feature;
+its_operation:              machining_operation;
+its_effect:                 OPTIONAL in_process_geometry;
+END_ENTITY;
+
+ENTITY in_process_geometry; 	(* m1 *)
+as_is:                   OPTIONAL advanced_brep_shape_representation;
+to_be:                   OPTIONAL advanced_brep_shape_representation;
+removal:                 OPTIONAL advanced_brep_shape_representation;
+WHERE
+WR1: EXISTS (as_is) OR EXISTS (to_be) OR EXISTS (removal);
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Rapid movement                                               *)
+(* ************************************************************ *)
+
+ENTITY rapid_movement	(* m0 *)
+SUPERTYPE OF (return_home)
+SUBTYPE OF (workingstep, operation);
+END_ENTITY;
+
+ENTITY return_home	(* m0 *)
+SUBTYPE OF (rapid_movement);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Touch probing                                                *)
+(* ************************************************************ *)
+
+ENTITY touch_probing 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (workpiece_probing, 
+	workpiece_complete_probing, tool_probing))
+SUBTYPE OF (workingstep, operation);
+measured_offset: nc_variable;
+END_ENTITY;
+
+ENTITY workpiece_probing 	(* m1 *)
+SUBTYPE OF (touch_probing);
+start_position:         axis2_placement_3d;
+its_workpiece:          workpiece;
+its_direction:          direction;
+expected_value:         toleranced_length_measure;
+its_probe:              touch_probe;
+END_ENTITY;
+
+ENTITY workpiece_complete_probing	(* m1 *)
+SUBTYPE OF (touch_probing);
+its_workpiece:              workpiece;
+probing_distance:           toleranced_length_measure;
+its_probe:                  touch_probe;
+computed_offset:            offset_vector;
+END_ENTITY;
+
+ENTITY touch_probe; 	(* m1 *)
+its_id: identifier;
+END_ENTITY;
+
+ENTITY offset_vector; 	(* m1 *)
+translate:                  LIST [3:3] OF nc_variable;
+rotate:                     OPTIONAL LIST [3:3] OF nc_variable;
+WHERE
+WR1: (SIZEOF(QUERY(i <* translate | NOT EXISTS(i.initial_value))) = 0)
+AND (NOT EXISTS(rotate) OR (SIZEOF(QUERY(i <* rotate | NOT EXISTS(i.initial_value))) = 0));
+END_ENTITY;
+
+ENTITY tool_probing 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (tool_length_probing, tool_radius_probing))
+SUBTYPE OF (touch_probing);
+offset:                     cartesian_point;
+max_wear:                   length_measure;
+its_tool:                   machining_tool;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* machining_tool                                                 *)
+(* ************************************************************ *)
+
+ENTITY machining_tool 	(* m0 *)
+ABSTRACT SUPERTYPE;
+its_id:                          label;
+END_ENTITY;
+
+ENTITY cutting_tool	(* m0 *)
+ABSTRACT SUPERTYPE
+SUBTYPE OF (machining_tool);
+its_tool_body:           tool_body;
+its_cutting_edge:        LIST [1:?] OF cutting_component;
+overall_assembly_length: OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY tool_body	(* m0 *)
+ABSTRACT SUPERTYPE;
+END_ENTITY;
+
+ENTITY cutting_component;	(* m0 *)
+tool_offset_length:   length_measure;
+its_material:          OPTIONAL material;
+technological_data:    OPTIONAL cutting_edge_technological_data;
+expected_tool_life:    OPTIONAL time_measure;
+its_technology:        OPTIONAL technology;
+END_ENTITY;
+
+ENTITY cutting_edge_technological_data;	(* m0 *)
+cutting_angle:         OPTIONAL plane_angle_measure;
+free_angle:            OPTIONAL plane_angle_measure;
+aux_angle:             OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+ENTITY tool_length_probing 	(* m1 *)
+SUBTYPE OF (tool_probing); 
+END_ENTITY;
+
+ENTITY tool_radius_probing 	(* m1 *)
+SUBTYPE OF (tool_probing);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* NC_function                                                  *)
+(* ************************************************************ *)
+
+ENTITY nc_function	(* m0 *)
+	ABSTRACT SUPERTYPE SUBTYPE OF (executable);
+END_ENTITY;
+
+ENTITY display_message	(* m0 *)
+SUBTYPE OF (nc_function);
+its_text:                   text;
+END_ENTITY;
+
+ENTITY optional_stop	(* m0 *)
+SUBTYPE OF (nc_function);
+END_ENTITY;
+
+ENTITY program_stop	(* m0 *)
+SUBTYPE OF (nc_function);
+END_ENTITY;
+
+
+ENTITY set_mark	(* m0 *)
+SUBTYPE OF (nc_function);
+END_ENTITY;
+
+ENTITY wait_for_mark	(* m0 *)
+SUBTYPE OF (nc_function);
+its_channel:                channel;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Program structure                                            *)
+(* ************************************************************ *)
+
+ENTITY program_structure	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(workplan, parallel, non_sequential, selective, if_statement, while_statement, assignment))
+SUBTYPE OF (executable);
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Workplan                                                     *)
+(* ************************************************************ *)
+
+ENTITY workplan	(* m0 *)
+SUBTYPE OF (program_structure);
+its_elements: LIST[0:?] OF executable;
+its_channel:                OPTIONAL channel;
+its_setup:                  OPTIONAL setup;
+its_effect:                 OPTIONAL in_process_geometry;
+WHERE
+WR1: SIZEOF(QUERY(it <* its_elements | it = SELF)) = 0;
+END_ENTITY;
+
+ENTITY channel; 	(* m0 *)
+its_id: identifier;
+END_ENTITY;
+
+ENTITY setup; 	(* m0 *)
+its_id:                     identifier;
+its_origin:                 OPTIONAL axis2_placement_3d;
+its_secplane:               elementary_surface;
+its_workpiece_setup:    LIST [0:?] OF workpiece_setup;
+(*
+Informal proposition:
+If its_origin is not set, the default for the origin
+of the setup is identical with the machine origin.
+*)
+END_ENTITY;
+
+ENTITY workpiece_setup;	(* m0 *)
+its_workpiece:              workpiece;
+its_origin:                 axis2_placement_3d;
+its_offset:                 OPTIONAL offset_vector;
+its_restricted_area:        OPTIONAL restricted_area_select;
+its_instructions:           LIST [0:?] OF setup_instruction;
+END_ENTITY;
+
+TYPE restricted_area_select = SELECT (
+                    bounded_surface,	(* ISO 10303-42 *)
+                    bounding_geometry_select);
+END_TYPE;
+
+ENTITY setup_instruction; 	(* m1 *)
+description:	OPTIONAL text;
+external_document:	OPTIONAL identifier;
+WHERE
+WR1: EXISTS (description) OR EXISTS (external_document);
+END_ENTITY;
+
+ENTITY parallel	(* m1 *)
+SUBTYPE OF (program_structure);
+branches:                   SET [2:?] OF executable;
+END_ENTITY;
+
+ENTITY non_sequential	(* m1 *)
+SUBTYPE OF (program_structure);
+its_elements:          SET[2:?] OF executable;
+END_ENTITY;
+
+ENTITY selective	(* m1 *)
+SUBTYPE OF (program_structure);
+its_elements:          SET[2:?] OF executable;
+END_ENTITY;
+
+ENTITY if_statement	(* m1 *)
+SUBTYPE OF (program_structure);
+condition:                  boolean_expression;
+true_branch:                executable;
+false_branch:               OPTIONAL executable;
+END_ENTITY;
+
+ENTITY while_statement	(* m1 *)
+SUBTYPE OF (program_structure);
+condition:                  boolean_expression;
+body:                       executable;
+END_ENTITY;
+
+ENTITY assignment	(* m1 *)
+SUBTYPE OF (program_structure);
+	its_lvalue:                 nc_variable;
+	its_rvalue:                 rvalue;
+END_ENTITY;
+
+ENTITY nc_variable; 	(* m1 *)
+	its_name:                   LABEL;
+	initial_value:              OPTIONAL REAL;
+END_ENTITY;
+
+ENTITY nc_constant; 	(* m1 *)
+	its_name:                   LABEL;
+	its_value:                  OPTIONAL REAL;
+END_ENTITY;
+
+TYPE rvalue = SELECT(nc_constant, nc_variable);
+END_TYPE;
+
+ENTITY boolean_expression	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(unary_boolean_expression, binary_boolean_expression, multiple_arity_boolean_expression, comparison_expression));
+END_ENTITY;
+
+
+ENTITY unary_boolean_expression	(* m1 *)
+ABSTRACT SUPERTYPE OF(not_expression)
+SUBTYPE OF (boolean_expression);
+operand: boolean_expression;
+END_ENTITY;
+
+ENTITY not_expression	(* m1 *)
+SUBTYPE OF (unary_boolean_expression);
+END_ENTITY;
+
+ENTITY binary_boolean_expression	(* m1 *)
+ABSTRACT SUPERTYPE OF(xor_expression)
+SUBTYPE OF (boolean_expression);
+operand1: boolean_expression;
+operand2: boolean_expression;
+END_ENTITY;
+
+ENTITY xor_expression	(* m1 *)
+SUBTYPE OF (binary_boolean_expression);
+END_ENTITY;
+
+ENTITY multiple_arity_boolean_expression	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(and_expression, or_expression))
+SUBTYPE OF (boolean_expression);
+operands: LIST [2:?] OF boolean_expression;
+END_ENTITY;
+
+ENTITY and_expression	(* m1 *)
+SUBTYPE OF (multiple_arity_boolean_expression);
+END_ENTITY;
+
+ENTITY or_expression	(* m1 *)
+SUBTYPE OF (multiple_arity_boolean_expression);
+END_ENTITY;
+
+ENTITY comparison_expression	(* m1 *)
+ABSTRACT SUPERTYPE OF(ONEOF(comparison_equal, comparison_not_equal, comparison_greater, comparison_greater_equal, comparison_less, comparison_less_equal))SUBTYPE OF (boolean_expression);
+operand1:                   nc_variable;
+operand2:                   rvalue;
+END_ENTITY;
+
+ENTITY comparison_equal	(* m1 *)
+SUBTYPE OF (comparison_expression);
+END_ENTITY;
+
+ENTITY comparison_not_equal	(* m1 *)
+SUBTYPE OF (comparison_expression);
+END_ENTITY;
+
+ENTITY comparison_greater	(* m1 *)
+SUBTYPE OF (comparison_expression);
+END_ENTITY;
+
+ENTITY comparison_greater_equal	(* m1 *)
+SUBTYPE OF (comparison_expression);
+END_ENTITY;
+
+ENTITY comparison_less	(* m1 *)
+SUBTYPE OF (comparison_expression);
+END_ENTITY;
+
+ENTITY comparison_less_equal	(* m1 *)
+SUBTYPE OF (comparison_expression);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(* Operation                                                    *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+ENTITY operation	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF (machining_operation, rapid_movement, touch_probing));
+its_toolpath:               OPTIONAL toolpath_list;
+its_tool_direction:         OPTIONAL tool_direction;
+END_ENTITY;
+
+ENTITY toolpath_list; 	(* m0 *)
+its_list: LIST [1:?] OF toolpath;
+END_ENTITY;
+
+ENTITY tool_direction	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF (two_axes, three_axes));
+END_ENTITY;
+
+ENTITY two_axes 	(* m0 *)
+SUBTYPE OF (tool_direction);
+END_ENTITY;
+
+ENTITY three_axes 	(* m0 *)
+SUBTYPE OF (tool_direction);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Machining operation                                          *)
+(* ************************************************************ *)
+
+ENTITY machining_operation	(* m0 *)
+ABSTRACT SUPERTYPE
+SUBTYPE OF (operation);
+its_id:                 identifier;
+retract_plane:          OPTIONAL length_measure;
+start_point:        OPTIONAL cartesian_point;
+its_tool:               machining_tool; 
+its_technology:         technology; 
+its_machine_functions:  machine_functions;
+(*
+Informal proposition:
+If attribute SELF\operation.its_toolpath exists, then attributes its_machining_strategy, retract_plane and start_point, if present, are for information only.
+*)
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Technology                                                   *)
+(* ************************************************************ *)
+
+ENTITY technology 	(* m0 *)
+ABSTRACT SUPERTYPE;
+feedrate:                      OPTIONAL speed_measure;
+feedrate_reference:            tool_reference_point;
+END_ENTITY;
+
+TYPE tool_reference_point = ENUMERATION OF (tcp, ccp);
+END_TYPE;
+
+
+(* ************************************************************ *)
+(* Machine functions                                            *)
+(* ************************************************************ *)
+
+ENTITY machine_functions 	(* m0 *)
+ABSTRACT SUPERTYPE;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*                                                              *)
+(* Toolpath                                                     *)
+(*                                                              *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+ENTITY toolpath	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(feedstop, trajectory, parameterised_path));
+its_priority:  BOOLEAN;
+its_type     : toolpath_type;
+its_speed    : OPTIONAL toolpath_speedprofile;
+its_technology: OPTIONAL technology;
+its_machine_functions: OPTIONAL machine_functions;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Toolpath type                                                *)
+(* ************************************************************ *)
+
+TYPE toolpath_type = ENUMERATION OF (
+approach,
+lift,
+connect,
+non_contact,
+contact,
+trajectory_path
+);
+END_TYPE;
+
+
+(* ************************************************************ *)
+(* Toolpath speedprofile                                        *)
+(* ************************************************************ *)
+
+TYPE toolpath_speedprofile = SELECT (
+toolpath_speed,
+positive_ratio_measure,
+speed_name
+);
+END_TYPE;
+
+ENTITY toolpath_speed; 	(* m1 *)
+speed:                      b_spline_curve;
+WHERE
+WR1: speed\geometric_representation_item.dim = 1;
+(*
+Informal proposition:
+- speed shall have only values greater than zero.
+*)
+END_ENTITY;
+
+TYPE speed_name = ENUMERATION OF(RAPID);
+END_TYPE; 
+
+
+(* ************************************************************ *)
+(* Feedstop                                                     *)
+(* ************************************************************ *)
+
+ENTITY feedstop	(* m0 *)
+SUBTYPE OF (toolpath);
+dwell:                      time_measure;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Trajectory                                                   *)
+(* ************************************************************ *)
+
+ENTITY trajectory	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(cutter_location_trajectory, cutter_contact_trajectory, axis_trajectory))
+SUBTYPE OF (toolpath);
+its_direction:              OPTIONAL BOOLEAN;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Cutter location trajectory                                   *)
+(* ************************************************************ *)
+
+ENTITY cutter_location_trajectory	(* m0 *)
+SUBTYPE OF (trajectory);
+basiccurve:                 bounded_curve; 
+its_toolaxis:               OPTIONAL bounded_curve;
+surface_normal:             OPTIONAL bounded_curve;
+(*
+Information proposition:
+its_toolaxis must have the same must have the same parameter range as basiccurve.
+*)
+END_ENTITY;
+
+
+
+(* ************************************************************ *)
+(* Cutter contact trajectory                                    *)
+(* ************************************************************ *)
+
+ENTITY cutter_contact_trajectory 	(* m1 *)
+SUBTYPE OF (trajectory);
+basiccurve:                 curve_with_surface_normal;
+its_toolaxis:               OPTIONAL bounded_curve;
+its_contact_type:           OPTIONAL contact_type;
+(*
+Informal proposition:
+its_toolaxis must have the same must have the same parameter range as basiccurve.
+*)
+END_ENTITY;
+
+TYPE curve_with_surface_normal = SELECT (
+bounded_pcurve, curve_with_normal_vector
+);
+END_TYPE;
+
+ENTITY curve_with_normal_vector; 	(* m1 *)
+basiccurve:                 bounded_curve;
+surface_normal:             bounded_curve;
+(*
+Informal proposition:
+basiccurve and surface_normal must have the same parameter range
+*)
+END_ENTITY;
+
+TYPE contact_type = ENUMERATION OF (side, front);
+END_TYPE;
+
+
+(* ************************************************************ *)
+(* Axis trajectory                                              *)
+(* ************************************************************ *)
+
+ENTITY axis_trajectory	(* m0 *)
+SUBTYPE OF (trajectory);
+axis_list:                  LIST [1:?] OF identifier;
+commands:                   LIST [1:?] OF bounded_curve;
+WHERE
+WR1: SIZEOF(QUERY(cmd <* commands | 
+cmd\geometric_representation_item.dim <> 1)) = 0;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Parameterised path                                           *)
+(* ************************************************************ *)
+
+ENTITY parameterised_path	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF (approach_lift_path, connector))
+SUBTYPE OF (toolpath);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Connector                                                    *)
+(* ************************************************************ *)
+
+ENTITY connector 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF(connect_secplane, connect_direct)) 
+SUBTYPE OF (parameterised_path);
+END_ENTITY;
+
+ENTITY connect_secplane 	(* m1 *)
+SUBTYPE OF (connector);
+up_dir  : OPTIONAL direction;
+down_dir: OPTIONAL direction;
+END_ENTITY;        
+
+ENTITY connect_direct  	(* m1 *)
+SUBTYPE OF (connector);
+END_ENTITY;        
+
+
+(* ************************************************************ *)
+(* Approach and lift movement                                   *)
+(* ************************************************************ *)
+
+ENTITY approach_lift_path 	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (ap_lift_path_angle, ap_lift_path_tangent))
+SUBTYPE OF (parameterised_path);
+fix_point:                  cartesian_point; 
+fix_point_dir:              OPTIONAL direction; 
+END_ENTITY;
+
+ENTITY ap_lift_path_angle 	(* m1 *)
+SUBTYPE OF (approach_lift_path);
+angle:                      plane_angle_measure;
+benddist:                   positive_length_measure;
+END_ENTITY;
+
+ENTITY ap_lift_path_tangent 	(* m1 *)
+SUBTYPE OF (approach_lift_path);
+radius:                     positive_length_measure;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Rules                                                        *)
+(* ************************************************************ *)
+
+RULE dependent_instantiable_representation_item FOR (representation_item);
+WHERE
+WR1: SIZEOF (QUERY (ri <* representation_item |
+   NOT (SIZEOF (USEDIN (ri, '')) >= 1))) = 0;
+END_RULE;
+
+RULE dependent_instantiable_shape_representation FOR (shape_representation);
+WHERE
+WR1: SIZEOF (QUERY (sr <* shape_representation |
+     NOT (SIZEOF(USEDIN(sr, '')) >= 1))) = 0;
+END_RULE;
+
+RULE geometric_representation_item_3d FOR (geometric_representation_item);
+WHERE
+WR1: SIZEOF (QUERY (gri <* geometric_representation_item |
+     NOT ((dimension_of (gri) = 3) OR
+     (SIZEOF (bag_to_set (USEDIN (gri, '')) - bag_to_set (USEDIN (gri,
+     'MACHINING_SCHEMA.DEFINITIONAL_REPRESENTATION.ITEMS'))) = 0)
+     ))) = 0;
+END_RULE;
+
+(*
+END_SCHEMA; (* machining_schema *)
+*)
+
+
+(* SCHEMA milling_schema; *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* milling_schema		                           ISO 14649-11 *)
+(* Author: ISO TC184/SC1/WG7                                    *)
+(* Contact: j.wolf@wzl.rwth-aachen.de                           *)
+(* Version: ? date: 2002-02-20                                  *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+
+REFERENCE FROM support_resource_schema (
+	identifier,
+	label
+	);
+
+REFERENCE FROM machining_schema (        
+	cutting_tool,
+	machine_functions,
+	machining_operation,
+	machining_tool,
+	material,
+	nc_function,
+	pressure_measure,
+	property_parameter,
+	rot_direction,
+	rot_speed_measure,
+	speed_measure,
+	technology,
+	tool_body,
+	tool_direction,
+	toolpath_list
+	);
+
+REFERENCE FROM geometry_schema (
+	bounded_curve,
+    cartesian_point,
+    direction
+	);
+
+REFERENCE FROM measure_schema (
+	length_measure,
+	plane_angle_measure,
+	positive_ratio_measure,
+	time_measure
+	);
+*)
+
+
+(* ************************************************************ *)
+(* NC functions for milling                                     *)
+(* ************************************************************ *)
+
+ENTITY exchange_pallet	(* m0 *)
+SUBTYPE OF (nc_function);
+END_ENTITY;
+
+ENTITY index_pallet	(* m0 *)
+SUBTYPE OF (nc_function);
+its_index:             INTEGER;
+END_ENTITY;
+
+ENTITY index_table	(* m0 *)
+SUBTYPE OF (nc_function);
+its_index:             INTEGER;
+END_ENTITY;
+
+ENTITY load_tool	(* m0 *)
+SUBTYPE OF (nc_function);
+its_tool:              machining_tool;
+END_ENTITY;
+
+ENTITY unload_tool	(* m0 *)
+SUBTYPE OF (nc_function);
+its_tool:              OPTIONAL machining_tool;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Technology-specific Tool direction select                    *)
+(* ************************************************************ *)
+
+ENTITY tool_direction_for_milling	(* m0 *)
+  ABSTRACT SUPERTYPE OF (ONEOF(three_axes_tilted_tool, five_axes_var_tilt_yaw, five_axes_const_tilt_yaw))
+  SUBTYPE OF (tool_direction);
+END_ENTITY;
+
+ENTITY three_axes_tilted_tool   	(* m0 *)
+SUBTYPE OF (tool_direction_for_milling);
+its_tool_direction: direction;
+END_ENTITY; 
+
+ENTITY five_axes_var_tilt_yaw   	(* m1 *)
+SUBTYPE OF (tool_direction_for_milling);
+END_ENTITY;
+
+ENTITY five_axes_const_tilt_yaw         	(* m0 *)
+SUBTYPE OF (tool_direction_for_milling);
+tilt_angle : plane_angle_measure;
+yaw_angle  : plane_angle_measure; 
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Base class for technology specific operation and strategy    *)
+(* ************************************************************ *)
+
+ENTITY milling_machining_operation	(* m0 *)
+   ABSTRACT SUPERTYPE OF (ONEOF(milling_type_operation, drilling_type_operation))
+   SUBTYPE OF (machining_operation);
+overcut_length: OPTIONAL length_measure;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* Milling technology                                           *)
+(* ************************************************************ *)
+
+ENTITY milling_technology       	(* m0 *)
+SUBTYPE OF (technology); 
+cutspeed:                      OPTIONAL speed_measure;
+spindle:                       OPTIONAL rot_speed_measure;
+feedrate_per_tooth:            OPTIONAL length_measure;
+synchronize_spindle_with_feed: BOOLEAN;
+inhibit_feedrate_override:     BOOLEAN;
+inhibit_spindle_override:      BOOLEAN;
+its_adaptive_control:          OPTIONAL adaptive_control;
+WHERE
+WR1: (EXISTS(cutspeed) AND NOT EXISTS(spindle))
+OR (EXISTS(spindle) AND NOT EXISTS(cutspeed))
+OR (EXISTS(its_adaptive_control));
+WR2: (EXISTS(SELF.feedrate) AND NOT EXISTS(feedrate_per_tooth))
+OR (EXISTS(feedrate_per_tooth) AND NOT EXISTS(SELF.feedrate))
+OR (EXISTS(its_adaptive_control));
+END_ENTITY;
+
+ENTITY adaptive_control; 	(* m1 *)
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Milling machine functions                                    *)
+(* ************************************************************ *)
+
+ENTITY milling_machine_functions     	(* m0 *)
+SUBTYPE OF (machine_functions);
+coolant             :       BOOLEAN;
+coolant_pressure    :       OPTIONAL pressure_measure;
+mist                :       OPTIONAL BOOLEAN;
+through_spindle_coolant:    BOOLEAN;
+through_pressure:           OPTIONAL pressure_measure; 
+axis_clamping       :       LIST [0:?] OF identifier; 
+chip_removal        :       BOOLEAN;
+oriented_spindle_stop:      OPTIONAL direction;
+its_process_model:          OPTIONAL process_model_list;
+other_functions     :       SET [0:?] OF property_parameter;
+END_ENTITY;
+
+ENTITY process_model_list;      	(* m1 *)
+its_list: LIST [1:?] OF process_model;
+END_ENTITY;
+
+ENTITY process_model;   	(* m1 *)
+ini_data_file:  label;
+its_type:       label;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Milling type operation                                       *)
+(* ************************************************************ *)
+
+ENTITY milling_type_operation   	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(freeform_operation, two5D_milling_operation))
+SUBTYPE OF (milling_machining_operation);
+approach:         OPTIONAL approach_retract_strategy;
+retract:          OPTIONAL approach_retract_strategy;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* approach retract strategy                                    *)
+(* ************************************************************ *)
+
+ENTITY approach_retract_strategy        	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (plunge_strategy, air_strategy, along_path));
+tool_orientation: OPTIONAL direction;
+END_ENTITY;
+
+ENTITY plunge_strategy          	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (plunge_toolaxis, plunge_ramp, plunge_helix, plunge_zigzag))
+SUBTYPE OF (approach_retract_strategy);
+END_ENTITY;
+
+ENTITY plunge_toolaxis          	(* m1 *)
+SUBTYPE OF (plunge_strategy);
+END_ENTITY;
+
+ENTITY plunge_ramp      	(* m1 *)
+SUBTYPE OF (plunge_strategy);
+angle: plane_angle_measure;
+END_ENTITY;
+
+ENTITY plunge_helix     	(* m1 *)
+SUBTYPE OF (plunge_strategy);
+radius  :   length_measure;
+angle   :   plane_angle_measure;
+END_ENTITY; 
+
+ENTITY plunge_zigzag    	(* m1 *)
+SUBTYPE OF (plunge_strategy);
+angle: plane_angle_measure;
+width: length_measure;
+END_ENTITY;
+
+ENTITY air_strategy     	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (ap_retract_angle, ap_retract_tangent))
+SUBTYPE OF (approach_retract_strategy);
+END_ENTITY;
+
+ENTITY ap_retract_angle         	(* m1 *)
+SUBTYPE OF (air_strategy);
+angle:         plane_angle_measure;
+travel_length: length_measure;
+END_ENTITY;
+
+ENTITY ap_retract_tangent       	(* m1 *)
+SUBTYPE OF (air_strategy);
+radius: length_measure;
+END_ENTITY;
+
+ENTITY along_path       	(* m1 *)
+SUBTYPE OF (approach_retract_strategy);
+path: toolpath_list;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Freeform operation                                           *)
+(* ************************************************************ *)
+
+ENTITY freeform_operation       	(* m0 *)
+SUBTYPE OF (milling_type_operation);
+its_machining_strategy: OPTIONAL freeform_strategy;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Freeform strategy                                            *)
+(* ************************************************************ *)
+
+ENTITY freeform_strategy        	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF(uv_strategy, plane_cc_strategy, plane_cl_strategy, leading_line_strategy));
+pathmode:               pathmode_type;
+cutmode:                cutmode_type;
+its_milling_tolerances: tolerances;
+stepover:               OPTIONAL length_measure;
+END_ENTITY;
+
+TYPE pathmode_type = ENUMERATION OF (
+forward,
+zigzag
+);
+END_TYPE;
+
+TYPE cutmode_type = ENUMERATION OF (
+climb,
+conventional
+);
+END_TYPE;
+
+ENTITY tolerances;      	(* m1 *)
+chordal_tolerance : length_measure;
+scallop_height    : length_measure;
+END_ENTITY;
+
+ENTITY uv_strategy      	(* m1 *)
+SUBTYPE OF (freeform_strategy);
+forward_direction:      direction;
+sideward_direction:     direction;
+END_ENTITY;
+
+ENTITY plane_cc_strategy        	(* m1 *)
+SUBTYPE OF (freeform_strategy);
+its_plane_normal: direction;
+END_ENTITY;
+
+ENTITY plane_cl_strategy        	(* m1 *)
+SUBTYPE OF (freeform_strategy);
+its_plane_normal: direction;
+END_ENTITY;
+
+ENTITY leading_line_strategy    	(* m1 *)
+SUBTYPE OF (freeform_strategy);
+its_line : bounded_curve;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* two5D milling operation                                      *)
+(* ************************************************************ *)
+
+ENTITY two5D_milling_operation  	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(plane_milling, side_milling, bottom_and_side_milling))
+SUBTYPE OF (milling_type_operation);
+its_machining_strategy: OPTIONAL two5D_milling_strategy;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* two5D_milling_strategy                                       *)
+(* ************************************************************ *)
+
+ENTITY two5D_milling_strategy   	(* m1 *)
+ABSTRACT SUPERTYPE OF (ONEOF (unidirectional, bidirectional, contour_parallel, bidirectional_contour, contour_bidirectional, contour_spiral, center_milling, explicit_strategy));
+overlap:                OPTIONAL positive_ratio_measure;
+allow_multiple_passes:  OPTIONAL BOOLEAN;
+END_ENTITY;
+
+ENTITY unidirectional   	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+feed_direction:        OPTIONAL direction;
+cutmode:                OPTIONAL cutmode_type;
+END_ENTITY;
+
+ENTITY bidirectional    	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+feed_direction:        OPTIONAL direction;
+stepover_direction:       OPTIONAL left_or_right;
+its_stroke_connection_strategy: OPTIONAL stroke_connection_strategy;
+END_ENTITY;
+
+TYPE left_or_right = ENUMERATION OF (left, right);
+END_TYPE;
+
+TYPE stroke_connection_strategy = ENUMERATION OF 
+(straghtline, lift_shift_plunge, degouge, loop_back);
+END_TYPE;
+
+ENTITY contour_parallel         	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+rotation_direction:     OPTIONAL rot_direction;
+cutmode:                OPTIONAL cutmode_type;
+END_ENTITY;
+
+ENTITY bidirectional_contour    	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+feed_direction:        OPTIONAL direction;
+stepover_direction:       OPTIONAL left_or_right;
+rotation_direction:     OPTIONAL rot_direction;
+spiral_cutmode:         OPTIONAL cutmode_type;
+END_ENTITY;
+
+ENTITY contour_bidirectional    	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+feed_direction:        OPTIONAL direction;
+stepover_direction:       OPTIONAL left_or_right;
+rotation_direction:     OPTIONAL rot_direction;
+spiral_cutmode:         OPTIONAL cutmode_type;
+END_ENTITY;
+
+ENTITY contour_spiral   	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+rotation_direction:     OPTIONAL rot_direction;
+cutmode:                OPTIONAL cutmode_type;
+END_ENTITY;
+
+ENTITY center_milling   	(* m1 *)
+SUBTYPE OF (two5D_milling_strategy);
+END_ENTITY;
+
+ENTITY explicit_strategy        	(* m1 *)
+	SUBTYPE OF (two5D_milling_strategy);
+END_ENTITY;
+
+(* ************************************************************ *)
+(* plane_milling, side_milling, bottom_and_side_milling         *)
+(* ************************************************************ *)
+
+ENTITY plane_milling    	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(plane_rough_milling, plane_finish_milling))
+SUBTYPE OF (two5D_milling_operation);
+axial_cutting_depth:        OPTIONAL length_measure; 
+allowance_bottom:           OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY plane_rough_milling      	(* m0 *)
+SUBTYPE OF (plane_milling);
+WHERE
+WR1: EXISTS(SELF.allowance_bottom) AND (SELF.allowance_bottom>=0.0);
+END_ENTITY;
+
+ENTITY plane_finish_milling     	(* m0 *)
+SUBTYPE OF (plane_milling);
+END_ENTITY;
+
+ENTITY side_milling     	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(side_rough_milling, side_finish_milling))
+SUBTYPE OF (two5D_milling_operation);
+axial_cutting_depth:    OPTIONAL length_measure; 
+radial_cutting_depth:   OPTIONAL length_measure; 
+allowance_side:         OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY side_rough_milling       	(* m0 *)
+SUBTYPE OF (side_milling);
+WHERE
+WR1: EXISTS(SELF.allowance_side) AND (SELF.allowance_side>=0.0);
+END_ENTITY;
+
+ENTITY side_finish_milling      	(* m0 *)
+SUBTYPE OF (side_milling);
+END_ENTITY;
+
+ENTITY bottom_and_side_milling  	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(bottom_and_side_rough_milling, bottom_and_side_finish_milling))
+SUBTYPE OF (two5D_milling_operation);
+axial_cutting_depth:    OPTIONAL length_measure; 
+radial_cutting_depth:   OPTIONAL length_measure;  
+allowance_side:         OPTIONAL length_measure;
+allowance_bottom:       OPTIONAL length_measure;END_ENTITY;
+
+ENTITY bottom_and_side_rough_milling    	(* m0 *)
+SUBTYPE OF (bottom_and_side_milling);
+WHERE
+  WR1: EXISTS(SELF.allowance_side) AND (SELF.allowance_side>=0.0);
+  WR2: EXISTS(SELF.allowance_bottom) AND (SELF.allowance_bottom>=0.0);
+END_ENTITY;
+
+ENTITY bottom_and_side_finish_milling   	(* m0 *)
+SUBTYPE OF (bottom_and_side_milling);
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Drilling type operation                                      *)
+(* ************************************************************ *)
+
+ENTITY drilling_type_operation  	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(drilling_operation, boring_operation, back_boring, tapping, thread_drilling))
+SUBTYPE OF (milling_machining_operation);
+cutting_depth:              OPTIONAL length_measure;
+previous_diameter:          OPTIONAL length_measure;
+dwell_time_bottom:          OPTIONAL time_measure;
+feed_on_retract:            OPTIONAL positive_ratio_measure;
+its_machining_strategy:     OPTIONAL drilling_type_strategy;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Drilling type strategy                                       *)
+(* ************************************************************ *)
+
+ENTITY drilling_type_strategy;   	(* m0 *)
+reduced_cut_at_start:       OPTIONAL positive_ratio_measure; 
+reduced_feed_at_start:      OPTIONAL positive_ratio_measure; 
+depth_of_start:             OPTIONAL length_measure;
+reduced_cut_at_end:         OPTIONAL positive_ratio_measure; 
+reduced_feed_at_end:        OPTIONAL positive_ratio_measure; 
+depth_of_end:               OPTIONAL length_measure;
+WHERE
+WR1: EXISTS(depth_of_start) OR NOT (EXISTS(reduced_cut_at_start) OR EXISTS(reduced_feed_at_start));
+WR2: EXISTS(depth_of_end) OR NOT (EXISTS(reduced_cut_at_end) OR EXISTS(reduced_feed_at_end));
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Drilling operation                                           *)
+(* ************************************************************ *)
+
+ENTITY drilling_operation       	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(drilling, center_drilling, counter_sinking, multistep_drilling))
+SUBTYPE OF (drilling_type_operation);
+END_ENTITY;
+
+ENTITY drilling 	(* m0 *)
+SUBTYPE OF (drilling_operation);
+END_ENTITY;
+
+ENTITY center_drilling  	(* m0 *)
+SUBTYPE OF (drilling_operation);
+END_ENTITY;
+
+ENTITY counter_sinking  	(* m0 *)
+SUBTYPE OF (drilling_operation);
+END_ENTITY;
+
+ENTITY multistep_drilling       	(* m0 *)
+SUBTYPE OF (drilling_operation);
+retract_distance:       length_measure;
+first_depth:            length_measure;
+depth_of_step:          length_measure;
+dwell_time_step:        OPTIONAL time_measure;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* Boring operation                                             *)
+(* ************************************************************ *)
+
+ENTITY boring_operation 	(* m0 *)
+ABSTRACT SUPERTYPE OF (ONEOF(boring, reaming))
+SUBTYPE OF (drilling_type_operation);
+spindle_stop_at_bottom:         BOOLEAN;
+depth_of_testcut:               OPTIONAL length_measure;
+waiting_position:               OPTIONAL cartesian_point;
+END_ENTITY;
+
+ENTITY boring   	(* m0 *)
+SUBTYPE OF (boring_operation);
+END_ENTITY;
+
+ENTITY reaming  	(* m0 *)
+ SUBTYPE OF (boring_operation);
+END_ENTITY;
+
+ENTITY back_boring      	(* m0 *)
+SUBTYPE OF (drilling_type_operation);
+END_ENTITY;
+
+ENTITY tapping  	(* m0 *)
+SUBTYPE OF (drilling_type_operation);
+compensation_chuck:             BOOLEAN;
+END_ENTITY;
+
+ENTITY thread_drilling  	(* m0 *)
+SUBTYPE OF (drilling_type_operation);
+helical_movement_on_forward:    BOOLEAN;
+END_ENTITY;
+
+(*
+END_SCHEMA; (* milling_schema *)
+*)
+
+
+
+
+(*SCHEMA turning_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* turning_schema		                   ISO 14649-12 *)
+(* Author: ISO TC184/SC1/WG7                                    *)
+(* Contact:	Suk-Hwan Suh (shs@postech.ac.kr)	        *)
+(*      	Stefan Heusinger                                *)
+(*      	stefan.heusinger@isw.uni-stuttgart.de)          *)
+(* Version: 12 date: 2002-07-24                                 *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+REFERENCE FROM support_resource_schema (
+	identifier,
+	label
+	);
+
+REFERENCE FROM milling_schema (
+	approach_retract_strategy,
+	(*back_boring, 			*) 
+	(*boring,			*) 
+	(*boring_operation,		*) 
+	(*center_drilling, 		*) 
+	(*drilling,			*) 
+	(*drilling_operation,		*) 
+	(*drilling_type_operation,	*) 
+	(*drilling_type_strategy,	*) 
+	(*multistep_drilling,		*) 
+	process_model_list(*,		*)
+	(*reaming			*)
+	);
+
+REFERENCE FROM machining_schema (
+	general_profile,
+	in_process_geometry,
+	its_effect,
+	linear_profile,
+	machine_functions,
+	machining_feature,
+	machining_operation,
+	manufacturing_feature, (*added by WZL*)
+	material,
+	open_profile,
+	partial_area_definition,
+	partial_circular_profile,
+	pressure_measure,
+	property_parameter,    
+	rot_direction,
+	rot_speed_measure,
+	round_hole,
+	speed_measure,
+	taper_select,
+	technology,
+	thread,
+	toleranced_length_measure,
+	toolpath_feature,
+	toolpath_list, 
+	two5D_manufacturing_feature,
+	vee_profile,
+	workingstep
+	);
+
+REFERENCE FROM geometry_schema(
+	axis2_placement_3d,
+	bounded_curve,
+	cartesian_point,
+	direction
+	);
+		
+REFERENCE FROM measure_schema (
+	length_measure,
+	plane_angle_measure,
+	positive_ratio_measure,
+	time_measure
+	);
+*)
+
+(* ************************************************************ *)
+(*turning_feature                                               *)
+(* ************************************************************ *)
+ENTITY turning_feature
+   ABSTRACT SUPERTYPE OF (ONEOF(outer_round, revolved_feature, knurl))
+   SUBTYPE OF (two5D_manufacturing_feature);
+END_ENTITY;
+
+(* ************************************************************ *)
+(* outer_round                                                  *)
+(* ************************************************************ *)
+ENTITY outer_round
+   ABSTRACT SUPERTYPE OF (ONEOF (outer_diameter, outer_diameter_to_shoulder))
+   SUBTYPE OF (turning_feature);
+END_ENTITY;
+
+
+ENTITY outer_diameter
+   SUBTYPE OF (outer_round);
+   diameter_at_placement : toleranced_length_measure;
+   feature_length        : toleranced_length_measure;
+   reduced_size          : OPTIONAL taper_select;
+END_ENTITY;
+
+
+ENTITY outer_diameter_to_shoulder
+   SUBTYPE OF (outer_round);
+   diameter_at_placement :  toleranced_length_measure;
+   v_shape_boundary      :  vee_profile;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* revolved_feature                                             *)
+(* ************************************************************ *)
+
+ENTITY revolved_feature
+   ABSTRACT SUPERTYPE OF (ONEOF (revolved_round, revolved_flat, groove, general_revolution))
+   SUBTYPE OF (turning_feature);
+   material_side : OPTIONAL direction;
+   radius        : toleranced_length_measure;
+END_ENTITY;
+
+
+ENTITY revolved_flat
+   SUBTYPE OF (revolved_feature);
+   flat_edge_shape : linear_profile;
+END_ENTITY;
+
+
+ENTITY revolved_round
+   SUBTYPE OF (revolved_feature);
+   rounded_edge_shape : partial_circular_profile;
+END_ENTITY;
+
+
+ENTITY groove
+   SUBTYPE OF (revolved_feature);
+   sweep : open_profile;
+END_ENTITY;
+
+
+ENTITY general_revolution
+   SUBTYPE OF (revolved_feature);
+   outer_edge_profile : general_profile;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* knurl                                                        *)
+(* ************************************************************ *)
+
+ENTITY knurl
+   ABSTRACT SUPERTYPE OF (ONEOF(straight_knurl, diagonal_knurl, diamond_knurl, tool_knurl))
+   SUBTYPE OF (turning_feature);
+   base_feature    :  turning_feature;
+   partial_profile :  OPTIONAL partial_area_definition;
+   tooth_depth     :  OPTIONAL toleranced_length_measure;
+   diametral_pitch :  OPTIONAL toleranced_length_measure;
+   root_fillet     :  OPTIONAL toleranced_length_measure;
+   number_of_teeth :  OPTIONAL INTEGER;
+   major_diameter  :  OPTIONAL toleranced_length_measure;
+   nominal_diameter:  OPTIONAL toleranced_length_measure;
+END_ENTITY;
+
+ENTITY straight_knurl
+   SUBTYPE OF (knurl);
+END_ENTITY;
+
+
+ENTITY diagonal_knurl
+   SUBTYPE OF (knurl);
+   helix_angle : plane_angle_measure;
+END_ENTITY;
+
+
+ENTITY diamond_knurl
+   SUBTYPE OF (knurl);
+   helix1_angle : plane_angle_measure;
+   helix2_angle : OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+
+ENTITY tool_knurl
+   SUBTYPE OF (knurl);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* turning workingstep                                          *)
+(* ************************************************************ *)
+
+ENTITY turning_workingstep
+   SUBTYPE OF (workingstep);
+   its_features  : LIST [2:?] OF manufacturing_feature;
+   its_operation : turning_machining_operation;
+   its_effect    : OPTIONAL in_process_geometry;
+END_ENTITY;
+
+(* ************************************************************ *)
+(* turning technology                                           *)
+(* ************************************************************ *)
+
+ENTITY turning_technology
+   SUBTYPE OF (technology);
+   spindle_speed             : speed_select;
+   feedrate_per_revolution   : OPTIONAL REAL;
+   sync_spindle_and_z_feed   : BOOLEAN;
+   inhibit_feedrate_override : BOOLEAN;
+   inhibit_spindle_override  : BOOLEAN;
+END_ENTITY;
+
+
+TYPE speed_select = SELECT (const_spindle_speed, const_cutting_speed);
+END_TYPE;
+
+
+ENTITY const_spindle_speed;
+   rot_speed : rot_speed_measure;
+END_ENTITY;
+
+
+ENTITY const_cutting_speed;
+   speed     : speed_measure;
+   max_speed : OPTIONAL rot_speed_measure;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* turning machine functions                                    *)
+(* ************************************************************ *)
+
+ENTITY turning_machine_functions
+   SUBTYPE OF (machine_functions);
+   coolant               : BOOLEAN;
+   coolant_type          : OPTIONAL coolant_select;
+   coolant_pressure      : OPTIONAL pressure_measure;
+   axis_clamping         : LIST [0:?] OF identifier;
+   chip_removal          : BOOLEAN;
+   oriented_spindle_stop : OPTIONAL direction;
+   its_process_model     : OPTIONAL process_model_list;
+   other_functions       : SET [0:?] OF property_parameter;
+   tail_stock            : OPTIONAL BOOLEAN;
+   steady_rest           : OPTIONAL BOOLEAN;
+   follow_rest           : OPTIONAL BOOLEAN;
+END_ENTITY;
+
+
+TYPE coolant_select = ENUMERATION OF (flood, mist, through_tool);
+END_TYPE;
+
+
+(* ************************************************************ *)
+(* turning_strategy                                             *)
+(* ************************************************************ *)
+
+ENTITY turning_machining_strategy
+   ABSTRACT SUPERTYPE OF (ONEOF (unidirectional_turning, bidirectional_turning, thread_strategy, contour_turning, grooving_strategy, explicit_turning_strategy));
+   overcut_length        : OPTIONAL length_measure;
+   allow_multiple_passes : OPTIONAL BOOLEAN;
+   cutting_depth         : OPTIONAL LIST[0:?] OF length_measure;
+END_ENTITY;
+
+
+ENTITY unidirectional_turning
+   ABSTRACT SUPERTYPE OF (ONEOF (unidirectional_perpendicular, unidirectional_diagonal))
+   SUBTYPE OF (turning_machining_strategy);
+   feed_direction      : OPTIONAL direction;
+   back_path_direction : OPTIONAL direction;
+   back_path_feed      : OPTIONAL speed_measure;
+   stepover_direction  : OPTIONAL direction;
+   lift_height         : length_measure;
+   lift_feed           : OPTIONAL speed_measure;
+   downward_feed       : OPTIONAL speed_measure;
+END_ENTITY;
+
+
+ENTITY unidirectional_perpendicular
+   SUBTYPE OF (unidirectional_turning);
+END_ENTITY;
+
+
+ENTITY unidirectional_diagonal
+   SUBTYPE OF (unidirectional_turning);
+   path_return_angle : OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+
+ENTITY bidirectional_turning
+   SUBTYPE OF (turning_machining_strategy);
+   feed_direction     : OPTIONAL direction;
+   stepover_direction : OPTIONAL direction;
+   downward_feed      : OPTIONAL speed_measure;
+END_ENTITY;
+
+
+ENTITY contour_turning
+   SUBTYPE OF (turning_machining_strategy);
+   path_return_angle      : OPTIONAL plane_angle_measure;
+   variable_depth         : OPTIONAL positive_ratio_measure;
+   downward_feed          : OPTIONAL speed_measure;
+   variable_downward_feed : OPTIONAL positive_ratio_measure;
+END_ENTITY;
+
+
+ENTITY thread_strategy
+   SUBTYPE OF (turning_machining_strategy);
+   cut_in_amount_function : thread_cut_depth_type;
+   threading_direction    : threading_direction_type;
+END_ENTITY;
+
+
+TYPE thread_cut_depth_type = ENUMERATION OF (constant_depth, variable_depth, constant_removal_amount);
+END_TYPE;
+
+
+TYPE threading_direction_type = ENUMERATION OF (left, right, center, left_zigzag, right_zigzag);
+END_TYPE;
+
+
+ENTITY grooving_strategy
+   SUPERTYPE OF (multistep_grooving_strategy)
+   SUBTYPE OF (turning_machining_strategy);
+   travel_distance : length_measure;
+END_ENTITY;
+
+
+ENTITY  multistep_grooving_strategy
+   SUBTYPE OF (grooving_strategy);
+   retract_distance : length_measure;
+END_ENTITY;
+
+
+ENTITY explicit_turning_strategy 
+   SUBTYPE OF (turning_machining_strategy);
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(* turning type operation                                       *)
+(* ************************************************************ *)
+
+ENTITY turning_machining_operation
+   ABSTRACT SUPERTYPE OF (ONEOF(facing, grooving, cutting_in, contouring, threading, knurling))
+   SUBTYPE OF (machining_operation);
+   approach               : OPTIONAL approach_retract_strategy;
+   retract                : OPTIONAL approach_retract_strategy;
+   its_machining_strategy : OPTIONAL turning_machining_strategy;
+END_ENTITY;
+
+
+ENTITY facing
+   ABSTRACT SUPERTYPE OF (ONEOF(facing_rough, facing_finish))
+   SUBTYPE OF (turning_machining_operation);
+   x_return_amount  : OPTIONAL length_measure;
+   z_return_amount  : OPTIONAL length_measure;
+   allowance        : OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY facing_rough
+   SUBTYPE OF (facing);
+WHERE
+   WR1: EXISTS(SELF.allowance) AND (SELF.allowance >= 0.0);
+END_ENTITY;
+
+
+ENTITY facing_finish
+   SUBTYPE OF (facing);
+END_ENTITY;
+
+
+ENTITY grooving
+   ABSTRACT SUPERTYPE OF (ONEOF(grooving_rough, grooving_finish))
+   SUBTYPE OF (turning_machining_operation);
+   return_amount : OPTIONAL length_measure;
+   dwell_type    : OPTIONAL dwell_select;
+   allowance     : OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY grooving_rough
+   SUBTYPE OF (grooving);
+WHERE
+   WR1: EXISTS(SELF.allowance) AND (SELF.allowance >= 0.0);
+END_ENTITY;
+
+
+ENTITY grooving_finish
+   SUBTYPE OF (grooving);
+END_ENTITY;
+
+
+TYPE dwell_select = SELECT (dwell_time, dwell_revolution);
+END_TYPE;
+
+
+ENTITY dwell_time;
+   time : time_measure;
+END_ENTITY;
+
+
+ENTITY dwell_revolution; 
+   revolution : REAL;
+END_ENTITY;
+
+
+ENTITY cutting_in
+   SUBTYPE OF (turning_machining_operation);
+   depth            : toleranced_length_measure;
+   cut_in_direction : OPTIONAL direction;
+   dwell_type       : OPTIONAL dwell_select;
+END_ENTITY;
+
+
+ENTITY contouring
+   ABSTRACT SUPERTYPE OF (ONEOF(contouring_rough, contouring_finish))
+   SUBTYPE OF (turning_machining_operation);
+   x_return_amount   : OPTIONAL length_measure;
+   z_return_amount   : OPTIONAL length_measure;
+   variable_feedrate : OPTIONAL positive_ratio_measure;
+   allowance         : OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY contouring_rough
+   SUBTYPE OF (contouring);
+WHERE
+   WR1: EXISTS(SELF.allowance) AND (SELF.allowance >= 0.0);
+END_ENTITY;
+
+
+ENTITY contouring_finish
+   SUBTYPE OF (contouring);
+END_ENTITY;
+
+
+ENTITY threading
+   ABSTRACT SUPERTYPE OF (ONEOF(threading_rough, threading_finish))
+   SUBTYPE OF (turning_machining_operation);
+   return_amount : OPTIONAL length_measure;
+   allowance     : OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY threading_rough
+   SUBTYPE OF (threading);
+WHERE
+   WR1: EXISTS(SELF.allowance) AND (SELF.allowance >= 0.0);
+END_ENTITY;
+
+
+ENTITY threading_finish
+   SUBTYPE OF (threading);
+END_ENTITY;
+
+
+ENTITY knurling
+   SUBTYPE OF (turning_machining_operation);
+END_ENTITY;
+
+(*
+END_SCHEMA; (* turning_schema *)
+*)
+
+
+(*SCHEMA turning_machine_tool_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* turning_machine_tool_schema		               ISO 14649-121*)
+(* Author: ISO TC184/SC1/WG7                                    *)
+(* Contact:	Suk-Hwan Suh (shs@postech.ac.kr)	                *)
+(* Version: ? date: 2002-02-20                                  *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+REFERENCE FROM support_resource_schema (
+	label
+	);
+
+REFERENCE FROM machining_schema (
+	cutting_tool,
+	machining_tool,
+	material,
+	tool_body,
+	rot_direction
+	);
+
+REFERENCE FROM geometry_schema (
+	plane,
+	elementary_surface,
+	axis2_placement_3d,
+	bounded_curve,
+	bounded_pcurve,
+	cartesian_point,	
+	direction,
+	dummy_gri,
+	dummy_tri,
+	bounded_surface,
+	b_spline_curve
+	);
+	
+REFERENCE FROM measure_schema (
+	plane_angle_measure,
+	time_measure,
+	length_measure
+	);
+*)
+
+
+(* ************************************************************ *)
+(*                   turning tool                               *)
+(* ************************************************************ *)
+
+ENTITY turning_machine_tool
+	  SUBTYPE OF (cutting_tool);
+	  overall_assembly_width:     OPTIONAL length_measure;
+minimum_cutting_diameter    : OPTIONAL length_measure;
+END_ENTITY;
+
+(* ************************************************************ *)
+(*                   turning tool_body                          *)
+(* ************************************************************ *)
+
+ENTITY turning_machine_tool_body
+ABSTRACT SUPERTYPE OF (ONEOF(general_turning_tool, knurling_tool, turning_threading_tool, grooving_tool, user_defined_turning_tool))
+SUBTYPE OF (tool_body);
+dimension :                 turning_tool_dimension;
+hand_of_tool :              OPTIONAL hand_of_tool_type;
+maximum_cutting_depth:      OPTIONAL length_measure;
+tool_allowance_length :     OPTIONAL length_measure;
+tool_body_height :          OPTIONAL length_measure;
+tool_body_width :           OPTIONAL length_measure;
+rotational_direction :      OPTIONAL rot_direction;
+END_ENTITY;
+
+
+
+
+
+(* ************************************************************ *)
+(*                   turning tool_dimension                     *)
+(* ************************************************************ *)
+
+ENTITY turning_tool_dimension;
+cutting_edge_length           : OPTIONAL length_measure;
+end_cutting_edge_angle        : OPTIONAL plane_angle_measure;
+side_cutting_edge_angle       : OPTIONAL plane_angle_measure;
+back_rake_angle               : OPTIONAL plane_angle_measure;
+side_rake_angle               : OPTIONAL plane_angle_measure;
+side_relief_angle             : OPTIONAL plane_angle_measure;
+side_clearance_angle          : OPTIONAL plane_angle_measure;
+end_relief_angle              : OPTIONAL plane_angle_measure;
+end_clearance_angle           : OPTIONAL plane_angle_measure;
+nose_radius                   : OPTIONAL length_measure;
+circle_diameter               : OPTIONAL length_measure;
+END_ENTITY;
+
+
+TYPE hand_of_tool_type = ENUMERATION OF (left,right,neutral);		
+END_TYPE;
+
+(* ************************************************************ *)
+(*                   turning tool catalogue                     *)
+(* ************************************************************ *)
+ 
+(* ************************************************************ *)
+(*                   general turning tool                       *)
+(* ************************************************************ *)
+
+ENTITY general_turning_tool
+    SUBTYPE OF (turning_machine_tool_body);
+END_ENTITY;
+
+(* ************************************************************ *)
+(*                   turning threading tool                     *)
+(* ************************************************************ *)
+
+ENTITY turning_threading_tool
+	  SUBTYPE OF (turning_machine_tool_body);
+threading_pitch             : length_measure;
+threading_angle             : OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+(* ************************************************************ *)
+(*                   grooving tool                              *)
+(* ************************************************************ *)
+
+ENTITY grooving_tool
+SUBTYPE OF (turning_machine_tool_body);
+cutting_width           : length_measure;
+corner_radius           : OPTIONAL length_measure;
+END_ENTITY;
+
+
+(* ************************************************************ *)
+(*                   knurling tool                              *)
+(* ************************************************************ *)
+
+ENTITY knurling_tool
+SUBTYPE OF (turning_machine_tool_body);
+knurl_pattern_type      : knurl_pattern;
+cutting_length          : OPTIONAL length_measure;
+angle                   : OPTIONAL plane_angle_measure;
+pitch                   : OPTIONAL length_measure;	
+END_ENTITY;
+
+
+TYPE knurl_pattern = ENUMERATION OF (straight, diagonal, diamond);		
+END_TYPE;
+
+(* ************************************************************ *)
+(*                    user defined turning tool                         *)
+(* ************************************************************ *)
+
+ENTITY user_defined_turning_tool
+SUBTYPE OF (turning_machine_tool_body);
+identifier:          label;	     
+END_ENTITY;
+
+(*
+END_SCHEMA; (*turning_machine_tool_schema*)
+*)
+
+
+
+
+(*SCHEMA milling_tool_schema;*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* milling_tool_schema				               ISO 14649-111*)
+(* Author: ISO TC184/SC1/WG7                                    *)
+(* Contact:	j.wolf@wzl.rwth-aachen.de			                *)
+(* Version: ? date: 2002-02-20                                  *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*
+REFERENCE FROM support_resource_schema (
+	identifier,
+	label
+	);
+
+REFERENCE FROM machining_schema (
+ 	cutting_tool,
+ 	tool_body,
+ 	technology
+	);
+
+REFERENCE FROM measure_schema (
+	plane_angle_measure,
+	positive_ratio_measure,
+	time_measure,
+	length_measure
+	);
+
+REFERENCE FROM geometry_schema(
+	axis2_placement_3d,
+	bounded_curve,
+	cartesian_point,
+	direction
+	);
+*)    
+
+(*======================== milling cutting tool ================================*)
+
+ENTITY milling_cutting_tool
+SUBTYPE OF (cutting_tool);
+        direction_for_spindle_orientation:
+                               OPTIONAL direction;
+        tool_holder_diameter_for_spindle_orientation:
+                               OPTIONAL length_measure;
+END_ENTITY;
+
+
+(*========================= milling tool body ==================================*)
+        
+ENTITY milling_machine_tool_body
+    ABSTRACT SUPERTYPE OF (ONEOF(centerdrill, countersink, drill, 
+      milling_cutter, tap, milling_threading_tool, counterbore, reamer, 
+      boring_tool, user_defined_tool))
+    SUBTYPE OF (tool_body);
+        dimension:             milling_tool_dimension;
+        number_of_teeth:       OPTIONAL INTEGER;
+        hand_of_cut:           OPTIONAL hand;
+        coolant_through_tool:  OPTIONAL BOOLEAN;
+        pilot_length:          OPTIONAL length_measure;
+END_ENTITY;
+
+
+(*========================= milling tool dimension =============================*)
+
+ENTITY milling_tool_dimension;  	(* m0 *)
+        diameter:              length_measure;
+        tool_tip_half_angle:   OPTIONAL plane_angle_measure;
+        tool_circumference_angle:
+                               OPTIONAL plane_angle_measure;
+        cutting_edge_length:            OPTIONAL length_measure;
+        edge_radius:           OPTIONAL length_measure;
+        edge_center_vertical:  OPTIONAL length_measure;
+        edge_center_horizontal:OPTIONAL length_measure;
+END_ENTITY;
+        
+TYPE hand = ENUMERATION OF(left, right, neutral);
+END_TYPE;
+
+ENTITY centerdrill
+	  SUBTYPE OF (milling_machine_tool_body);
+END_ENTITY;
+
+ENTITY countersink
+    SUPERTYPE OF (backside_countersink)
+    SUBTYPE OF (milling_machine_tool_body);
+        countersink_radius:    OPTIONAL length_measure; 
+END_ENTITY;
+
+ENTITY backside_countersink
+    SUBTYPE OF (countersink);
+END_ENTITY;     
+
+ENTITY drill
+    ABSTRACT SUPERTYPE OF (ONEOF(twist_drill, spade_drill))
+    SUBTYPE OF (milling_machine_tool_body);
+END_ENTITY;        
+
+ENTITY twist_drill
+    SUPERTYPE OF (tapered_drill)
+    SUBTYPE OF (drill);
+END_ENTITY;
+
+ENTITY tapered_drill
+    SUBTYPE OF (twist_drill);
+        taper_angle:           OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+ENTITY spade_drill
+    SUBTYPE OF (drill);
+END_ENTITY;
+
+ENTITY milling_cutter
+    ABSTRACT SUPERTYPE OF (ONEOF(facemill, endmill, t_slot_mill, 
+      dovetail_mill, woodruff_keyseat_mill, side_mill, thread_mill))
+    SUBTYPE OF (milling_machine_tool_body);    
+END_ENTITY;
+
+ENTITY facemill
+    SUBTYPE OF (milling_cutter);
+END_ENTITY;
+
+ENTITY endmill
+    SUPERTYPE OF (ONEOF(tapered_endmill, ball_endmill, bullnose_endmill))
+    SUBTYPE OF (milling_cutter);
+END_ENTITY;
+
+ENTITY tapered_endmill
+    SUBTYPE OF (endmill);      
+        taper_angle:           OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+ENTITY ball_endmill
+    SUBTYPE OF (endmill);      
+WHERE
+    WR1: (NOT EXISTS(SELF.dimension.edge_center_horizontal))
+         OR ((EXISTS(SELF.dimension.edge_center_horizontal)) AND
+         (SELF.dimension.edge_center_horizontal = 0));
+    WR2: (NOT EXISTS(SELF.dimension.edge_center_vertical))
+         OR ((EXISTS(SELF.dimension.edge_center_vertical)) AND
+         (SELF.dimension.edge_center_vertical = dimension.diameter/2));
+    WR3: (NOT EXISTS(SELF.dimension.edge_radius))
+         OR ((EXISTS(SELF.dimension.edge_radius)) AND
+         (SELF.dimension.edge_radius = dimension.diameter/2));
+    WR4: (NOT EXISTS(SELF.dimension.tool_tip_half_angle))
+         OR ((EXISTS(SELF.dimension.tool_tip_half_angle)) AND
+         (SELF.dimension.tool_tip_half_angle = 0));
+    WR5: (NOT EXISTS(SELF.dimension.tool_circumference_angle))
+         OR ((EXISTS(SELF.dimension.tool_circumference_angle)) AND
+         (SELF.dimension.tool_circumference_angle = 0));
+END_ENTITY;
+
+ENTITY bullnose_endmill
+    SUBTYPE OF (endmill);      
+WHERE
+    WR1: (NOT EXISTS(SELF.dimension.tool_tip_half_angle))
+         OR ((EXISTS(SELF.dimension.tool_tip_half_angle)) AND
+         (SELF.dimension.tool_tip_half_angle = 0));
+    WR2: (NOT EXISTS(SELF.dimension.tool_circumference_angle))
+         OR ((EXISTS(SELF.dimension.tool_circumference_angle)) AND
+         (SELF.dimension.tool_circumference_angle = 0));
+END_ENTITY;
+
+ENTITY t_slot_mill
+    SUBTYPE OF (milling_cutter);
+        cutting_thickness:     OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY dovetail_mill
+    SUBTYPE OF (milling_cutter);
+        included_angle:        OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+ENTITY woodruff_keyseat_mill
+    SUBTYPE OF (milling_cutter);
+        cutter_width:          OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY side_mill
+    SUBTYPE OF (milling_cutter);
+        cutter_width:          OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY thread_mill
+    SUBTYPE OF (milling_cutter);
+END_ENTITY;
+
+ENTITY tap
+    SUPERTYPE OF (ONEOF(tapered_tap, combined_drill_and_tap))
+    SUBTYPE OF (milling_machine_tool_body);
+END_ENTITY;
+
+ENTITY tapered_tap
+    SUBTYPE OF (tap);
+        taper_angle:           OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+ENTITY combined_drill_and_tap
+    SUBTYPE OF (tap);
+        drill_length:          OPTIONAL length_measure; 
+END_ENTITY;
+
+ENTITY milling_threading_tool
+    SUBTYPE OF (milling_machine_tool_body);
+END_ENTITY;
+
+ENTITY counterbore
+    SUPERTYPE OF (backside_counterbore)
+    SUBTYPE OF (milling_machine_tool_body);
+END_ENTITY;
+
+ENTITY backside_counterbore
+    SUBTYPE OF (counterbore);
+END_ENTITY;
+
+ENTITY reamer
+    SUPERTYPE OF (ONEOF (tapered_reamer, combined_drill_and_reamer))
+    SUBTYPE OF (milling_machine_tool_body);
+END_ENTITY;
+
+ENTITY tapered_reamer
+    SUBTYPE OF (reamer);
+        taper_angle:           OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+ENTITY combined_drill_and_reamer
+    SUBTYPE OF (reamer);
+        drill_length:          OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY boring_tool
+    SUBTYPE OF (milling_machine_tool_body);
+    retract_movement_forbidden: BOOLEAN;
+END_ENTITY;    
+
+ENTITY user_defined_tool
+    SUBTYPE OF (milling_machine_tool_body);
+    identifier:   label;
+END_ENTITY;
+
+(*
+END_SCHEMA; (* milling_tool_schema *)
+*)
+
+
+
+(*
+Version  : 02
+Date  : 08.12.2008
+Author and Contact  : Parag Vichare <P.Vichare@bath.ac.uk>, Aydin Nassahi <A.Nassehi@bath.ac.uk>, Stephen Newman <S.T.Newman@bath.ac.uk> 
+*)
+
+
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(*								*)
+(*             Machine tool resource description                *)
+(*								*)
+(* ************************************************************ *)
+(* ************************************************************ *)
+(* ************************************************************ *)
+
+
+
+
+
+(* ************************************************************ *)
+(* Logical Manufacturing Unit					*) 
+(* ************************************************************ *)
+
+
+ENTITY logical_manufacturing_unit
+ABSTRACT SUPERTYPE OF (ONEOF (factory, shop, cell, work_station));
+its_name: 		OPTIONAL label;
+its_child_lmu:		OPTIONAL SET [0:?] OF logical_manufacturing_unit;
+its_placement:		OPTIONAL axis2_placement_3d;
+its_resource:		OPTIONAL SET [0:?] OF manufacturing_resource;
+END_ENTITY;
+
+
+ENTITY factory
+SUBTYPE OF (logical_manufacturing_unit);
+END_ENTITY;
+
+
+ENTITY shop
+SUBTYPE OF (logical_manufacturing_unit);
+END_ENTITY;
+
+
+ENTITY cell
+SUBTYPE OF (logical_manufacturing_unit);
+END_ENTITY;
+
+
+ENTITY work_station
+SUBTYPE OF (logical_manufacturing_unit);
+END_ENTITY;
+
+
+ENTITY manufacturing_resource
+ABSTRACT SUPERTYPE OF (ONEOF (machine_tool, auxiliary_device));
+its_id:				identifier;
+its_model:			OPTIONAL label;
+its_make:			OPTIONAL label; 
+its_base_kinematic_joint:	OPTIONAL SET [0:?] OF kinematic_joint;
+END_ENTITY;
+
+
+ENTITY machine_tool
+SUBTYPE OF (manufacturing_resource);
+END_ENTITY;
+
+
+ENTITY auxiliary_device
+ABSTRACT SUPERTYPE OF (ONEOF (accessories, material_handling_device))
+SUBTYPE OF (manufacturing_resource);
+END_ENTITY;
+
+
+ENTITY accessories
+ABSTRACT SUPERTYPE 
+SUBTYPE OF (auxiliary_device);
+END_ENTITY;
+
+
+ENTITY material_handling_device
+ABSTRACT SUPERTYPE OF (ONEOF (pallet_setup, fixture_setup, conveyer_system, robot, agv))
+SUBTYPE OF (auxiliary_device);
+END_ENTITY;
+
+
+ENTITY pallet_setup
+SUBTYPE OF (material_handling_device);
+END_ENTITY;
+
+
+ENTITY fixture_setup
+SUBTYPE OF (material_handling_device);
+END_ENTITY;
+
+
+ENTITY conveyer_system
+SUBTYPE OF (material_handling_device);
+END_ENTITY;
+
+
+ENTITY robot
+SUBTYPE OF (material_handling_device);
+END_ENTITY;
+
+
+ENTITY agv
+SUBTYPE OF (material_handling_device);
+END_ENTITY;
+
+
+
+(* ************************************************************ *)
+(* Machine tool kinematic joint					*) 
+(* ************************************************************ *)
+
+
+ENTITY kinematic_joint;
+its_name: 		OPTIONAL label;
+its_axis:		OPTIONAL SET [0:?] OF axis;
+kinematic_link:		OPTIONAL SET [0:?] OF mechanical_machine_element;
+kinematic_pair_type:	OPTIONAL SET [0:?] OF kinematic_pair;
+its_transfer_placement:	OPTIONAL transfer_placement;
+END_ENTITY;
+
+
+ENTITY kinematic_pair
+ABSTRACT SUPERTYPE OF (ONEOF (lower_pair, higher_pair, user_defined_pair));
+END_ENTITY;
+
+
+ENTITY transfer_placement;
+ref_joint:			OPTIONAL kinematic_joint;
+its_placement:			OPTIONAL axis2_placement_3d;
+END_ENTITY;
+
+
+
+(* ************************************************************ *)
+(* Machine tool configuration 					*) 
+(* ************************************************************ *)
+
+
+
+ENTITY mechanical_machine_element
+ABSTRACT SUPERTYPE OF (ONEOF (conveyer, chuck, turret, table, tailstock, tool_locator, pallet_changer, machine_spindle, tool_magazine, custom_machine_element, tool_changing_arm, bar_feeder, machine_frame, fixture_assly));
+its_id:			OPTIONAL identifier;
+its_name: 		OPTIONAL label;
+kinematic_joint:	OPTIONAL SET [0:?] OF kinematic_joint;
+its_shape:					OPTIONAL shape_representation;
+its_machining_tools:				OPTIONAL SET [0:?] OF machining_tool;
+its_workpieces:					OPTIONAL SET [0:?] OF workpiece;
+END_ENTITY;
+
+
+ENTITY conveyer
+ABSTRACT SUPERTYPE OF (ONEOF (pallet_conveyer, gantry_guide))
+SUBTYPE OF (mechanical_machine_element);
+conveyer_trajectory: 			OPTIONAL representation_item;
+END_ENTITY;
+
+
+ENTITY pallet_conveyer
+SUBTYPE OF (conveyer);
+conveyer_pallet_exchange_placement: 	OPTIONAL SET [1:?] OF transfer_placement;
+END_ENTITY;
+
+
+ENTITY gantry_guide
+SUBTYPE OF (conveyer);
+END_ENTITY;
+
+
+ENTITY chuck
+SUBTYPE OF (mechanical_machine_element);
+no_of_jaws:				OPTIONAL INTEGER;
+max_gripping_length:			OPTIONAL length_measure;
+its_jaw_type:				OPTIONAL jaw_type;
+max_work_offset:			OPTIONAL length_measure;
+min_holding_diameter:			OPTIONAL length_measure;
+max_holding_diameter:			OPTIONAL length_measure;
+its_type:				OPTIONAL chuck_type;
+END_ENTITY;
+
+
+TYPE jaw_type = ENUMERATION OF (internal, external);
+END_TYPE;
+
+
+TYPE chuck_type = ENUMERATION OF (manual, automatic, collet);
+END_TYPE;
+
+
+ENTITY fixture_assly
+SUBTYPE OF (mechanical_machine_element);
+its_locating_elements:			OPTIONAL SET [1:?] OF mechanical_machine_element;
+its_clamping_elements:			OPTIONAL SET [1:?] OF mechanical_machine_element;
+its_supporting_elements:		OPTIONAL SET [1:?] OF mechanical_machine_element;
+END_ENTITY;
+
+
+ENTITY turret
+SUBTYPE OF (mechanical_machine_element);
+its_thickness :				OPTIONAL length_measure;
+active_tool_changing_placement :	OPTIONAL SET [1:?] OF transfer_placement;
+END_ENTITY;
+
+
+ENTITY table
+ABSTRACT SUPERTYPE OF (ONEOF (circular_table, rectangular_table))
+SUBTYPE OF (mechanical_machine_element);
+max_allowed_weight :			OPTIONAL weight_measure;
+machine_pallet_exchange_placement: 	OPTIONAL SET [1:?] OF transfer_placement;
+its_fixturing_setup:			OPTIONAL SET [1:?] OF fixturing_setup;
+END_ENTITY;
+
+
+TYPE weight_measure = REAL;
+END_TYPE;
+
+
+ENTITY circular_table
+SUBTYPE OF (table);
+table_diameter :		OPTIONAL length_measure;
+table_height :			OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY rectangular_table
+SUBTYPE OF (table);
+table_length :		OPTIONAL length_measure;
+table_width :		OPTIONAL length_measure;
+table_height :		OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY fixturing_setup
+ABSTRACT SUPERTYPE OF (ONEOF (t_slot, bolt_holes));
+END_ENTITY;
+
+
+ENTITY t_slot
+SUBTYPE OF (fixturing_setup);
+max_clamping_bolt_dia:			OPTIONAL length_measure;
+max_clamping_bolt_head_height:		OPTIONAL length_measure;
+t_slot_height:				OPTIONAL length_measure;
+its_placement_pattern:			OPTIONAL placement_pattern;
+END_ENTITY;
+
+
+ENTITY bolt_holes
+SUBTYPE OF (fixturing_setup);
+max_clamping_bolt_dia:			OPTIONAL length_measure;
+max_clamping_bolt_length:		OPTIONAL length_measure;
+its_placement_pattern:			OPTIONAL placement_pattern;
+END_ENTITY;
+
+
+ENTITY placement_pattern
+ABSTRACT SUPERTYPE OF (ONEOF (cir_pattern, rect_pattern));
+pattern_placement_ref: 			OPTIONAL transfer_placement;
+END_ENTITY;
+
+
+ENTITY cir_pattern
+SUBTYPE OF (placement_pattern);
+its_pcd:				OPTIONAL length_measure;
+no_of_features:				OPTIONAL INTEGER;
+angular_increment:			OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+
+ENTITY rect_pattern
+SUBTYPE OF (placement_pattern);
+its_row_config:				OPTIONAL row_config;
+its_column_config:			OPTIONAL column_config;
+END_ENTITY;
+
+
+ENTITY row_config;
+its_feature_placement:				OPTIONAL feature_placement;
+END_ENTITY;
+
+
+ENTITY column_config;
+its_feature_placement:				OPTIONAL feature_placement;
+END_ENTITY;
+
+
+ENTITY feature_placement;
+first_feature_placement_spacing:		OPTIONAL length_measure;
+linear_increment:				OPTIONAL length_measure;
+no_of_features:					OPTIONAL INTEGER;
+END_ENTITY;
+
+
+
+ENTITY tailstock
+SUBTYPE OF (mechanical_machine_element);
+its_max_strock_length:			OPTIONAL length_measure;
+its_control:				OPTIONAL tailstock_control;
+END_ENTITY;
+
+
+TYPE tailstock_control = ENUMERATION OF (manual, programmable);
+END_TYPE;
+
+
+
+ENTITY tool_locator
+SUBTYPE OF (mechanical_machine_element);
+its_max_allowed_tool_diameter :		OPTIONAL length_measure;
+its_max_allowed_tool_height :		OPTIONAL length_measure;
+its_tool_locating_socket :		OPTIONAL tool_locating_socket;
+its_tooling_type :			OPTIONAL tooling_type;
+END_ENTITY;
+
+
+TYPE tooling_type = ENUMERATION OF (live, static);
+END_TYPE;
+
+
+ENTITY tool_locating_socket
+ABSTRACT SUPERTYPE OF (ONEOF (square_shank_socket, threaded_holes, tapered_shank_socket, straight_round_socket, threaded_shank_socket, tool_clamping_finger));
+END_ENTITY;
+
+
+ENTITY square_shank_socket
+SUBTYPE OF (tool_locating_socket);
+its_length :			OPTIONAL length_measure;
+its_width :			OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY threaded_holes
+SUBTYPE OF (tool_locating_socket);
+thread_size :			OPTIONAL length_measure;
+its_pitch:			OPTIONAL length_measure;
+its_length:			OPTIONAL length_measure;
+hole_locations:			OPTIONAL SET [1:?] OF transfer_placement;
+END_ENTITY;
+
+
+ENTITY tapered_shank_socket
+SUBTYPE OF (tool_locating_socket);
+its_taper_std_no:		OPTIONAL label;
+END_ENTITY;
+
+
+ENTITY straight_round_socket
+SUBTYPE OF (tool_locating_socket);
+its_diameter :		OPTIONAL length_measure;
+its_length :		OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY threaded_shank_socket
+SUBTYPE OF (tool_locating_socket);
+its_thread_size :		OPTIONAL length_measure;
+its_pitch:			OPTIONAL length_measure;
+its_length:			OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY tool_clamping_finger
+SUBTYPE OF (tool_locating_socket);
+its_compatible_tool_std:	label;
+END_ENTITY;
+
+
+ENTITY tool_holder_unit
+SUBTYPE OF (mechanical_machine_element);
+its_tool_locating_socket :	OPTIONAL tool_locating_socket;
+its_shank :				OPTIONAL shank;
+END_ENTITY;
+
+
+ENTITY shank
+ABSTRACT SUPERTYPE OF (ONEOF (square_shank, bolt_holes, tapered_shank, straight_round_shank, threaded_shank));
+END_ENTITY;
+
+
+ENTITY square_shank
+SUBTYPE OF (shank);
+its_length :		OPTIONAL length_measure;
+its_width :			OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY bolt_holes
+SUBTYPE OF (shank);
+thread_size :		label;
+its_pitch:			OPTIONAL length_measure;
+its_length:			OPTIONAL length_measure;
+hole_locations:		OPTIONAL SET [1:?] OF transfer_placement;
+END_ENTITY;
+
+
+ENTITY tapered_shank
+SUBTYPE OF (shank);
+its_taper_std_no:		OPTIONAL label;
+END_ENTITY;
+
+
+ENTITY straight_round_shank
+SUBTYPE OF (shank);
+its_diameter :		OPTIONAL length_measure;
+its_length :		OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY threaded_shank
+SUBTYPE OF (shank);
+its_thread_size :		label;
+its_pitch:			OPTIONAL length_measure;
+its_length:			OPTIONAL length_measure;
+END_ENTITY;
+
+
+
+TYPE weight_measure = REAL;
+END_TYPE;
+
+
+
+ENTITY pallet_changer
+SUBTYPE OF (mechanical_machine_element);
+conveyer_pallet_exchange_placement: 	OPTIONAL SET [1:?] OF transfer_placement;
+machine_pallet_exchange_placement: 	OPTIONAL SET [1:?] OF transfer_placement;			
+END_ENTITY;
+
+
+ENTITY machine_spindle
+SUBTYPE OF (mechanical_machine_element);
+spindle_home_placement:				OPTIONAL transfer_placement;
+active_tool_or_work_changing_placement :	OPTIONAL SET [0:?] OF transfer_placement;
+END_ENTITY;
+
+
+ENTITY tool_magazine
+SUBTYPE OF (mechanical_machine_element);
+its_max_allowed_tool_diameter :		OPTIONAL length_measure;
+its_max_allowed_tool_length :		OPTIONAL length_measure;
+its_tool_capacity :			OPTIONAL INTEGER;
+min_tool_change_time :			OPTIONAL time_measure;
+active_tool_changing_placement :	OPTIONAL SET [1:?] OF transfer_placement;
+its_tool_conveyer_trajectory: 		OPTIONAL representation_item;
+END_ENTITY;
+
+
+ENTITY custom_machine_element
+SUBTYPE OF (mechanical_machine_element);
+END_ENTITY;
+
+
+ENTITY tool_changing_arm
+SUBTYPE OF (mechanical_machine_element);
+active_tool_changing_placement :	OPTIONAL SET [1:?] OF transfer_placement;
+spindle_tool_changing_placement :	OPTIONAL SET [1:?] OF transfer_placement;
+min_tool_change_time :			OPTIONAL time_measure;
+END_ENTITY;
+
+
+ENTITY bar_feeder
+SUBTYPE OF (mechanical_machine_element);
+no_of_bars:				OPTIONAL INTEGER;
+its_bar_holders:			OPTIONAL SET [1:?] OF bar_holder;
+max_bar_length:				OPTIONAL length_measure;
+END_ENTITY;
+
+ENTITY bar_holder;
+its_location:				OPTIONAL transfer_placement;
+its_diameter:				OPTIONAL length_measure;
+END_ENTITY;
+
+
+ENTITY machine_frame
+SUBTYPE OF (mechanical_machine_element);
+END_ENTITY;
+
+
+
+
+(* ************************************************************ *)
+(* Machine tool axis						*) 
+(* ************************************************************ *)
+
+
+ENTITY axis
+ABSTRACT SUPERTYPE OF (ONEOF (rotary_axis, linear_axis));
+its_id:			OPTIONAL identifier;
+its_direction:		OPTIONAL direction;
+END_ENTITY;
+
+
+ENTITY rotary_axis
+SUBTYPE OF (axis);
+max_travel_range: 	OPTIONAL plane_angle_measure;
+min_travel_range: 	OPTIONAL plane_angle_measure;
+actual_value: 		OPTIONAL plane_angle_measure;
+its_capability:		OPTIONAL SET [0:?] OF rotary_axis_capability;
+END_ENTITY;
+
+
+ENTITY rotary_axis_capability
+ABSTRACT SUPERTYPE OF (ONEOF (rotary_drive, rotary_feed, rotary_index));
+its_servo: 		OPTIONAL servo;
+END_ENTITY;
+
+
+ENTITY rotary_drive
+SUBTYPE OF (rotary_axis_capability);
+max_speed: 		OPTIONAL rot_speed_measure;
+min_speed: 		OPTIONAL rot_speed_measure;
+END_ENTITY;
+
+
+ENTITY rotary_feed
+SUBTYPE OF (rotary_axis_capability);
+max_speed: 		OPTIONAL rot_speed_measure;
+min_speed: 		OPTIONAL rot_speed_measure;
+END_ENTITY;
+
+
+ENTITY rotary_index
+SUBTYPE OF (rotary_axis_capability);
+max_speed: 		OPTIONAL rot_speed_measure;
+min_speed: 		OPTIONAL rot_speed_measure;
+angle_increment: 	OPTIONAL plane_angle_measure;
+END_ENTITY;
+
+
+
+ENTITY linear_axis
+SUBTYPE OF (axis);
+max_travel_range: 	OPTIONAL length_measure;
+min_travel_range: 	OPTIONAL length_measure;
+actual_value: 		OPTIONAL length_measure;
+its_capability:		OPTIONAL SET [0:?] OF linear_axis_capability;
+END_ENTITY;
+
+
+ENTITY linear_axis_capability
+ABSTRACT SUPERTYPE OF (ONEOF (linear_rapid, linear_feed, linear_index));
+its_servo: 		OPTIONAL servo;
+END_ENTITY;
+
+
+ENTITY linear_rapid
+SUBTYPE OF (linear_axis_capability);
+max_speed: 		OPTIONAL speed_measure;
+min_speed: 		OPTIONAL speed_measure;
+END_ENTITY;
+
+
+ENTITY linear_feed
+SUBTYPE OF (linear_axis_capability);
+max_speed: 		OPTIONAL speed_measure;
+min_speed: 		OPTIONAL speed_measure;
+END_ENTITY;
+
+
+ENTITY linear_index
+SUBTYPE OF (linear_axis_capability);
+max_speed: 		OPTIONAL speed_measure;
+min_speed: 		OPTIONAL speed_measure;
+length_increment: 	OPTIONAL length_measure;
+END_ENTITY;
+
+
+
+ENTITY servo;
+its_id :				OPTIONAL identifier;
+END_ENTITY;
+
+
+
+
+
+
+
+END_SCHEMA; (*combined_schema*)

@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> workingstep </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="workingstep">workingstep </A></H1><P>The workingsteps represent the essential building blocks of an ISO 14649 NC programme. They can either be technology-independent actions, like rapid movements or probing operations, or machining workingsteps which relate to the different technologies like milling, drilling, turning etc. The actual content of the workingsteps is specified in the entity operation and its subtypes. The reason for this design is the possibility to re-use the information specified for an operation for several features of the workpiece. An operation can be associated with multiple features and can be used in different locations. A workingstep, on the other hand, is unique. Duplicating a workingstep in a workplan will replicate the exact same physical machine action. For more information on operations<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#workingstep">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_secplane </TD>
+<TD><A HREF="../machining_schema/elementary_surface.html#elementary_surface">elementary_surface</A> </TD>
+<TD>The security plane for the workingstep. On or above this plane, i. e. for z values greater than those of the elementary_surface, a safe movement of the tool without danger of collision is possible. The dimensions given are relative coordinates as measured from the workpiece co-ordinate system or, if this workingstep is associated with a manufacturing_feature, in the local co-ordinate system of the feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY workingstep  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="machining_workingstep.html">machining_workingstep</A> ,<A HREF="rapid_movement.html">rapid_movement</A> ,<A HREF="touch_probing.html">touch_probing</A> ) )
+SUBTYPE  OF (<A HREF="executable.html">executable</A> );
+ its_secplane : <A HREF="../machining_schema/elementary_surface.html#elementary_surface">elementary_surface</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

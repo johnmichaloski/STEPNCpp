@@ -1,0 +1,58 @@
+<HTML><HEAD><TITLE> milling_machine_functions </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="milling_machine_functions">milling_machine_functions </A></H1><P>The entity describes the state of various functions of the machine, like coolant, chip removal, etc. to be applied during the time span of an operation. It is a subtype of entity machine_functions defined in ISO 14649-10.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#milling_machine_functions">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>coolant </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, the coolant is activated. </TD></TR>
+<TR><TD>coolant_pressure </TD>
+<TD><A HREF="../machining_schema/pressure_measure.html#pressure_measure">pressure_measure</A> </TD>
+<TD>Optional specification of the pressure of the coolant system. Only valid if coolant is true. </TD></TR>
+<TR><TD>mist </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, activate mist coolant. Default is false. Only valid if coolant is true. </TD></TR>
+<TR><TD>through_spindle_coolant </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, activate coolant through the spindle. Default is false. </TD></TR>
+<TR><TD>through_pressure </TD>
+<TD><A HREF="../machining_schema/pressure_measure.html#pressure_measure">pressure_measure</A> </TD>
+<TD>Pressure of coolant through the spindle. Only valid if through_spindle_coolant is true. </TD></TR>
+<TR><TD>axis_clamping </TD>
+<TD> LIST [ 0 : ? ] OF identifier </TD>
+<TD>Describes which axes are to be clamped, e.g. X,Y,A. Note that this information is machine dependent and should be avoided. </TD></TR>
+<TR><TD>chip_removal </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, activate chip removal. </TD></TR>
+<TR><TD>oriented_spindle_stop </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>If specified, the spindle will stop in the given direction relative to the machine zero position of C-axis in case a spindle stop occurs during or at the end of the workingstep. </TD></TR>
+<TR><TD>its_process_model </TD>
+<TD><A HREF="../milling_schema/process_model_list.html#process_model_list">process_model_list</A> </TD>
+<TD>Optional information for process control. </TD></TR>
+<TR><TD>other_functions </TD>
+<TD> SET [ 0 : ? ] OF property_parameter </TD>
+<TD>Optional list of other functions of generic type. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY milling_machine_functions 
+SUBTYPE  OF (<A HREF="../machining_schema/machine_functions.html">machine_functions </A> );
+ coolant :  BOOLEAN;
+ coolant_pressure : OPTIONAL <A HREF="../machining_schema/pressure_measure.html#pressure_measure">pressure_measure</A>;
+ mist : OPTIONAL  BOOLEAN;
+ through_spindle_coolant :  BOOLEAN;
+ through_pressure : OPTIONAL <A HREF="../machining_schema/pressure_measure.html#pressure_measure">pressure_measure</A>;
+ axis_clamping :  LIST [ 0 : ? ] OF identifier;
+ chip_removal :  BOOLEAN;
+ oriented_spindle_stop : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ its_process_model : OPTIONAL <A HREF="../milling_schema/process_model_list.html#process_model_list">process_model_list</A>;
+ other_functions :  SET [ 0 : ? ] OF property_parameter;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

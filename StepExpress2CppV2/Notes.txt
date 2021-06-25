@@ -1,0 +1,3964 @@
+http://spirit.sourceforge.net/distrib/spirit_1_8_5/libs/spirit/example/fundamental/roman_numerals.cpp
+
+
+http://spirit.sourceforge.net/distrib/spirit_1_8_5/libs/spirit/example/fundamental/list_parser.cpp
+
+http://spirit.sourceforge.net/distrib/spirit_1_8_5/libs/spirit/
+			// cmd	= (alpha_p >> *(alnum_p | '_'))[sym.add] ;
+
+------------
+http://www.lyx.org/~leeming/yac/doc/variable_grammar.html
+https://lists.sourceforge.net/lists/listinfo/spirit-general
+http://www.mel.nist.gov/msidstaff/sauder/SCL.htm#download 
+
+
+CSS Styles
+http://www.w3.org/StyleSheets/Core/preview
+
+<p>Another programmer prefers tab stops of eight, and her toolset is configured this way. When she examines his code, she may well find it difficult to read.</p>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-c">
+<span class="kw4">int</span>             ix;             <span class="co1">// Index to scan array</span>
+<span class="kw4">long</span>    sum;    <span class="co1">// Accumulator for sum</span>
+</pre></div>
+<p>Solutions to this issue may involve forbidding the use of tabs or rules on how tab stops must be set. There are also some tricks that people do since it is easy to work with tabs. Since most programmers have the tool to replace a certain text with another text, people use it to replace the tab then for spaces.</p>
+
+http://www.csszengarden.com/
+
+
+FIX to schema name...
+				symtable.CreateEntityDef(szEntity,"machining", entity_);
+
+
+// BOOST FILE SYSTEM FILE EXISTS
+#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/path.hpp"
+fs::path full_path( fs::initial_path<fs::path>() );
+full_path = fs::system_complete( fs::path( argv[1], fs::native ) );
+if ( !fs::exists( full_path ) )
+
+
+Doxygen
+/** 
+\file
+    
+\brief dimension.cpp
+
+\detailed
+Test dimension list manipulation.
+
+Output:
+@verbatim
+
+//[dimension_output
+length_dimension  = list<dim<length_base_dimension, static_rational<1l, 1l> >, dimensionless_type>
+mass_dimension    = list<dim<mass_base_dimension, static_rational<1l, 1l> >, dimensionless_type>
+time_dimension    = list<dim<time_base_dimension, static_rational<1l, 1l> >, dimensionless_type>
+energy_dimension  = list<dim<length_base_dimension, static_rational<2l, 1l> >, list<dim<mass_base_dimension, static_rational<1l, 1l> >, list<dim<time_base_dimension, static_rational<-2l, 1l> >, dimensionless_type> > >
+LM_type      = list<dim<length_base_dimension, static_rational<1l, 1l> >, list<dim<mass_base_dimension, static_rational<1l, 1l> >, dimensionless_type> >
+L_T_type     = list<dim<length_base_dimension, static_rational<1l, 1l> >, list<dim<time_base_dimension, static_rational<-1l, 1l> >, dimensionless_type> >
+V_type       = list<dim<length_base_dimension, static_rational<1l, 1l> >, list<dim<time_base_dimension, static_rational<-1l, 1l> >, dimensionless_type> >
+//]
+
+@endverbatim
+**/
+
+
+
+__abstract 2 
+ abstract 
+ __alignof Operator 
+ array 
+ 
+__asm 
+ __assume 
+ __based 
+ bool 
+ 
+__box 2 
+ break 
+ case 
+ catch 
+ 
+__cdecl 
+ char 
+ class 
+ const 
+ 
+const_cast 
+ continue 
+ __declspec 
+ default 
+ 
+__delegate 2 
+ delegate 
+ delete 
+ deprecated 1 
+ 
+dllexport 1 
+ dllimport 1 
+ do 
+ double 
+ 
+dynamic_cast 
+ else 
+ enum 
+ enum class 
+ 
+enum struct 
+ event 
+ __event 
+ __except 
+ 
+explicit 
+ extern 
+ false 
+ __fastcall 
+ 
+__finally 
+ finally 
+ float 
+ for 
+ 
+for each, in 
+ __forceinline 
+ friend 
+ friend_as 
+ 
+__gc 2 
+ gcnew 
+ generic 
+ goto 
+ 
+__hook 3 
+ __identifier 
+ if 
+ __if_exists 
+ 
+__if_not_exists 
+ initonly 
+ __inline 
+ inline 
+ 
+int 
+ __int8 
+ __int16 
+ __int32 
+ 
+__int64 
+ __interface 
+ interface class 
+ interface struct 
+ 
+interior_ptr 
+ __leave 
+ literal 
+ long 
+ 
+__m64 
+ __m128 
+ __m128d 
+ __m128i 
+ 
+__multiple_inheritance 
+ mutable 
+ naked 1 
+ namespace 
+ 
+new 
+ new 
+ __nogc 2 
+ noinline 1 
+ 
+__noop 
+ noreturn 1 
+ nothrow 1 
+ novtable 1 
+ 
+nullptr 
+ operator 
+ __pin 2 
+ private 
+ 
+__property 2 
+ property 
+ property 1 
+ protected 
+ 
+public 
+ __raise 
+ ref struct 
+ ref class 
+ 
+register 
+ reinterpret_cast 
+ return 
+ safecast 
+ 
+__sealed 2 
+ sealed 
+ selectany 1 
+ short 
+ 
+signed 
+ __single_inheritance 
+ sizeof 
+ static 
+ 
+static_cast 
+ __stdcall 
+ struct 
+ __super 
+ 
+switch 
+ template 
+ this 
+ thread 1 
+ 
+throw 
+ true 
+ try 
+ __try/__except, __try/__finally 
+ 
+__try_cast 2 
+ typedef 
+ typeid 
+ typeid 
+typename 
+ __unaligned 
+ __unhook 3 
+ union 
+unsigned 
+ using declaration, using directive 
+ uuid 1 
+ __uuidof 
+value struct 
+ value class 
+ __value 2 
+ virtual 
+ __virtual_inheritance 
+ void 
+ volatile 
+ __w64 
+__wchar_t, wchar_t 
+  while 
+ 
+
+
+std::numeric_limits<streamsize>::max(),
+
+#if 0
+class Scope 
+{
+public:
+	typedef std::vector<ISymbolPtr>::iterator ScopeIterator;
+	std::vector<int> _vars;
+	SymbolTable * _SymbolTable;
+
+	Scope(SymbolTable * symbolTable):_SymbolTable(symbolTable){}
+	~Scope(){}
+
+	SymbolTable * GetSymbolTable() { return _SymbolTable; }
+	UINT Size() { return (UINT)  _vars.size(); }
+	ISymbolPtr Get(int i) 
+	{
+		static VarAndType dummy("Error" , 0);
+		if(i<(int) _vars.size() && _vars[i]<(int) _SymbolTable->size()) 
+			return _SymbolTable->at(_vars[i]); 
+		return dummy;
+	}
+	int Record(_variant_t var, int varType, _variant_t val=0)
+	{
+		int i;
+		_vars.push_back(i=_SymbolTable->Record( VarAndType(var,  varType, val)));
+		return i;
+	}
+
+	int Find(_variant_t var, int & varType)
+	{
+		for(UINT i=0; i< _vars.size(); i++)
+		{
+			VarAndType & v= _SymbolTable->at(_vars[i]); 
+			if(v.Var() ==  var)
+			{
+				return _vars[i];
+			}
+		}
+		return 0;
+	}
+};
+
+class ScopeStack : public std::vector<Scope>
+{
+public:
+
+	ScopeStack(SymbolTable * symbolTable) : _SymbolTable(symbolTable) 
+	{ 
+		Push(); 
+	}
+
+	SymbolTable * GetSymbolTable() { return _SymbolTable; }
+	void Push() { _scopes.push_back(Scope(_SymbolTable)); }
+	void Pop() { _scopes.pop_back(); }
+
+	int Record(_variant_t var, int varType, _variant_t val=0)
+	{
+		return _scopes.back().Record( var, varType, val);
+	}
+	_variant_t & Get(int i){ return _SymbolTable->at(i).Val(); }
+	void Set(int i, _variant_t val) { _SymbolTable->at(i).Val()=val; }
+	int FindVariable(_variant_t varName, int & tipe, int topOnly=0)
+	{
+		int index;
+		for (UINT i=0; i<_scopes.size(); i++)
+		{
+			Scope &aScope ( _scopes[i]);
+			if((index=aScope.Find(varName, tipe))>0)
+				return index;
+			if (topOnly)
+				break;
+		}
+		return 0;
+	}
+
+	std::vector<Scope> _scopes;
+	SymbolTable * _SymbolTable;
+
+};
+#endif
+
+/////////////////////////////////////////////////////
+MULTIDIMENSIONAL ARRAY
+
+using namespace std;
+
+vector< vector<int> > m(3, vector<int>(5));
+
+void init_m()
+{
+	for (int i = 0; i<m.size(); i++)
+		for (int j = 0; j<m[i].size(); j++) m[i][j] = 10*i+j;
+}
+
+void print_m()
+{
+	for (int i = 0; i<m.size(); i++) {
+		for (int j = 0; j<m[i].size(); j++) cout << m[i][j] << '\t';
+		cout << '\n';
+	}
+}
+
+
+http://lists.boost.org/Archives/boost/2004/07/67709.php 
+
+
+struct matrix
+{
+std::vector< std::vector<int> > array;
+matrix(int x, int y):array(x, std::vector<int>(y)){} //initialize array with x rows and y columns
+};
+
+template<class T>
+class matrix
+{
+  int m_row_size;
+  std::vector<T> m_data;
+public:
+  matrix(int row_size, int col_size) : 
+    m_data(row_size* col_size), 
+    m_row_size(row_size)
+  {}
+
+  T* operator[](int i) { return &m_data[i*m_row_size]; }
+};
+-----------------
+template<class T>
+class matrix
+{
+  int rowSize, colSize;
+  std::vector<T> data;
+public:
+  matrix(int row_size, int col_size) : 
+    data(row_size * col_size), 
+    rowSize(row_size),
+    colSize(col_size)
+  {}
+
+  T* getRow(int r) { return &m_data[r * rowSize]; }
+  T& getElement(int r, int c) { return m_data[r*c]; } //dont forget to check r,c for out-of-bounds
+  T* operator[](int row) { return getRow(row); }
+};
+with the operator[], it should come out more logical. eg:
+
+matrix<int> m(4,4);
+cout << m[2][3];
+
+
+see, m[2] will return the row as a pointer, the m[2][3] will derefence the 4th element of the 3rd row, etc.
+
+--------------------
+Just out of intellectual curiousity, what would the answers be if one was compelled to use only the STL and/or standard library, or below that only C++ built-in facilities? 
+
+Code:
+
+#include <vector>
+typedef std::vector<double> Double1D;
+typedef std::vector<Double1D> Double2D;
+typedef std::vector<Double2D> Double3D;
+typedef std::vector<Double3D> Double4D;
+typedef std::vector<Double4D> Double5D;
+
+int main()
+{
+    // define a 10 x 5 x 5 x 6 x 10 array of doubles
+    Double5D doubleArray(10, Double4D(5, Double3D(5, Double2D(6, (Double1D(10))))));
+    doubleArray[0][0][0][0][0] = 10.0;  // for example
+}
+
+/////////////////////////////////////////////////////
+
+
+Express:
+mistake 1: comments
+mistake 2: <> as char and still not sure if < matches before <>
+mistake 3: spec: added opt algorithm head			function_block  =  function_head >> !(algorithm_head) >> *( stmt ) >> str_p("END_FUNCTION") >> ch_p( ';') ;
+mistake 4: 			algorithm_head  =  *( declaration ) >> !( constant_decl ) >> !(local_decl ) ; // ? {declaration} should be zero or more found from perl again
+mistake 5: non EBNF, cannot automatically set entity ptr variables to new() as some entities reference themselves.
+
+
+{} means zero of more they spell out if +
+[] == !() optional once
+
+ [increment_a(count_b) ]
+ 
+ #if 0
+			headerdeclfile<< StrFormat("typedef enum {\n\t");
+			for(int j=0; j< _types[i]->_enums.size(); j++)
+			{
+				if(j>0)
+					headerdeclfile<< ",\n\t";
+				headerdeclfile<< StrFormat("\t%s", _types[i]->_enums[j]);
+
+			}
+			headerdeclfile<< StrFormat("\t\n} %s;\n", _types[i]->_typename) ;
+#endif
+#if 0
+			for(int j=0; j< _types[i]->_szSelections.size(); j++)
+			{
+				if(j==0) headerdeclfile<< " :\n\t";
+				if(j>0)
+					headerdeclfile<< ",\n";
+				headerdeclfile<< StrFormat("\tpublic %s", _types[i]->_szSelections[j]);
+			}
+			headerdeclfile<< StrFormat("{}; /* fixme add auto archival code*/ \n") ;
+#endif
+
+ typedef node_val_data_factory<double> factory_t;    
+ my_grammar gram;    
+ my_skip_grammar skip;    
+ tree_parse_info<iterator_t, factory_t> i =         
+ ast_parse<factory_t>(first, last, gram, skip);    // access the double in the root node    double d = i.trees.begin()->value;
+ 
+  int n = lexical_cast<int>(string(i->value.begin(), i->value.end())) :
+			     
+This little patch extends ast_parse() adding support for custom AST node
+factories. From an interface standpoint, basically if you were doing:
+
+    tree_parse_info<iter_t> = ast_parse(begin, end, gram, skip);
+
+now you can also do:
+
+    tree_parse_info<iter_t, factory_t> = ast_parse<factory_t>(begin, end,
+gram, skip);
+
+or (probably more compatible on old compilers, but do any of them support
+trees in the first place?):
+
+    tree_parse_info<iter_t, factory_t> = ast_parse(begin, end, gram, skip,
+factory_t());
+-------------------------------------------------------------------------------------------
+WORKS
+			ExpressionList =	Expression[bind(&CEBNFParser::do_expression,self, expList::NewExpList(), "Hello" )]	
+			//ExpressionList =	Expression[ExpressionList.value = arg1]	
+			>> *( Expression ) ; //			{$$ = expList::NewExpList($1);}$$ = $1;	$1->pushBack($2);
+
+
+		}
+	};
+	std::string do_expression(expList *, const char *) const
+	{
+		const char * s = "hello";
+		std::cout << s << '\n';
+		return "hi";
+	}
+-------------------------------------------------------------------------------------------
+STRING_LITERAL = access_node_d[confix_p('"', *c_escape_ch_p, '"')][assign_string()]; 
+
+
+
+struct assign_string 
+{ 
+	void operator()( tree_node<node_val_data<const char*, mica::Var> >& n, 
+                          const char*& b, const char* const& e) const 
+	{
+   std::string x(b, e);
+   cerr << x << endl;
+ }
+};
+typedef char const* iterator_t; 
+typedef node_val_data_factory<Var> factory_t; 
+typedef tree_node<factory_t> tree_node_t; 
+typedef tree_match<iterator_t, factory_t> match_t; 
+typedef ast_match_policy<iterator_t, factory_t> match_policy_t; 
+typedef scanner<iterator_t, scanner_policies<iter_policy_t, match_policy_t> > scanner_t; 
+typedef match_t::tree_iterator iter_t; 
+typedef match_t::const_tree_iterator const_iter_t; 
+
+----------------------------
+
+
+real
+				=	boost::spirit::access_node_d[boost::spirit::real_p][&R_SetReal]
+				;
+				
+			parm
+				=	boost::spirit::access_node_d[boost::spirit::nocase_d[r_shader_parameter_symbols_p[&R_GetParm]]][&R_SetParm]
+				;
+
+			table
+				=	boost::spirit::access_node_d[boost::spirit::nocase_d[r_shader_table_symbols_p[&R_GetTable]]][&R_SetTable]
+				;
+
+static void	R_SetReal(boost::spirit::tree_node<boost::spirit::node_val_data<r_iterator_t, r_node_data_t> > &node, r_iterator_t begin, r_iterator_t end)
+{
+	//ri.Com_Printf("access node: real %f\n", atof(std::string(begin, end).c_str()));
+		
+	node.value.value(atof(std::string(begin, end).c_str()));
+}
+
+static r_shader_parms_e r_shader_parm_tmp;
+void	R_GetParm(r_shader_parms_e parm)
+{
+	//ri.Com_Printf("access node: parm %i\n", parm);
+	
+	r_shader_parm_tmp = parm;
+}
+
+static void	R_SetParm(boost::spirit::tree_node<boost::spirit::node_val_data<r_iterator_t, r_node_data_t> > &node, r_iterator_t begin, r_iterator_t end)
+{
+	//ri.Com_Printf("access node: parm\n");
+		
+	node.value.value(r_shader_parm_tmp);
+}
+
+---------------------------------------------------------
+
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //  eol_parser class (contributed by Martin Wille)
+    //
+    ///////////////////////////////////////////////////////////////////////////
+    struct eol_parser : public parser<eol_parser>
+    {
+        typedef eol_parser self_t;
+
+        eol_parser() {}
+
+        template <typename ScannerT>
+        typename parser_result<self_t, ScannerT>::type
+        parse(ScannerT const& scan) const
+        {
+            typename ScannerT::iterator_t save = scan.first;
+            std::size_t len = 0;
+
+            if (!scan.at_end() && *scan == '\r')    // CR
+            {
+                ++scan.first;
+                ++len;
+            }
+
+            // Don't call skipper here
+            if (scan.first != scan.last && *scan == '\n')    // LF
+            {
+                ++scan.first;
+                ++len;
+            }
+
+            if (len)
+                return scan.create_match(len, nil_t(), save, scan.first);
+            return scan.no_match();
+        }
+    };
+
+    eol_parser const eol_p = eol_parser();
+
+Failed: 00680 SetCsyTransformation(JogDisplayCsy, 1, 1, 1, 180, 180, 180)
+Failed: 00690 SetCsyTransformation(JogMoveCsy, 1, 1, 1, 90, 90, 90)
+Failed: 00700 SetCsyTransformation(MultipleArmCsy, 1, 1, 1, 45, 45, 45)
+Failed: 00710 SetCsyTransformation(PartCsy, 1, 1, 1, 30, 30, 30)
+Failed: 00720 SetCsyTransformation(SensorCsy, 2, 2, 2, 45, 45, 45)
+Failed: 00019 SetCsyTransformation(PartCsy, 1.681178087957979E+002, -4.720172576340054E+002, -5.032568892713305E+002, 1.150184955172427E-001, 2.467439008575630E+001, 3.355403518762625E+002)              
+Failed: 00036 SetCsyTransformation(PartCsy, 1.681178087957979E+002, -4.720172576340054E+002, -5.032568892713305E+002, 1.150184955172427E-001, 2.467439008575630E+001, 3.355403518762625E+002)              
+Failed: 00065 SetCsyTransformation(PartCsy, 1.681177975067363E+002, -4.720172330608989E+002, -5.032703601633431E+002, 1.231680599317693E-001, 1.890022350253527E+001, 3.413145051681535E+002)              
+Failed: 00066 SetCsyTransformation(PartCsy, 1.681532330607975E+002, -4.720171002328121E+002, -5.032703845680542E+002, 1.231680599317693E-001, 1.890022350253527E+001, 3.420618556552844E+002)              
+Failed: 00067 SetCsyTransformation(PartCsy, 1.681504720642164E+002, -4.718526803288746E+002, -5.032700482501078E+002, 1.231680599317693E-001, 1.890022350253527E+001, 3.420618556552844E+002)              
+Failed: 00345 OnPtMeasReport(IJKAct()) 
+Failed: 00361 SaveNamedCsyTransformation("Name1",63.366699219, 119.7, 103.6,67.047119141, 60.06,89.642333984) 
+Failed: 00366 SetCsyTransformation( 50.54931641, 55.46,109.106445313,80.419921875,5.0558E+001,121.21582031) 
+Failed: 00408 SetProp(Tool.Name("Name1")) 
+Failed: 00409 SetProp(Tool.Id("Name1")) 
+Failed: 00410 SetProp(Part.Temperature()) 
+Failed: 00411 SetProp(Part.XpanCoefficient()) 
+Failed: 00412 SetProp(Part.Approach())
+
+ std::stringbuf stringbuf;
+	std::streambuf *buf = std::cout.rdbuf();
+	std::cout.rdbuf(&stringbuf);
+
+	std::cout << "this goes in the stringbuffer" << std::endl;
+
+	std::cout.rdbuf(buf);
+
+	std::cout << "contents of the stringbuffer:" << std::endl;
+	std::cout << stringbuf.str() << std::endl;
+
+
+/* This is a C comment */
+which could be parsed through the following rule definition: 
+
+    rule<> c_comment_rule
+        =   confix_p("/*", *anychar_p, "*/")
+        ;
+
+
+    rule<> c_comment_rule
+        =   confix_p("//", *anychar_p, eol_p)
+        ;
+
+    preprocessor
+        =   '#' >> *space_p >> identifier
+        ;
+
+    comment
+        =   +((comment_p("//") | comment_p("/*", "*/"))
+                 >> *space_p)
+        ;
+
+
+           keyword
+                    =   keywords >> (eps_p - (alnum_p | '_')) >> *space_p
+                    ;   // make sure we recognize whole words only
+
+                keywords
+                    =   "and_eq", "and", "asm", "auto", "bitand", "bitor",
+                        "bool", "break", "case", "catch", "char", "class",
+                        "compl", "const_cast", "const", "continue", "default",
+                        "delete", "do", "double", "dynamic_cast",  "else",
+                        "enum", "explicit", "export", "extern", "false",
+                        "float", "for", "friend", "goto", "if", "inline",
+                        "int", "long", "mutable", "namespace", "new", "not_eq",
+                        "not", "operator", "or_eq", "or", "private",
+                        "protected", "public", "register", "reinterpret_cast",
+                        "return", "short", "signed", "sizeof", "static",
+                        "static_cast", "struct", "switch", "template", "this",
+                        "throw", "true", "try", "typedef", "typeid",
+                        "typename", "union", "unsigned", "using", "virtual",
+                        "void", "volatile", "wchar_t", "while", "xor_eq", "xor"
+                    ;
+
+
+
+std::vector<std::string> vec;
+parse(stringToParse,
+      (alpha_p >> (*alnum_p))[push_back_a(vec)] >>
+      *(ch_p(',') >> (alpha_p >> (*alnum_p))[push_back_a(vec)]),
+      space_p).full;
+
+
+
+------------------------------------------------------------
+
+struct definition
+	{
+	public:
+		rule<ScannerT> expression, term, factor, integer;
+		const boost::spirit::rule<ScannerT> &start() const { return expression; }
+		definition( CSyntax const &self )
+		{   
+
+			integer =
+				lexeme_d[ (!ch_p('-') >> +digit_p)[push_int()] ];
+
+			factor =
+				integer
+				|   '(' >> expression >> ')'
+				|   ('-' >> factor)[do_negate()];
+
+			term =
+				factor >>
+				*( ('*' >> factor)[make_op(std::multiplies<long>())]
+			| ('/' >> factor)[make_op(std::divides<long>())]);
+
+			expression  =
+				term >>
+				*( ('+' >> term)[make_op(std::plus<long>())]
+			|  ('-' >> term)[make_op(std::minus<long>())]);
+
+		}
+	};
+
+
+struct expression_grammar : public spirit::grammar<expression_grammar>
+{
+    template <typename ScannerT>
+    struct definition
+    {
+        definition(expression_grammar const &)
+        {
+            using spirit::alpha_p;
+            using spirit::alnum_p;
+            using spirit::ch_p;
+            using spirit::real_p;
+            using spirit::str_p;
+
+            expr
+                = logical_expr >> !conditional_expr_helper;
+            conditional_expr_helper
+                = ch_p('?') >> expr >> ':' >> expr >> !conditional_expr_helper;
+            logical_expr
+                = bitwise_expr >> *((str_p("&&") | "||") >> bitwise_expr);
+            bitwise_expr
+                = equality_expr >> *((ch_p('&') | '|' | '^') >> equality_expr);
+            equality_expr
+                = compare_expr >> *((str_p("==") | "!=") >> compare_expr);
+            compare_expr
+                = shift_expr >> *((ch_p('<') | '>' | "<=" | ">=") >> shift_expr);
+            shift_expr
+                = add_expr >> *((str_p("<<") | ">>") >> add_expr);
+            add_expr
+                = mult_expr >> *((ch_p('+') | '-') >> mult_expr);
+            mult_expr
+                = expr_atom >> *((ch_p('*') | '/' | '%') >> expr_atom);
+            expr_atom
+                = function
+                | number
+                | ch_p('(') >> expr >> ')'
+                | (ch_p('+') | '-' | '!') >> expr_atom;
+            number
+                = real_p
+                | local_vars
+                | global_vars;
+            local_vars
+                = name;
+            global_vars
+                = name;
+            function
+                = name >> '(' >> !arg_list >> ')';
+            arg_list
+                = expr >> *(ch_p(',') >> expr);
+            name
+                = (alpha_p | '_') >> *(alnum_p | '_');
+        }
+
+        typedef typename spirit::rule<ScannerT> rule_t;
+
+        rule_t const & start() const { return expr; }
+
+    private:
+        rule_t add_expr, arg_list, bitwise_expr, compare_expr,
+            conditional_expr_helper, equality_expr, expr, expr_atom,
+            function, global_vars, local_vars, logical_expr, mult_expr,
+            name, number, shift_expr;
+    };
+};
+
+
+struct yac_grammar : public spirit::grammar<yac_grammar>
+{
+    template <typename ScannerT>
+    struct definition
+    {
+        definition(yac_grammar const &)
+        {
+            using spirit::alpha_p;
+            using spirit::alnum_p;
+            using spirit::ch_p;
+
+            statement_list
+                = *(statement >> +(ch_p('\n') | ';'));
+            statement
+                = var_assignment
+                | function_definition
+                | "print " >> expression_list;
+            expression_list
+                = expression >> *(',' >> expression);
+            var_assignment
+                = name >> '=' >> expression;
+            function_definition
+                = name >> '(' >> !name_list >> ')' >> '=' >> expression;
+            name_list
+                = name >> *(',' >> name);
+            name
+                = (alpha_p | '_') >> *(alnum_p | '_');
+        }
+
+        typedef typename spirit::rule<ScannerT> rule_t;
+
+        rule_t const & start() const { return statement_list; }
+
+    private:
+        rule_t expression_list, function_definition, name, name_list,
+            statement, statement_list, var_assignment;
+        expression_grammar expression;
+    };
+};
+
+template <class CharT, class TraitsT = std::char_traits<CharT> >
+class basic_debugbuf : 
+    public std::basic_stringbuf<CharT, TraitsT>
+{
+public:
+
+    virtual ~basic_debugbuf()
+    {
+        sync();
+    }
+
+protected:
+
+    int sync()
+    {
+        output_debug_string(str().c_str());
+        str(std::basic_string<CharT>());    // Clear the string buffer
+
+        return 0;
+    }
+
+    void output_debug_string(const CharT *text) {}
+};
+
+
+bool
+parse_string(char const* str, vector<string>&v)
+(
+return parse(str,
+(
+(str_p("x1"[push_back_a(v)]) |
+str_p("x2")[push_back_a(v)] )
+>> *(',' >> (str_p("y1")[push_back_a(v)] |
+str_p("y2")[push_back_a(v)] ) )
+),
+space_p).full;
+)
+
+		    STRING_LITERAL_PART =
+                lexeme_d[!chlit<>('L') >> chlit<>('\"') >>
+                    *( strlit<>("\\\"") | anychar_p - chlit<>('\"') ) >>
+                    chlit<>('\"')
+                ][&write]
+                ;
+                
+                
+                
+//AllocConsole() ;
+	//std::streambuf* old_cout = std::cout.rdbuf();
+
+	//std::ofstream console_out("CONOUT$");
+	//std::cout.rdbuf(console_out.rdbuf());
+	//std::cerr.rdbuf(console_out.rdbuf());
+	//cerr<< "Err Me" << endl;
+	
+		//FreeConsole();
+
+'Spirit.exe': Loaded 'C:\Program Files\NIST\proj\Tests\Spirit\Debug\Spirit.exe', Symbols loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\ntdll.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\kernel32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\user32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\gdi32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\advapi32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\rpcrt4.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\secur32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\ole32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\msvcrt.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\oleaut32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2982_x-ww_ac3f9c03\comctl32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\shlwapi.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\imm32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\Program Files\Google\Google Desktop Search\GoogleDesktopNetwork3.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\ws2_32.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\ws2help.dll', Exports loaded.
+'Spirit.exe': Unloaded 'C:\Program Files\Google\Google Desktop Search\GoogleDesktopNetwork3.dll'
+'Spirit.exe': Unloaded 'C:\WINDOWS\system32\ws2_32.dll'
+'Spirit.exe': Unloaded 'C:\WINDOWS\system32\ws2help.dll'
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\ddefix.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\uxtheme.dll', Exports loaded.
+'Spirit.exe': Loaded 'C:\WINDOWS\system32\MSCTF.dll', Exports loaded.
+Test Me
+grammar(<unknown>):	"[SECTION1]\nA=1\n; Com"
+  rule(<unknown>):	"[SECTION1]\nA=1\n; Com"
+  #rule(<unknown>):	"[SECTION1]\nA=1\n; Com"
+#grammar(<unknown>):	"[SECTION1]\nA=1\n; Com"
+grammar(<unknown>):	"[SECTION1]\nA=1\n; Com"
+  rule(inifile):	"[SECTION1]\nA=1\n; Com"
+    rule(Section):	"[SECTION1]\nA=1\n; Com"
+      grammar(<unknown>):	"[SECTION1]\nA=1\n; Com"
+        rule(<unknown>):	"[SECTION1]\nA=1\n; Com"
+        #rule(<unknown>):	"[SECTION1]\nA=1\n; Com"
+      #grammar(<unknown>):	"[SECTION1]\nA=1\n; Com"
+
+>>> create_node(begin) <<<
+creating node text: "["
+>>> create_node(end) <<<
+
+      rule(Identifier):	"SECTION1]\nA=1\n; Comm"
+        grammar(<unknown>):	"SECTION1]\nA=1\n; Comm"
+          rule(<unknown>):	"SECTION1]\nA=1\n; Comm"
+          #rule(<unknown>):	"SECTION1]\nA=1\n; Comm"
+        #grammar(<unknown>):	"SECTION1]\nA=1\n; Comm"
+
+>>> create_node(begin) <<<
+creating node text: "S"
+>>> create_node(end) <<<
+
+        grammar(<unknown>):	"ECTION1]\nA=1\n; Comme"
+          rule(<unknown>):	"ECTION1]\nA=1\n; Comme"
+          #rule(<unknown>):	"ECTION1]\nA=1\n; Comme"
+        #grammar(<unknown>):	"ECTION1]\nA=1\n; Comme"
+
+>>> create_node(begin) <<<
+creating node text: "E"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"CTION1]\nA=1\n; Commen"
+          rule(<unknown>):	"CTION1]\nA=1\n; Commen"
+          #rule(<unknown>):	"CTION1]\nA=1\n; Commen"
+        #grammar(<unknown>):	"CTION1]\nA=1\n; Commen"
+
+>>> create_node(begin) <<<
+creating node text: "C"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 3 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 3 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"TION1]\nA=1\n; Comment"
+          rule(<unknown>):	"TION1]\nA=1\n; Comment"
+          #rule(<unknown>):	"TION1]\nA=1\n; Comment"
+        #grammar(<unknown>):	"TION1]\nA=1\n; Comment"
+
+>>> create_node(begin) <<<
+creating node text: "T"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 3 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 4 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 4 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"ION1]\nA=1\n; Comments"
+          rule(<unknown>):	"ION1]\nA=1\n; Comments"
+          #rule(<unknown>):	"ION1]\nA=1\n; Comments"
+        #grammar(<unknown>):	"ION1]\nA=1\n; Comments"
+
+>>> create_node(begin) <<<
+creating node text: "I"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 4 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 5 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 5 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"ON1]\nA=1\n; Comments "
+          rule(<unknown>):	"ON1]\nA=1\n; Comments "
+          #rule(<unknown>):	"ON1]\nA=1\n; Comments "
+        #grammar(<unknown>):	"ON1]\nA=1\n; Comments "
+
+>>> create_node(begin) <<<
+creating node text: "O"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 5 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 6 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 6 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"N1]\nA=1\n; Comments g"
+          rule(<unknown>):	"N1]\nA=1\n; Comments g"
+          #rule(<unknown>):	"N1]\nA=1\n; Comments g"
+        #grammar(<unknown>):	"N1]\nA=1\n; Comments g"
+
+>>> create_node(begin) <<<
+creating node text: "N"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 6 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 7 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 7 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"1]\nA=1\n; Comments go"
+          rule(<unknown>):	"1]\nA=1\n; Comments go"
+          #rule(<unknown>):	"1]\nA=1\n; Comments go"
+        #grammar(<unknown>):	"1]\nA=1\n; Comments go"
+
+>>> create_node(begin) <<<
+creating node text: "1"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 7 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 8 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 8 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)<<<
+
+        grammar(<unknown>):	"]\nA=1\n; Comments goe"
+          rule(<unknown>):	"]\nA=1\n; Comments goe"
+          #rule(<unknown>):	"]\nA=1\n; Comments goe"
+        #grammar(<unknown>):	"]\nA=1\n; Comments goe"
+
+>>> group_match(begin) <<<
+new node(4) "SECTION1"
+new child tree (before grouping):
+(length = 8 trees[0] = 
+	(depth = 0 value = (id = 0 text = "S" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "E" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "T" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "I" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "O" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "N" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)
+new child tree (after grouping):
+(length = 8 trees[0] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )))
+)
+>>> group_match(end) <<<
+
+      /rule(Identifier):	"]\nA=1\n; Comments goe"
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = ))
+)
+tree b:
+(length = 8 trees[0] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 9 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = ))
+)
+	b = (length = 8 trees[0] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )))
+)<<<
+>>>after AST concat. a = (length = 9 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )))
+)<<<
+
+      grammar(<unknown>):	"]\nA=1\n; Comments goe"
+        rule(<unknown>):	"]\nA=1\n; Comments goe"
+        #rule(<unknown>):	"]\nA=1\n; Comments goe"
+      #grammar(<unknown>):	"]\nA=1\n; Comments goe"
+
+>>> create_node(begin) <<<
+creating node text: "]"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 9 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 10 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 10 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = ))) trees[2] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = ))
+)<<<
+
+      grammar(<unknown>):	"\nA=1\n; Comments goes"
+        rule(<unknown>):	"\nA=1\n; Comments goes"
+        #rule(<unknown>):	"\nA=1\n; Comments goes"
+      #grammar(<unknown>):	"\nA=1\n; Comments goes"
+
+>>> create_node(begin) <<<
+creating node text: "\n"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 10 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = ))) trees[2] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = ))) trees[2] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = ))) trees[2] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)<<<
+
+      rule(<unknown>):	"A=1\n; Comments goes "
+        rule(Identifier):	"A=1\n; Comments goes "
+          grammar(<unknown>):	"A=1\n; Comments goes "
+            rule(<unknown>):	"A=1\n; Comments goes "
+            #rule(<unknown>):	"A=1\n; Comments goes "
+          #grammar(<unknown>):	"A=1\n; Comments goes "
+
+>>> create_node(begin) <<<
+creating node text: "A"
+>>> create_node(end) <<<
+
+          grammar(<unknown>):	"=1\n; Comments goes h"
+            rule(<unknown>):	"=1\n; Comments goes h"
+            #rule(<unknown>):	"=1\n; Comments goes h"
+          #grammar(<unknown>):	"=1\n; Comments goes h"
+
+>>> group_match(begin) <<<
+new node(4) "A"
+new child tree (before grouping):
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "A" is_root = 0 value = ))
+)
+new child tree (after grouping):
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = ))
+)
+>>> group_match(end) <<<
+
+        /rule(Identifier):	"=1\n; Comments goes h"
+        grammar(<unknown>):	"=1\n; Comments goes h"
+          rule(<unknown>):	"=1\n; Comments goes h"
+          #rule(<unknown>):	"=1\n; Comments goes h"
+        #grammar(<unknown>):	"=1\n; Comments goes h"
+
+>>> create_node(begin) <<<
+creating node text: "="
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "=" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "=" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "=" is_root = 0 value = ))
+)<<<
+
+        rule(Parameter):	"1\n; Comments goes he"
+          grammar(<unknown>):	"1\n; Comments goes he"
+            rule(<unknown>):	"1\n; Comments goes he"
+            #rule(<unknown>):	"1\n; Comments goes he"
+          #grammar(<unknown>):	"1\n; Comments goes he"
+
+>>> create_node(begin) <<<
+creating node text: "1"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 0 trees[0] = 
+	(depth = 0 value = (id = 0 text = "" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+          grammar(<unknown>):	"\n; Comments goes her"
+            rule(<unknown>):	"\n; Comments goes her"
+            #rule(<unknown>):	"\n; Comments goes her"
+          #grammar(<unknown>):	"\n; Comments goes her"
+          grammar(<unknown>):	"\n; Comments goes her"
+            rule(<unknown>):	"\n; Comments goes her"
+            #rule(<unknown>):	"\n; Comments goes her"
+          #grammar(<unknown>):	"\n; Comments goes her"
+
+>>> create_node(begin) <<<
+creating node text: "\n"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)<<<
+
+
+>>> group_match(begin) <<<
+new node(3) "1\n"
+new child tree (before grouping):
+(length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = "1" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+new child tree (after grouping):
+(length = 2 trees[0] = 
+	(depth = 0 value = (id = 3 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)
+>>> group_match(end) <<<
+
+        /rule(Parameter):	"; Comments goes here"
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 2 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "=" is_root = 0 value = ))
+)
+tree b:
+(length = 2 trees[0] = 
+	(depth = 0 value = (id = 3 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 4 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "=" is_root = 0 value = ))
+)
+	b = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 3 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)<<<
+>>>after AST concat. a = (length = 4 trees[0] = 
+	(depth = 0 value = (id = 4 text = "A" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "=" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 3 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)<<<
+
+        grammar(<unknown>):	"; Comments goes here"
+          rule(<unknown>):	"; Comments goes here"
+
+>>> create_node(begin) <<<
+creating node text: ";"
+>>> create_node(end) <<<
+
+
+>>> create_node(begin) <<<
+creating node text: " "
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 0 trees[0] = 
+	(depth = 0 value = (id = 0 text = "" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>> create_node(begin) <<<
+creating node text: "C"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "o"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 2 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 3 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 3 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "m"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 3 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 4 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 4 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "m"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 4 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 5 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 5 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "e"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 5 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 6 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 6 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "n"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 6 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 7 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 7 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "t"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 7 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 8 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 8 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "s"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 8 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 9 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 9 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: " "
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 9 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 10 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 10 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "g"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 10 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "o"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 12 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 12 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "e"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 12 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 13 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 13 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "s"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 13 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 14 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 14 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: " "
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 14 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 15 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 15 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "h"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 15 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 16 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 16 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "e"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 16 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 17 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 17 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "r"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 17 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 18 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 18 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "e"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 18 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 19 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 19 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: " "
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 19 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 20 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 20 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "\n"
+>>> create_node(end) <<<
+
+
+>>> create_node(begin) <<<
+creating node text: "\n"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = ))
+)
+tree b:
+(length = 20 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 21 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = ))
+)
+	b = (length = 20 trees[0] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 21 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[20] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)<<<
+
+
+>>> create_node(begin) <<<
+creating node text: "\n"
+>>> create_node(end) <<<
+
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 21 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[20] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+tree b:
+(length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>>AST concat. a = (length = 22 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[20] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = ))
+)
+	b = (length = 1 trees[0] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)<<<
+>>>after AST concat. a = (length = 22 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[20] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[21] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)<<<
+
+
+>>> group_match(begin) <<<
+new node(11679563) "; Comments goes here \n"
+new child tree (before grouping):
+(length = 22 trees[0] = 
+	(depth = 0 value = (id = 0 text = ";" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[2] = 
+	(depth = 0 value = (id = 0 text = "C" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[4] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[5] = 
+	(depth = 0 value = (id = 0 text = "m" is_root = 0 value = )) trees[6] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[7] = 
+	(depth = 0 value = (id = 0 text = "n" is_root = 0 value = )) trees[8] = 
+	(depth = 0 value = (id = 0 text = "t" is_root = 0 value = )) trees[9] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[10] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[11] = 
+	(depth = 0 value = (id = 0 text = "g" is_root = 0 value = )) trees[12] = 
+	(depth = 0 value = (id = 0 text = "o" is_root = 0 value = )) trees[13] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[14] = 
+	(depth = 0 value = (id = 0 text = "s" is_root = 0 value = )) trees[15] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[16] = 
+	(depth = 0 value = (id = 0 text = "h" is_root = 0 value = )) trees[17] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[18] = 
+	(depth = 0 value = (id = 0 text = "r" is_root = 0 value = )) trees[19] = 
+	(depth = 0 value = (id = 0 text = "e" is_root = 0 value = )) trees[20] = 
+	(depth = 0 value = (id = 0 text = " " is_root = 0 value = )) trees[21] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+new child tree (after grouping):
+(length = 22 trees[0] = 
+	(depth = 0 value = (id = 11679563 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = ";" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = " " is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "o" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "m" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "m" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "e" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "n" is_root = 0 value = )) children[8] = 
+		(depth = 1 value = (id = 0 text = "t" is_root = 0 value = )) children[9] = 
+		(depth = 1 value = (id = 0 text = "s" is_root = 0 value = )) children[10] = 
+		(depth = 1 value = (id = 0 text = " " is_root = 0 value = )) children[11] = 
+		(depth = 1 value = (id = 0 text = "g" is_root = 0 value = )) children[12] = 
+		(depth = 1 value = (id = 0 text = "o" is_root = 0 value = )) children[13] = 
+		(depth = 1 value = (id = 0 text = "e" is_root = 0 value = )) children[14] = 
+		(depth = 1 value = (id = 0 text = "s" is_root = 0 value = )) children[15] = 
+		(depth = 1 value = (id = 0 text = " " is_root = 0 value = )) children[16] = 
+		(depth = 1 value = (id = 0 text = "h" is_root = 0 value = )) children[17] = 
+		(depth = 1 value = (id = 0 text = "e" is_root = 0 value = )) children[18] = 
+		(depth = 1 value = (id = 0 text = "r" is_root = 0 value = )) children[19] = 
+		(depth = 1 value = (id = 0 text = "e" is_root = 0 value = )) children[20] = 
+		(depth = 1 value = (id = 0 text = " " is_root = 0 value = )) children[21] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)
+>>> group_match(end) <<<
+
+          /rule(<unknown>):	"B=99\n"
+        /grammar(<unknown>):	"B=99\n"
+        grammar(<unknown>):	"B=99\n"
+          rule(<unknown>):	"B=99\n"
+          #rule(<unknown>):	"B=99\n"
+        #grammar(<unknown>):	"B=99\n"
+      #rule(<unknown>):	"B=99\n"
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = ))) trees[2] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+tree b:
+(length = 0 trees[0] = 
+	(depth = 0 value = (id = 0 text = "" is_root = 0 value = ))
+)
+>>> concat_match(end) <<<
+
+
+>>> group_match(begin) <<<
+new node(1) "[SECTION1]\n"
+new child tree (before grouping):
+(length = 11 trees[0] = 
+	(depth = 0 value = (id = 0 text = "[" is_root = 0 value = )) trees[1] = 
+	(depth = 0 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+		(depth = 1 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+		(depth = 1 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+		(depth = 1 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+		(depth = 1 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+		(depth = 1 value = (id = 0 text = "1" is_root = 0 value = ))) trees[2] = 
+	(depth = 0 value = (id = 0 text = "]" is_root = 0 value = )) trees[3] = 
+	(depth = 0 value = (id = 0 text = "\n" is_root = 0 value = ))
+)
+new child tree (after grouping):
+(length = 11 trees[0] = 
+	(depth = 0 value = (id = 1 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "[" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+			(depth = 2 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+			(depth = 2 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+			(depth = 2 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+			(depth = 2 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+			(depth = 2 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+			(depth = 2 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+			(depth = 2 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+			(depth = 2 value = (id = 0 text = "1" is_root = 0 value = ))) children[2] = 
+		(depth = 1 value = (id = 0 text = "]" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)
+>>> group_match(end) <<<
+
+    /rule(Section):	"A=1\n; Comments goes "
+
+>>> concat_match(begin) <<<
+tree a:
+(length = 0 trees[0] = 
+	(depth = 0 value = (id = 0 text = "" is_root = 0 value = ))
+)
+tree b:
+(length = 11 trees[0] = 
+	(depth = 0 value = (id = 1 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "[" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+			(depth = 2 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+			(depth = 2 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+			(depth = 2 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+			(depth = 2 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+			(depth = 2 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+			(depth = 2 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+			(depth = 2 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+			(depth = 2 value = (id = 0 text = "1" is_root = 0 value = ))) children[2] = 
+		(depth = 1 value = (id = 0 text = "]" is_root = 0 value = )) children[3] = 
+		(depth = 1 value = (id = 0 text = "\n" is_root = 0 value = )))
+)
+>>> concat_match(end) <<<
+
+    rule(Section):	"A=1\n; Comments goes "
+      grammar(<unknown>):	"A=1\n; Comments goes "
+        rule(<unknown>):	"A=1\n; Comments goes "
+        #rule(<unknown>):	"A=1\n; Comments goes "
+      #grammar(<unknown>):	"A=1\n; Comments goes "
+    #rule(Section):	"A=1\n; Comments goes "
+
+>>> group_match(begin) <<<
+new node(11680011) "[SECTION1]\n"
+new child tree (before grouping):
+(length = 11 trees[0] = 
+	(depth = 0 value = (id = 1 text = "" is_root = 0 value = ) children[0] = 
+		(depth = 1 value = (id = 0 text = "[" is_root = 0 value = )) children[1] = 
+		(depth = 1 value = (id = 4 text = "" is_root = 0 value = ) children[0] = 
+			(depth = 2 value = (id = 0 text = "S" is_root = 0 value = )) children[1] = 
+			(depth = 2 value = (id = 0 text = "E" is_root = 0 value = )) children[2] = 
+			(depth = 2 value = (id = 0 text = "C" is_root = 0 value = )) children[3] = 
+			(depth = 2 value = (id = 0 text = "T" is_root = 0 value = )) children[4] = 
+			(depth = 2 value = (id = 0 text = "I" is_root = 0 value = )) children[5] = 
+			(depth = 2 value = (id = 0 text = "O" is_root = 0 value = )) children[6] = 
+			(depth = 2 value = (id = 0 text = "N" is_root = 0 value = )) children[7] = 
+			(depth = 2 value Ini File Parse Failed 
+The program '[11904] Spirit.exe: Native' has exited with code 0 (0x0).
+include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <iterator>
+#include <boost/spirit.hpp>
+#include <boost/spirit/tree/ast.hpp>
+#include <boost/spirit/tree/tree_to_xml.hpp>
+#include <map>
+
+using namespace boost::spirit;
+
+class Parser
+	:
+	public grammar< Parser >
+{
+	public:
+
+		Parser();
+
+		static int const primitiveListId = 1;
+		static int const primitiveId = 2;
+		static int const fieldId = 3;
+		static int const typeFieldId = 4;
+		static int const vectorFieldId = 5;
+		static int const identifierId = 6;
+		static int const vectorId = 7;
+
+		template < typename ScannerT >
+		class definition
+		{
+
+			public:
+
+				definition(Parser const &);
+				rule< ScannerT, parser_context<>, parser_tag< primitiveListId > > const & start() const;
+
+			private:
+
+				rule< ScannerT, parser_context<>, parser_tag< primitiveListId > > primitiveList;
+				rule< ScannerT, parser_context<>, parser_tag< primitiveId > > primitive;
+				rule< ScannerT, parser_context<>, parser_tag< fieldId > > field;
+				rule< ScannerT, parser_context<>, parser_tag< typeFieldId > > typeField;
+				rule< ScannerT, parser_context<>, parser_tag< vectorFieldId > > vectorField;
+				rule< ScannerT, parser_context<>, parser_tag< identifierId > > identifier;
+				rule< ScannerT, parser_context<>, parser_tag< vectorId > > vector;
+
+		};
+
+};
+
+Parser::Parser()
+{
+}
+
+template < typename ScannerT >
+Parser::definition< ScannerT >::definition(Parser const &)
+	:
+	vector
+	(
+		no_node_d
+		[
+			ch_p('(')
+		] >>
+		real_p >>
+		no_node_d
+		[
+			ch_p(',')
+		] >>
+		real_p >>
+		no_node_d
+		[
+			ch_p(',')
+		] >>
+		real_p >>
+		no_node_d
+		[
+			ch_p(')')
+		]
+	),
+	identifier
+	(
+		leaf_node_d
+		[
+			lexeme_d
+			[
+				(
+					alpha_p |
+					ch_p('_')
+				) >>
+				*(
+					alnum_p |
+					ch_p('_')
+				)
+			]
+		]
+	),
+	vectorField
+	(
+		identifier >>
+		no_node_d
+		[
+			ch_p(':')
+		] >>
+		vector >>
+		no_node_d
+		[
+			ch_p(';')
+		]
+	),
+	typeField
+	(
+		identifier >>
+		no_node_d
+		[
+			ch_p(':')
+		] >>
+		identifier >>
+		no_node_d
+		[
+			ch_p(';')
+		]
+	),
+	field
+	(
+		typeField |
+		vectorField
+	),
+	primitive
+	(
+		no_node_d
+		[
+			str_p("primitive") >>
+			ch_p('{')
+		] >>
+		+field >>
+		no_node_d
+		[
+			ch_p('}')
+		]
+	),
+	primitiveList
+	(
+		discard_node_d
+		[
+			str_p("primitivelist") >>
+			ch_p('{')
+		] >>
+		+primitive >>
+		discard_node_d
+		[
+			ch_p('}')
+		]
+	)
+{
+}
+
+template < typename ScannerT >
+rule< ScannerT, parser_context<>, parser_tag< Parser::primitiveListId > > const & Parser::definition< ScannerT >::start() const
+{
+	return primitiveList;
+}
+
+int main()
+{
+	Parser parser;
+	std::ifstream reader("input.txt");
+	reader.seekg(0, std::ios::end);
+	std::vector< char > input(std::streamsize(reader.tellg()) + 1, 0);
+	reader.seekg(0, std::ios::beg);
+	reader.read(&input[0], input.size());
+	tree_parse_info<> info = ast_parse(&input[0], parser, space_p);
+	if (!info.full)
+	{
+		std::cout << "Parse error\n\n";
+		std::cout << "\tParsed:\n";
+		std::copy< char const *, std::ostreambuf_iterator< char > >(&input[0], info.stop, std::ostreambuf_iterator< char >(std::cout));
+		return -1;
+	}
+	std::map<parser_id, std::string> rule_names;
+	rule_names[Parser::primitiveListId] = "Primitive List";
+	rule_names[Parser::primitiveId] = "Primitive";
+	rule_names[Parser::fieldId] = "Field";
+	rule_names[Parser::typeFieldId] = "Type Field";
+	rule_names[Parser::vectorFieldId] = "Vector Field";
+	rule_names[Parser::identifierId] = "Identifier";
+	rule_names[Parser::vectorId] = "Vector";
+	tree_to_xml(std::cout, info.trees, "", rule_names);
+}
+
+
+Enigma
+
+
+
+struct Expr
+{
+	Expr(expList * exp):_expList(exp) {}
+	template<typename IterT>
+	void operator()(char const*  s1, char const*  s2) const
+	{
+		_name=std::string(s1,s2);
+	}
+private:
+	std::string _name;
+	expList * _expList;
+};
+struct Expr_impl {
+
+    void operator()(expList * symbols,
+                    std::string const & name) const
+    {
+        
+    }
+};
+
+phoenix::function<Expr_impl> const expr_impl = Expr_impl();
+
+//struct checked_find_impl {
+//    typedef boost::shared_ptr<function> function_ptr_t;
+//    typedef spirit::symbols<function_ptr_t> function_table_t;
+//
+//    template <typename T1, typename T2>
+//    struct result {
+//        typedef function_ptr_t type;
+//    };
+//
+//    function_ptr_t operator()(function_table_t const & symbols,
+//                              std::string const & name) const
+//    {
+//        function_ptr_t * ptr = find(symbols, name.c_str());
+//        return ptr ? *ptr : function_ptr_t();
+//    }
+//};
+//
+//phoenix::function<checked_find_impl> const checked_find_ = checked_find_impl();	else if(i->value.id() == CEBNFParser::ExpressionListID)
+	{
+		OutputDebugString(StrFormat("ExpressionList\n"));
+		EBNF::expList * _ExpList = EBNF::expList::NewExpList();
+
+		// Add the expression list as a new definition, then add to definitions list
+		EBNF::defList * defs = _defLists.back();
+		EBNF::definition * def = EBNF::definition::NewDefinition(_ExpList);
+		defs->push_back(def);
+
+		// Now add the expressions to expression list
+		_expressions.push_back(_ExpList);
+		for(TreeIter it = i->children.begin(); it!=i->children.end(); it++)
+		{
+				evalEBNF(it);
+		}
+		_expressions.pop_back();
+	}
+#if 0
+		if(n==CStepParser::add_like_opID) {
+			outputfile <<(StrFormat("%s add_like_op %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}
+
+		if(n==CStepParser::bitID) {
+			outputfile <<(StrFormat("%s bit %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::characterID) {
+			outputfile <<(StrFormat("%s character %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}
+
+		if(n==CStepParser::digitID) {
+			outputfile <<(StrFormat("%s digit %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::digitsID) {
+			outputfile <<(StrFormat("%s LOGICALTRUE %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::integer_literalID) {
+			outputfile <<(StrFormat("%s integer_literal %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::letterID) {
+			outputfile <<(StrFormat("%s letter %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::binary_literalID) {
+			outputfile <<(StrFormat("%s binary_literal %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+		}	
+		if(n==CStepParser::logical_literalID) {
+			outputfile <<(StrFormat("%s logical_literal %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+		}	
+		if(n==CStepParser::real_literalID) {
+			outputfile <<(StrFormat("%s real_literal %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+		}	
+		if(n==CStepParser::lparen_not_starID) {
+			outputfile <<(StrFormat("%s lparen_not_star %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::multiplication_like_opID) {
+			outputfile <<(StrFormat("%s multiplication_like_op %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::not_lparen_starID) {
+			outputfile <<(StrFormat("%s not_lparen_star %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::not_paren_starID) {
+			outputfile <<(StrFormat("%s not_paren_star %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::not_paren_star_specialID) {
+			outputfile <<(StrFormat("%s not_paren_star_special %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::not_rparenID) {
+			outputfile <<(StrFormat("%s not_rparen %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::not_starID) {
+			outputfile <<(StrFormat("%s not_star %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::rel_opID) {
+			outputfile <<(StrFormat("%s rel_op %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::signID) {
+			outputfile <<(StrFormat("%s sign %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::specialID) {
+			outputfile <<(StrFormat("%s special %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::star_not_rparenID) {
+			outputfile <<(StrFormat("%s star_not_rparen %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::string_literalID) {
+			outputfile <<(StrFormat("%s string_literal %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::actual_parameter_listID) {
+			outputfile <<(StrFormat("%s actual_parameter_list %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::aggregate_initializerID) {
+			outputfile <<(StrFormat("%s aggregate_initializer %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::aggregate_sourceID) {
+			outputfile <<(StrFormat("%s aggregate_source %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::aggregation_typesID) {
+			outputfile <<(StrFormat("%s aggregation_types %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::algorithm_headID) {
+			outputfile <<(StrFormat("%s algorithm_head %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::alias_idID) {
+			outputfile <<(StrFormat("%s alias_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::alias_refID) {
+			outputfile <<(StrFormat("%s alias_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::alias_stmtID) {
+			outputfile <<(StrFormat("%s alias_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::assignment_stmtID) {
+			outputfile <<(StrFormat("%s assignment_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::attribute_idID) {
+			outputfile <<(StrFormat("%s attribute_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::attribute_qualifierID) {
+			outputfile <<(StrFormat("%s attribute_qualifier %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::attribute_refID) {
+			outputfile <<(StrFormat("%s attribute_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::built_in_constantID) {
+			outputfile <<(StrFormat("%s built_in_constant %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::built_in_functionID) {
+			outputfile <<(StrFormat("%s built_in_function %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::built_in_procedureID) {
+			outputfile <<(StrFormat("%s built_in_procedure %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::case_actionID) {
+			outputfile <<(StrFormat("%s case_action %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::case_labelID) {
+			outputfile <<(StrFormat("%s case_label %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::case_stmtID) {
+			outputfile <<(StrFormat("%s case_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::compound_stmtID) {
+			outputfile <<(StrFormat("%s compound_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::conformant_aggregateID) {
+			outputfile <<(StrFormat("%s conformant_aggregate %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::conformant_typeID) {
+			outputfile <<(StrFormat("%s conformant_type %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::constant_declID) {
+			outputfile <<(StrFormat("%s constant_decl %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::constant_bodyID) {
+			outputfile <<(StrFormat("%s constant_body %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::constant_factorID) {
+			outputfile <<(StrFormat("%s constant_factor %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::constant_idID) {
+			outputfile <<(StrFormat("%s constant_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::constant_refID) {
+			outputfile <<(StrFormat("%s constant_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::declarationID) {
+			outputfile <<(StrFormat("%s declaration %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::derived_attrID) {
+			outputfile <<(StrFormat("%s derived_attr %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::derive_clauseID) {
+			outputfile <<(StrFormat("%s derive_clause %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::elementID) {
+			outputfile <<(StrFormat("%s element %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::embedded_remarkID) {
+			outputfile <<(StrFormat("%s embedded_remark %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::entity_bodyID) {
+			outputfile <<(StrFormat("%s entity_body %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::entity_headID) {
+			outputfile <<(StrFormat("%s entity_head %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::entity_initID) {
+			outputfile <<(StrFormat("%s entity_init %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::entity_or_renameID) {
+			outputfile <<(StrFormat("%s entity_or_rename %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::enumeration_refID) {
+			outputfile <<(StrFormat("%s enumeration_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::escape_stmtID) {
+			outputfile <<(StrFormat("%s escape_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::expressionID) {
+			outputfile <<(StrFormat("%s expression %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::factorID) {
+			outputfile <<(StrFormat("%s factor %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::formal_parameterID) {
+			outputfile <<(StrFormat("%s formal_parameter %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::function_blockID) {
+			outputfile <<(StrFormat("%s function_block %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::function_callID) {
+			outputfile <<(StrFormat("%s function_call %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::function_headID) {
+			outputfile <<(StrFormat("%s function_head %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::function_idID) {
+			outputfile <<(StrFormat("%s function_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::function_refID) {
+			outputfile <<(StrFormat("%s function_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::general_refID) {
+			outputfile <<(StrFormat("%s general_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::generic_typeID) {
+			outputfile <<(StrFormat("%s generic_type %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::group_qualifierID) {
+			outputfile <<(StrFormat("%s group_qualifier %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::if_stmtID) {
+			outputfile <<(StrFormat("%s if_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::incrementID) {
+			outputfile <<(StrFormat("%s increment %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::increment_controlID) {
+			outputfile <<(StrFormat("%s increment_control %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::indexID) {
+			outputfile <<(StrFormat("%s index %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::index_qualitierID) {
+			outputfile <<(StrFormat("%s index_qualitier %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::initializerID) {
+			outputfile <<(StrFormat("%s initializer %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::interface_specificationID) {
+			outputfile <<(StrFormat("%s interface_specification %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::intervalID) {
+			outputfile <<(StrFormat("%s interval %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::interval_itemID) {
+			outputfile <<(StrFormat("%s interval_item %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::interval_opID) {
+			outputfile <<(StrFormat("%s interval_op %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::inverse_attrID) {
+			outputfile <<(StrFormat("%s inverse_attr %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::inverse_clauseID) {
+			outputfile <<(StrFormat("%s inverse_clause %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::labelID) {
+			outputfile <<(StrFormat("%s label %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::labelled_attrib_listID) {
+			outputfile <<(StrFormat("%s labelled_attrib_list %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::labelled_expressionID) {
+			outputfile <<(StrFormat("%s labelled_expression %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::literal_pID) {
+			outputfile <<(StrFormat("%s literal_p %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::local_declID) {
+			outputfile <<(StrFormat("%s local_decl %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::local_variableID) {
+			outputfile <<(StrFormat("%s local_variable %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::logical_expressionID) {
+			outputfile <<(StrFormat("%s logical_expression %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::null_stmtID) {
+			outputfile <<(StrFormat("%s null_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::one_ofID) {
+			outputfile <<(StrFormat("%s one_of %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::parameterID) {
+			outputfile <<(StrFormat("%s parameter %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::parameter_idID) {
+			outputfile <<(StrFormat("%s parameter_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::parameter_refID) {
+			outputfile <<(StrFormat("%s parameter_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::parameter_typeID) {
+			outputfile <<(StrFormat("%s parameter_type %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::precision_specID) {
+			outputfile <<(StrFormat("%s precision_spec %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::procedure_blockID) {
+			outputfile <<(StrFormat("%s procedure_block %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::procedure_call_stmtID) {
+			outputfile <<(StrFormat("%s procedure_call_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::procedure_headID) {
+			outputfile <<(StrFormat("%s procedure_head %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::procedure_idID) {
+			outputfile <<(StrFormat("%s procedure_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::procedure_refID) {
+			outputfile <<(StrFormat("%s procedure_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::qualifierID) {
+			outputfile <<(StrFormat("%s qualifier %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::qualifiable_factorID) {
+			outputfile <<(StrFormat("%s qualifiable_factor %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::qualified_attributeID) {
+			outputfile <<(StrFormat("%s qualified_attribute %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::query_expressionID) {
+			outputfile <<(StrFormat("%s query_expression %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::referenced_attributeID) {
+			outputfile <<(StrFormat("%s referenced_attribute %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::rel_op_extendedID) {
+			outputfile <<(StrFormat("%s rel_op_extended %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::remarkID) {
+			outputfile <<(StrFormat("%s remark %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::rename_idID) {
+			outputfile <<(StrFormat("%s rename_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::repeat_controlID) {
+			outputfile <<(StrFormat("%s repeat_control %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::repeat_stmtID) {
+			outputfile <<(StrFormat("%s repeat_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::repetitionID) {
+			outputfile <<(StrFormat("%s repetition %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::resource_or_renameID) {
+			outputfile <<(StrFormat("%s resource_or_rename %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::resource_refID) {
+			outputfile <<(StrFormat("%s resource_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::return_stmtID) {
+			outputfile <<(StrFormat("%s return_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::rule_blockID) {
+			outputfile <<(StrFormat("%s rule_block %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::rule_headID) {
+			outputfile <<(StrFormat("%s rule_head %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+		if(n==CStepParser::rule_idID) {
+			outputfile <<(StrFormat("%s rule_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+			goto done;
+		}	
+
+		if(n==CStepParser::schema_blockID) {
+			outputfile <<(StrFormat("%s schema_block %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::schema_bodyID) {
+			outputfile <<(StrFormat("%s schema_body %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::schema_refID) {
+			outputfile <<(StrFormat("%s schema_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::simple_expressionID) {
+			outputfile <<(StrFormat("%s simple_expression %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::simple_factorID) {
+			outputfile <<(StrFormat("%s simple_factor %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::simple_typesID) {
+			outputfile <<(StrFormat("%s simple_types %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::skip_stmtID) {
+			outputfile <<(StrFormat("%s skip_stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::stmtID) {
+			outputfile <<(StrFormat("%s stmt %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::subcomponent_qualifierID) {
+			outputfile <<(StrFormat("%s subcomponent_qualifier %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::subsuperID) {
+			outputfile <<(StrFormat("%s subsuper %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::subsuper_initID) {
+			outputfile <<(StrFormat("%s subsuper_init %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::subtype_declarationID) {
+			outputfile <<(StrFormat("%s subtype_declaration %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::supertype_expressionID) {
+			outputfile <<(StrFormat("%s supertype_expression %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::supertype_factorID) {
+			outputfile <<(StrFormat("%s supertype_factor %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::tail_remarkID) {
+			outputfile <<(StrFormat("%s tail_remark %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::type_labelID) {
+			outputfile <<(StrFormat("%s type_label %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::type_refID) {
+			outputfile <<(StrFormat("%s type_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::unary_opID) {
+			outputfile <<(StrFormat("%s unary_op %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+
+		if(n==CStepParser::unique_clauseID) {
+			outputfile <<(StrFormat("%s unique_clause %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::until_controlID) {
+			outputfile <<(StrFormat("%s until_control %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::variable_idID) {
+			outputfile <<(StrFormat("%s variable_id %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::variable_refID) {
+			outputfile <<(StrFormat("%s variable_ref %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::where_clauseID) {
+			outputfile <<(StrFormat("%s where_clause %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			goto done;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::while_controlID) {
+			outputfile <<(StrFormat("%s while_control %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+		if(n==CStepParser::widthID) {
+			outputfile <<(StrFormat("%s width %s\n", tabs, std::string(i->value.begin(), i->value.end()).c_str())); ;
+			//for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) {  evalExpress(it); }
+		}	
+#endif
+
+#if 0
+		if(n==CExpressTokens::entity_blockID) 
+		{
+			CString szEntity;
+			TreeIter it;
+			int j=0;
+			for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) 
+			{  
+				CString str = std::string(it->value.begin(), it->value.end()).c_str();
+				if(it->value.id().to_long()== CExpressTokens::entity_headID)
+				{
+					if(findNode(i->children.begin(), findit, 0, Nodes(nodes, CExpressTokens::entity_headID, CExpressTokens::entity_idID, CExpressTokens::simple_idID, 0)))
+					{
+						TreeIter childit = findit->children.begin();           // characters
+						szEntity = std::string(childit->value.begin(), childit->value.end()).c_str();
+						szEntity=szEntity.Trim();
+						//symtable.CreateEntityDef(szEntity,"machining", entity_);
+						tmp+=StrFormat("\nENTITY <A NAME=\"%s\">%s</A>", szEntity,szEntity);
+						tmp+=Express2Html(it->children.begin()+1);  // this is skipping entity_headID entirely
+					}
+				}	
+				else if(str.GetLength()>0)
+				{
+					//if(str=="END_ENTITY") tmp+="\n";
+					tmp+= str;
+				}
+				else 
+				{
+					tmp+=Express2Html(it); 
+				}
+			}	
+			if(tmp[tmp.GetLength()-1]!='\n')
+				tmp+="\n";
+			
+			goto done;
+		}
+#endif
+
+#if 0
+		// This doesn't work..???
+		//	type_decl =str_p("TYPE") >>  type_id >> ch_p('=') >> underlying_type >> 
+		//	semicolon >> discard_node_d[*(anychar_p-str_p("END_TYPE"))]	>> str_p("END_TYPE") >> semicolon ;
+		if(n==CExpressTokens::type_declID ) 
+		{
+			for(TreeIter it = i->children.begin(); it!=i->children.end(); it++) 
+			{  
+				CString str = std::string(it->value.begin(), it->value.end()).c_str();
+				if(str=="TYPE")
+				{
+					
+				}
+				else if(it->value.id().to_long()==CExpressTokens::type_idID)
+				{
+					str=Express2XmlHelp(it); 
+					str=str.Trim();
+					tmp+=StrFormat("<A NAME=\"%s\">%s </A>", str, str);
+				}
+				//else if(str=="END_TYPE")
+				//{
+				//	tmp+="\nEND_TYPE";
+				//}
+				else if(str.GetLength() > 0)
+				{
+					// do we need space?
+					tmp+=str+" ";
+				}
+				else
+				{
+					tmp+=Express2XmlHelp(it); 
+				}
+			}
+			goto done;
+		}
+#endif

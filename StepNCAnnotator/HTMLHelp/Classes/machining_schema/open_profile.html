@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> open_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="open_profile">open_profile </A></H1><P>An open_profile is a type of profile that is an outline or shape with no enclosing or confining bounds. The open ends of the profile may extend infinitely.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#open_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY open_profile  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="linear_profile.html">linear_profile</A> ,<A HREF="square_u_profile.html">square_u_profile</A> ,<A HREF="rounded_u_profile.html">rounded_u_profile</A> ,<A HREF="tee_profile.html">tee_profile</A> ,<A HREF="vee_profile.html">vee_profile</A> ,<A HREF="partial_circular_profile.html">partial_circular_profile</A> ,<A HREF="general_profile.html">general_profile</A> ) )
+SUBTYPE  OF (<A HREF="profile.html">profile</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

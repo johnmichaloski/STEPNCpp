@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> replicate_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="replicate_feature">replicate_feature </A></H1><P>A replicate is an assembly of a number of similar features, e.g. a circle of holes or a mesh of holes. The feature is described only once and the number and spacing of the feature is described. Note that the attribute<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#replicate_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>replicate_base_feature </TD>
+<TD><A HREF="../machining_schema/two5d_manufacturing_feature.html#two5d_manufacturing_feature">two5d_manufacturing_feature</A> </TD>
+<TD>The feature which forms the basis of the replicate feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY replicate_feature  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="rectangular_pattern.html">rectangular_pattern</A> ,<A HREF="circular_pattern.html">circular_pattern</A> ,<A HREF="general_pattern.html">general_pattern</A> ) )
+SUBTYPE  OF (<A HREF="two5d_manufacturing_feature.html">two5d_manufacturing_feature</A> );
+ replicate_base_feature : <A HREF="../machining_schema/two5d_manufacturing_feature.html#two5d_manufacturing_feature">two5d_manufacturing_feature</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

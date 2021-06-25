@@ -1,0 +1,39 @@
+<HTML><HEAD><TITLE> pocket </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="pocket">pocket </A></H1><P>This is the abstract supertype for different implicit and explicit pockets. Open and closed pockets are derived from this supertype. The geometry of the pocket is defined by its contour on the outer face of the workpiece and its depth. A pocket may possess one or more bosses.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#pocket">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_boss </TD>
+<TD> SET [ 0 : ? ] OF boss </TD>
+<TD>Optional list of bosses. This defines one or more parts of the pocket which are not cut during manufacturing of the pocket. With the cutting of the pocket, the boss is cut simultaneously. </TD></TR>
+<TR><TD>slope </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>Optional angle of the border of the pocket measured against the local z axis. Default is 0 degrees. </TD></TR>
+<TR><TD>bottom_condition </TD>
+<TD><A HREF="../machining_schema/pocket_bottom_condition.html#pocket_bottom_condition">pocket_bottom_condition</A> </TD>
+<TD>Possible bottom conditions of the pocket. </TD></TR>
+<TR><TD>planar_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The planar radius of a fillet, if existing within a pocket. This may be used to check against the radius of the tool tip. </TD></TR>
+<TR><TD>orthogonal_radius </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The orthogonal radius of a fillet, if existing within a pocket. This may be used to check against the radius of the tool. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY pocket  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="closed_pocket.html">closed_pocket</A> ,<A HREF="open_pocket.html">open_pocket</A> ) )
+SUBTYPE  OF (<A HREF="machining_feature.html">machining_feature</A> );
+ its_boss :  SET [ 0 : ? ] OF boss;
+ slope : OPTIONAL <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+ bottom_condition : <A HREF="../machining_schema/pocket_bottom_condition.html#pocket_bottom_condition">pocket_bottom_condition</A>;
+ planar_radius : OPTIONAL <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ orthogonal_radius : OPTIONAL <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

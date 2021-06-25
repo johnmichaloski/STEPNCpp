@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> approach_retract_strategy </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="approach_retract_strategy">approach_retract_strategy </A></H1><P>Base class for the approach (plunge) and retract strategy. All approach and retract strategies are defined relative to the start or end point of the cutting operation, whether this is explicitly given in the operation of determined by the NC controller. The resulting start point of the approach or end point of the retract movement are defined to be the start and end point of the current operation. The feed rate on the approach or retract path is the feed rate specified for the related start or end point, respectively, of cutting.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#approach_retract_strategy">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>tool_orientation </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>Only for machines with five-axis positioning capabilities. This specified the tool orientation at the beginning or end, respectively, of the approach or retract movement. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY approach_retract_strategy  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="plunge_strategy.html">plunge_strategy</A> ,<A HREF="air_strategy.html">air_strategy</A> ,<A HREF="along_path.html">along_path</A> ) );
+ tool_orientation : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

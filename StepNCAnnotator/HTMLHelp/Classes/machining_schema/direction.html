@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> direction </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="direction">direction </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#direction">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>direction_ratios </TD>
+<TD> LIST [ 2 : 3 ] OF REAL </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY direction 
+SUBTYPE  OF (<A HREF="geometric_representation_item.html">geometric_representation_item</A> );
+ direction_ratios :  LIST [ 2 : 3 ] OF REAL;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

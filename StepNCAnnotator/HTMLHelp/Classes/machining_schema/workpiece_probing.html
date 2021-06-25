@@ -1,0 +1,38 @@
+<HTML><HEAD><TITLE> workpiece_probing </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="workpiece_probing">workpiece_probing </A></H1><P>Probing of a dimension with one axis movement. Probing tool movement starts at start_position in the direction \"direction\" towards the workpiece. When the probe tool touches the workpiece, the machine stops and the difference of expected_value and tool position is stored in the inherited attribute measured_offset. Like machining_workingstep, workpiece_probing has a well defined start point and cannot be the first element in a workplan.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#workpiece_probing">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>start_position </TD>
+<TD><A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A> </TD>
+<TD>The starting position for the probing operation. </TD></TR>
+<TR><TD>its_workpiece </TD>
+<TD><A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A> </TD>
+<TD>The workpiece to be probed. </TD></TR>
+<TR><TD>its_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The direction of the probing movement. </TD></TR>
+<TR><TD>expected_value </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The approximate value for probing. </TD></TR>
+<TR><TD>its_probe </TD>
+<TD><A HREF="../machining_schema/touch_probe.html#touch_probe">touch_probe</A> </TD>
+<TD>The identification of the probe which has to be used. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY workpiece_probing 
+SUBTYPE  OF (<A HREF="touch_probing.html">touch_probing</A> );
+ start_position : <A HREF="../machining_schema/axis2_placement_3d.html#axis2_placement_3d">axis2_placement_3d</A>;
+ its_workpiece : <A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A>;
+ its_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ expected_value : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ its_probe : <A HREF="../machining_schema/touch_probe.html#touch_probe">touch_probe</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

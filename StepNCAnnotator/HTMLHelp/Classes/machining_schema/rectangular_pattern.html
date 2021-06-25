@@ -1,0 +1,50 @@
+<HTML><HEAD><TITLE> rectangular_pattern </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="rectangular_pattern">rectangular_pattern </A></H1><P>The description of elements arranged in a rectangular pattern. This may be either a grid of elements with n rows and m columns and a total number of n x m elements or a single line of m elements (n=1).<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#rectangular_pattern">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>spacing </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The spacing of the columns of the pattern. If there is only one row, this is also the spacing between the elements. </TD></TR>
+<TR><TD>its_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>Direction of the first row measured from the direction given in feature_placement. It points into the direction of the row, describing the order to manufacture the replicated feature. </TD></TR>
+<TR><TD>number_of_rows </TD>
+<TD> INTEGER </TD>
+<TD>The number of rows. Default is one, i. e. the rectangular pattern is a line of features. If number_of_rows is larger than one, the attributes row_spacing and row_layout_direction need to be specified. </TD></TR>
+<TR><TD>number_of_columns </TD>
+<TD> INTEGER </TD>
+<TD>The number of columns. </TD></TR>
+<TR><TD>row_spacing </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The spacing of the rows (optional, needed if number_of_rows is larger than one). row_layout_direction: Optional description of the direction of the first column measured from the direction given in feature_placement. It points into the direction of the next row </TD></TR>
+<TR><TD>row_layout_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>relocated_base_feature </TD>
+<TD> SET [ 0 : ? ] OF rectangular_offset </TD>
+<TD>Optional description of relocated features. </TD></TR>
+<TR><TD>missing_base_feature </TD>
+<TD> SET [ 0 : ? ] OF rectangular_omit </TD>
+<TD>Optional description of missing features. Note that the number of features can be calculated from the number_of_rows, number_of_columns, missing_base_feature, and relocated_base_feature. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY rectangular_pattern 
+SUBTYPE  OF (<A HREF="replicate_feature.html">replicate_feature</A> );
+ spacing : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ its_direction : <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ number_of_rows : OPTIONAL  INTEGER;
+ number_of_columns :  INTEGER;
+ row_spacing : OPTIONAL <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ row_layout_direction : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ relocated_base_feature :  SET [ 0 : ? ] OF rectangular_offset;
+ missing_base_feature :  SET [ 0 : ? ] OF rectangular_omit;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

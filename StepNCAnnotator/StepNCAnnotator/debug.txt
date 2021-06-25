@@ -1,0 +1,74 @@
+<its_id>
+ <text> Stock </text>
+</its_id>
+<its_material>
+ <standard_identifier>
+ <text> ST-50 </text>
+	</standard_identifier>
+<material_identifier>
+ <text> STEEL </text>
+	</material_identifier>
+<material_property>
+ <parameter_name>
+ <text> E 200000N/M2 </text>
+	</parameter_name>
+</material_property>
+</its_material>
+<global_tolerance>
+ <real>  0.010000 </real>
+</global_tolerance>
+<its_rawpiece>
+
+</its_rawpiece>
+<its_geometry>
+
+</its_geometry>
+<its_bounding_geometry>
+
+</its_bounding_geometry>
+<clamping_positions>
+  
+ 
+ 
+<name>
+ <text> CLAMPING_POSITION1 </text>
+</name>
+<coordinates>
+ <real>  0.000000 </real>
+ <real>  20.000000 </real>
+ <real>  25.000000 </real>
+</coordinates>
+  
+ 
+ 
+<name>
+ <text> CLAMPING_POSITION2 </text>
+</name>
+<coordinates>
+ <real>  100.000000 </real>
+ <real>  20.000000 </real>
+ <real>  25.000000 </real>
+</coordinates>
+  
+ 
+ 
+<name>
+ <text> CLAMPING_POSITION3 </text>
+</name>
+<coordinates>
+ <real>  0.000000 </real>
+ <real>  100.000000 </real>
+ <real>  25.000000 </real>
+</coordinates>
+  
+ 
+ 
+<name>
+ <text> CLAMPING_POSITION4 </text>
+</name>
+<coordinates>
+ <real>  100.000000 </real>
+ <real>  100.000000 </real>
+ <real>  25.000000 </real>
+</coordinates>
+</clamping_positions>

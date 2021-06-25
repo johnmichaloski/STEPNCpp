@@ -1,0 +1,16 @@
+<HTML><HEAD><TITLE> open_shell </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="open_shell">open_shell </A></H1><P>An open shell is a shell of dimensionality 2. Its domain, if present, is a finite, connected, oriented, 2­manifold with boundary, but is not a closed surface. It can be thought of as a closed shell with one or more holes punched in it. The domain of an open shell satisfies 0 ! \Xi ! 1. An open shell is functionally more general than a face because its domain can have handles. The shell is defined by a collection of faces, which may be oriented faces. The sense of each face, after taking account of the orientation, shall agree with the shell normal as defined below. The orientation can be supplied directly as a BOOLEAN attribute of an oriented face, or be defaulted to TRUE if the shell member is a face without the orientation attribute.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#open_shell">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY open_shell 
+SUPERTYPE  OF (<A HREF="topological_region.html">topological_region</A> )
+SUBTYPE  OF (<A HREF="connected_face_set.html">connected_face_set</A> );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

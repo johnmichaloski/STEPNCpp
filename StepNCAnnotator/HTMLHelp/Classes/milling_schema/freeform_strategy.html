@@ -1,0 +1,34 @@
+<HTML><HEAD><TITLE> freeform_strategy </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="freeform_strategy">freeform_strategy </A></H1><P>The following entities define the strategy used for milling a freeform surface. If this entity is used, the toolpath is defined only by means of the milling strategy and the tolerances. The CNC itself has to calculate the resulting toolpaths out of these values. If the toolpath and the freeform strategy are defined, the attribute \"freeform_strategy\" is for information only.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#freeform_strategy">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>pathmode </TD>
+<TD><A HREF="../milling_schema/pathmode_type.html#pathmode_type">pathmode_type</A> </TD>
+<TD>The feed direction </TD></TR>
+<TR><TD>cutmode </TD>
+<TD><A HREF="../milling_schema/cutmode_type.html#cutmode_type">cutmode_type</A> </TD>
+<TD>The stepover direction. </TD></TR>
+<TR><TD>its_milling_tolerances </TD>
+<TD><A HREF="../milling_schema/tolerances.html#tolerances">tolerances</A> </TD>
+<TD>The tolerance values to be used during creation of the toolpaths. </TD></TR>
+<TR><TD>stepover </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>The distance between two neighboring toolpaths. If given, the stepover calculated by use of its_milling_tolerances will be ignored. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY freeform_strategy  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="uv_strategy.html">uv_strategy</A> ,<A HREF="plane_cc_strategy.html">plane_cc_strategy</A> ,<A HREF="plane_cl_strategy.html">plane_cl_strategy</A> ,<A HREF="leading_line_strategy.html">leading_line_strategy</A> ) );
+ pathmode : <A HREF="../milling_schema/pathmode_type.html#pathmode_type">pathmode_type</A>;
+ cutmode : <A HREF="../milling_schema/cutmode_type.html#cutmode_type">cutmode_type</A>;
+ its_milling_tolerances : <A HREF="../milling_schema/tolerances.html#tolerances">tolerances</A>;
+ stepover : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

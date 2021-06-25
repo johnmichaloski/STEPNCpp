@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> bidirectional </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="bidirectional">bidirectional </A></H1><P>Milling in a zigzag fashion, i.e. going from one side to the other and back. For further describing the strategy of milling, it may be specified, which are the first and second directions for zigzagging. The cutting mode (conventional or climb cutting) is alternated.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#bidirectional">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feed_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>Feed direction of the first toolpath of the milling operation </TD></TR>
+<TR><TD>stepover_direction </TD>
+<TD><A HREF="../milling_schema/left_or_right.html#left_or_right">left_or_right</A> </TD>
+<TD>Stepover direction of the zigzag operation </TD></TR>
+<TR><TD>its_stroke_connection_strategy </TD>
+<TD><A HREF="../milling_schema/stroke_connection_strategy.html#stroke_connection_strategy">stroke_connection_strategy</A> </TD>
+<TD>Specification of the behaviour of the tool between strokes </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY bidirectional 
+SUBTYPE  OF (<A HREF="two5d_milling_strategy.html">two5d_milling_strategy</A> );
+ feed_direction : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ stepover_direction : OPTIONAL <A HREF="../milling_schema/left_or_right.html#left_or_right">left_or_right</A>;
+ its_stroke_connection_strategy : OPTIONAL <A HREF="../milling_schema/stroke_connection_strategy.html#stroke_connection_strategy">stroke_connection_strategy</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:10 2008
+
+</BODY></HTML>

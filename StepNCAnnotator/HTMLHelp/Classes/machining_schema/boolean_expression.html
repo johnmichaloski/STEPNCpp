@@ -1,0 +1,15 @@
+<HTML><HEAD><TITLE> boolean_expression </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="boolean_expression">boolean_expression </A></H1><P>The Boolean expression entity is used to determine whether a given condition is met. At this time, it can either be a numeric comparison or a composition of several other Boolean expressions.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#boolean_expression">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY boolean_expression  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="unary_boolean_expression.html">unary_boolean_expression</A> ,<A HREF="binary_boolean_expression.html">binary_boolean_expression</A> ,<A HREF="multiple_arity_boolean_expression.html">multiple_arity_boolean_expression</A> ,<A HREF="comparison_expression.html">comparison_expression</A> ) );
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

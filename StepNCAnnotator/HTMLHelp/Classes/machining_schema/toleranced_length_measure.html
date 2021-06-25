@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> toleranced_length_measure </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="toleranced_length_measure">toleranced_length_measure </A></H1><P>Length measure with tolerance. Note that all geometric properties of the workpiece are specified using toleranced_length_measure. If the NC controller has the ability to generate toolpaths or to make decisions about the tool used, it is the controller's responsibility to meet these tolerance requirements. On the other hand, data provided to the NC controller for explicit specification of movements will have no tolerances as the controller cannot do more than try to follow the given theoretical values to the best of its abilities. The same is true for offsets and other data referring to already toleranced dimensions.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#toleranced_length_measure">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>theoretical_size </TD>
+<TD><A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A> </TD>
+<TD>The theoretical length. </TD></TR>
+<TR><TD>implicit_tolerance </TD>
+<TD><A HREF="../machining_schema/tolerance_select.html#tolerance_select">tolerance_select</A> </TD>
+<TD>The type of tolerance to apply to theoretical_size. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY toleranced_length_measure ;
+ theoretical_size : <A HREF="../machining_schema/positive_length_measure.html#positive_length_measure">positive_length_measure</A>;
+ implicit_tolerance : <A HREF="../machining_schema/tolerance_select.html#tolerance_select">tolerance_select</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> face </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="face">face </A></H1><P>A face is a topological entity of dimensionality 2 corresponding to the intuitive notion of a piece of surface bounded by loops. Its domain, if present, is an oriented, connected, finite 2­manifold in R m . A face domain shall not have handles, but it may have holes, each hole bounded by a loop. The domain of the underlying geometry of the face, if present, does not contain its bounds, and 0 ! \Xi ! 1. A face is represented by its bounding loops, which are defined as face bounds. A face shall have at least one bound, and the bounds shall be distinct and shall not intersect. One loop is optionally distinguished, using the face outer bound subtype, as the “outer” loop of the face. If so, it establishes a preferred way of embedding the face domain in the plane, in which the other bounding loops of the face are “inside” the outer loop. Because the face domain is arcwise connected, no inner loop shall contain any other loop. This is true regardless of which embedding in the plane is chosen. A geometric surface may be associated with the face. This may be done explicitly through the face surface subtype, or implicitly if the faces are defined by poly loops. In the latter case, the surface is the plane containing the points of the poly loops. In either case, a topological normal n is associated with the face, such that the cross product n \Theta t points toward the interior of the face, where t is the tangent to a bounding loop. That is, each loop runs counter­clockwise around the face when viewed from above, if we consider the normal n to point up. Each loop is associated through a face bound entity with a BOOLEAN flag to signify whether the loop direction is oriented correctly with respect to the face normal (TRUE) or should be reversed (FALSE). For a face of the subtype face surface, the topological normal n is defined from the normal of the underlying surface, together with the BOOLEAN attribute same sense, and this in turn, determines on which side of the loop the face interior lies, using the cross­product rule described above. When a vertex loop is used as a face bound the sense of the topological normal is derived from any other bounding loops, or, in the case of a face surface, from the face geometry and the same sense flag. If the face has only one bound and this is of type vertex loop, then the interior of the face is the domain of the face surface.face geometry. In such a case the underlying surface shall be closed (e.g. a spherical surface.) The situation is different for a face on an implicit planar surface, such as one defined by poly ­ loops, which has no unique surface normal. Since the face and its bounding loops lie in a plane, the outer loop can always be found without ambiguity. Since the face is required to be finite, the face interior must lie inside the outer loop, and outside each of the remaining loops. These conditions, together with the specified loop orientations, define the topological normal n using the cross­product rule described above. All poly loop orientations for a given face shall produce the same value for n.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#face">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>bounds </TD>
+<TD> SET [ 1 : ? ] OF face_bound </TD>
+<TD>Boundaries of the face; no more than one of these shall be a face outer bound. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY face 
+SUPERTYPE  OF (<A HREF="face_surface.html">face_surface</A> )
+SUBTYPE  OF (<A HREF="topological_representation_item.html">topological_representation_item</A> );
+ bounds :  SET [ 1 : ? ] OF face_bound;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

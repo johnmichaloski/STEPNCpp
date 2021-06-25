@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> machining_feature </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="machining_feature">machining_feature </A></H1><P>The entity machining_feature is the abstract supertype of all features used for feature based 2½D machining. In this part the following features are foreseen as they are used in different technology specific parts of ISO 14649: planar face, pocket, slot, step, hole, generic feature, and compound feature. The features are defined in close resemblance to ISO 10303-224. 2½D machining is characterised by the fact that most tool movements occur only in the xy plane while the z axis is preset to a certain depth in order to remove a layer of material. For this reason, all machining features have a depth. All feature geometry, e.g. the contour describing the outline of a pocket, is described in a local xyz co-ordinate system. The definition of the coordinate system’s orientation is given in the machining method specific parts. The surrounding surface of the workpiece and the definition of the planar contour of the feature are assumed to lie in the xy plane (z = 0). The material is assumed to be in negative z direction of the xy-plane. In other words, a positive depth within a machining operation requires the tool to advance in negative z direction into the material’s direction. As ISO 14649 allows for a 3D description of the overall workpiece geometry, the inherited attribute feature_placement specifies the actual location of the feature within the workpiece co-ordinate system.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#machining_feature">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>depth </TD>
+<TD><A HREF="../machining_schema/elementary_surface.html#elementary_surface">elementary_surface</A> </TD>
+<TD>The depth of the feature is described by a plane which includes the lowest points of the feature (z.LT.0) measured in the feautre’s local cartesian-cooridnate system. If the depth is not an orthogonal plane to the z-axis this implies, that the bottom of the feature is inclined. Depending on the explicit features there can be described more complex bottom shapes. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY machining_feature  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="planar_face.html">planar_face</A> ,<A HREF="pocket.html">pocket</A> ,<A HREF="slot.html">slot</A> ,<A HREF="step.html">step</A> ,<A HREF="round_hole.html">round_hole</A> ,<A HREF="toolpath_feature.html">toolpath_feature</A> ,<A HREF="profile_feature.html">profile_feature</A> ,<A HREF="boss.html">boss</A> ,<A HREF="spherical_cap.html">spherical_cap</A> ,<A HREF="rounded_end.html">rounded_end</A> ,<A HREF="thread.html">thread</A> ) )
+SUBTYPE  OF (<A HREF="two5d_manufacturing_feature.html">two5d_manufacturing_feature</A> );
+ depth : <A HREF="../machining_schema/elementary_surface.html#elementary_surface">elementary_surface</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

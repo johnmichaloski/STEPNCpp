@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> cartesian_point </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="cartesian_point">cartesian_point </A></H1><P>A cartesian point is a point defined by its coordinates in a rectan­ gular Cartesian coordinate system, or in a parameter space. The entity is defined in a one, two or three­dimensional space as determined by the number of coordinates in the list.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#cartesian_point">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>coordinates </TD>
+<TD> LIST [ 1 : 3 ] OF length_measure </TD>
+<TD>The coordinates of the point location. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY cartesian_point 
+SUBTYPE  OF (<A HREF="point.html">point</A> );
+ coordinates :  LIST [ 1 : 3 ] OF length_measure;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> process_model </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="process_model">process_model </A></H1><P>Special machine-specific functions to make the machining process more secure and accurate. (e.g. chatter avoidance, thermal compensation, ...)<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#process_model">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>ini_data_file </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>A filename including path of the file containing the initialisation data of the process model. </TD></TR>
+<TR><TD>its_type </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>The type of process model (e.g. chatter avoidance, thermal compensation, ...) </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY process_model ;
+ ini_data_file : <A HREF="../machining_schema/label.html#label">label</A>;
+ its_type : <A HREF="../machining_schema/label.html#label">label</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

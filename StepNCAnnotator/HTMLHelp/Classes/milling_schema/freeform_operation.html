@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> freeform_operation </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="freeform_operation">freeform_operation </A></H1><P>Derived from the milling type operation, this is the class of operations for freeform milling. Note that only some Hi- Tech NC controllers today will not be able to machine a freeform surface without specifying explicit toolpaths.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#freeform_operation">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_machining_strategy </TD>
+<TD><A HREF="../milling_schema/freeform_strategy.html#freeform_strategy">freeform_strategy</A> </TD>
+<TD>Description of the strategy to be used when executing the operation. In case the attribute its_toolpath of the supertype operation is specified, the strategy is for information only. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY freeform_operation 
+SUBTYPE  OF (<A HREF="milling_type_operation.html">milling_type_operation</A> );
+ its_machining_strategy : OPTIONAL <A HREF="../milling_schema/freeform_strategy.html#freeform_strategy">freeform_strategy</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

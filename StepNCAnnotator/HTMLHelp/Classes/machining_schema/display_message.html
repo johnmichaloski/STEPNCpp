@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> display_message </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="display_message">display_message </A></H1><P>This function is used to display a message on the operator's screen.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#display_message">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_text </TD>
+<TD><A HREF="../machining_schema/text.html#text">text</A> </TD>
+<TD>The message to be displayed on the operator's screen, until the next message is sent. To clear the screen, send an empty message. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY display_message 
+SUBTYPE  OF (<A HREF="nc_function.html">nc_function</A> );
+ its_text : <A HREF="../machining_schema/text.html#text">text</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

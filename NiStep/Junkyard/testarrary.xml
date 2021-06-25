@@ -1,0 +1,13 @@
+<feature_placement classname="axis2_placement_3d">
+      <location classname="cartesian_point">
+          <coordinates listclassname="" classname="length_measure">
+(20.0000 60.0000 0.0000)
+          </coordinates>
+        </location>
+      <axis classname="direction">
+          <direction_ratios listclassname="" classname="real">
+(0.0000 0.0000 1.0000)
+          </direction_ratios>
+        </axis>
+        <ref_direction classname="direction"></ref_direction>
+</feature_placement>

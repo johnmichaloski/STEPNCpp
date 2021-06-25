@@ -1,0 +1,25 @@
+<HTML><HEAD><TITLE> nc_variable </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="nc_variable">nc_variable </A></H1><P>The variable concept introduced here is primitive. Only numeric variables are allowed. The NC controller will map the variable name given by this entity to an internal storage. The attribute its_name must therefore be unique throughout the entire model supplied by an ISO 14649 physical file. Not that several nc_variable entities using the same name will actually refer to the same storage location. Accessing nc_variables in a program_structure entity may take place only after the previous program_structure has been completely executed by the machine. Note that due to the pipeline concept of most NC controllers there can be a significant time gap between the interpretation of the program and the actual execution. It is there the responsibility of the NC controller to halt interpretation until the value of the nc_variable(s) used are available. This is especially true for the lvalue in an assignment operation because the premature execution of the assignment would allow an ongoing NC process to overwrite the assigned nc_variable before it is used, leading to unexpected and possibly fatal results. Note also that there is no guarantee at which time a certain value from any parallel branch would be available. If timing matters, a synchronising NC function has to be inserted before the use of a nc_variable. Variables can be used to access controller-internal information, like sensor readings. This, however, would be controller-dependent and implemented by the use of reserved names as specified by the control vendor.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#nc_variable">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_name </TD>
+<TD><A HREF="../machining_schema/label.html#label">label</A> </TD>
+<TD>The unique reference to an internal storage provided by the NC controller. All characters in LABEL are significant. The number of different nc_variable names allowed is controller dependent. </TD></TR>
+<TR><TD>initial_value </TD>
+<TD>number </TD>
+<TD>The value of the nc_variable before it is accessed the first time. If omitted, the initial value is undefined. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY nc_variable ;
+ its_name : <A HREF="../machining_schema/label.html#label">label</A>;
+ initial_value : OPTIONAL number;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

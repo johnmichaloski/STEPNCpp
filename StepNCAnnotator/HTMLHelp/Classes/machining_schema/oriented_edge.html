@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> oriented_edge </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="oriented_edge">oriented_edge </A></H1><P>An oriented edge is an edge constructed from another edge and contains a BOOLEAN orientation flag to indicate whether or not the orientation of the constructed edge agrees with the orientation of the original edge. Except for possible re­orientation, the oriented edge is equivalent to the original edge. NOTE A common practice in solid modelling systems is to have an entity that represents the “use” or “traversal” of an edge. This “use” entity explicitly represents the requirement in a manifold solid that each edge must be traversed exactly twice, once in each direction. The “use” functionality is provided by the edge subtype oriented edge.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#oriented_edge">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>edge_element </TD>
+<TD><A HREF="../machining_schema/edge.html#edge">edge</A> </TD>
+<TD>edge entity used to construct this oriented edge. </TD></TR>
+<TR><TD>orientation </TD>
+<TD> BOOLEAN </TD>
+<TD>If TRUE, the topological orientation as used coincides with the orientation, from start vertex to end vertex, of the edge element. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY oriented_edge 
+SUBTYPE  OF (<A HREF="edge.html">edge</A> );
+ edge_element : <A HREF="../machining_schema/edge.html#edge">edge</A>;
+ orientation :  BOOLEAN;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

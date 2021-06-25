@@ -1,0 +1,22 @@
+<HTML><HEAD><TITLE> general_outside_profile </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="general_outside_profile">general_outside_profile </A></H1><P>A general outside profile is the removal volume of arbitrary shape from the outside shape of a workpiece. It may remove material from the entire outside shape or some portion of the shape. The contour of the shape is given by the attribute feature_boundary.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#general_outside_profile">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>feature_boundary </TD>
+<TD><A HREF="../machining_schema/profile.html#profile">profile</A> </TD>
+<TD>The contour of the profile to be followed by the tool. Note that this attribute describes the profile itself, not the tool path. When travelling along the profile based as defined by its sense, the material lies to the left of the profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY general_outside_profile 
+SUBTYPE  OF (<A HREF="profile_feature.html">profile_feature</A> );
+ feature_boundary : <A HREF="../machining_schema/profile.html#profile">profile</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

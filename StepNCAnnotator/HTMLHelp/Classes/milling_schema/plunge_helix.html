@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> plunge_helix </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="plunge_helix">plunge_helix </A></H1><P>Plunge movement forming a helix. The path is defined by specifying the radius and grade of the helix. A circular movement can be specified by setting grade to zero.<H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#plunge_helix">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>radius </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>Radius of the helical movement. </TD></TR>
+<TR><TD>angle </TD>
+<TD><A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A> </TD>
+<TD>The angle of the helical movement versus the surface in the end point of the approach. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY plunge_helix 
+SUBTYPE  OF (<A HREF="plunge_strategy.html">plunge_strategy</A> );
+ radius : <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+ angle : <A HREF="../machining_schema/plane_angle_measure.html#plane_angle_measure">plane_angle_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

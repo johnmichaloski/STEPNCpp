@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE> in_process_geometry </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="in_process_geometry">in_process_geometry </A></H1><P>Entity to represent in-process geometry for additional checking routines. A CAM system can use this information to describe the predicted effect of an operation on one feature. The controller can compare the geometry given in this entity with the geometry change predicted by its internal algorithm. ISO 14649 does not describe how closely the two geometries must match in order for the controller to be considered to be in conformance.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#in_process_geometry">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>as_is </TD>
+<TD><A HREF="../machining_schema/advanced_brep_shape_representation.html#advanced_brep_shape_representation">advanced_brep_shape_representation</A> </TD>
+<TD>Attribute to describe the geometry before an operation is executed. </TD></TR>
+<TR><TD>to_be </TD>
+<TD><A HREF="../machining_schema/advanced_brep_shape_representation.html#advanced_brep_shape_representation">advanced_brep_shape_representation</A> </TD>
+<TD>Attribute to describe the desired effect of an operation. </TD></TR>
+<TR><TD>removal </TD>
+<TD><A HREF="../machining_schema/advanced_brep_shape_representation.html#advanced_brep_shape_representation">advanced_brep_shape_representation</A> </TD>
+<TD>Volume removed by an operation. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY in_process_geometry ;
+ as_is : OPTIONAL <A HREF="../machining_schema/advanced_brep_shape_representation.html#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+ to_be : OPTIONAL <A HREF="../machining_schema/advanced_brep_shape_representation.html#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+ removal : OPTIONAL <A HREF="../machining_schema/advanced_brep_shape_representation.html#advanced_brep_shape_representation">advanced_brep_shape_representation</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

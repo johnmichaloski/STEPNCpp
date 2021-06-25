@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> axis2_placement_3d </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="axis2_placement_3d">axis2_placement_3d </A></H1><P>The location and orientation in three­dimensional space of two mutually perpendicular axes. An axis2 placement 3d is defined in terms of a point, (inherited from the placement supertype), and two (ideally orthogonal) axes. It can be used to locate and orientate a non axi­symmetric object in space and to define a placement coordinate system. The entity includes a point which forms the origin of the placement coordinate system. Two direction vectors are required to complete the definition of the placement coordinate system. The axis is the placement Z axis direction and the ref direction is an approximation to the placement X axis direction.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#axis2_placement_3d">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>axis </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The exact direction of the local Z axis </TD></TR>
+<TR><TD>ref_direction </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>The direction used to determine the direction of the local X axis. If necessary an adjustment is made to maintain orthogonality to the axis direction. If axis and/or ref ­ direction is omitted, these directions are taken from the geometric coordinate system. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY axis2_placement_3d 
+SUBTYPE  OF (<A HREF="placement.html">placement</A> );
+ axis : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ ref_direction : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:38 2008
+
+</BODY></HTML>

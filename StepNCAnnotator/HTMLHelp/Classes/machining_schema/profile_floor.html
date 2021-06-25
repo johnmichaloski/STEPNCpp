@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> profile_floor </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="profile_floor">profile_floor </A></H1><P>A profile floor describes the bottom condition of a shape profile which may be flat or any arbitrary shape.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#profile_floor">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>floor_radius </TD>
+<TD><A HREF="../machining_schema/numeric_parameter.html#numeric_parameter">numeric_parameter</A> </TD>
+<TD>The radius of curvature for an arc between the bottom and the sides. </TD></TR>
+<TR><TD>start_or_end </TD>
+<TD> BOOLEAN </TD>
+<TD>If true, the profile_floor is positioned at the end of a shape_profile. If false, its is at the start of the shape_profile. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY profile_floor  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="general_profile_floor.html">general_profile_floor</A> ,<A HREF="planar_profile_floor.html">planar_profile_floor</A> ) );
+ floor_radius : OPTIONAL <A HREF="../machining_schema/numeric_parameter.html#numeric_parameter">numeric_parameter</A>;
+ start_or_end :  BOOLEAN;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:39 2008
+
+</BODY></HTML>

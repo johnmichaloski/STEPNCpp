@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> connect_secplane </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="connect_secplane">connect_secplane </A></H1><P>The security plane connector moves the tool up to the security plane until the cutter location point reaches the security plane, then linear to the projected starting point of the following movement and again from the security plane down to this starting point. This type of connection may be needed for unidirectional machining of freeform surface. For bidirectional machining, a connect_direct between the preceding lift and the following approach movement will be more efficient.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#connect_secplane">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>up_dir </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>specification of the direction of the upward movement. If none is given, the motion will be in tool direction. </TD></TR>
+<TR><TD>down_dir </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>specification of the direction of the downward movement. If none is given, the motion will be in tool direction. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY connect_secplane 
+SUBTYPE  OF (<A HREF="connector.html">connector</A> );
+ up_dir : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ down_dir : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

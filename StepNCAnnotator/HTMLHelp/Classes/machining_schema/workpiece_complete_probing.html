@@ -1,0 +1,34 @@
+<HTML><HEAD><TITLE> workpiece_complete_probing </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="workpiece_complete_probing">workpiece_complete_probing </A></H1><P>This entity is similar to workpiece probing only that a complete measurement cycle at six locations of the given workpiece is automatically performed and the translation and rotational offset of the detected workpiece position compared to the given workpiece is computed. The locations of probing are automatically determined by the NC controller based on the geometry of the workpiece. The offset vector is returned in computed_offset while the inherited attributed measured_offset will hold the average of all (six) measured offsets. Based on the automatic determination of the probing locations, workpiece_complete_probing does not have a well defined start point.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#workpiece_complete_probing">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_workpiece </TD>
+<TD><A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A> </TD>
+<TD>The workpiece to be probed. </TD></TR>
+<TR><TD>probing_distance </TD>
+<TD><A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A> </TD>
+<TD>The distance between the probe’s tip and the workpiece normal to its surface at the beginning of each probing movement. This value should be well above the maximum expected deviation between the actual position and the workpiece position specified by its_workpiece. </TD></TR>
+<TR><TD>its_probe </TD>
+<TD><A HREF="../machining_schema/touch_probe.html#touch_probe">touch_probe</A> </TD>
+<TD>The identification of the probe which has to be used. </TD></TR>
+<TR><TD>computed_offset </TD>
+<TD><A HREF="../machining_schema/offset_vector.html#offset_vector">offset_vector</A> </TD>
+<TD>The attributes ‘translation’ and ‘rotate’ describe the actual workpiece position compared to the position specified by the respective setup. It is computed as a result of the (six) measurements performed by this workingstep. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY workpiece_complete_probing 
+SUBTYPE  OF (<A HREF="touch_probing.html">touch_probing</A> );
+ its_workpiece : <A HREF="../machining_schema/workpiece.html#workpiece">workpiece</A>;
+ probing_distance : <A HREF="../machining_schema/toleranced_length_measure.html#toleranced_length_measure">toleranced_length_measure</A>;
+ its_probe : <A HREF="../machining_schema/touch_probe.html#touch_probe">touch_probe</A>;
+ computed_offset : <A HREF="../machining_schema/offset_vector.html#offset_vector">offset_vector</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

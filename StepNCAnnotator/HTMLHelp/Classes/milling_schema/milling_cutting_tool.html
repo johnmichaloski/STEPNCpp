@@ -1,0 +1,26 @@
+<HTML><HEAD><TITLE> milling_cutting_tool </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="milling_cutting_tool">milling_cutting_tool </A></H1><P><H2>Schema</H2>
+<A HREF="../../Schemas/milling_schema.html#milling_cutting_tool">milling_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>direction_for_spindle_orientation </TD>
+<TD><A HREF="../machining_schema/direction.html#direction">direction</A> </TD>
+<TD>&nbsp; </TD></TR>
+<TR><TD>tool_holder_diameter_for_spindle_orientation </TD>
+<TD><A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A> </TD>
+<TD>&nbsp; </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY milling_cutting_tool 
+SUBTYPE  OF (<A HREF="../machining_schema/cutting_tool.html">cutting_tool </A> );
+ direction_for_spindle_orientation : OPTIONAL <A HREF="../machining_schema/direction.html#direction">direction</A>;
+ tool_holder_diameter_for_spindle_orientation : OPTIONAL <A HREF="../machining_schema/length_measure.html#length_measure">length_measure</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:13:09 2008
+
+</BODY></HTML>

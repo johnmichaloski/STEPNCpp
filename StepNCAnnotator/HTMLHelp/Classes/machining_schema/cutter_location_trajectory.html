@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE> cutter_location_trajectory </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="cutter_location_trajectory">cutter_location_trajectory </A></H1><P>Cutter location paths define a tool movement with respect to the tool center point. This is the point where the rotational axis of the tool leaves the tool tip.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#cutter_location_trajectory">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>basiccurve </TD>
+<TD><A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A> </TD>
+<TD>A 3D curve defining the cartesian co-ordinates of the cutter location point in the workpiece co-ordinate system or the local co-ordinate system of the feature, respectively. </TD></TR>
+<TR><TD>its_toolaxis </TD>
+<TD><A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A> </TD>
+<TD>A 3D curve defining the toolaxis of the tool. The three co-ordinates of the curve represent the three components of the vector in the workpiece co-ordinate system or the local co-ordinate system of the feature, respectively. If given, the parameterisation of the toolaxis curve must correspond to that of the basiccurve. </TD></TR>
+<TR><TD>surface_normal </TD>
+<TD><A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A> </TD>
+<TD>A curve in space defining the surface normal. It has to be of the same type and has to have the same parameterisation than the basiccurve. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY cutter_location_trajectory 
+SUBTYPE  OF (<A HREF="trajectory.html">trajectory</A> );
+ basiccurve : <A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A>;
+ its_toolaxis : OPTIONAL <A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A>;
+ surface_normal : OPTIONAL <A HREF="../machining_schema/bounded_curve.html#bounded_curve">bounded_curve</A>;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>

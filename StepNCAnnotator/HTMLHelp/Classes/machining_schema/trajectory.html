@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE> trajectory </TITLE><LINK href="../Styles/EntityReport.css" rel="stylesheet" type="text/css">
+</HEAD><BODY>
+
+<H1>ENTITY <A NAME="trajectory">trajectory </A></H1><P>Supertype for all explicit trajectories.<H2>Schema</H2>
+<A HREF="../../Schemas/machining_schema.html#trajectory">machining_schema</A><H2>Attributes</H2>
+<TABLE>
+<TH>Attribute </TH>
+<TH>Type </TH>
+<TH>Description </TH>
+<TR><TD>its_direction </TD>
+<TD> BOOLEAN </TD>
+<TD>If true or omitted, the tool has to be moved from the beginning to the end of the referenced geometric curve. Otherwise, it will be moved from the end point to the start point of the referenced geometric curve. </TD></TR>
+</TABLE>
+<H2>Express Definition</H2>
+<pre>
+ENTITY trajectory  ABSTRACT
+SUPERTYPE  OF ( ONEOF (<A HREF="cutter_location_trajectory.html">cutter_location_trajectory</A> ,<A HREF="cutter_contact_trajectory.html">cutter_contact_trajectory</A> ,<A HREF="axis_trajectory.html">axis_trajectory</A> ) )
+SUBTYPE  OF (<A HREF="toolpath.html">toolpath</A> );
+ its_direction : OPTIONAL  BOOLEAN;
+END_ENTITY;
+<P>Last Edited - Fri Oct 24 22:14:40 2008
+
+</BODY></HTML>
